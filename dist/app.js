@@ -42,11 +42,10 @@ function controls() {
   $('upload').disabled = busy || !!blob || frameLoading || !!shotSession;
   document.querySelectorAll('.frame-card').forEach(b => b.disabled = busy || !!blob || frameLoading || !!shotSession);
   $('start').disabled = cameraBusy;
-  for (const prefix of ['setup', 'shoot']) {
-    $(prefix+'-camera').disabled = busy || cameraBusy || !!blob || selecting;
-    $(prefix+'-camera-refresh').disabled = busy || cameraBusy || !!blob || selecting;
+  for (const prefix of ['setup']) {
+    $(prefix+'-camera').disabled = phase!=='setup' || busy || cameraBusy || !!blob || selecting;
+    $(prefix+'-camera-refresh').disabled = phase!=='setup' || busy || cameraBusy || !!blob || selecting;
   }
-  $('shoot-camera-controls').hidden = phase!=='shoot' || !!blob || selecting;
 }
 function renderFrames() {
   $('frames').replaceChildren();
@@ -83,7 +82,7 @@ async function chooseFrame(id) {
 }
 function stopStream() { if (stream) stream.getTracks().forEach(t => t.stop()); stream = null; video.srcObject = null; }
 function renderCameras() {
-  for (const prefix of ['setup', 'shoot']) {
+  for (const prefix of ['setup']) {
     const select = $(prefix+'-camera'); select.replaceChildren();
     for (const device of [{deviceId:'',label:'자동 선택'}, ...cameraDevices]) {
       const option = document.createElement('option'); option.value = device.deviceId;
@@ -109,7 +108,7 @@ function cameraDisconnected(active) {
   if(stream!==active)return;
   cameraRun++;stopStream();cancelCountdown();$('welcome').hidden=false;
   $('camera-state').textContent='카메라 연결 끊김';
-  status('카메라 연결이 끊겼어요. 촬영한 사진은 유지됩니다. 카메라를 다시 연결한 뒤 선택하거나 카메라 켜기를 눌러 주세요.',true);
+  status('카메라 연결이 끊겼어요. 촬영한 사진은 유지됩니다. 같은 카메라를 다시 연결한 뒤 카메라 켜기를 눌러 주세요.',true);
   controls();void refreshCameras();
 }
 async function startCamera() {
@@ -137,17 +136,16 @@ async function startCamera() {
     if(run!==cameraRun)return;
     stopStream(); $('welcome').hidden = false; $('camera-state').textContent = '카메라 꺼짐';
     const errors = {NotAllowedError:'카메라 권한이 꺼져 있어요. 브라우저의 사이트 설정에서 카메라를 허용한 뒤 다시 켜 주세요.',NotFoundError:'선택한 카메라를 찾지 못했어요. 연결을 확인하거나 다른 카메라를 선택해 주세요.',OverconstrainedError:'선택한 카메라에 연결할 수 없어요. 목록을 새로고침하고 다시 선택해 주세요.',NotReadableError:'다른 앱이 카메라를 사용 중일 수 있어요. 앱을 닫고 다시 시도해 주세요.'};
-    status(errors[e.name] || '카메라를 켜지 못했어요. 연결을 확인하고 다시 시도해 주세요.', true);
+    status(phase==='shoot' && ['NotFoundError','OverconstrainedError'].includes(e.name) ? '처음 선택한 카메라를 찾지 못했어요. 같은 카메라를 다시 연결한 뒤 카메라 켜기를 눌러 주세요.' : errors[e.name] || '카메라를 켜지 못했어요. 연결을 확인하고 다시 시도해 주세요.', true);
   } finally { cameraBusy = false; controls(); }
 }
-for(const prefix of ['setup','shoot']) {
+for(const prefix of ['setup']) {
   $(prefix+'-camera').onchange=async()=>{
-    if(busy||cameraBusy||blob||selecting)return;
+    if(phase!=='setup'||busy||cameraBusy||blob||selecting)return;
     cameraDeviceId=$(prefix+'-camera').value;renderCameras();
-    if(phase==='shoot')await startCamera();
   };
   $(prefix+'-camera-refresh').onclick=async()=>{
-    if(busy||cameraBusy||blob||selecting)return;
+    if(phase!=='setup'||busy||cameraBusy||blob||selecting)return;
     await refreshCameras();
   };
 }
