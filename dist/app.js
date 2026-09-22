@@ -3,6 +3,7 @@ const video = $('video');
 let frames = [], selected = null, stream = null, facing = 'user', busy = false, cameraBusy = false, frameLoading = false;
 let countdownRun = 0, cameraRun = 0, blob = null, resultURL = null, frameRun = 0;
 const localURLs = [];
+let cameraDeviceId = '', cameraDevices = [], deviceListRun = 0;
 let shotSession = null;
 let settingsOpen = false;
 let phase = 'permission';
@@ -26,7 +27,7 @@ function controls() {
   $('permission-start').textContent=cameraBusy?'카메라 연결을 확인하고 있어요…':'카메라 허용하고 시작하기';
   $('setup-done').disabled=!selected||frameLoading||cameraBusy;
 
-  document.body.classList.toggle('is-shooting',phase==='shoot' && !!stream && !blob && !selecting);
+  document.body.classList.toggle('is-shooting',phase==='shoot' && !blob && !selecting);
   document.body.classList.toggle('is-selecting',selecting);
   $('selection-panel').hidden = !selecting;
   document.body.classList.toggle('is-result',!!blob);
@@ -41,6 +42,11 @@ function controls() {
   $('upload').disabled = busy || !!blob || frameLoading || !!shotSession;
   document.querySelectorAll('.frame-card').forEach(b => b.disabled = busy || !!blob || frameLoading || !!shotSession);
   $('start').disabled = cameraBusy;
+  for (const prefix of ['setup', 'shoot']) {
+    $(prefix+'-camera').disabled = busy || cameraBusy || !!blob || selecting;
+    $(prefix+'-camera-refresh').disabled = busy || cameraBusy || !!blob || selecting;
+  }
+  $('shoot-camera-controls').hidden = phase!=='shoot' || !!blob || selecting;
 }
 function renderFrames() {
   $('frames').replaceChildren();
@@ -76,28 +82,81 @@ async function chooseFrame(id) {
   } finally { if (run === frameRun) { frameLoading = false; controls(); } }
 }
 function stopStream() { if (stream) stream.getTracks().forEach(t => t.stop()); stream = null; video.srcObject = null; }
-async function startCamera(nextFacing = facing) {
+function renderCameras() {
+  for (const prefix of ['setup', 'shoot']) {
+    const select = $(prefix+'-camera'); select.replaceChildren();
+    for (const device of [{deviceId:'',label:'자동 선택'}, ...cameraDevices]) {
+      const option = document.createElement('option'); option.value = device.deviceId;
+      option.textContent = device.label; select.append(option);
+    }
+    if (cameraDeviceId && !cameraDevices.some(d=>d.deviceId===cameraDeviceId)) {
+      const option=document.createElement('option');option.value=cameraDeviceId;option.textContent='선택한 카메라 · 연결 확인 필요';select.append(option);
+    }
+    select.value=cameraDeviceId;
+  }
+}
+async function refreshCameras() {
+  const run=++deviceListRun;
+  try {
+    if (!navigator.mediaDevices?.enumerateDevices) { renderCameras(); return; }
+    const devices=await navigator.mediaDevices.enumerateDevices();
+    if(run!==deviceListRun)return false;
+    cameraDevices=devices.filter(d=>d.kind==='videoinput' && d.deviceId).map((d,i)=>({deviceId:d.deviceId,label:d.label||`카메라 ${i+1}`}));
+    renderCameras();return true;
+  } catch { status('카메라 목록을 읽지 못했어요. 연결을 확인한 뒤 새로고침해 주세요.',true); }
+}
+function cameraDisconnected(active) {
+  if(stream!==active)return;
+  cameraRun++;stopStream();cancelCountdown();$('welcome').hidden=false;
+  $('camera-state').textContent='카메라 연결 끊김';
+  status('카메라 연결이 끊겼어요. 촬영한 사진은 유지됩니다. 카메라를 다시 연결한 뒤 선택하거나 카메라 켜기를 눌러 주세요.',true);
+  controls();void refreshCameras();
+}
+async function startCamera() {
   if (cameraBusy || busy) return;
   if (!window.isSecureContext || !navigator.mediaDevices?.getUserMedia) { status('카메라는 HTTPS 또는 localhost에서 열어야 사용할 수 있어요. Safari나 Chrome에서 다시 열어 주세요.', true); return; }
   const run = ++cameraRun; cameraBusy = true; controls(); stopStream();
   $('camera-state').textContent = '카메라 연결 중';
   try {
-    const next = await navigator.mediaDevices.getUserMedia({audio:false, video:{facingMode:{ideal:nextFacing}, width:{ideal:1920},height:{ideal:1440}}});
+    const source=cameraDeviceId ? {deviceId:{exact:cameraDeviceId}} : {facingMode:{ideal:'user'}};
+    const next = await navigator.mediaDevices.getUserMedia({audio:false, video:{...source,width:{ideal:1920},height:{ideal:1440}}});
     if (run !== cameraRun) { next.getTracks().forEach(t => t.stop()); return; }
     stream = next;
-    facing = stream.getVideoTracks()[0].getSettings().facingMode || nextFacing;
-    video.srcObject = stream; await video.play();
+    const track=next.getVideoTracks()[0];
+    // External cameras may omit facingMode. Do not mirror them as if they were a front camera.
+    facing = track.getSettings().facingMode || '';
+    track.addEventListener('ended',()=>cameraDisconnected(next));
+    video.srcObject = next; await video.play();
+    if(run!==cameraRun || stream!==next)return;
     video.style.transform = facing === 'user' ? 'scaleX(-1)' : 'none';
-    $('mirror-label').textContent = facing === 'user' ? '전면 카메라 · 좌우 반전' : '후면 카메라';
-    $('welcome').hidden = true; cameraConfirmed=true;if(phase==='permission')phase='setup';settingsOpen = false; document.body.classList.remove('config-open'); $('camera-state').textContent = '카메라 켜짐'; $('stage-label').textContent = '02 / 촬영';
-    status(phase==='setup'?'프레임과 카운트다운을 고른 뒤 촬영하기를 눌러 주세요.':'프레임 안에 맞춰 주세요. 보이는 모습 그대로 저장돼요.');
-    stream.getVideoTracks()[0].addEventListener('ended', () => { stopStream(); cancelCountdown(); $('welcome').hidden = false; $('camera-state').textContent = '카메라 꺼짐'; status('카메라 연결이 끊겼어요. 다시 켜 주세요.', true); controls(); });
+    $('mirror-label').textContent = facing === 'user' ? '전면 카메라 · 좌우 반전' : '선택한 카메라 · 좌우 반전 없음';
+    $('welcome').hidden = true; cameraConfirmed=true;if(phase==='permission')phase='setup';settingsOpen = false; document.body.classList.remove('config-open'); $('camera-state').textContent = track.label || '카메라 켜짐'; $('stage-label').textContent = '02 / 촬영';
+    status(phase==='setup'?'카메라·프레임·카운트다운을 고른 뒤 촬영하기를 눌러 주세요.':'준비되면 한 장씩 촬영해 주세요.');
+    await refreshCameras();
   } catch(e) {
+    if(run!==cameraRun)return;
     stopStream(); $('welcome').hidden = false; $('camera-state').textContent = '카메라 꺼짐';
-    const errors = {NotAllowedError:'카메라 권한이 꺼져 있어요. 브라우저의 사이트 설정에서 카메라를 허용한 뒤 다시 켜 주세요.',NotFoundError:'사용할 수 있는 카메라가 없어요.',NotReadableError:'다른 앱이 카메라를 사용 중일 수 있어요. 앱을 닫고 다시 시도해 주세요.'};
-    status(errors[e.name] || '카메라를 켜지 못했어요. 브라우저에서 다시 시도해 주세요.', true);
+    const errors = {NotAllowedError:'카메라 권한이 꺼져 있어요. 브라우저의 사이트 설정에서 카메라를 허용한 뒤 다시 켜 주세요.',NotFoundError:'선택한 카메라를 찾지 못했어요. 연결을 확인하거나 다른 카메라를 선택해 주세요.',OverconstrainedError:'선택한 카메라에 연결할 수 없어요. 목록을 새로고침하고 다시 선택해 주세요.',NotReadableError:'다른 앱이 카메라를 사용 중일 수 있어요. 앱을 닫고 다시 시도해 주세요.'};
+    status(errors[e.name] || '카메라를 켜지 못했어요. 연결을 확인하고 다시 시도해 주세요.', true);
   } finally { cameraBusy = false; controls(); }
 }
+for(const prefix of ['setup','shoot']) {
+  $(prefix+'-camera').onchange=async()=>{
+    if(busy||cameraBusy||blob||selecting)return;
+    cameraDeviceId=$(prefix+'-camera').value;renderCameras();
+    if(phase==='shoot')await startCamera();
+  };
+  $(prefix+'-camera-refresh').onclick=async()=>{
+    if(busy||cameraBusy||blob||selecting)return;
+    await refreshCameras();
+  };
+}
+navigator.mediaDevices?.addEventListener?.('devicechange',async()=>{
+  const active=stream, id=active?.getVideoTracks()[0]?.getSettings().deviceId;
+  const refreshed=await refreshCameras();
+  if(refreshed && id && active===stream && !cameraDevices.some(d=>d.deviceId===id))cameraDisconnected(active);
+});
+renderCameras();
 function shotCount() { return cutCount; }
 function outputSize(frame, count) {
   const width = frame.width, height = frame.height;
@@ -162,6 +221,7 @@ function composeSelection(canvas,frame=selected,includeFrame=true) {
 }
 function renderSelection() {
   const photoScroll=$('photo-grid').scrollTop;
+  const photoScrollLeft=$('photo-grid').scrollLeft;
   $('selection-title').textContent=`마음에 드는 ${cutCount}장을 골라 주세요.`;
   $('photo-grid').replaceChildren();
   const slot=outputSize(selected,cutCount).slots[0], ratio=slot.h/slot.w;
@@ -183,6 +243,7 @@ function renderSelection() {
     $('photo-grid').append(button);
   });
   $('photo-grid').scrollTop=photoScroll;
+  $('photo-grid').scrollLeft=photoScrollLeft;
   $('selection-count').textContent=`${chosen.length} / ${cutCount} 선택`;
   $('finish-selection').disabled=chosen.length!==cutCount || busy || frameLoading;
   $('finish-selection').textContent=chosen.length===cutCount?`이 ${cutCount}장으로 완성하기`:`${cutCount-chosen.length}장을 더 선택해 주세요`;

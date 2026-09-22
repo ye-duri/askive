@@ -93,3 +93,34 @@ for(const count of [1,2,6]){
  el('reselect').onclick();assert.equal(el('selection-count').textContent,`${count} / ${count} 선택`);await el('finish-selection').onclick();el('retake').onclick();
 }
 console.log('PASS: 1/2/4/6-cut selection limits, compatible frame lists, inline frame changes, source preservation and re-edit.');
+
+// External cameras: exact device selection, no inferred mirroring, safe unplug/retry.
+let deviceRequests=[], externalTracks=[];
+let availableDevices=[{kind:'videoinput',deviceId:'usb-camera',label:'USB Camera'}];
+context.navigator.mediaDevices.enumerateDevices=async()=>availableDevices;
+context.navigator.mediaDevices.getUserMedia=async options=>{
+ deviceRequests.push(options);
+ if(options.video.deviceId?.exact==='missing-camera')throw Object.assign(new Error(),{name:'OverconstrainedError'});
+ const id=options.video.deviceId?.exact||'built-in';
+ const track={label:id,stopped:false,stop(){this.stopped=true;},getSettings:()=>({deviceId:id,...(id==='built-in'?{facingMode:'user'}:{})}),addEventListener(name,fn){this[name]=fn;}};
+ externalTracks.push(track);return {getTracks:()=>[track],getVideoTracks:()=>[track]};
+};
+await el('setup-camera-refresh').onclick();
+assert.equal(el('setup-camera').children[1].textContent,'USB Camera');
+el('setup-camera').value='usb-camera';await el('setup-camera').onchange();
+await el('setup-done').onclick();
+assert.equal(deviceRequests.at(-1).video.deviceId.exact,'usb-camera');assert.equal(deviceRequests.at(-1).audio,false);
+assert.equal(deviceRequests.at(-1).video.facingMode,undefined);assert.equal(el('video').style.transform,'none');
+el('timer').value='0';await el('capture').onclick();const kept=context.readSession().photos;assert.equal(kept.length,1);
+el('timer').value='3';const interrupted=el('capture').onclick();assert.equal(el('shoot-camera').disabled,true);
+const before=deviceRequests.length;el('shoot-camera').value='';await el('shoot-camera').onchange();assert.equal(deviceRequests.length,before);
+externalTracks.at(-1).ended();await interrupted;
+assert.equal(context.readSession().photos,kept);assert.equal(kept.length,1);assert.equal(el('capture').disabled,true);
+assert.equal(context.document.body.classList.contains('is-shooting'),true);assert.equal(el('shoot-camera-controls').hidden,false);
+el('shoot-camera').value='missing-camera';await el('shoot-camera').onchange();assert.match(el('status').textContent,/연결할 수 없어요/);assert.equal(kept.length,1);
+el('shoot-camera').value='usb-camera';await el('shoot-camera').onchange();assert.equal(el('capture').disabled,false);
+assert.equal(context.readSession().photos,kept);assert.equal(el('shoot-camera').value,'usb-camera');
+const oldTrack=externalTracks.at(-1);el('shoot-camera').value='';await el('shoot-camera').onchange();assert.equal(oldTrack.stopped,true);
+oldTrack.ended();assert.equal(el('capture').disabled,false);assert.equal(el('video').style.transform,'scaleX(-1)');
+el('timer').value='0';await el('capture').onclick();assert.equal(kept.length,2);
+console.log('PASS: external device constraints, synchronized selectors, unmirrored external preview, countdown lock, disconnect cancellation, photo preservation, missing-device error, reconnect and stale track events. Mock devices only.');
