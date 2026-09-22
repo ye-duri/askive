@@ -3,6 +3,8 @@ const video = $('video');
 let frames = [], selected = null, stream = null, facing = 'user', busy = false, cameraBusy = false, frameLoading = false;
 let countdownRun = 0, cameraRun = 0, blob = null, resultURL = null, frameRun = 0;
 const localURLs = [];
+let sessionRun=0, uploadBusy=false, lastActivity=Date.now(), idleWarning=false, printing=false, externalActionStarted=0;
+const UPLOAD_LIMITS={count:5, bytes:30*1024*1024, fileBytes:10*1024*1024, pixels:24000000};
 let cameraDeviceId = '', cameraDevices = [], deviceListRun = 0;
 let shotSession = null;
 let settingsOpen = false;
@@ -45,7 +47,7 @@ function controls() {
   $('capture-timer-row').hidden=phase!=='shoot'||!!blob||selecting;
   $('capture-timer').disabled=busy||cameraBusy||!stream||frameLoading;
   $('capture-timer').value=$('timer').value;
-  $('upload').disabled = busy || !!blob || frameLoading || !!shotSession;
+  $('upload').disabled = uploadBusy || busy || !!blob || frameLoading || !!shotSession;
   document.querySelectorAll('.frame-card').forEach(b => b.disabled = busy || !!blob || frameLoading || !!shotSession);
   $('start').disabled = cameraBusy;
   for (const prefix of ['permission']) {
@@ -61,7 +63,8 @@ function renderFrames() {
     const img = document.createElement('img'); img.src = frame.src; img.className = 'frame-thumb'; img.alt = ''; img.loading = 'lazy';
     const label = document.createElement('span'); label.textContent = frame.name;
     button.append(img, label); button.onclick = () => chooseFrame(frame.id).catch(e => status(e.message, true));
-    $('frames').append(button);
+    if(!frame.temporary)$('frames').append(button);
+    if(frame.temporary){const remove=document.createElement('button');remove.className='secondary';remove.textContent=`${frame.name} 삭제`;remove.disabled=busy||frameLoading||!!shotSession||!!blob||uploadBusy;remove.onclick=()=>removeCustomFrame(frame.id);const item=document.createElement('div');item.className='frame-item';item.append(button,remove);$('frames').append(item);}
   }
   $('frame-count').textContent = `${matchingFrames().length}가지`; controls();
 }
@@ -147,7 +150,7 @@ async function startCamera() {
     stopStream(); $('welcome').hidden = false; $('camera-state').textContent = '카메라 꺼짐';
     const errors = {NotAllowedError:'카메라 권한이 꺼져 있어요. 브라우저의 사이트 설정에서 카메라를 허용한 뒤 다시 켜 주세요.',NotFoundError:'선택한 카메라를 찾지 못했어요. 연결을 확인하거나 다른 카메라를 선택해 주세요.',OverconstrainedError:'선택한 카메라에 연결할 수 없어요. 목록을 새로고침하고 다시 선택해 주세요.',NotReadableError:'다른 앱이 카메라를 사용 중일 수 있어요. 앱을 닫고 다시 시도해 주세요.'};
     status(phase==='shoot' && ['NotFoundError','OverconstrainedError'].includes(e.name) ? '처음 선택한 카메라를 찾지 못했어요. 같은 카메라를 다시 연결한 뒤 카메라 켜기를 눌러 주세요.' : errors[e.name] || '카메라를 켜지 못했어요. 연결을 확인하고 다시 시도해 주세요.', true);
-  } finally { cameraBusy = false; controls(); }
+  } finally { if(run===cameraRun){cameraBusy = false; controls();} }
 }
 for(const prefix of ['permission']) {
   $(prefix+'-camera').onchange=async()=>{
@@ -294,18 +297,18 @@ for(const name of ['original','bright','vivid']) $('filter-'+name).onclick=()=>{
 $('photo-filter').onchange=()=>{if(!busy&&!frameLoading)renderSelection();};
 $('finish-selection').onclick=async()=>{
   if(busy||frameLoading||chosen.length!==cutCount||!shotSession||shotSession.photos.length!==10)return;
-  busy=true;renderSelection();controls();
+  busy=true;renderSelection();controls();const revision=sessionRun;
   try{
-    const canvas=document.createElement('canvas');composeSelection(canvas);const nextBlob=await toBlob(canvas);
+    const canvas=document.createElement('canvas');composeSelection(canvas);const nextBlob=await toBlob(canvas);if(revision!==sessionRun)return;
     const nextURL=URL.createObjectURL(nextBlob);$('result').src=nextURL;
     try{await $('result').decode();}catch(e){URL.revokeObjectURL(nextURL);throw e;}
-    if(resultURL)URL.revokeObjectURL(resultURL);blob=nextBlob;resultURL=nextURL;selecting=false;
+    if(revision!==sessionRun){URL.revokeObjectURL(nextURL);return;}if(resultURL)URL.revokeObjectURL(resultURL);blob=nextBlob;resultURL=nextURL;selecting=false;
     $('viewfinder').style.aspectRatio=`${canvas.width}/${canvas.height}`;$('viewfinder').style.setProperty('--preview-ratio',String(canvas.width/canvas.height));
     $('result').hidden=false;$('capture-actions').hidden=true;$('result-actions').hidden=false;
     $('shot-progress').textContent=`선택한 ${cutCount}장으로 완성한 전체 사진`;$('stage-label').textContent='05 / 나의 순간';
     status('선택한 사진과 필터가 적용됐어요. 저장하거나 인쇄해 주세요.');
   }catch(e){$('selection-status').textContent='합성하지 못했어요. 다시 완성하기를 눌러 주세요.';}
-  finally{busy=false;if(selecting)renderSelection();controls();}
+  finally{if(revision===sessionRun){busy=false;if(selecting)renderSelection();controls();}}
 };
 function renderEditingFrames(){
  $('editing-frames').replaceChildren();
@@ -364,7 +367,7 @@ $('send-dialog').addEventListener('cancel',e=>{if(sharingPhoto)e.preventDefault(
 $('send-dialog').addEventListener('close',()=>{$('send-consent').checked=false;$('send-submit').disabled=true;});
 $('send-submit').onclick=async()=>{
  if(sharingPhoto||!blob||!$('send-consent').checked||!canShare())return;
- sharingPhoto=true;$('send-submit').disabled=true;$('send-close').disabled=true;
+ sharingPhoto=true;externalActionStarted=Date.now();$('send-submit').disabled=true;$('send-close').disabled=true;
  try{
   // Share immediately in the click gesture; no fetch/encoding delay that loses Safari activation.
   await navigator.share({files:[shareFile()]});
@@ -372,13 +375,84 @@ $('send-submit').onclick=async()=>{
  }catch(e){$('send-status').textContent=e.name==='AbortError'?'사진 전달을 취소했어요.':'사진을 전달하지 못했어요. 사진을 저장한 뒤 메시지 앱에서 첨부해 주세요.';}
  finally{sharingPhoto=false;$('send-close').disabled=false;$('send-consent').checked=false;$('send-submit').disabled=true;}
 };
-$('retake').onclick = () => {cameraRun++;stopStream();phase=cameraConfirmed?'setup':'permission';selecting=false;chosen=[];shotSession=null;blob=null;$('photo-grid').replaceChildren();$('selection-canvas').width=1;$('selection-canvas').height=1;$('photo-filter').value='original';$('selection-status').textContent='';printReady=false;printRevision++;$('print-image').removeAttribute('src');$('print-canvas').width=1;$('print-canvas').height=1;$('welcome').hidden=!!stream; $('result').hidden=true; $('result').removeAttribute('src');if(resultURL)URL.revokeObjectURL(resultURL);resultURL=null;$('capture-actions').hidden=false;$('result-actions').hidden=true;$('stage-label').textContent='02 / 촬영';updateShotMode();status('다시 촬영할 준비가 됐어요.');controls();};
+function resetSession(message='이용이 종료됐어요. 사진을 지웠습니다.') {
+  sessionRun++;cameraRun++;frameRun++;countdownRun++;printRevision++;
+  stopStream();busy=false;cameraBusy=false;frameLoading=false;uploadBusy=false;
+  for(const photo of shotSession?.photos||[]){photo.width=1;photo.height=1;}
+  shotSession=null;chosen=[];blob=null;selecting=false;printReady=false;
+  for(const id of ['selection-canvas','print-canvas']){$(id).width=1;$(id).height=1;}
+  for(const id of ['result','print-image','selection-frame-overlay','overlay','map-image'])$(id).removeAttribute('src');
+  for(const id of ['photo-grid','shot-thumbs','map-slots'])$(id).replaceChildren();
+  if(resultURL)URL.revokeObjectURL(resultURL);resultURL=null;
+  for(const url of localURLs)URL.revokeObjectURL(url);localURLs.length=0;
+  frames=frames.filter(f=>!f.temporary);selected=null;
+  $('photo-filter').value='original';$('selection-status').textContent='';
+  $('result').hidden=true;$('result-actions').hidden=true;$('capture-actions').hidden=false;
+  $('countdown').hidden=true;$('cancel').hidden=true;$('welcome').hidden=false;
+  for(const id of ['send-dialog','print-dialog','idle-dialog'])if($(id).open)$(id).close();
+  $('send-consent').checked=false;idleWarning=false;printing=false;lastActivity=Date.now();
+  phase=cameraConfirmed?'setup':'permission';renderFrames();controls();status(message);
+  const fallback=matchingFrames()[0];if(fallback)return chooseFrame(fallback.id).catch(()=>status('기본 프레임을 다시 선택해 주세요.',true));
+}
+function hasPrivateSession(){return !!shotSession||!!blob||frames.some(f=>f.temporary)||uploadBusy;}
+function touchSession(){if(!idleWarning)lastActivity=Date.now();}
+function checkIdle(now=Date.now()){
+  if(!hasPrivateSession()){lastActivity=now;return;}
+  if(busy||cameraBusy){lastActivity=now;return;}
+  // A missing native close event must not disable expiry forever.
+  if(sharingPhoto||printing){
+    if(now-externalActionStarted<300000){lastActivity=now;return;}
+    printing=false;
+  }
+  const elapsed=now-lastActivity;
+  if(elapsed>=150000){resetSession('오랫동안 조작이 없어 사진과 추가한 프레임을 지웠어요.');return;}
+  if(elapsed>=120000){idleWarning=true;$('idle-seconds').textContent=String(Math.max(1,Math.ceil((150000-elapsed)/1000)));if(!$('idle-dialog').open)$('idle-dialog').showModal();}
+}
+$('idle-continue').onclick=()=>{idleWarning=false;lastActivity=Date.now();$('idle-dialog').close();};
+$('idle-end').onclick=()=>resetSession();
+$('idle-dialog').addEventListener('cancel',e=>{e.preventDefault();$('idle-continue').onclick();});
+for(const event of ['pointerdown','keydown','input','scroll'])document.addEventListener(event,touchSession,{capture:true,passive:true});
+window.setInterval?.(()=>checkIdle(),1000);
+$('retake').onclick=()=>resetSession();
+async function inspectUpload(file){
+  if(!['image/png','image/webp'].includes(file.type)||file.size>UPLOAD_LIMITS.fileBytes)throw new Error('10MB 이하의 PNG 또는 WebP 파일을 선택해 주세요.');
+  const bytes=new Uint8Array(await file.slice(0,64).arrayBuffer()),v=new DataView(bytes.buffer);
+  let w=0,h=0;
+  if(file.type==='image/png'){
+    if(bytes.length<33||![137,80,78,71,13,10,26,10].every((n,i)=>bytes[i]===n)||v.getUint32(8)!==13||String.fromCharCode(...bytes.slice(12,16))!=='IHDR')throw new Error('올바른 PNG 파일이 아니에요.');
+    w=v.getUint32(16);h=v.getUint32(20);
+  }else{
+    const str=(a,b)=>String.fromCharCode(...bytes.slice(a,b));
+    if(bytes.length<30||str(0,4)!=='RIFF'||str(8,12)!=='WEBP'||v.getUint32(4,true)+8!==file.size)throw new Error('올바른 WebP 파일이 아니에요.');
+    const kind=str(12,16);
+    if(kind==='VP8X'){if(bytes[20]&2)throw new Error('움직이는 프레임은 사용할 수 없어요.');w=1+bytes[24]+(bytes[25]<<8)+(bytes[26]<<16);h=1+bytes[27]+(bytes[28]<<8)+(bytes[29]<<16);}
+    else if(kind==='VP8L'&&bytes[20]===47){w=1+bytes[21]+((bytes[22]&63)<<8);h=1+(bytes[22]>>6)+(bytes[23]<<2)+((bytes[24]&15)<<10);}
+    else if(kind==='VP8 '&&bytes[23]===157&&bytes[24]===1&&bytes[25]===42){w=v.getUint16(26,true)&16383;h=v.getUint16(28,true)&16383;}
+    else throw new Error('지원하지 않는 WebP 형식이에요. PNG로 저장해 주세요.');
+  }
+  if(!w||!h||w*h>UPLOAD_LIMITS.pixels||w/h<.25||w/h>4)throw new Error('프레임은 2,400만 화소 이하, 가로세로 비율 1:4~4:1로 만들어 주세요.');
+  return {w,h};
+}
+function removeCustomFrame(id){
+  if(busy||frameLoading||shotSession||blob||uploadBusy)return;
+  const frame=frames.find(f=>f.id===id&&f.temporary);if(!frame)return;
+  frames=frames.filter(f=>f!==frame);URL.revokeObjectURL(frame.src);const i=localURLs.indexOf(frame.src);if(i>=0)localURLs.splice(i,1);
+  if(selected?.id===id){selected=null;const fallback=matchingFrames()[0];if(fallback)void chooseFrame(fallback.id).catch(()=>status('프레임을 다시 선택해 주세요.',true));}
+  renderFrames();
+}
 $('upload').onchange = async e => {
-  const file=e.target.files?.[0];e.target.value='';if(!file)return;
-  if(!['image/png','image/webp'].includes(file.type)||file.size>10*1024*1024){status('10MB 이하의 투명 PNG 또는 WebP 파일을 선택해 주세요.',true);return;}
-  const url=URL.createObjectURL(file);const id=`custom-${Date.now()}`;
-  try{const img=await loadImage(url);if(img.naturalWidth*img.naturalHeight>24000000)throw new Error('프레임은 2,400만 화소 이하로 줄여 주세요.'); frames.push({id,count:cutCount,name:file.name.replace(/\.[^.]+$/,''),src:url});await chooseFrame(id);localURLs.push(url);status('내 프레임을 추가했어요. 투명한 부분에 카메라가 보여요.');}
-  catch(e){frames=frames.filter(f=>f.id!==id);URL.revokeObjectURL(url);status(e.message,true);}
+  const file=e.target.files?.[0];e.target.value='';if(!file||$('upload').disabled||uploadBusy)return;
+  const custom=frames.filter(f=>f.temporary);
+  if(custom.length>=UPLOAD_LIMITS.count||custom.reduce((n,f)=>n+f.bytes,0)+file.size>UPLOAD_LIMITS.bytes){status('내 프레임은 최대 5개, 합계 30MB까지 추가할 수 있어요. 기존 프레임을 삭제해 주세요.',true);return;}
+  const revision=sessionRun;uploadBusy=true;controls();let url=null,id=null;
+  try{
+    const size=await inspectUpload(file);if(revision!==sessionRun)return;
+    url=URL.createObjectURL(file);const img=await loadImage(url);if(revision!==sessionRun){URL.revokeObjectURL(url);return;}
+    if(img.naturalWidth!==size.w||img.naturalHeight!==size.h)throw new Error('프레임 이미지 크기가 올바르지 않아요.');
+    id=`custom-${++frameRun}`;frames.push({id,count:cutCount,name:file.name.replace(/\.[^.]+$/,''),src:url,temporary:true,bytes:file.size});localURLs.push(url);
+    await chooseFrame(id);if(revision===sessionRun){lastActivity=Date.now();status('내 프레임을 추가했어요. 이용 종료 시 삭제됩니다.');}
+  }catch(e){if(id)frames=frames.filter(f=>f.id!==id);if(url){URL.revokeObjectURL(url);const i=localURLs.indexOf(url);if(i>=0)localURLs.splice(i,1);}if(revision===sessionRun)status(e.message,true);}
+  finally{if(revision===sessionRun){uploadBusy=false;renderFrames();controls();}}
 };
 const papers={postcard:{w:100,h:148,label:'SELPHY 엽서'},'4x6':{w:101.6,h:152.4,label:'4 × 6인치'},a4:{w:210,h:297,label:'A4'}};
 let printReady = false, printRevision = 0;
@@ -400,14 +474,14 @@ async function updatePrint(){
   $('print-info').textContent=`${p.label} · ${p.w} × ${p.h}mm · ${cover?'가장자리의 사진·프레임이 잘릴 수 있어요.':'전체 프레임을 유지하며 빈 부분은 흰색으로 인쇄해요.'}`;
 }
 $('print-open').onclick=async()=>{try{await updatePrint();$('print-dialog').showModal();}catch{status('인쇄 미리보기를 만들지 못했어요.',true);}};
-$('print-close').onclick=()=>$('print-dialog').close();
+$('print-close').onclick=()=>{printing=false;lastActivity=Date.now();$('print-dialog').close();};
 $('paper').onchange=$('print-fit').onchange=()=>updatePrint().catch(()=>status('인쇄 미리보기 오류',true));
 $('print').onclick=()=>{
   if (!printReady) { $('print-status').textContent = '인쇄 이미지를 준비 중이에요. 잠시 후 다시 눌러 주세요.'; return; }
   // Call synchronously from the user's click. Embedded browsers may still ignore print().
   $('print-status').textContent = '인쇄 창이 나타나지 않으면 아래의 외부 브라우저용 인쇄 파일을 저장하고 Safari·Chrome에서 열어 주세요. 사진은 파일에 포함됩니다.';
-  try { window.print(); }
-  catch { $('print-status').textContent = '이 브라우저에서는 인쇄 창을 열지 못했어요. 외부 브라우저용 인쇄 파일 또는 JPG를 저장해 주세요.'; }
+  try { printing=true;externalActionStarted=Date.now();window.print(); }
+  catch { printing=false;lastActivity=Date.now();$('print-status').textContent = '이 브라우저에서는 인쇄 창을 열지 못했어요. 외부 브라우저용 인쇄 파일 또는 JPG를 저장해 주세요.'; }
 };
 $('print-file').onclick=()=>{
   if (!printReady) return;
@@ -418,9 +492,11 @@ $('print-file').onclick=()=>{
   $('print-status').textContent = '인쇄 파일 저장을 요청했어요. 다운로드한 HTML 파일을 Safari 또는 Chrome으로 열고 인쇄해 주세요.';
 };
 $('print-download').onclick=async()=>{try{await updatePrint();download(await toBlob($('print-canvas'),'image/jpeg'),filename('jpg'));}catch{status('인쇄용 파일을 저장하지 못했어요.',true);}};
-window.addEventListener('pagehide',()=>{cameraRun++;cancelCountdown();stopStream();});
+window.addEventListener('afterprint',()=>{printing=false;lastActivity=Date.now();});
+window.addEventListener('focus',()=>{printing=false;checkIdle();});
+window.addEventListener('pagehide',()=>{resetSession();});
 window.addEventListener('pageshow',()=>{if(!stream){$('welcome').hidden=false;$('camera-state').textContent='카메라 꺼짐';controls();}});
-document.addEventListener('visibilitychange',()=>{if(document.hidden && busy){cancelCountdown();status('화면이 전환되어 촬영을 취소했어요.');}});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkIdle();if(document.hidden && busy){cancelCountdown();status('화면이 전환되어 촬영을 취소했어요.');}});
 async function init(){try{const response=await fetch('frames.json');if(!response.ok)throw new Error('프레임 목록을 읽지 못했어요.');frames=await response.json();renderFrames();if(frames.length)await chooseFrame(frames[0].id);}catch(e){status(e.message,true);}}
 await init();
 if(document.modelContext?.registerTool){try{await document.modelContext.registerTool({name:'select_photo_frame',title:'프레임 선택',description:'촬영 전 프레임을 선택합니다. 카메라를 켜거나 촬영하지 않습니다.',inputSchema:{type:'object',properties:{id:{type:'string'}},required:['id'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:false},execute:async input=>{if(!input||typeof input.id!=='string')throw new Error('프레임 id가 필요합니다.');return chooseFrame(input.id);}});}catch(e){console.warn('Frame tool unavailable',e);}}

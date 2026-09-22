@@ -3,7 +3,7 @@ const el=id=>document.getElementById(id);
 el('privacy-open').onclick=async()=>{
  el('privacy-dialog').showModal();
  try{const response=await fetch('/api/delivery/status');if(!response.ok)return;const {policy}=await response.json();
-  el('policy-contact').textContent=policy?.contact||'연락처 미설정 · 행사 운영자에게 문의해 주세요.';
+  el('policy-contact').textContent=policy?.contact||'010-5602-5740';
  }catch{/* Static hosting keeps the default contact notice. */}
 };
 el('privacy-close').onclick=()=>el('privacy-dialog').close();

@@ -9,9 +9,9 @@ class Element {
 }
 const el=id=>{if(!elements.has(id))elements.set(id,new Element(id));return elements.get(id);};
 class Image extends Element {set src(v){this._src=v;queueMicrotask(()=>this.onload?.());}get src(){return this._src;}}
-const context=vm.createContext({console,Image,Blob,File,URL,queueMicrotask,setTimeout:(fn,ms)=>ms>=60000?0:setTimeout(fn,ms),document:{getElementById:el,querySelectorAll:()=>el('frames').children,createElement:()=>new Element(),body:new Element(),addEventListener(){},modelContext:{registerTool:async t=>tools.push(t)}},window:{isSecureContext:true,addEventListener(){},print(){context.didPrint=true;}},navigator:{mediaDevices:{getUserMedia:async()=>({getTracks:()=>[{stop(){}}],getVideoTracks:()=>[{getSettings:()=>({facingMode:'user'}),addEventListener(){}}]})}},fetch:async()=>({ok:true,json:async()=>JSON.parse(await fs.readFile(new URL('../dist/frames.json',import.meta.url),'utf8'))})});
+const context=vm.createContext({console,Image,Blob,File,URL,queueMicrotask,setTimeout:(fn,ms)=>ms>=60000?0:setTimeout(fn,ms),document:{getElementById:el,querySelectorAll:()=>el('frames').children,createElement:()=>new Element(),body:new Element(),addEventListener(){},modelContext:{registerTool:async t=>tools.push(t)}},window:{isSecureContext:true,events:{},addEventListener(name,fn){this.events[name]=fn;},print(){context.didPrint=true;}},navigator:{mediaDevices:{getUserMedia:async()=>({getTracks:()=>[{stop(){}}],getVideoTracks:()=>[{getSettings:()=>({facingMode:'user'}),addEventListener(){}}]})}},fetch:async()=>({ok:true,json:async()=>JSON.parse(await fs.readFile(new URL('../dist/frames.json',import.meta.url),'utf8'))})});
 let source=await fs.readFile(new URL('../dist/app.js',import.meta.url),'utf8');
-await vm.runInContext(`(async()=>{${source}\nglobalThis.enterPermissionForTest=()=>{stopStream();phase='permission';controls();};globalThis.readSession=()=>shotSession;globalThis.filterUnderTest=filterPixels;})()`,context);
+await vm.runInContext(`(async()=>{${source}\nglobalThis.enterPermissionForTest=()=>{stopStream();phase='permission';controls();};globalThis.readSession=()=>shotSession;globalThis.audit={resetSession,inspectUpload,removeCustomFrame,checkIdle,state:()=>({frames,localURLs,selected,sessionRun}),setIdle:t=>{lastActivity=t;},setSharing:v=>{sharingPhoto=v;externalActionStarted=0;},setPrinting:v=>{printing=v;externalActionStarted=0;}};globalThis.filterUnderTest=filterPixels;})()`,context);
 assert.equal(el('frames').children.length,6);
 await tools[0].execute({id:'club-grid'});assert.equal(el('overlay').src,'frames/club-grid.svg');
 await assert.rejects(()=>tools[0].execute({id:'missing'}));
@@ -79,7 +79,7 @@ el('paper').value='postcard';el('print-fit').value='contain';await el('print-ope
 el('print').onclick();assert.equal(context.didPrint,true);assert.equal(el('print-dialog').open,true);
 context.window.print=()=>{throw new Error('unsupported')};el('print').onclick();assert.match(el('print-status').textContent,/열지 못했어요/);el('print-file').onclick();assert.match(el('print-status').textContent,/HTML/);
 el('reselect').onclick();assert.equal(el('photo-grid').children.length,10);assert.equal(el('selection-count').textContent,'4 / 4 선택');el('photo-filter').value='bright';el('photo-filter').onchange();await el('finish-selection').onclick();assert.equal(el('result').hidden,false);
-el('retake').onclick();assert.equal(context.readSession(),null);assert.equal(context.document.body.classList.contains('is-setup'),true);assert.equal(el('permission-panel').hidden,true);assert.equal(el('photo-grid').children.length,0);assert.equal(el('photo-filter').value,'original');assert.equal(el('welcome').hidden,false);
+await el('retake').onclick();assert.equal(context.readSession(),null);assert.equal(context.document.body.classList.contains('is-setup'),true);assert.equal(el('permission-panel').hidden,true);assert.equal(el('photo-grid').children.length,0);assert.equal(el('photo-filter').value,'original');assert.equal(el('welcome').hidden,false);
 await tools[0].execute({id:'club-strip'});assert.equal(el('overlay').hidden,false);
 console.log('PASS: ten manual shots, cancellation preserves photos, limit 10, choose exactly 4, ordered placement, selection cap, filters/alpha, reselect without recapture, final print/export, reset, custom portrait frame. Mock camera/DOM; pixel formulas tested directly.');
 
@@ -91,7 +91,7 @@ for(const count of [1,2,6]){
  el('photo-grid').children[9].onclick();assert.equal(el('selection-count').textContent,`${count} / ${count} 선택`);
  const shots=context.readSession().photos;await el('editing-frames').children[2].onclick();assert.equal(context.readSession().photos,shots);
  await el('finish-selection').onclick();assert.equal(el('result').hidden,false);assert.match(el('shot-progress').textContent,new RegExp(`${count}장`));
- el('reselect').onclick();assert.equal(el('selection-count').textContent,`${count} / ${count} 선택`);await el('finish-selection').onclick();el('retake').onclick();
+ el('reselect').onclick();assert.equal(el('selection-count').textContent,`${count} / ${count} 선택`);await el('finish-selection').onclick();await el('retake').onclick();
 }
 console.log('PASS: 1/2/4/6-cut selection limits, compatible frame lists, inline frame changes, source preservation and re-edit.');
 
@@ -127,3 +127,55 @@ const oldTrack=externalTracks.at(-1);await el('start').onclick();assert.equal(ol
 oldTrack.ended();assert.equal(el('capture').disabled,false);
 el('timer').value='0';await el('capture').onclick();assert.equal(kept.length,2);
 console.log('PASS: permission-screen camera selection and preview confirmation, exact external device, disconnect cancellation, preserved photos and same-camera reconnect. Mock devices only.');
+
+// Security regression: header checks happen before image decode, reset removes private frames.
+function png(w=1080,h=1440){const b=new Uint8Array(33);b.set([137,80,78,71,13,10,26,10]);const v=new DataView(b.buffer);v.setUint32(8,13);b.set([73,72,68,82],12);v.setUint32(16,w);v.setUint32(20,h);return new File([b],'private.png',{type:'image/png'});}
+await el('retake').onclick();
+await assert.rejects(()=>context.audit.inspectUpload(new File(['bad'],'bad.png',{type:'image/png'})));
+await assert.rejects(()=>context.audit.inspectUpload(png(10000,10000)));
+assert.equal((await context.audit.inspectUpload(png())).w,1080);
+for(let i=0;i<5;i++)await el('upload').onchange({target:{files:[png()],value:''}});
+assert.equal(context.audit.state().frames.filter(f=>f.temporary).length,5);
+await el('upload').onchange({target:{files:[png()],value:''}});
+assert.equal(context.audit.state().frames.filter(f=>f.temporary).length,5);
+const custom=context.audit.state().frames.find(f=>f.temporary);context.audit.removeCustomFrame(custom.id);
+assert.equal(context.audit.state().frames.filter(f=>f.temporary).length,4);
+context.audit.setIdle(0);context.audit.checkIdle(120000);assert.equal(el('idle-dialog').open,true);
+el('idle-continue').onclick();assert.equal(el('idle-dialog').open,false);
+context.audit.setIdle(0);context.audit.setSharing(true);context.audit.checkIdle(200000);assert.equal(context.audit.state().frames.filter(f=>f.temporary).length,4);
+context.audit.setSharing(false);context.audit.setIdle(0);context.audit.setPrinting(true);context.audit.checkIdle(200000);assert.equal(context.audit.state().frames.filter(f=>f.temporary).length,4);
+context.audit.setPrinting(false);context.audit.setIdle(0);context.audit.checkIdle(150000);
+await new Promise(r=>setTimeout(r,0));
+assert.equal(context.audit.state().frames.filter(f=>f.temporary).length,0);assert.equal(context.audit.state().localURLs.length,0);assert.equal(context.readSession(),null);
+// Reset while file header is still pending cannot resurrect a private frame.
+let release;const pendingFile={type:'image/png',size:33,name:'late.png',slice:()=>({arrayBuffer:()=>new Promise(r=>{release=r;})})};
+const late=el('upload').onchange({target:{files:[pendingFile],value:''}});
+await context.audit.resetSession();release(await png().arrayBuffer());await late;
+assert.equal(context.audit.state().frames.filter(f=>f.temporary).length,0);
+console.log('PASS: malformed/oversize upload headers, max 5 frames, removal, idle warning/continue/expiry, sharing/printing deferral, reset cleanup and late-upload cancellation. Mock DOM/decoder.');
+
+// Aggregate byte boundary and pagehide cleanup, without allocating large fixtures.
+await assert.rejects(()=>context.audit.inspectUpload({type:'image/png',size:10*1024*1024+1}));
+assert.equal((await context.audit.inspectUpload(png(4000,6000))).w,4000);
+const header=await png().arrayBuffer();
+const large=()=>({type:'image/png',name:'large.png',size:10*1024*1024,slice:()=>({arrayBuffer:async()=>header})});
+// createObjectURL requires Blob: override just for size-accounting fixtures.
+const originalCreate=context.URL.createObjectURL;context.URL.createObjectURL=()=>`blob:audit-${Math.random()}`;
+for(let n=0;n<3;n++)await el('upload').onchange({target:{files:[large()],value:''}});
+assert.equal(context.audit.state().frames.filter(f=>f.temporary).length,3);
+await el('upload').onchange({target:{files:[large()],value:''}});
+assert.equal(context.audit.state().frames.filter(f=>f.temporary).length,3);
+context.URL.createObjectURL=originalCreate;
+context.window.events.pagehide();await new Promise(r=>setTimeout(r,0));
+assert.equal(context.audit.state().frames.filter(f=>f.temporary).length,0);assert.equal(context.audit.state().localURLs.length,0);
+const webp=new Uint8Array(30);webp.set([82,73,70,70]);new DataView(webp.buffer).setUint32(4,22,true);webp.set([87,69,66,80,86,80,56,88],8);new DataView(webp.buffer).setUint32(16,10,true);webp[24]=55;webp[25]=4;webp[27]=159;webp[28]=5;
+assert.equal((await context.audit.inspectUpload(new File([webp],'frame.webp',{type:'image/webp'}))).w,1080);
+webp[20]=2;await assert.rejects(()=>context.audit.inspectUpload(new File([webp],'animated.webp',{type:'image/webp'})));
+console.log('PASS: 10MB single-file boundary, 24MP dimension boundary, 30MB aggregate boundary, pagehide cleanup and WebP header/animation checks.');
+
+// An ignored print dialog cannot suspend privacy expiry indefinitely.
+await el('upload').onchange({target:{files:[png()],value:''}});
+context.audit.setPrinting(true);context.audit.setIdle(0);context.audit.checkIdle(500000);
+await new Promise(r=>setTimeout(r,0));
+assert.equal(context.audit.state().frames.filter(f=>f.temporary).length,0);
+console.log('PASS: external print action expiry has a bounded grace period even without afterprint.');

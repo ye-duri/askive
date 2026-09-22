@@ -283,3 +283,6 @@ footer{align-items:center;gap:12px}footer>span:last-child{font-size:11px;letter-
 .camera-test video{display:block;width:100%;max-height:300px;aspect-ratio:4/3;object-fit:contain;border-radius:10px;background:#17221c}
 .camera-test p{font-size:13px;margin:8px 0 0}
 .camera-test[hidden]{display:none}
+
+/* Session privacy warning and temporary frame controls. */
+#idle-dialog{max-width:480px;width:calc(100% - 32px);border:1px solid #d8dfcf;border-radius:20px;padding:24px;color:#284d3f;background:#faf8f1}#idle-dialog::backdrop{background:rgba(20,35,28,.6)}#idle-dialog button{display:block;width:100%;margin-top:12px;min-height:48px}.frame-item{display:flex;flex-direction:column;min-width:0;gap:6px}.frame-item>.frame-card{width:100%;flex:1}.frame-item>.secondary{font-size:12px;min-height:36px;padding:6px;word-break:keep-all}
