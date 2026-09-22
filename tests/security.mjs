@@ -1,0 +1,35 @@
+import http from 'node:http';
+import assert from 'node:assert/strict';
+import {writeFile,symlink,unlink} from 'node:fs/promises';
+import {createApp} from '../server.mjs';
+const env={ENABLE_SENS_MMS:'true',SENS_SERVICE_ID:'test',NCP_ACCESS_KEY:'test',NCP_SECRET_KEY:'test',SENS_FROM:'0212345678',KIOSK_PASSWORD:'test-password-123',PRIVACY_CONTACT:'test@example.invalid',MMS_HISTORY_RETENTION:'test'};
+assert.throws(()=>createApp({...env,MMS_HOURLY_LIMIT:'NaN'}));
+assert.throws(()=>createApp({...env,NODE_ENV:'production'}));
+assert.throws(()=>createApp({...env,PUBLIC_ORIGIN:'http://example.invalid'}));
+let providerCalls=0;const server=createApp(env,async()=>{providerCalls++;throw new Error('provider unavailable');});
+await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${server.address().port}`;
+const json=async(route,body,token='',headers={})=>fetch(base+route,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token,...headers},body:JSON.stringify(body)});
+const secret=new URL('../dist/.security-test-secret',import.meta.url),link=new URL('../dist/frames/security-test.png',import.meta.url);
+try{
+ await writeFile(secret,'dummy fixture only',{flag:'wx'});await symlink(new URL('../server.mjs',import.meta.url),link);
+ const font=await fetch(base+'/fonts/nanum-pen.ttf');assert.equal(font.status,200);assert.equal(font.headers.get('content-type'),'font/ttf');assert.ok((await font.arrayBuffer()).byteLength>1000);
+ const home=await fetch(base);assert.equal(home.status,200);assert.match(home.headers.get('content-security-policy'),/frame-ancestors 'none'/);assert.equal(home.headers.get('x-frame-options'),'DENY');
+ for(const route of ['/.security-test-secret','/%2esecurity-test-secret','/server.mjs','/frames/security-test.png','/%2e%2e%2fserver.mjs','/frames/missing.png','/fonts/private.ttf','/fonts/../server.mjs'])assert.equal((await fetch(base+route)).status,404,route);
+ assert.equal((await fetch(base+'/%zz')).status,400);
+ assert.equal(await new Promise((resolve,reject)=>{http.get(base,{headers:{Host:'evil.invalid'}},r=>{r.resume();resolve(r.statusCode);}).on('error',reject);}),403);
+ assert.equal((await json('/api/delivery/unlock',{},'',{Origin:'https://evil.invalid'})).status,403);
+ assert.equal((await json('/api/delivery/send',{image:'x'.repeat(430000)})).status,401);
+ assert.equal((await json('/api/delivery/unlock',{password:'x'.repeat(3000)})).status,413);
+ assert.equal((await json('/api/delivery/unlock',null)).status,400);
+ assert.equal((await json('/api/delivery/unlock',[])).status,400);
+ const token=(await (await json('/api/delivery/unlock',{password:env.KIOSK_PASSWORD})).json()).token;assert.ok(token);
+ const payload={phone:'01012345678',consent:true,policyVersion:'2026-09-21-v1',id:'security-test-0001',image:Buffer.from([255,216,255,192,0,17,8,0,10,0,10,3,1,17,0,2,17,0,3,17,0,255,217]).toString('base64')};
+ assert.equal((await json('/api/delivery/send',{...payload,phone:[payload.phone]},token)).status,400);
+ assert.equal((await json('/api/delivery/send',{...payload,image:'A'.repeat(400004)},token)).status,400);
+ assert.equal((await json('/api/delivery/send',{...payload,consent:false},token)).status,400);assert.equal(providerCalls,0);
+ assert.equal((await json('/api/delivery/send',payload,token)).status,502);assert.equal(providerCalls,1);
+ assert.equal((await json('/api/delivery/send',payload,token)).status,502);assert.equal(providerCalls,1);
+ for(let i=0;i<10;i++)await json('/api/delivery/unlock',{password:'wrong'});
+ assert.equal((await json('/api/delivery/unlock',{password:'wrong'})).status,429);
+ console.log('PASS: configuration fail-closed, security headers, file allowlist/symlink/traversal, Host/Origin, early auth/size limits, strict types, no-consent rejection, failed-send deduplication, login throttling. No external calls.');
+}finally{await unlink(secret).catch(()=>{});await unlink(link).catch(()=>{});server.closeAllConnections();await new Promise(r=>server.close(r));}

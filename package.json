@@ -1,0 +1,13 @@
+{
+  "name": "askive",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.mjs",
+    "check": "node --check dist/app.js && node --check dist/delivery.js && node --check server.mjs",
+    "test": "node tests/smoke.mjs && node tests/delivery.mjs && node tests/security.mjs"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}
