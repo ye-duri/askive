@@ -20,11 +20,12 @@ await assert.rejects(()=>tools[0].execute({id:'lime'}));
 await assert.rejects(()=>tools[0].execute({id:'midnight'}));
 el('photo-filter').value='original';
 assert.equal(context.document.body.classList.contains('is-permission'),true);assert.equal(el('capture').disabled,true);
+assert.equal(el('permission-camera-controls').hidden,true);assert.equal(el('camera-test').hidden,true);assert.equal(el('permission-next').hidden,true);
 const cameraMock=context.navigator.mediaDevices.getUserMedia;
 context.navigator.mediaDevices.getUserMedia=async()=>{throw Object.assign(new Error(),{name:'NotAllowedError'});};
-await el('permission-start').onclick();assert.equal(context.document.body.classList.contains('is-permission'),true);assert.match(el('permission-status').textContent,/권한/);
+await el('permission-start').onclick();assert.equal(context.document.body.classList.contains('is-permission'),true);assert.match(el('permission-status').textContent,/권한/);assert.equal(el('permission-camera-controls').hidden,true);assert.equal(el('camera-test').hidden,true);
 context.navigator.mediaDevices.getUserMedia=cameraMock;
-await el('permission-start').onclick();assert.equal(context.document.body.classList.contains('is-permission'),true);assert.equal(el('camera-test').hidden,false);assert.ok(el('permission-video').srcObject);assert.equal(el('permission-next').disabled,false);await el('permission-next').onclick();assert.equal(el('permission-video').srcObject,null);assert.equal(context.document.body.classList.contains('is-setup'),true);assert.equal(context.document.body.classList.contains('is-shooting'),false);assert.equal(el('capture').disabled,true);
+await el('permission-start').onclick();assert.equal(context.document.body.classList.contains('is-permission'),true);assert.equal(el('camera-test').hidden,false);assert.ok(el('permission-video').srcObject);assert.equal(el('permission-camera-controls').hidden,false);assert.equal(el('permission-next').hidden,false);assert.equal(el('permission-next').disabled,false);await el('permission-next').onclick();assert.equal(el('permission-video').srcObject,null);assert.equal(context.document.body.classList.contains('is-setup'),true);assert.equal(context.document.body.classList.contains('is-shooting'),false);assert.equal(el('capture').disabled,true);
 await el('setup-done').onclick();assert.equal(context.document.body.classList.contains('is-shooting'),true);
 el('edit-settings').onclick();assert.equal(context.document.body.classList.contains('is-setup'),true);await el('setup-done').onclick();
 

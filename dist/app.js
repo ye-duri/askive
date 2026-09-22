@@ -8,6 +8,7 @@ let shotSession = null;
 let settingsOpen = false;
 let phase = 'permission';
 let cameraConfirmed = false;
+let cameraAccessGranted = false;
 let selecting = false, chosen = [];
 let cutCount=4;
 const frameCount=f=>f.count||f.slots?.length||4;
@@ -25,8 +26,11 @@ function controls() {
   $('setup-actions').hidden=phase!=='setup';
   $('permission-start').disabled=cameraBusy;
   $('permission-next').disabled=phase!=='permission'||cameraBusy||!stream||!$('permission-video').videoWidth;
-  $('camera-test').hidden=phase!=='permission'||!stream;
-  $('permission-start').textContent=cameraBusy?'카메라 연결을 확인하고 있어요…':(stream?'카메라 다시 테스트':'카메라 허용 · 연결 테스트');
+  const showCameraTest=phase==='permission' && cameraAccessGranted;
+  $('permission-camera-controls').hidden=!showCameraTest;
+  $('camera-test').hidden=!showCameraTest;
+  $('permission-next').hidden=!showCameraTest;
+  $('permission-start').textContent=cameraBusy?'카메라 연결을 확인하고 있어요…':(cameraAccessGranted?'카메라 다시 테스트':'카메라 허용');
   $('setup-done').disabled=!selected||frameLoading||cameraBusy;
 
   document.body.classList.toggle('is-shooting',phase==='shoot' && !blob && !selecting);
@@ -131,6 +135,7 @@ async function startCamera() {
     const targetVideo=phase==='permission'?$('permission-video'):video;
     targetVideo.srcObject = next; await targetVideo.play();
     if(run!==cameraRun || stream!==next)return;
+    if(phase==='permission')cameraAccessGranted=true;
     video.style.transform = facing === 'user' ? 'scaleX(-1)' : 'none';
     $('permission-video').style.transform=video.style.transform;
     $('mirror-label').textContent = facing === 'user' ? '전면 카메라 · 좌우 반전' : '선택한 카메라 · 좌우 반전 없음';
@@ -148,7 +153,7 @@ for(const prefix of ['permission']) {
   $(prefix+'-camera').onchange=async()=>{
     if(phase!=='permission'||busy||cameraBusy||blob||selecting)return;
     const wasConnected=!!stream;cameraDeviceId=$(prefix+'-camera').value;renderCameras();
-    if(wasConnected)await startCamera();
+    if(wasConnected||cameraAccessGranted)await startCamera();
   };
   $(prefix+'-camera-refresh').onclick=async()=>{
     if(phase!=='permission'||busy||cameraBusy||blob||selecting)return;
