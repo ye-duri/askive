@@ -24,7 +24,9 @@ function controls() {
   $('setup-heading').hidden=phase!=='setup';
   $('setup-actions').hidden=phase!=='setup';
   $('permission-start').disabled=cameraBusy;
-  $('permission-start').textContent=cameraBusy?'카메라 연결을 확인하고 있어요…':'카메라 허용하고 시작하기';
+  $('permission-next').disabled=phase!=='permission'||cameraBusy||!stream||!$('permission-video').videoWidth;
+  $('camera-test').hidden=phase!=='permission'||!stream;
+  $('permission-start').textContent=cameraBusy?'카메라 연결을 확인하고 있어요…':(stream?'카메라 다시 테스트':'카메라 허용 · 연결 테스트');
   $('setup-done').disabled=!selected||frameLoading||cameraBusy;
 
   document.body.classList.toggle('is-shooting',phase==='shoot' && !blob && !selecting);
@@ -42,9 +44,9 @@ function controls() {
   $('upload').disabled = busy || !!blob || frameLoading || !!shotSession;
   document.querySelectorAll('.frame-card').forEach(b => b.disabled = busy || !!blob || frameLoading || !!shotSession);
   $('start').disabled = cameraBusy;
-  for (const prefix of ['setup']) {
-    $(prefix+'-camera').disabled = phase!=='setup' || busy || cameraBusy || !!blob || selecting;
-    $(prefix+'-camera-refresh').disabled = phase!=='setup' || busy || cameraBusy || !!blob || selecting;
+  for (const prefix of ['permission']) {
+    $(prefix+'-camera').disabled = phase!=='permission' || busy || cameraBusy || !!blob || selecting;
+    $(prefix+'-camera-refresh').disabled = phase!=='permission' || busy || cameraBusy || !!blob || selecting;
   }
 }
 function renderFrames() {
@@ -80,9 +82,9 @@ async function chooseFrame(id) {
   renderFrames(); return {id: selected.id, name: selected.name};
   } finally { if (run === frameRun) { frameLoading = false; controls(); } }
 }
-function stopStream() { if (stream) stream.getTracks().forEach(t => t.stop()); stream = null; video.srcObject = null; }
+function stopStream() { if (stream) stream.getTracks().forEach(t => t.stop()); stream = null; video.srcObject = null; $('permission-video').srcObject=null; }
 function renderCameras() {
-  for (const prefix of ['setup']) {
+  for (const prefix of ['permission']) {
     const select = $(prefix+'-camera'); select.replaceChildren();
     for (const device of [{deviceId:'',label:'자동 선택'}, ...cameraDevices]) {
       const option = document.createElement('option'); option.value = device.deviceId;
@@ -122,15 +124,18 @@ async function startCamera() {
     if (run !== cameraRun) { next.getTracks().forEach(t => t.stop()); return; }
     stream = next;
     const track=next.getVideoTracks()[0];
+    if(phase==='permission' && !cameraDeviceId)cameraDeviceId=track.getSettings().deviceId||'';
     // External cameras may omit facingMode. Do not mirror them as if they were a front camera.
     facing = track.getSettings().facingMode || '';
     track.addEventListener('ended',()=>cameraDisconnected(next));
-    video.srcObject = next; await video.play();
+    const targetVideo=phase==='permission'?$('permission-video'):video;
+    targetVideo.srcObject = next; await targetVideo.play();
     if(run!==cameraRun || stream!==next)return;
     video.style.transform = facing === 'user' ? 'scaleX(-1)' : 'none';
+    $('permission-video').style.transform=video.style.transform;
     $('mirror-label').textContent = facing === 'user' ? '전면 카메라 · 좌우 반전' : '선택한 카메라 · 좌우 반전 없음';
-    $('welcome').hidden = true; cameraConfirmed=true;if(phase==='permission')phase='setup';settingsOpen = false; document.body.classList.remove('config-open'); $('camera-state').textContent = track.label || '카메라 켜짐'; $('stage-label').textContent = '02 / 촬영';
-    status(phase==='setup'?'카메라·프레임·카운트다운을 고른 뒤 촬영하기를 눌러 주세요.':'준비되면 한 장씩 촬영해 주세요.');
+    $('welcome').hidden = true; settingsOpen = false; document.body.classList.remove('config-open'); $('camera-state').textContent = track.label || '카메라 켜짐'; $('stage-label').textContent = '02 / 촬영';
+    status(phase==='permission'?'카메라가 연결됐어요. 테스트 영상을 확인한 뒤 다음으로 넘어가 주세요.':phase==='setup'?'카메라·프레임·카운트다운을 고른 뒤 촬영하기를 눌러 주세요.':'준비되면 한 장씩 촬영해 주세요.');
     await refreshCameras();
   } catch(e) {
     if(run!==cameraRun)return;
@@ -139,13 +144,14 @@ async function startCamera() {
     status(phase==='shoot' && ['NotFoundError','OverconstrainedError'].includes(e.name) ? '처음 선택한 카메라를 찾지 못했어요. 같은 카메라를 다시 연결한 뒤 카메라 켜기를 눌러 주세요.' : errors[e.name] || '카메라를 켜지 못했어요. 연결을 확인하고 다시 시도해 주세요.', true);
   } finally { cameraBusy = false; controls(); }
 }
-for(const prefix of ['setup']) {
+for(const prefix of ['permission']) {
   $(prefix+'-camera').onchange=async()=>{
-    if(phase!=='setup'||busy||cameraBusy||blob||selecting)return;
-    cameraDeviceId=$(prefix+'-camera').value;renderCameras();
+    if(phase!=='permission'||busy||cameraBusy||blob||selecting)return;
+    const wasConnected=!!stream;cameraDeviceId=$(prefix+'-camera').value;renderCameras();
+    if(wasConnected)await startCamera();
   };
   $(prefix+'-camera-refresh').onclick=async()=>{
-    if(phase!=='setup'||busy||cameraBusy||blob||selecting)return;
+    if(phase!=='permission'||busy||cameraBusy||blob||selecting)return;
     await refreshCameras();
   };
 }
@@ -323,7 +329,13 @@ $('capture-timer').onchange=()=>{
  controls();
 };
 $('start').onclick = () => startCamera();
-$('permission-start').onclick=async()=>{await startCamera();if(phase==='setup'){stopStream();controls();}};
+$('permission-start').onclick=()=>startCamera();
+$('permission-video').addEventListener('loadeddata',controls);
+$('permission-next').onclick=()=>{
+ if($('permission-next').disabled)return;
+ cameraConfirmed=true;stopStream();phase='setup';controls();
+ status('프레임과 카운트다운을 고른 뒤 촬영하기를 눌러 주세요.');
+};
 $('setup-done').onclick=async()=>{
  if($('setup-done').disabled)return;
  if(!stream)await startCamera();

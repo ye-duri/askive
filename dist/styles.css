@@ -274,3 +274,12 @@ footer{align-items:center;gap:12px}footer>span:last-child{font-size:11px;letter-
  .is-selecting .editor-sidebar .editor-actions{position:static;margin:0;padding:0}
  .is-selecting .editor-actions .shutter{width:100%;min-height:56px;font-size:16px;padding:12px;white-space:normal}
 }
+
+/* First-visit camera selection and live connection check. */
+#permission-panel{max-width:680px}
+#permission-panel .camera-controls{width:100%;margin:16px 0}
+#permission-panel>button{width:100%;min-height:48px;margin-top:10px}
+.camera-test{margin:14px 0;background:#edf1e5;border-radius:16px;padding:10px}
+.camera-test video{display:block;width:100%;max-height:300px;aspect-ratio:4/3;object-fit:contain;border-radius:10px;background:#17221c}
+.camera-test p{font-size:13px;margin:8px 0 0}
+.camera-test[hidden]{display:none}
