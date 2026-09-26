@@ -350,6 +350,8 @@ $('finish-selection').onclick=async()=>{
     if(revision!==sessionRun){URL.revokeObjectURL(nextURL);return;}if(resultURL)URL.revokeObjectURL(resultURL);blob=nextBlob;resultURL=nextURL;selecting=false;
     $('viewfinder').style.aspectRatio=`${canvas.width}/${canvas.height}`;$('viewfinder').style.setProperty('--preview-ratio',String(canvas.width/canvas.height));
     $('result').hidden=false;$('capture-actions').hidden=true;$('result-actions').hidden=false;
+    try{await updatePrint();}catch{status('인쇄용 사진 준비에 실패했어요. 사진 저장을 이용해 주세요.',true);}
+    if(revision!==sessionRun)return;
     $('shot-progress').textContent=`선택한 ${cutCount}장으로 완성한 전체 사진`;$('stage-label').textContent='05 / 나의 순간';
     status('선택한 사진과 필터가 적용됐어요. 저장하거나 인쇄해 주세요.');
   }catch(e){if(revision===sessionRun)$('selection-status').textContent=e.message||'합성하지 못했어요. 다시 시도해 주세요.';}
@@ -411,7 +413,7 @@ function resetSession(message='이용이 종료됐어요. 사진을 지웠습니
   $('photo-filter').value='original';$('selection-status').textContent='';
   $('result').hidden=true;$('result-actions').hidden=true;$('capture-actions').hidden=false;
   $('countdown').hidden=true;$('welcome').hidden=false;
-  for(const id of ['print-dialog','idle-dialog'])if($(id).open)$(id).close();
+  for(const id of ['idle-dialog'])if($(id).open)$(id).close();
   $('qr-consent').checked=false;qrConsent=false;album=null;automatic=false;$('qr-result').textContent='';idleWarning=false;printing=false;externalActionStarted=0;lastActivity=Date.now();
   phase=cameraConfirmed?'edition':'permission';renderFrames();controls();status(message);
   const fallback=matchingFrames()[0];if(fallback)return chooseFrame(fallback.id).catch(()=>status('기본 프레임을 다시 선택해 주세요.',true));
@@ -476,58 +478,41 @@ $('upload').onchange = async e => {
   }catch(e){if(id)frames=frames.filter(f=>f.id!==id);if(url){URL.revokeObjectURL(url);const i=localURLs.indexOf(url);if(i>=0)localURLs.splice(i,1);}if(revision===sessionRun)status(e.message,true);}
   finally{if(revision===sessionRun){uploadBusy=false;renderFrames();controls();}}
 };
-const papers={postcard:{w:100,h:148,label:'SELPHY 엽서'},'4x6':{w:101.6,h:152.4,label:'4 × 6인치'},a4:{w:210,h:297,label:'A4'}};
-let printReady = false, printRevision = 0, printShareFile=null;
+// Prepare before the click so Safari keeps the user activation for print/share.
+let printReady=false,printRevision=0,printShareFile=null;
 async function updatePrint(){
-  printReady = false;printShareFile=null;$('print-share').disabled=true; $('print').disabled = true; $('print-file').disabled = true;
-  const revision = ++printRevision;
-  if(!blob)return;
-  const p=papers[$('paper').value], canvas=$('print-canvas');
-  canvas.width=Math.round(p.w/25.4*300);canvas.height=Math.round(p.h/25.4*300);
-  const ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);
-  const img=$('result');
-  const cover=$('print-fit').value==='cover'&&!album;if(album)$('print-fit').value='contain';const scale=(cover?Math.max:Math.min)(canvas.width/img.naturalWidth,canvas.height/img.naturalHeight);
-  const w=img.naturalWidth*scale,h=img.naturalHeight*scale;ctx.drawImage(img,(canvas.width-w)/2,(canvas.height-h)/2,w,h);
-  $('print-image').src=canvas.toDataURL('image/jpeg',.96);
-  $('print-page-style').textContent=`@page {size:${p.w}mm ${p.h}mm;margin:0} @media print {html,body{width:100%!important;height:100%!important;overflow:hidden!important;}#print-sheet{position:fixed!important;inset:0!important;width:100%!important;height:100%!important;}#print-image{width:100%!important;height:100%!important;object-fit:contain!important;}}`;
-  await $('print-image').decode();
-  const shareFile=new File([await toBlob(canvas,'image/jpeg',.96)],filename('jpg'),{type:'image/jpeg'});
-  if (revision !== printRevision) return;
-  printShareFile=shareFile;$('print-share').disabled=false;
-  printReady = true; $('print').disabled = false; $('print-file').disabled = false;
-  $('print-info').textContent=`${p.label} · ${p.w} × ${p.h}mm · ${album?'QR이 잘리지 않도록 전체 프레임을 표시합니다.':cover?'가장자리의 사진·프레임이 잘릴 수 있어요.':'전체 프레임을 유지하며 빈 부분은 흰색으로 인쇄해요.'}`;
+ printReady=false;printShareFile=null;$('print-open').disabled=true;$('print-share').disabled=true;
+ const revision=++printRevision;
+ if(!blob)return;
+ const canvas=$('print-canvas');canvas.width=1181;canvas.height=1748; // 100 × 148 mm at 300 dpi
+ const c=canvas.getContext('2d'),img=$('result');
+ c.fillStyle='#fff';c.fillRect(0,0,canvas.width,canvas.height);
+ const scale=Math.min(canvas.width/img.naturalWidth,canvas.height/img.naturalHeight);
+ const w=img.naturalWidth*scale,h=img.naturalHeight*scale;
+ c.drawImage(img,(canvas.width-w)/2,(canvas.height-h)/2,w,h);
+ const jpg=await toBlob(canvas,'image/jpeg',.96);
+ if(revision!==printRevision)return;
+ $('print-image').src=canvas.toDataURL('image/jpeg',.96);
+ await $('print-image').decode();
+ if(revision!==printRevision)return;
+ printShareFile=new File([jpg],'yonsei-studio-print.jpg',{type:'image/jpeg'});
+ printReady=true;$('print-open').disabled=false;
+ $('print-share').hidden=!navigator.canShare?.({files:[printShareFile]});
+ $('print-share').disabled=false;
 }
-$('print-open').onclick=async()=>{try{if(album)$('print-fit').value='contain';await updatePrint();$('print-dialog').showModal();}catch{status('인쇄 미리보기를 만들지 못했어요.',true);}};
+$('print-open').onclick=()=>{
+ if(!printReady){status('인쇄용 사진을 준비 중이에요. 잠시 후 다시 눌러 주세요.',true);return;}
+ try{printing=true;externalActionStarted=Date.now();window.print();}
+ catch{printing=false;lastActivity=Date.now();status('인쇄 창을 열지 못했어요. 사진 파일로 인쇄를 이용해 주세요.',true);}
+};
 $('print-share').onclick=async()=>{
  if(!printReady||!printShareFile)return;
- const file=printShareFile;
  try{
-  if(navigator.canShare?.({files:[file]})&&navigator.share){
-   printing=true;externalActionStarted=Date.now();
-   await navigator.share({files:[file]});
-   $('print-status').textContent='사진 공유 메뉴를 열었어요. 실제 인쇄 완료는 프린터에서 확인해 주세요.';
-  }else{download(file,file.name);$('print-status').textContent='이 브라우저는 사진 파일 공유를 지원하지 않아 JPG로 저장했어요.';}
- }catch(e){if(e.name!=='AbortError')$('print-status').textContent='사진 공유를 열지 못했어요. 인쇄용 JPG 저장을 이용해 주세요.';}
+  printing=true;externalActionStarted=Date.now();
+  await navigator.share({files:[printShareFile]});
+ }catch(e){if(e.name!=='AbortError')status('사진 공유 메뉴를 열지 못했어요. 사진 저장 후 인쇄해 주세요.',true);}
  finally{printing=false;lastActivity=Date.now();}
 };
-$('print-close').onclick=()=>{printing=false;lastActivity=Date.now();$('print-dialog').close();};
-$('paper').onchange=$('print-fit').onchange=()=>updatePrint().catch(()=>status('인쇄 미리보기 오류',true));
-$('print').onclick=()=>{
-  if (!printReady) { $('print-status').textContent = '인쇄 이미지를 준비 중이에요. 잠시 후 다시 눌러 주세요.'; return; }
-  // Call synchronously from the user's click. Embedded browsers may still ignore print().
-  $('print-status').textContent = '인쇄 창이 나타나지 않으면 아래의 외부 브라우저용 인쇄 파일을 저장하고 Safari·Chrome에서 열어 주세요. 사진은 파일에 포함됩니다.';
-  try { printing=true;externalActionStarted=Date.now();window.print(); }
-  catch { printing=false;lastActivity=Date.now();$('print-status').textContent = '이 브라우저에서는 인쇄 창을 열지 못했어요. 외부 브라우저용 인쇄 파일 또는 JPG를 저장해 주세요.'; }
-};
-$('print-file').onclick=()=>{
-  if (!printReady) return;
-  const p=papers[$('paper').value];
-  const data=$('print-image').src;
-  const html=`<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>순간 · 사진 인쇄</title><style>body{font-family:system-ui;background:#f3f6ff;color:#23304a;margin:24px}main{max-width:700px;margin:auto}button{padding:16px 24px;background:#3e62e8;color:white;border:0;border-radius:10px;font-size:18px;cursor:pointer}img{display:block;max-width:100%;width:360px;margin:24px auto}p{line-height:1.7}@page{size:${p.w}mm ${p.h}mm;margin:0}@media print{html,body,main{margin:0;padding:0;width:${p.w}mm;height:100vh;background:white}header{display:none}img{margin:0;width:100vw;height:100vh;object-fit:contain;max-width:none;display:block;print-color-adjust:exact}}</style><main><header><h1>사진이 준비됐어요.</h1><p>용지 ${p.w} × ${p.h}mm · 세로 방향 · 머리글/바닥글 끄기<br>프린터에서 Canon SELPHY CP1500을 선택해 주세요.</p><button onclick="window.print()">인쇄 창 열기</button><p>창이 열리지 않으면 브라우저 메뉴의 인쇄 또는 ⌘P / Ctrl+P를 사용하세요.<br>이 파일에는 촬영 사진이 포함되어 있습니다. 공용 기기에서는 사용 후 삭제해 주세요.</p></header><img src="${data}" alt="촬영한 사진"></main></html>`;
-  download(new Blob([html],{type:'text/html;charset=utf-8'}),filename('html'));
-  $('print-status').textContent = '인쇄 파일 저장을 요청했어요. 다운로드한 HTML 파일을 Safari 또는 Chrome으로 열고 인쇄해 주세요.';
-};
-$('print-download').onclick=async()=>{try{await updatePrint();download(await toBlob($('print-canvas'),'image/jpeg'),filename('jpg'));}catch{status('인쇄용 파일을 저장하지 못했어요.',true);}};
 window.addEventListener('afterprint',()=>{printing=false;lastActivity=Date.now();});
 window.addEventListener('focus',()=>{printing=false;checkIdle();});
 window.addEventListener('pagehide',()=>{resetSession();});

@@ -16,7 +16,7 @@ try{
  assert.equal(await page.locator('#start').isEnabled(),true);
  await page.evaluate(()=>window.stallVideo=false);await page.locator('#start').click();await page.locator('#capture').click();await page.locator('.photo-choice').first().waitFor();
  for(let i=0;i<4;i++)await page.locator('.photo-choice').nth(i).click();await page.locator('#finish-selection').click();await page.locator('#print-open').click();
- assert.equal(await page.locator('#print-fit').inputValue(),'contain');
+ assert.equal(await page.locator('#print-dialog').count(),0);
  await page.locator('#print-share').click();assert.equal(await page.evaluate(()=>window.sharedFile.type),'image/jpeg');assert.ok(await page.evaluate(()=>window.sharedFile.size>0));
  await page.emulateMedia({media:'print'});assert.equal(await page.locator('#print-image').evaluate(e=>getComputedStyle(e).objectFit),'contain');await page.emulateMedia({media:'screen'});
  assert.equal(await page.evaluate(()=>window.hiddenPlay),false);assert.deepEqual(errors,[]);

@@ -1,0 +1,8 @@
+/* A physical, single-page sheet. Do not inherit screen viewport/fixed layout. */
+@page{size:100mm 148mm;margin:0}
+@page :first{margin:0}
+html:root,html body{display:block!important;position:static!important;width:100mm!important;height:148mm!important;min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;overflow:visible!important;transform:none!important;background:#fff!important}
+body>*{display:none!important}
+html body>#print-sheet{display:block!important;position:static!important;inset:auto!important;float:none!important;width:100mm!important;height:148mm!important;min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;overflow:hidden!important;transform:none!important;break-inside:avoid;break-after:avoid}
+html body #print-image{display:block!important;position:static!important;width:100mm!important;height:148mm!important;max-width:none!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;object-fit:contain!important;transform:none!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+html::before,html::after,body::before,body::after{display:none!important}

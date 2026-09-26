@@ -10,7 +10,7 @@ try{
  browser=await chromium.launch({...(process.env.PLAYWRIGHT_CHANNEL?{channel:process.env.PLAYWRIGHT_CHANNEL}:{}),headless:true,args:['--use-fake-ui-for-media-stream','--use-fake-device-for-media-stream']});
  const uploads=[];
  const page=await browser.newPage({permissions:['camera'],viewport:{width:1024,height:768}});page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(r.url().includes('/api/gallery/albums')&&['POST','PUT'].includes(r.method()))uploads.push(r.url());});
- await page.addInitScript(()=>{const native=setTimeout;window.testTicks=0;window.setTimeout=(fn,ms,...args)=>{if(ms===1000)window.testTicks++;return native(fn,ms===1000?10:ms,...args);};});
+ await page.addInitScript(()=>{window.printCalls=0;window.print=()=>window.printCalls++;const native=setTimeout;window.testTicks=0;window.setTimeout=(fn,ms,...args)=>{if(ms===1000)window.testTicks++;return native(fn,ms===1000?10:ms,...args);};});
  await page.goto(base);await page.locator('#permission-start').click();await page.locator('#kiosk-code').fill(secret);await page.locator('#kiosk-unlock').click();await page.locator('#kiosk-access').waitFor({state:'hidden'});await page.locator('#permission-next').click();
  assert.equal(await page.locator('#timer').count(),0);assert.equal(await page.locator('#send-open').count(),0);
  assert.equal(await page.locator('#operator-settings').count(),0);assert.equal(await page.locator('#cancel').count(),0);await page.screenshot({path:'test-output/edition-tablet.png'});
@@ -40,7 +40,7 @@ try{
    // Validate gallery through its real API using authenticated cookie, then expiry deletion through UI.
    const files=await (await import('node:fs/promises')).readdir(dir);const albumId=files.find(f=>f.endsWith('_meta.json')).split('_')[0];
    const galleryPage=await browser.newPage();await galleryPage.goto(base+'/gallery.html#'+albumId);await galleryPage.locator('#gallery-photos img').last().waitFor();assert.equal(await galleryPage.locator('#gallery-photos img').count(),9);await galleryPage.close();
-   await page.locator('#print-open').click();await page.emulateMedia({media:'print'});await page.pdf({path:'test-output/print.pdf',preferCSSPageSize:true,printBackground:true});await page.emulateMedia({media:'screen'});await page.locator('#print-close').click();
+   await page.locator('#print-open').click();assert.equal(await page.evaluate(()=>window.printCalls),1);assert.equal(await page.locator('#print-dialog').count(),0);await page.emulateMedia({media:'print'});const sheet=await page.locator('#print-sheet').boundingBox();assert.ok(Math.abs(sheet.x)<1&&Math.abs(sheet.y)<1,'Print starts at paper origin');assert.ok(Math.abs(sheet.width-100/25.4*96)<1);assert.ok(Math.abs(sheet.height-148/25.4*96)<1);await page.pdf({path:'test-output/print.pdf',preferCSSPageSize:true,printBackground:true,displayHeaderFooter:true});await page.emulateMedia({media:'screen'});
    assert.equal(await page.locator('#qr-delete').count(),0);assert.equal(await page.locator('#reselect').count(),0);await page.evaluate(async id=>fetch('/api/gallery/albums/'+id,{method:'DELETE'}),albumId);assert.equal((await fetch(base+'/api/gallery/albums/'+albumId)).status,404);
   }
   if(!(edition==='basic'&&count===2)){assert.equal(uploads.length,uploadCount,'Non-consenting sessions must never POST/PUT albums');assert.equal((await readdir(dir)).length,0,'No photos or metadata stored without consent');}
