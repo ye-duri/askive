@@ -21,9 +21,10 @@ try{
   if(edition==='special')assert.equal(await page.locator('#cuts-2').isVisible(),false);else assert.equal(await page.locator('#frames').isVisible(),false);
   if(edition==='basic'&&count===2)await page.locator('#qr-consent').check();
   const before=await page.evaluate(()=>window.testTicks);await page.locator('#setup-done').click();
-  if(edition==='basic'){await page.locator('#frame-step').waitFor({state:'visible'});await page.locator('#frame-next').click();}
+
   await page.locator('#selection-panel').waitFor({state:'visible'});assert.equal(await page.locator('.photo-choice').count(),8);assert.equal(await page.evaluate(()=>window.testTicks)-before,40);
   for(let i=0;i<count;i++)await page.locator('.photo-choice').nth(i).click();
+  if(edition==='basic'){assert.equal(await page.locator('#frame-step').isVisible(),false);assert.equal(await page.locator('#editor-frames-panel').isVisible(),true);await page.locator('.editing-frame-card').nth(1).click();assert.equal(await page.locator('.photo-choice[aria-pressed=true]').count(),count);await page.screenshot({path:'test-output/combined-selection.png'});}
   await page.locator('#filter-mono').click();
   assert.equal(await page.locator('#filter-mono').getAttribute('aria-pressed'),'true');
   const pixels=await page.locator('.photo-choice canvas').first().evaluate(el=>Array.from(el.getContext('2d').getImageData(50,50,1,1).data));assert.equal(pixels[0],pixels[1]);assert.equal(pixels[1],pixels[2]);
@@ -35,13 +36,13 @@ try{
    const files=await (await import('node:fs/promises')).readdir(dir);const albumId=files.find(f=>f.endsWith('_meta.json')).split('_')[0];
    const galleryPage=await browser.newPage();await galleryPage.goto(base+'/gallery.html#'+albumId);await galleryPage.locator('#gallery-photos img').last().waitFor();assert.equal(await galleryPage.locator('#gallery-photos img').count(),9);await galleryPage.close();
    await page.locator('#print-open').click();await page.emulateMedia({media:'print'});await page.pdf({path:'test-output/print.pdf',preferCSSPageSize:true,printBackground:true});await page.emulateMedia({media:'screen'});await page.locator('#print-close').click();
-   await page.locator('#qr-delete').click();await page.locator('#qr-delete').waitFor({state:'hidden'});assert.equal((await fetch(base+'/api/gallery/albums/'+albumId)).status,404);
+   assert.equal(await page.locator('#qr-delete').count(),0);assert.equal(await page.locator('#reselect').count(),0);await page.evaluate(async id=>fetch('/api/gallery/albums/'+id,{method:'DELETE'}),albumId);assert.equal((await fetch(base+'/api/gallery/albums/'+albumId)).status,404);
   }
   if(!(edition==='basic'&&count===2)){assert.equal(uploads.length,uploadCount,'Non-consenting sessions must never POST/PUT albums');assert.equal((await readdir(dir)).length,0,'No photos or metadata stored without consent');}
   await page.locator('#retake').click();assert.equal(await page.locator('#editing-frames img').count(),0);assert.equal(await page.locator('#edition-panel').isVisible(),true);assert.equal(await page.locator('#permission-panel').isVisible(),false);
  }
  await page.reload();await page.locator('#edition-panel').waitFor({state:'visible'});
- await page.locator('#edition-basic').click();await page.locator('#cuts-4').click();await page.locator('#setup-done').click();await page.locator('#frame-next').click();await page.setViewportSize({width:390,height:844});await page.screenshot({path:'test-output/mobile-selection.png'});
+ await page.locator('#edition-basic').click();await page.locator('#cuts-4').click();await page.locator('#setup-done').click();await page.locator('#selection-panel').waitFor({state:'visible'});await page.setViewportSize({width:390,height:844});await page.screenshot({path:'test-output/mobile-selection.png'});
  const scroll=await page.locator('#photo-grid').evaluate(e=>({x:e.scrollWidth>e.clientWidth,y:getComputedStyle(e).overflowY}));assert.equal(scroll.x,true);assert.equal(scroll.y,'hidden');
  assert.deepEqual(errors,[]);console.log('PASS: 5 edition/cut flows; 8 auto captures × 5 countdown ticks; photo-only mono; QR 9-photo viewer/delete; print PDF; permission reuse; mobile horizontal list.');
 }finally{await browser?.close();await new Promise(r=>app.close(r));await rm(dir,{recursive:true,force:true});}

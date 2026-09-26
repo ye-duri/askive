@@ -13,7 +13,7 @@ let settingsOpen = false;
 let phase = 'permission';
 let edition='basic', automatic=false, qrEnabled=false, qrConsent=false, album=null;
 let galleryConfig={configured:false,authorized:false};
-const brandLogo=new Image();brandLogo.src='frames/askive-logo.svg';
+
 let cameraConfirmed = false;
 let cameraAccessGranted = false;
 let selecting = false, chosen = [];
@@ -36,19 +36,20 @@ function controls() {
  $('permission-start').textContent=cameraBusy?'카메라 연결 중…':cameraAccessGranted?'다시 테스트':'카메라 허용';
  $('setup-done').disabled=!selected||frameLoading||cameraBusy;
  for(const id of ['frames','setup-frame-heading'])$(id).hidden=edition!=='special';
- $('upload-label').hidden=edition!=='special'&&phase!=='frame';
- if(phase==='frame'){if($('upload-label').parentElement!==$('frame-step'))$('frame-step').insertBefore($('upload-label'),$('frame-next'));}else if($('upload-label').parentElement!==uploadHome)uploadHome.insertBefore($('upload-label'),$('setup-actions'));
+ $('upload-label').hidden=edition!=='special'&&!(selecting&&edition==='basic');
+ if(selecting&&edition==='basic')$('editor-frames-panel').append($('upload-label'));else if($('upload-label').parentElement!==uploadHome)uploadHome.insertBefore($('upload-label'),$('setup-actions'));
  $('selection-panel').hidden=!selecting;
  $('edit-settings').hidden=true;
  $('capture').disabled=phase!=='shoot'||!stream||!video.videoWidth||busy||cameraBusy||frameLoading||!!blob||selecting;
  $('capture').hidden=automatic;
- $('upload').disabled=uploadBusy||busy||!!blob||frameLoading||(!!shotSession&&phase!=='frame');
+ $('upload').disabled=uploadBusy||busy||!!blob||frameLoading||(!!shotSession&&!selecting)||(selecting&&chosen.length!==cutCount);
  document.querySelectorAll('.frame-card').forEach(b=>b.disabled=busy||frameLoading||!!blob||(!!shotSession&&phase!=='frame'&&!selecting));
  $('start').disabled=cameraBusy;
  for(const suffix of ['camera','camera-refresh'])$('permission-'+suffix).disabled=phase!=='permission'||busy||cameraBusy;
  $('frame-next').disabled=frameLoading||!selected;
  $('qr-consent').disabled=!qrEnabled;
- $('qr-availability').textContent=qrEnabled?'QR 사진은 24시간 후 만료됩니다.':galleryConfig.configured?'QR 저장을 사용하려면 최초 카메라 화면에서 운영 코드를 연결해 주세요.':'QR 저장 서버 연결 전입니다. 지금은 저장·인쇄를 이용할 수 있어요.';
+ $('qr-availability').hidden=qrEnabled;
+ $('qr-availability').textContent=qrEnabled?'':galleryConfig.configured?'QR 저장을 사용하려면 최초 카메라 화면에서 운영 코드를 연결해 주세요.':'QR 저장 서버 연결 전입니다. 지금은 저장·인쇄를 이용할 수 있어요.';
 }
 function renderFrames() {
   $('frames').replaceChildren();
@@ -82,7 +83,7 @@ async function chooseFrame(id) {
   $('viewfinder').style.aspectRatio = `${selected.width}/${selected.height}`;
   if(selecting){renderSelection();renderEditingFrames();}else if(phase==='frame')renderAfterFrames();else updateShotMode();
   renderFrames(); return {id: selected.id, name: selected.name};
-  } finally { if (run === frameRun) { frameLoading = false; controls(); } }
+  } finally { if (run === frameRun) { frameLoading = false; if(selecting){renderSelection();renderEditingFrames();}controls(); } }
 }
 function stopStream() { if (stream) stream.getTracks().forEach(t => t.stop()); stream = null; video.srcObject = null; $('permission-video').srcObject=null; }
 function renderCameras() {
@@ -127,16 +128,16 @@ async function startCamera() {
     stream = next;
     const track=next.getVideoTracks()[0];
     if(phase==='permission' && !cameraDeviceId)cameraDeviceId=track.getSettings().deviceId||'';
-    // External cameras may omit facingMode. Do not mirror them as if they were a front camera.
+    // Mirror every camera consistently in preview and captured pixels, including USB/rear cameras.
     facing = track.getSettings().facingMode || '';
     track.addEventListener('ended',()=>cameraDisconnected(next));
     const targetVideo=phase==='permission'?$('permission-video'):video;
     targetVideo.srcObject = next; await targetVideo.play();
     if(run!==cameraRun || stream!==next)return;
     if(phase==='permission')cameraAccessGranted=true;
-    video.style.transform = facing === 'user' ? 'scaleX(-1)' : 'none';
+    video.style.transform = 'scaleX(-1)';
     $('permission-video').style.transform=video.style.transform;
-    $('mirror-label').textContent = facing === 'user' ? '전면 카메라 · 좌우 반전' : '선택한 카메라 · 좌우 반전 없음';
+    $('mirror-label').textContent = '좌우 반전';
     $('welcome').hidden = true; settingsOpen = false; document.body.classList.remove('config-open'); $('camera-state').textContent = track.label || '카메라 켜짐'; $('stage-label').textContent = '02 / 촬영';
     status(phase==='permission'?'카메라가 연결됐어요. 테스트 영상을 확인한 뒤 다음으로 넘어가 주세요.':phase==='setup'?'카메라·프레임·카운트다운을 고른 뒤 촬영하기를 눌러 주세요.':'준비되면 한 장씩 촬영해 주세요.');
     await refreshCameras();
@@ -239,7 +240,7 @@ function renderSelection() {
   $('photo-grid').replaceChildren();
   const slot=outputSize(selected,cutCount).slots[0], ratio=slot.h/slot.w;
   shotSession.photos.forEach((photo,index)=>{
-    const button=document.createElement('button');button.className='photo-choice';button.disabled=busy;
+    const button=document.createElement('button');button.className='photo-choice';button.disabled=busy||frameLoading;
     const order=chosen.indexOf(index);button.setAttribute('aria-pressed',String(order>=0));button.setAttribute('aria-label',`${index+1}번 사진${order>=0?`, ${order+1}번째 선택`:''}`);
     const thumb=photoTile(photo,{w:420,h:Math.round(420*ratio)},$('photo-filter').value || 'original');
     const label=document.createElement('span');label.textContent=`사진 ${index+1}`;button.append(thumb,label);
@@ -251,7 +252,7 @@ function renderSelection() {
       else if(chosen.length<cutCount)chosen.push(index);
       else{$('selection-status').textContent=`${cutCount}장을 모두 골랐어요. 바꾸려면 선택한 사진을 먼저 눌러 해제해 주세요.`;return;}
       $('selection-status').textContent=chosen.length===cutCount?'오른쪽 전체 사진을 확인하고 완성해 주세요.':'선택한 순서대로 프레임에 들어갑니다.';
-      renderSelection();
+      renderSelection();renderEditingFrames();controls();
     };
     $('photo-grid').append(button);
   });
@@ -281,13 +282,13 @@ async function capture() {
    for(let n=5;n>0;n--){$('countdown').textContent=n;$('countdown').hidden=false;await new Promise(r=>setTimeout(r,1000));if(run!==countdownRun||revision!==sessionRun)return;}
    if(!stream||video.readyState<2||!video.videoWidth)throw new Error('카메라 연결을 확인한 뒤 남은 촬영을 이어가 주세요.');
    const photo=document.createElement('canvas');const scale=Math.min(1,1440/Math.max(video.videoWidth,video.videoHeight));photo.width=Math.round(video.videoWidth*scale);photo.height=Math.round(video.videoHeight*scale);
-   const ctx=photo.getContext('2d');ctx.save();if(facing==='user'){ctx.translate(photo.width,0);ctx.scale(-1,1);}ctx.drawImage(video,0,0,photo.width,photo.height);ctx.restore();
+   const ctx=photo.getContext('2d');ctx.save();ctx.translate(photo.width,0);ctx.scale(-1,1);ctx.drawImage(video,0,0,photo.width,photo.height);ctx.restore();
    shotSession.photos.push(photo);shotSession.taken++;$('countdown').hidden=true;
    $('shot-progress').textContent=`${shotSession.taken} / ${CAPTURE_TOTAL}장 촬영 완료`;
    $('flash').classList.remove('active');void $('flash').offsetWidth;$('flash').classList.add('active');showShotPreview();
   }
   chosen=[];$('flash').classList.remove('active');stopStream();busy=false;automatic=false;$('camera-state').textContent='촬영 완료';
-  if(edition==='basic'){phase='frame';renderAfterFrames();controls();}else openSelection();
+  openSelection();
  }catch(e){status(e.message||'촬영을 이어갈 수 없어요. 연결을 확인해 주세요.',true);}
  finally{if(run===countdownRun){busy=false;automatic=false;$('countdown').hidden=true;$('capture').textContent='남은 사진 이어 찍기';controls();}}
 }
@@ -323,9 +324,10 @@ $('finish-selection').onclick=async()=>{
   finally{if(revision===sessionRun){busy=false;if(selecting)renderSelection();controls();}}
 };
 function renderEditingFrames(){
+ $('frame-selection-hint').textContent=chosen.length===cutCount?'옆으로 넘겨 선택 →':`사진 ${cutCount}장을 먼저 골라 주세요`;
  $('editing-frames').replaceChildren();
  for(const frame of matchingFrames()){
-  const b=document.createElement('button');b.className='editing-frame-card';b.disabled=busy||frameLoading;b.setAttribute('aria-pressed',String(selected?.id===frame.id));
+  const b=document.createElement('button');b.className='editing-frame-card';b.disabled=busy||frameLoading||chosen.length!==cutCount;b.setAttribute('aria-pressed',String(selected?.id===frame.id));
   const img=document.createElement('img');img.src=frame.src;img.alt='';const label=document.createElement('span');label.textContent=frame.name;b.append(img,label);
   b.onclick=async()=>{if(busy||frameLoading)return;try{await chooseFrame(frame.id);$('selection-status').textContent='프레임을 바꿨어요. 사진 위치를 확인해 주세요.';}catch{$('selection-status').textContent='프레임을 불러오지 못했어요. 기존 프레임을 유지합니다.';}finally{renderEditingFrames();renderSelection();}};
   $('editing-frames').append(b);
@@ -337,7 +339,7 @@ for(const n of [2,4,6])$('cuts-'+n).onclick=async()=>{
  try{await chooseFrame(matchingFrames()[0].id);}catch(e){cutCount=previous;renderFrames();status('프레임을 불러오지 못했어요. 다시 선택해 주세요.',true);}
  controls();
 };
-$('reselect').onclick=()=>{blob=null;printReady=false;printRevision++;if(edition==='basic'){selecting=false;phase='frame';$('result-actions').hidden=true;renderAfterFrames();controls();}else openSelection();};
+
 $('edit-settings').onclick = () => {if(shotSession||busy)return;stopStream();phase='setup';controls();};
 function filename(ext) { return `moment-${new Date().toISOString().replace(/[:.]/g,'-')}.${ext}`; }
 function download(data, name) { const url=URL.createObjectURL(data); const a=document.createElement('a'); a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000); }
@@ -346,7 +348,7 @@ $('permission-start').onclick=()=>startCamera();
 $('permission-video').addEventListener('loadeddata',controls);
 $('permission-next').onclick=()=>{
  if($('permission-next').disabled)return;
- cameraConfirmed=true;stopStream();phase='edition';if(new URLSearchParams(location.search).has('setup'))history.replaceState(null,'',location.pathname);try{sessionStorage.setItem('yonsei-camera-confirmed','1');sessionStorage.setItem('yonsei-camera-id',cameraDeviceId);}catch{}controls();
+ cameraConfirmed=true;stopStream();phase='edition';if(new URLSearchParams(location.search).has('setup'))history.replaceState(null,'',location.pathname);try{sessionStorage.setItem('yonsei-camera-confirmed','1');sessionStorage.setItem('yonsei-camera-id',cameraDeviceId);}catch{}controls();window.scrollTo(0,0);
  status('베이직 또는 특별에디션을 선택해 주세요.');
 };
 $('setup-done').onclick=async()=>{
@@ -374,7 +376,7 @@ function resetSession(message='이용이 종료됐어요. 사진을 지웠습니
   $('result').hidden=true;$('result-actions').hidden=true;$('capture-actions').hidden=false;
   $('countdown').hidden=true;$('welcome').hidden=false;
   for(const id of ['print-dialog','idle-dialog'])if($(id).open)$(id).close();
-  $('qr-consent').checked=false;qrConsent=false;album=null;automatic=false;$('qr-result').textContent='';$('qr-delete').hidden=true;idleWarning=false;printing=false;externalActionStarted=0;lastActivity=Date.now();
+  $('qr-consent').checked=false;qrConsent=false;album=null;automatic=false;$('qr-result').textContent='';idleWarning=false;printing=false;externalActionStarted=0;lastActivity=Date.now();
   phase=cameraConfirmed?'edition':'permission';renderFrames();controls();status(message);
   const fallback=matchingFrames()[0];if(fallback)return chooseFrame(fallback.id).catch(()=>status('기본 프레임을 다시 선택해 주세요.',true));
 }
@@ -483,11 +485,11 @@ window.addEventListener('pageshow',()=>{if(!stream){$('welcome').hidden=false;$(
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkIdle();if(document.hidden && busy){cancelCountdown();status('화면이 전환되어 촬영을 취소했어요.');}});
 async function init(){try{const response=await fetch('frames.json');if(!response.ok)throw new Error('프레임 목록을 읽지 못했어요.');frames=await response.json();renderFrames();if(frames.length)await chooseFrame(frames[0].id);}catch(e){status(e.message,true);}}
 await init();
-try{if(new URLSearchParams(location.search).get('setup')!=='1'&&sessionStorage.getItem('yonsei-camera-confirmed')==='1'){let permission;try{permission=await navigator.permissions?.query({name:'camera'});}catch{}if(permission?.state!=='denied'){cameraConfirmed=true;cameraDeviceId=sessionStorage.getItem('yonsei-camera-id')||'';phase='edition';controls();}}}catch{}
+try{if(new URLSearchParams(location.search).get('setup')!=='1'&&sessionStorage.getItem('yonsei-camera-confirmed')==='1'){let permission;try{permission=await navigator.permissions?.query({name:'camera'});}catch{}if(permission?.state!=='denied'){cameraConfirmed=true;cameraDeviceId=sessionStorage.getItem('yonsei-camera-id')||'';phase='edition';controls();window.scrollTo(0,0);}}}catch{}
 for(const name of ['basic','special'])$('edition-'+name).onclick=async()=>{
  edition=name;if(name==='special'&&cutCount===2)cutCount=4;phase='setup';selected=null;renderFrames();await chooseFrame(matchingFrames()[0].id);controls();
 };
-$('edition-back').onclick=()=>{phase='edition';controls();};
+$('edition-back').onclick=()=>{phase='edition';controls();window.scrollTo(0,0);};
 
 await loadGalleryConfig();
 
@@ -502,17 +504,14 @@ $('kiosk-unlock').onclick=async()=>{
 };
 function addAlbumQR(canvas,url){
  const qr=qrcode(0,'M');qr.addData(url);qr.make();const modules=qr.getModuleCount();
- const slots=outputSize(selected,cutCount).slots;const photoBottom=Math.max(...slots.map(s=>s.y+s.h));
- const available=canvas.height-photoBottom-18;
- const unit=Math.max(1,Math.floor(Math.min(available-12,canvas.width*.25)/(modules+8))),size=(modules+8)*unit;
+ // Keep the original frame untouched outside a compact QR square, including its logo.
+ const unit=Math.max(1,Math.floor(canvas.width*.15/(modules+8))),size=(modules+8)*unit;
  const result=document.createElement('canvas');result.width=canvas.width;result.height=canvas.height;
- const c=result.getContext('2d');c.drawImage(canvas,0,0);const top=photoBottom+9;
- c.fillStyle='#faf8f1';c.fillRect(0,top,canvas.width,canvas.height-top);
- const left=Math.round(canvas.width*.70-size/2),y=top+(canvas.height-top-size)/2;
+ const c=result.getContext('2d');c.drawImage(canvas,0,0);
+ const inset=Math.round(canvas.width*.025),left=canvas.width-size-inset,y=canvas.height-size-inset;
  c.fillStyle='#fff';c.fillRect(left,y,size,size);c.fillStyle='#111';
  for(let row=0;row<modules;row++)for(let col=0;col<modules;col++)if(qr.isDark(row,col))c.fillRect(left+(col+4)*unit,y+(row+4)*unit,unit,unit);
- const logoWidth=Math.min(canvas.width*.37,available*1.8);c.drawImage(brandLogo,canvas.width*.09,top+available*.08,logoWidth,logoWidth/4);
- c.font=`${Math.round(canvas.width*.02)}px sans-serif`;c.fillText('8장의 순간을 간직해요',canvas.width*.10,top+available*.62);c.fillText('QR · 24시간 다운로드',canvas.width*.10,top+available*.80);return result;
+ return result;
 }
 async function apiJSON(url,options){const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),45000);try{const r=await fetch(url,{...options,signal:controller.signal});const d=await r.json();if(!r.ok)throw new Error(d.error||'QR 저장 실패');return d;}catch(e){if(e.name==='AbortError')throw new Error('QR 저장 응답이 늦어지고 있어요. 연결을 확인한 뒤 다시 시도해 주세요.');throw e;}finally{clearTimeout(timeout);}}
 async function publishAlbum(canvas,revision){
@@ -520,17 +519,12 @@ async function publishAlbum(canvas,revision){
  let current=album;
  if(!current){current=await apiJSON('/api/gallery/albums',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({consent:true,policyVersion:'2026-09-26-qr-v1'})});if(revision!==sessionRun){void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'});return canvas;}album=current;}
  const url=new URL('gallery.html',location.href);url.hash=current.id;
- await brandLogo.decode();const composite=addAlbumQR(canvas,url.href);const data=new FormData();
+ const composite=addAlbumQR(canvas,url.href);const data=new FormData();
  for(let i=0;i<8;i++)data.append(String(i),await toBlob(shotSession.photos[i],'image/jpeg',.85),`${i}.jpg`);
  data.append('8',await toBlob(composite,'image/jpeg',.9),'result.jpg');
  if(revision!==sessionRun)return canvas;
  await apiJSON(`/api/gallery/albums/${current.id}`,{method:'PUT',body:data});
  if(revision!==sessionRun){void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'});return canvas;}
- if(revision===sessionRun){$('qr-result').textContent=`QR로 사진 8장과 완성본을 볼 수 있어요. ${new Date(current.expiresAt).toLocaleString('ko-KR')}까지`;$('qr-delete').hidden=false;}
+ if(revision===sessionRun){$('qr-result').textContent=`QR로 사진 8장과 완성본을 볼 수 있어요. ${new Date(current.expiresAt).toLocaleString('ko-KR')}까지`;}
  return composite;
 }
-$('qr-delete').onclick=async()=>{
- if(!album)return;const revision=sessionRun;$('qr-delete').disabled=true;
- try{await apiJSON(`/api/gallery/albums/${album.id}`,{method:'DELETE'});if(revision===sessionRun){album=null;qrConsent=false;$('qr-result').textContent='서버의 QR 앨범을 삭제했어요. 인쇄된 QR은 더 이상 열리지 않습니다.';$('qr-delete').hidden=true;}}
- catch(e){if(revision===sessionRun)$('qr-result').textContent=e.message;}finally{$('qr-delete').disabled=false;}
-};
