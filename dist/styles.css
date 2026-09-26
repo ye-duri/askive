@@ -384,3 +384,23 @@ footer{align-items:center;gap:12px}footer>span:last-child{font-size:11px;letter-
 }
 @media screen and (max-width:699px){.is-selecting .selection-heading p{display:block!important}}
 @media screen and (min-width:700px) and (orientation:portrait){.is-selecting .editor-sidebar .filter-options{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important}.is-selecting .editor-sidebar .filter-option{width:100%;min-width:0;min-height:48px}}
+
+#preview-slot-controls{position:absolute;pointer-events:none;z-index:2}
+.selection-preview .preview-slot{position:absolute;margin:0!important;padding:4px;border:0;border-radius:0;background:transparent;pointer-events:auto;cursor:pointer;min-width:0;min-height:0;box-shadow:none;color:#284d3f;font-size:clamp(10px,1.3vw,16px)}
+.selection-preview .preview-slot:hover,.selection-preview .preview-slot:focus-visible{outline:3px solid #a897e2;outline-offset:-3px;background:#ffffff22}
+.selection-preview .preview-slot.is-active{outline:3px dashed #42694e;outline-offset:-3px;background:#f3f6edcc;font-weight:700}
+.selection-preview .preview-slot.is-empty:not(.is-active){background:#edf1f777}
+
+/* Photos and frames share the left column; the full right column is the print preview. */
+.is-basic.is-selecting .selection-photos>.editing-frame-section{flex:0 0 auto;margin-top:8px;padding-top:8px}
+.is-basic.is-selecting .selection-preview{overflow:hidden}
+@media screen and (min-width:700px){
+ .is-selecting .selection-layout,.is-basic.is-selecting .selection-layout{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr) 120px}
+ .is-selecting .selection-composite,.is-basic.is-selecting .selection-composite{min-height:200px}
+}
+@media screen and (min-width:700px) and (orientation:portrait){
+ .is-selecting .selection-layout,.is-basic.is-selecting .selection-layout{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+}
+@media screen and (max-width:699px){
+ .is-basic.is-selecting .selection-composite{height:480px;min-height:360px}
+}

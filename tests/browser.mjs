@@ -31,6 +31,11 @@ try{
   await page.locator('#finish-selection').click();await page.locator('#result').waitFor({state:'visible'});
   if(edition==='basic'&&count===2){
    assert.match(await page.locator('#qr-result').textContent(),/24|까지/);await page.screenshot({path:'test-output/qr-result.png'});
+   if(process.env.QR_TEST_DECODER){
+    const decode=(await import(process.env.QR_TEST_DECODER)).default;
+    const pixels=await page.locator('#result').evaluate(img=>{const c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;const x=c.getContext('2d');x.drawImage(img,0,0);const size=Math.round(c.width*.10),pad=8,inset=Math.round(c.width*.025);return {width:size+pad*2,height:size+pad*2,data:Array.from(x.getImageData(c.width-size-inset-pad,c.height-size-inset-pad,size+pad*2,size+pad*2).data)};});
+    const decoded=decode(new Uint8ClampedArray(pixels.data),pixels.width,pixels.height);assert.ok(decoded,'Small QR must decode');assert.match(decoded.data,/gallery.html#/);console.log('PASS: compact 10% QR decoded from final image');
+   }
    const id=await page.evaluate(()=>document.querySelector('#result').src);assert.match(id,/^blob:/);
    // Validate gallery through its real API using authenticated cookie, then expiry deletion through UI.
    const files=await (await import('node:fs/promises')).readdir(dir);const albumId=files.find(f=>f.endsWith('_meta.json')).split('_')[0];

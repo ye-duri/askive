@@ -17,7 +17,8 @@ let galleryConfig={configured:false,authorized:false};
 
 let cameraConfirmed = false;
 let cameraAccessGranted = false;
-let selecting = false, chosen = [];
+let selecting = false, chosen = [], activeSlot=-1;
+const selectedCount=()=>chosen.filter(Number.isInteger).length;
 let cutCount=4;
 const frameCount=f=>f.count||f.slots?.length||4;
 const matchingFrames=()=>frames.filter(f=>frameCount(f)===cutCount && (f.edition||'basic')===edition);
@@ -43,7 +44,7 @@ function controls() {
  $('edit-settings').hidden=true;
  $('capture').disabled=phase!=='shoot'||!stream||!video.videoWidth||busy||cameraBusy||frameLoading||!!blob||selecting;
  $('capture').hidden=automatic;
- $('upload').disabled=uploadBusy||busy||!!blob||frameLoading||(!!shotSession&&!selecting)||(selecting&&chosen.length!==cutCount);
+ $('upload').disabled=uploadBusy||busy||!!blob||frameLoading||(!!shotSession&&!selecting)||(selecting&&selectedCount()!==cutCount);
  document.querySelectorAll('.frame-card').forEach(b=>b.disabled=busy||frameLoading||!!blob||(!!shotSession&&phase!=='frame'&&!selecting));
  $('start').disabled=cameraBusy;
  for(const suffix of ['camera','camera-refresh'])$('permission-'+suffix).disabled=phase!=='permission'||busy||cameraBusy;
@@ -234,7 +235,7 @@ function composeSelection(canvas,frame=selected,includeFrame=true) {
   const size=outputSize(frame,cutCount);canvas.width=size.width;canvas.height=size.height;
   const ctx=canvas.getContext('2d');ctx.fillStyle='#edf1f7';ctx.fillRect(0,0,canvas.width,canvas.height);
   const filter=$('photo-filter').value || 'original';
-  chosen.forEach((index,i)=>{const slot=size.slots[i];ctx.drawImage(photoTile(shotSession.photos[index],slot,filter),slot.x,slot.y);});
+  chosen.forEach((index,i)=>{if(!Number.isInteger(index))return;const slot=size.slots[i];ctx.drawImage(photoTile(shotSession.photos[index],slot,filter),slot.x,slot.y);});
   if(includeFrame){ctx.save();ctx.filter='none';ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.drawImage(frame.img,0,0,canvas.width,canvas.height);ctx.restore();}
 }
 function renderSelection() {
@@ -248,37 +249,57 @@ function renderSelection() {
     const uses=chosen.filter(i=>i===index).length;button.setAttribute('aria-pressed',String(uses>0));button.setAttribute('aria-label',`${index+1}번 사진 추가${uses?`, ${uses}칸에 사용 중`:''}`);
     const thumb=photoTile(photo,{w:420,h:Math.round(420*ratio)},$('photo-filter').value || 'original');
     const label=document.createElement('span');label.textContent=`사진 ${index+1}`;button.append(thumb,label);
-    if(uses){const badge=document.createElement('b');badge.textContent=`${uses}회`;button.append(badge);}
     button.onclick=()=>{
       if(busy)return;
-      if(chosen.length<cutCount)chosen.push(index);
-      else{$('selection-status').textContent='모든 칸을 채웠어요. 아래 선택 목록에서 뺄 칸을 누른 뒤 사진을 추가해 주세요.';return;}
-      $('selection-status').textContent=chosen.length===cutCount?'오른쪽 전체 사진을 확인하고 완성해 주세요.':'선택한 순서대로 프레임에 들어갑니다.';
+      if(activeSlot>=0){chosen[activeSlot]=index;activeSlot=-1;}
+      else if(chosen.includes(null))chosen[chosen.indexOf(null)]=index;
+      else if(chosen.length<cutCount)chosen.push(index);
+      else{$('selection-status').textContent='모든 칸을 채웠어요. 미리보기에서 바꿀 컷을 누른 뒤 사진을 골라 주세요.';return;}
+      $('selection-status').textContent=selectedCount()===cutCount?'오른쪽 전체 사진을 확인하고 완성해 주세요.':'선택한 순서대로 프레임에 들어갑니다.';
       renderSelection();renderEditingFrames();controls();
     };
     $('photo-grid').append(button);
   });
-  $('chosen-slots').replaceChildren();
-  for(let slotIndex=0;slotIndex<cutCount;slotIndex++){
-    const chip=document.createElement('button');chip.className='chosen-slot';
-    const photoIndex=chosen[slotIndex];chip.disabled=photoIndex===undefined||busy||frameLoading;
-    chip.textContent=photoIndex===undefined?`${slotIndex+1}칸 · 비어 있음`:`${slotIndex+1}칸 · 사진 ${photoIndex+1} ×`;
-    chip.setAttribute('aria-label',photoIndex===undefined?`${slotIndex+1}번째 빈 칸`:`${slotIndex+1}번째 칸의 사진 ${photoIndex+1} 제거`);
-    chip.onclick=()=>{if(busy||frameLoading)return;chosen.splice(slotIndex,1);renderSelection();renderEditingFrames();controls();$('selection-status').textContent='한 칸을 비웠어요. 넣을 사진을 골라 주세요.';};
-    $('chosen-slots').append(chip);
-  }
   $('photo-grid').scrollTop=photoScroll;
   $('photo-grid').scrollLeft=photoScrollLeft;
-  $('selection-count').textContent=`${chosen.length} / ${cutCount} 선택`;
-  $('finish-selection').disabled=chosen.length!==cutCount || busy || frameLoading;
-  $('finish-selection').textContent=chosen.length===cutCount?`이 ${cutCount}장으로 완성하기`:`${cutCount-chosen.length}장을 더 선택해 주세요`;
+  $('selection-count').textContent=`${selectedCount()} / ${cutCount} 선택`;
+  $('finish-selection').disabled=selectedCount()!==cutCount || busy || frameLoading;
+  $('finish-selection').textContent=selectedCount()===cutCount?`이 ${cutCount}장으로 완성하기`:`${cutCount-selectedCount()}장을 더 선택해 주세요`;
   for(const name of ['original','bright','vivid','mono']) { $('filter-'+name).disabled=busy||frameLoading; $('filter-'+name).setAttribute('aria-pressed',String(($('photo-filter').value || 'original')===name)); }
   $('photo-filter').disabled=busy||frameLoading;
   // Keep the original frame in an independent DOM layer. Only the photo canvas changes with filters.
   composeSelection($('selection-canvas'),selected,false);
   if($('selection-frame-overlay').getAttribute('src')!==selected.src)$('selection-frame-overlay').setAttribute('src',selected.src);
+  renderPreviewSlots();
 
 }
+function clearPreviewSlot(index){
+ if(!selecting||busy||frameLoading)return;
+ while(chosen.length<=index)chosen.push(null);
+ chosen[index]=null;activeSlot=index;
+ renderSelection();renderEditingFrames();controls();
+ $('selection-status').textContent=`${index+1}번째 칸에 넣을 사진을 골라 주세요.`;
+}
+function positionPreviewSlots(){
+ if(!selecting||!selected)return;
+ const canvas=$('selection-canvas'),box=canvas.getBoundingClientRect(),size=outputSize(selected,cutCount);
+ const scale=Math.min(box.width/size.width,box.height/size.height),w=size.width*scale,h=size.height*scale;
+ const top=getComputedStyle(canvas).objectPosition.split(' ')[1]==='0%'?0:(box.height-h)/2;
+ Object.assign($('preview-slot-controls').style,{left:`${(box.width-w)/2}px`,top:`${top}px`,width:`${w}px`,height:`${h}px`});
+}
+function renderPreviewSlots(){
+ const layer=$('preview-slot-controls'),size=outputSize(selected,cutCount);layer.replaceChildren();
+ size.slots.forEach((slot,index)=>{
+  const b=document.createElement('button');b.type='button';b.className='preview-slot';b.disabled=busy||frameLoading;
+  b.setAttribute('aria-label',`${index+1}번째 컷 · ${Number.isInteger(chosen[index])?`사진 ${chosen[index]+1} · 취소하고 다시 선택`:'사진 선택'}`);
+  b.classList.toggle('is-active',index===activeSlot);b.classList.toggle('is-empty',!Number.isInteger(chosen[index]));
+  b.textContent=Number.isInteger(chosen[index])?'':`${index+1} · 사진 선택`;
+  Object.assign(b.style,{left:`${slot.x/size.width*100}%`,top:`${slot.y/size.height*100}%`,width:`${slot.w/size.width*100}%`,height:`${slot.h/size.height*100}%`});
+  b.onclick=()=>clearPreviewSlot(index);layer.append(b);
+ });positionPreviewSlots();
+}
+new ResizeObserver(positionPreviewSlots).observe($('selection-canvas'));
+window.addEventListener('resize',positionPreviewSlots);
 function openSelection() {
   phase='shoot';selecting=true; $('result').hidden=true; $('result-actions').hidden=true;
   $('stage-label').textContent='04 / 사진 선택';renderSelection();renderEditingFrames();controls();window.scrollTo(0,0);
@@ -298,7 +319,7 @@ async function capture() {
    $('shot-progress').textContent=`${shotSession.taken} / ${CAPTURE_TOTAL}장 촬영 완료`;
    $('flash').classList.remove('active');void $('flash').offsetWidth;$('flash').classList.add('active');showShotPreview();
   }
-  chosen=[];$('flash').classList.remove('active');stopStream();busy=false;automatic=false;$('camera-state').textContent='촬영 완료';
+  chosen=[];activeSlot=-1;$('flash').classList.remove('active');stopStream();busy=false;automatic=false;$('camera-state').textContent='촬영 완료';
   openSelection();
  }catch(e){status(e.message||'촬영을 이어갈 수 없어요. 연결을 확인해 주세요.',true);}
  finally{if(run===countdownRun){busy=false;automatic=false;$('countdown').hidden=true;$('capture').textContent='남은 사진 이어 찍기';controls();}}
@@ -315,7 +336,7 @@ $('frame-next').onclick=()=>{if(!frameLoading&&selected)openSelection();};
 for(const name of ['original','bright','vivid','mono']) $('filter-'+name).onclick=()=>{if(!busy&&!frameLoading){$('photo-filter').value=name;renderSelection();}};
 $('photo-filter').onchange=()=>{if(!busy&&!frameLoading)renderSelection();};
 $('finish-selection').onclick=async()=>{
-  if(busy||frameLoading||chosen.length!==cutCount||!shotSession||shotSession.photos.length!==CAPTURE_TOTAL)return;
+  if(busy||frameLoading||selectedCount()!==cutCount||!shotSession||shotSession.photos.length!==CAPTURE_TOTAL)return;
   busy=true;renderSelection();controls();const revision=sessionRun;
   try{
     let canvas=document.createElement('canvas');composeSelection(canvas);
@@ -335,10 +356,10 @@ $('finish-selection').onclick=async()=>{
   finally{if(revision===sessionRun){busy=false;if(selecting)renderSelection();controls();}}
 };
 function renderEditingFrames(){
- $('frame-selection-hint').textContent=chosen.length===cutCount?'옆으로 넘겨 선택 →':`사진 ${cutCount}장을 먼저 골라 주세요`;
+ $('frame-selection-hint').textContent=selectedCount()===cutCount?'옆으로 넘겨 선택 →':`사진 ${cutCount}장을 먼저 골라 주세요`;
  $('editing-frames').replaceChildren();
  for(const frame of matchingFrames()){
-  const b=document.createElement('button');b.className='editing-frame-card';b.disabled=busy||frameLoading||chosen.length!==cutCount;b.setAttribute('aria-pressed',String(selected?.id===frame.id));
+  const b=document.createElement('button');b.className='editing-frame-card';b.disabled=busy||frameLoading||selectedCount()!==cutCount;b.setAttribute('aria-pressed',String(selected?.id===frame.id));
   const img=document.createElement('img');img.src=frame.src;img.alt='';const label=document.createElement('span');label.textContent=frame.name;b.append(img,label);
   b.onclick=async()=>{if(busy||frameLoading)return;try{await chooseFrame(frame.id);$('selection-status').textContent='프레임을 바꿨어요. 사진 위치를 확인해 주세요.';}catch{$('selection-status').textContent='프레임을 불러오지 못했어요. 기존 프레임을 유지합니다.';}finally{renderEditingFrames();renderSelection();}};
   $('editing-frames').append(b);
@@ -380,10 +401,10 @@ function resetSession(message='이용이 종료됐어요. 사진을 지웠습니
   sessionRun++;cameraRun++;frameRun++;countdownRun++;printRevision++;
   stopStream();busy=false;cameraBusy=false;frameLoading=false;uploadBusy=false;
   for(const photo of shotSession?.photos||[]){photo.width=1;photo.height=1;}
-  shotSession=null;chosen=[];blob=null;selecting=false;printReady=false;printShareFile=null;
+  shotSession=null;chosen=[];activeSlot=-1;blob=null;selecting=false;printReady=false;printShareFile=null;
   for(const id of ['selection-canvas','print-canvas']){$(id).width=1;$(id).height=1;}
   for(const id of ['result','print-image','selection-frame-overlay','overlay','map-image'])$(id).removeAttribute('src');
-  for(const id of ['photo-grid','chosen-slots','shot-thumbs','map-slots','editing-frames','after-frames'])$(id).replaceChildren();
+  for(const id of ['photo-grid','preview-slot-controls','shot-thumbs','map-slots','editing-frames','after-frames'])$(id).replaceChildren();
   if(resultURL)URL.revokeObjectURL(resultURL);resultURL=null;
   for(const url of localURLs)URL.revokeObjectURL(url);localURLs.length=0;
   frames=frames.filter(f=>!f.temporary);selected=null;
@@ -534,12 +555,12 @@ $('kiosk-unlock').onclick=async()=>{
 function addAlbumQR(canvas,url){
  const qr=qrcode(0,'M');qr.addData(url);qr.make();const modules=qr.getModuleCount();
  // Keep the original frame untouched outside a compact QR square, including its logo.
- const unit=Math.max(1,Math.floor(canvas.width*.15/(modules+8))),size=(modules+8)*unit;
+ const unit=Math.max(2,Math.floor(canvas.width*.10/(modules+8))),size=(modules+8)*unit;
  const result=document.createElement('canvas');result.width=canvas.width;result.height=canvas.height;
  const c=result.getContext('2d');c.drawImage(canvas,0,0);
  const inset=Math.round(canvas.width*.025),left=canvas.width-size-inset,y=canvas.height-size-inset;
  c.fillStyle='#fff';c.fillRect(left,y,size,size);c.fillStyle='#111';
- for(let row=0;row<modules;row++)for(let col=0;col<modules;col++)if(qr.isDark(row,col))c.fillRect(left+(col+4)*unit,y+(row+4)*unit,unit,unit);
+ for(let row=0;row<modules;row++)for(let col=0;col<modules;col++)if(qr.isDark(row,col))c.fillRect(left+Math.round((col+4)*unit),y+Math.round((row+4)*unit),Math.round((col+5)*unit)-Math.round((col+4)*unit),Math.round((row+5)*unit)-Math.round((row+4)*unit));
  return result;
 }
 async function apiJSON(url,options){const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),45000);try{const r=await fetch(url,{...options,signal:controller.signal});const d=await r.json();if(!r.ok)throw new Error(d.error||'QR 저장 실패');return d;}catch(e){if(e.name==='AbortError')throw new Error('QR 저장 응답이 늦어지고 있어요. 연결을 확인한 뒤 다시 시도해 주세요.');throw e;}finally{clearTimeout(timeout);}}
