@@ -2,7 +2,6 @@ import {withTimeout, waitForVideo} from './media-ready.mjs';
 import qrcode from './vendor/qrcode.mjs';
 const $ = id => document.getElementById(id);
 const video = $('video');
-const uploadHome=$('upload-label').parentElement;
 let frames = [], selected = null, stream = null, facing = 'user', busy = false, cameraBusy = false, frameLoading = false;
 let countdownRun = 0, cameraRun = 0, blob = null, resultURL = null, frameRun = 0;
 const localURLs = [];
@@ -11,7 +10,7 @@ const UPLOAD_LIMITS={count:5, bytes:30*1024*1024, fileBytes:10*1024*1024, pixels
 let cameraDeviceId = '', cameraDevices = [], deviceListRun = 0;
 let shotSession = null;
 let settingsOpen = false;
-let phase = 'permission';
+let phase = new URLSearchParams(location.search).get('setup')==='1'?'permission':'intro';
 let edition='basic', automatic=false, qrEnabled=false, qrConsent=false, album=null;
 let galleryConfig={configured:false,authorized:false};
 
@@ -28,7 +27,8 @@ const loadImage = src => new Promise((resolve, reject) => { const img = new Imag
 const toBlob = (canvas, type = 'image/png', quality = .96) => new Promise((resolve, reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error('이미지를 만들지 못했어요.')), type, quality));
 function controls() {
  for(const n of [2,4,6]){ $('cuts-'+n).hidden=edition==='special'&&n===2;$('cuts-'+n).disabled=frameLoading||busy||!!shotSession;$('cuts-'+n).setAttribute('aria-pressed',String(n===cutCount)); }
- for(const [cls,on] of Object.entries({'is-basic':edition==='basic','is-permission':phase==='permission','is-edition':phase==='edition','is-setup':phase==='setup','is-frame-step':phase==='frame','is-shooting':phase==='shoot'&&!blob&&!selecting,'is-selecting':selecting,'is-result':!!blob}))document.body.classList.toggle(cls,on);
+ for(const [cls,on] of Object.entries({'is-intro':phase==='intro','is-basic':edition==='basic','is-permission':phase==='permission','is-edition':phase==='edition','is-setup':phase==='setup','is-frame-step':phase==='frame','is-shooting':phase==='shoot'&&!blob&&!selecting,'is-selecting':selecting,'is-result':!!blob}))document.body.classList.toggle(cls,on);
+ $('intro-panel').hidden=phase!=='intro';
  $('edition-panel').hidden=phase!=='edition';$('frame-step').hidden=phase!=='frame';
  $('permission-panel').hidden=phase!=='permission';$('setup-heading').hidden=phase!=='setup';$('setup-actions').hidden=phase!=='setup';
  $('permission-start').disabled=cameraBusy;
@@ -38,13 +38,10 @@ function controls() {
  $('permission-start').textContent=cameraBusy?'카메라 연결 중…':cameraAccessGranted?'다시 테스트':'카메라 허용';
  $('setup-done').disabled=!selected||frameLoading||cameraBusy;
  for(const id of ['frames','setup-frame-heading'])$(id).hidden=edition!=='special';
- $('upload-label').hidden=edition!=='special'&&!(selecting&&edition==='basic');
- if(selecting&&edition==='basic')$('editor-frames-panel').append($('upload-label'));else if($('upload-label').parentElement!==uploadHome)uploadHome.insertBefore($('upload-label'),$('setup-actions'));
  $('selection-panel').hidden=!selecting;
  $('edit-settings').hidden=true;
  $('capture').disabled=phase!=='shoot'||!stream||!video.videoWidth||busy||cameraBusy||frameLoading||!!blob||selecting;
  $('capture').hidden=automatic;
- $('upload').disabled=uploadBusy||busy||!!blob||frameLoading||(!!shotSession&&!selecting)||(selecting&&selectedCount()!==cutCount);
  document.querySelectorAll('.frame-card').forEach(b=>b.disabled=busy||frameLoading||!!blob||(!!shotSession&&phase!=='frame'&&!selecting));
  $('start').disabled=cameraBusy;
  for(const suffix of ['camera','camera-refresh'])$('permission-'+suffix).disabled=phase!=='permission'||busy||cameraBusy;
@@ -354,7 +351,7 @@ $('finish-selection').onclick=async()=>{
     if(revision!==sessionRun){URL.revokeObjectURL(nextURL);return;}if(resultURL)URL.revokeObjectURL(resultURL);blob=nextBlob;resultURL=nextURL;selecting=false;
     $('size-label').textContent=`${canvas.width} × ${canvas.height} · SELPHY P · 100 × 148mm`;
     $('viewfinder').style.aspectRatio=`${canvas.width}/${canvas.height}`;$('viewfinder').style.setProperty('--preview-ratio',String(canvas.width/canvas.height));
-    $('result').hidden=false;$('capture-actions').hidden=true;$('result-actions').hidden=false;
+    $('result-admin-tools').open=false;$('result').hidden=false;$('capture-actions').hidden=true;$('result-actions').hidden=false;
     try{await updatePrint();}catch{status('인쇄용 사진 준비에 실패했어요. 사진 저장을 이용해 주세요.',true);}
     if(revision!==sessionRun)return;
     $('shot-progress').textContent='소중한 사진이 완성되었습니다.';$('stage-label').textContent='05 / 나의 순간';
@@ -393,6 +390,7 @@ function filename(ext) { return `moment-${new Date().toISOString().replace(/[:.]
 function download(data, name) { const url=URL.createObjectURL(data); const a=document.createElement('a'); a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000); }
 $('start').onclick = () => startCamera();
 $('permission-start').onclick=()=>startCamera();
+$('intro-start').onclick=()=>{phase=cameraConfirmed?'edition':'permission';controls();window.scrollTo(0,0);(cameraConfirmed?$('edition-basic'):$('permission-start')).focus({preventScroll:true});};
 $('permission-video').addEventListener('loadeddata',controls);
 $('permission-next').onclick=()=>{
  if($('permission-next').disabled)return;
@@ -425,11 +423,11 @@ function resetSession(message='이용이 종료됐어요. 사진을 지웠습니
   for(const url of localURLs)URL.revokeObjectURL(url);localURLs.length=0;
   frames=frames.filter(f=>!f.temporary);selected=null;
   $('photo-filter').value='original';$('selection-status').textContent='';
-  $('result').hidden=true;$('result-actions').hidden=true;$('capture-actions').hidden=false;
+  $('result-admin-tools').open=false;$('result').hidden=true;$('result-actions').hidden=true;$('capture-actions').hidden=false;
   $('countdown').hidden=true;$('welcome').hidden=false;
   for(const id of ['idle-dialog'])if($(id).open)$(id).close();
   $('qr-consent').checked=false;qrConsent=false;album=null;automatic=false;idleWarning=false;printing=false;externalActionStarted=0;lastActivity=Date.now();
-  phase=cameraConfirmed?'edition':'permission';renderFrames();controls();status(message);
+  phase='intro';renderFrames();controls();status(message);
   const fallback=matchingFrames()[0];if(fallback)return chooseFrame(fallback.id).catch(()=>status('기본 프레임을 다시 선택해 주세요.',true));
 }
 function hasPrivateSession(){return !!shotSession||!!blob||frames.some(f=>f.temporary)||uploadBusy;}
@@ -478,20 +476,6 @@ function removeCustomFrame(id){
   if(selected?.id===id){selected=null;const fallback=matchingFrames()[0];if(fallback)void chooseFrame(fallback.id).catch(()=>status('프레임을 다시 선택해 주세요.',true));}
   renderFrames();
 }
-$('upload').onchange = async e => {
-  const file=e.target.files?.[0];e.target.value='';if(!file||$('upload').disabled||uploadBusy)return;
-  const custom=frames.filter(f=>f.temporary);
-  if(custom.length>=UPLOAD_LIMITS.count||custom.reduce((n,f)=>n+f.bytes,0)+file.size>UPLOAD_LIMITS.bytes){status('내 프레임은 최대 5개, 합계 30MB까지 추가할 수 있어요. 기존 프레임을 삭제해 주세요.',true);return;}
-  const revision=sessionRun;uploadBusy=true;controls();let url=null,id=null;
-  try{
-    const size=await inspectUpload(file);if(revision!==sessionRun)return;
-    url=URL.createObjectURL(file);const img=await loadImage(url);if(revision!==sessionRun){URL.revokeObjectURL(url);return;}
-    if(img.naturalWidth!==size.w||img.naturalHeight!==size.h)throw new Error('프레임 이미지 크기가 올바르지 않아요.');
-    id=`custom-${++frameRun}`;frames.push({id,count:cutCount,name:file.name.replace(/\.[^.]+$/,''),src:url,edition,temporary:true,bytes:file.size});localURLs.push(url);
-    await chooseFrame(id);if(revision===sessionRun){lastActivity=Date.now();status('내 프레임을 추가했어요. 이용 종료 시 삭제됩니다.');}
-  }catch(e){if(id)frames=frames.filter(f=>f.id!==id);if(url){URL.revokeObjectURL(url);const i=localURLs.indexOf(url);if(i>=0)localURLs.splice(i,1);}if(revision===sessionRun)status(e.message,true);}
-  finally{if(revision===sessionRun){uploadBusy=false;renderFrames();controls();}}
-};
 // P paper: 100 × 177 mm before tearing; design for 100 × 148 mm AFTER tearing.
 // Exact 100:148 ratio, 304.8 dpi. Never stretch faces or crop the frame.
 function fitPostcard(source){
@@ -553,7 +537,7 @@ window.addEventListener('pageshow',()=>{if(!stream){$('welcome').hidden=false;$(
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkIdle();if(document.hidden && busy){cancelCountdown();status('화면이 전환되어 촬영을 취소했어요.');}});
 async function init(){try{const response=await fetch('frames.json');if(!response.ok)throw new Error('프레임 목록을 읽지 못했어요.');frames=await response.json();renderFrames();if(matchingFrames().length)await chooseFrame(matchingFrames()[0].id);}catch(e){status(e.message,true);}}
 await init();
-try{if(new URLSearchParams(location.search).get('setup')!=='1'&&sessionStorage.getItem('yonsei-camera-confirmed')==='1'){let permission;try{permission=await navigator.permissions?.query({name:'camera'});}catch{}if(permission?.state!=='denied'){cameraConfirmed=true;cameraDeviceId=sessionStorage.getItem('yonsei-camera-id')||'';phase='edition';controls();window.scrollTo(0,0);}}}catch{}
+try{if(new URLSearchParams(location.search).get('setup')!=='1'&&sessionStorage.getItem('yonsei-camera-confirmed')==='1'){let permission;try{permission=await navigator.permissions?.query({name:'camera'});}catch{}if(permission?.state!=='denied'){cameraConfirmed=true;cameraDeviceId=sessionStorage.getItem('yonsei-camera-id')||'';controls();window.scrollTo(0,0);}}}catch{}
 for(const name of ['basic','special'])$('edition-'+name).onclick=async()=>{
  edition=name;if(name==='special'&&cutCount===2)cutCount=4;phase='setup';selected=null;renderFrames();await chooseFrame(matchingFrames()[0].id);controls();
 };

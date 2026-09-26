@@ -11,7 +11,7 @@ try{
  const uploads=[];
  const page=await browser.newPage({permissions:['camera'],viewport:{width:1024,height:768}});page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(r.url().includes('/api/gallery/albums')&&['POST','PUT'].includes(r.method()))uploads.push(r.url());});
  await page.addInitScript(()=>{window.printCalls=0;window.print=()=>window.printCalls++;navigator.canShare=()=>true;navigator.share=async ({files})=>{window.sharedPhoto={name:files[0].name,type:files[0].type,size:files[0].size};};const native=setTimeout;window.testTicks=0;window.setTimeout=(fn,ms,...args)=>{if(ms===1000)window.testTicks++;return native(fn,ms===1000?10:ms,...args);};});
- await page.goto(base);await page.locator('#permission-start').click();await page.locator('#kiosk-code').fill(secret);await page.locator('#kiosk-unlock').click();await page.locator('#kiosk-access').waitFor({state:'hidden'});await page.locator('#permission-next').click();
+ await page.goto(base);await page.locator('#intro-start').click();await page.locator('#permission-start').click();await page.locator('#kiosk-code').fill(secret);await page.locator('#kiosk-unlock').click();await page.locator('#kiosk-access').waitFor({state:'hidden'});await page.locator('#permission-next').click();
  assert.equal(await page.locator('#timer').count(),0);assert.equal(await page.locator('#send-open').count(),0);
  assert.equal(await page.locator('#operator-settings').count(),0);assert.equal(await page.locator('#cancel').count(),0);await page.screenshot({path:'test-output/edition-tablet.png'});
  for(const [edition,count] of [['basic',2],['basic',4],['basic',6],['special',4],['special',6]]){
@@ -30,8 +30,12 @@ try{
   assert.equal(await page.locator('#filter-mono').getAttribute('aria-pressed'),'true');
   const pixels=await page.locator('.photo-choice canvas').first().evaluate(el=>Array.from(el.getContext('2d').getImageData(50,50,1,1).data));assert.equal(pixels[0],pixels[1]);assert.equal(pixels[1],pixels[2]);
   await page.locator('#finish-selection').click();await page.locator('#result').waitFor({state:'visible'});
-  assert.equal(await page.locator('#shot-progress').textContent(),'소중한 사진이 완성되었습니다.');
   assert.equal(await page.locator('#status').textContent(),'');
+  assert.equal(await page.locator('#save').isVisible(),false);
+  await page.locator('#result-admin-tools summary').click();assert.equal(await page.locator('#save').isVisible(),true);
+  const downloadPromise=page.waitForEvent('download');await page.locator('#save').click();const saved=await downloadPromise;assert.match(saved.suggestedFilename(),/\.png$/);
+  await page.locator('#result-admin-tools summary').click();
+  assert.equal(await page.locator('#shot-progress').textContent(),'소중한 사진이 완성되었습니다.');
   if(edition==='basic'&&count===4){assert.equal(await page.locator('#result').evaluate(e=>e.naturalWidth),1776);assert.equal(await page.locator('#result').evaluate(e=>e.naturalHeight),1200);await page.screenshot({path:'test-output/landscape-result.png'});await page.locator('#print-open').click();assert.equal(await page.evaluate(()=>window.sharedPhoto.type),'image/jpeg');}
   if(edition==='basic'&&count===2){
    assert.equal(await page.locator('#qr-result').count(),0);await page.screenshot({path:'test-output/qr-result.png'});
@@ -48,9 +52,9 @@ try{
    assert.equal(await page.locator('#qr-delete').count(),0);assert.equal(await page.locator('#reselect').count(),0);await page.evaluate(async id=>fetch('/api/gallery/albums/'+id,{method:'DELETE'}),albumId);assert.equal((await fetch(base+'/api/gallery/albums/'+albumId)).status,404);
   }
   if(!(edition==='basic'&&count===2)){assert.equal(uploads.length,uploadCount,'Non-consenting sessions must never POST/PUT albums');assert.equal((await readdir(dir)).length,0,'No photos or metadata stored without consent');}
-  await page.locator('#retake').click();assert.equal(await page.locator('#editing-frames img').count(),0);assert.equal(await page.locator('#edition-panel').isVisible(),true);assert.equal(await page.locator('#permission-panel').isVisible(),false);
+  await page.locator('#retake').click();await page.locator('#intro-start').click();assert.equal(await page.locator('#editing-frames img').count(),0);assert.equal(await page.locator('#edition-panel').isVisible(),true);assert.equal(await page.locator('#permission-panel').isVisible(),false);
  }
- await page.reload();await page.locator('#edition-panel').waitFor({state:'visible'});
+ await page.reload();await page.locator('#intro-start').click();await page.locator('#edition-panel').waitFor({state:'visible'});
  await page.locator('#edition-basic').click();await page.locator('#cuts-4').click();await page.locator('#setup-done').click();await page.locator('#selection-panel').waitFor({state:'visible'});await page.setViewportSize({width:390,height:844});await page.screenshot({path:'test-output/mobile-selection.png'});
  const scroll=await page.locator('#photo-grid').evaluate(e=>({x:e.scrollWidth>e.clientWidth,y:getComputedStyle(e).overflowY}));assert.equal(scroll.x,true);assert.equal(scroll.y,'hidden');
  assert.deepEqual(errors,[]);console.log('PASS: 5 edition/cut flows; 8 auto captures × 5 countdown ticks; photo-only mono; QR 9-photo viewer/delete; photo-file printing; permission reuse; mobile horizontal list.');

@@ -10,7 +10,7 @@ try{
   HTMLMediaElement.prototype.play=function(){if(!this.getClientRects().length)window.hiddenPlay=true;if(this.id==='video'&&window.stallVideo)return new Promise(()=>{});return play.call(this);};
   navigator.canShare=()=>true;navigator.share=async data=>{window.sharedFile={name:data.files[0].name,type:data.files[0].type,size:data.files[0].size};};
  });
- await page.goto(`http://127.0.0.1:${app.address().port}`);await page.locator('#permission-start').click();await page.locator('#permission-next').click();
+ await page.goto(`http://127.0.0.1:${app.address().port}`);await page.locator('#intro-start').click();await page.locator('#permission-start').click();await page.locator('#permission-next').click();
  await page.locator('#edition-basic').click();await page.evaluate(()=>window.stallVideo=true);await page.locator('#setup-done').click();
  await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('재생이 시작되지'));
  assert.equal(await page.locator('#start').isEnabled(),true);
