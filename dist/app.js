@@ -357,8 +357,8 @@ $('finish-selection').onclick=async()=>{
     $('result').hidden=false;$('capture-actions').hidden=true;$('result-actions').hidden=false;
     try{await updatePrint();}catch{status('인쇄용 사진 준비에 실패했어요. 사진 저장을 이용해 주세요.',true);}
     if(revision!==sessionRun)return;
-    $('shot-progress').textContent=`선택한 ${cutCount}장으로 완성한 전체 사진`;$('stage-label').textContent='05 / 나의 순간';
-    status('선택한 사진과 필터가 적용됐어요. 저장하거나 인쇄해 주세요.');
+    $('shot-progress').textContent='소중한 사진이 완성되었습니다.';$('stage-label').textContent='05 / 나의 순간';
+    status('');
   }catch(e){if(revision===sessionRun)$('selection-status').textContent=e.message||'합성하지 못했어요. 다시 시도해 주세요.';}
   finally{if(revision===sessionRun){busy=false;if(selecting)renderSelection();controls();}}
 };
@@ -428,7 +428,7 @@ function resetSession(message='이용이 종료됐어요. 사진을 지웠습니
   $('result').hidden=true;$('result-actions').hidden=true;$('capture-actions').hidden=false;
   $('countdown').hidden=true;$('welcome').hidden=false;
   for(const id of ['idle-dialog'])if($(id).open)$(id).close();
-  $('qr-consent').checked=false;qrConsent=false;album=null;automatic=false;$('qr-result').textContent='';idleWarning=false;printing=false;externalActionStarted=0;lastActivity=Date.now();
+  $('qr-consent').checked=false;qrConsent=false;album=null;automatic=false;idleWarning=false;printing=false;externalActionStarted=0;lastActivity=Date.now();
   phase=cameraConfirmed?'edition':'permission';renderFrames();controls();status(message);
   const fallback=matchingFrames()[0];if(fallback)return chooseFrame(fallback.id).catch(()=>status('기본 프레임을 다시 선택해 주세요.',true));
 }
@@ -535,7 +535,7 @@ $('print-open').onclick=async()=>{
   if(navigator.share&&navigator.canShare?.({files:[file]})){
    printing=true;externalActionStarted=Date.now();
    await navigator.share({files:[file]});
-   status('공유 메뉴에서 프린트를 선택해 주세요. 실제 출력 여부는 프린터에서 확인해 주세요.');
+   status('');
   }else{
    download(file,file.name);status('인쇄용 JPG를 저장했어요. 사진 앱이나 SELPHY Photo Layout에서 열어 인쇄해 주세요.');
   }
@@ -593,6 +593,5 @@ async function publishAlbum(canvas,revision){
  if(revision!==sessionRun)return canvas;
  await apiJSON(`/api/gallery/albums/${current.id}`,{method:'PUT',body:data});
  if(revision!==sessionRun){void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'});return canvas;}
- if(revision===sessionRun){$('qr-result').textContent=`QR로 사진 8장과 완성본을 볼 수 있어요. ${new Date(current.expiresAt).toLocaleString('ko-KR')}까지`;}
  return composite;
 }

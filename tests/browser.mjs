@@ -25,12 +25,16 @@ try{
   await page.locator('#selection-panel').waitFor({state:'visible'});assert.equal(await page.locator('.photo-choice').count(),8);assert.equal(await page.evaluate(()=>window.testTicks)-before,40);
   for(let i=0;i<count;i++)await page.locator('.photo-choice').nth(i).click();
   if(edition==='basic'){assert.equal(await page.locator('#frame-step').isVisible(),false);assert.equal(await page.locator('#editor-frames-panel').isVisible(),true);await page.locator('.editing-frame-card').nth(1).click();assert.equal(await page.locator('.photo-choice[aria-pressed=true]').count(),count);await page.screenshot({path:'test-output/combined-selection.png'});}
+  if(edition==='basic'&&count===4){await page.getByRole('button',{name:'가로 2×2',exact:true}).click();await page.waitForFunction(()=>!document.querySelector('#finish-selection').disabled);}
   await page.locator('#filter-mono').click();
   assert.equal(await page.locator('#filter-mono').getAttribute('aria-pressed'),'true');
   const pixels=await page.locator('.photo-choice canvas').first().evaluate(el=>Array.from(el.getContext('2d').getImageData(50,50,1,1).data));assert.equal(pixels[0],pixels[1]);assert.equal(pixels[1],pixels[2]);
   await page.locator('#finish-selection').click();await page.locator('#result').waitFor({state:'visible'});
+  assert.equal(await page.locator('#shot-progress').textContent(),'소중한 사진이 완성되었습니다.');
+  assert.equal(await page.locator('#status').textContent(),'');
+  if(edition==='basic'&&count===4){assert.equal(await page.locator('#result').evaluate(e=>e.naturalWidth),1776);assert.equal(await page.locator('#result').evaluate(e=>e.naturalHeight),1200);await page.screenshot({path:'test-output/landscape-result.png'});await page.locator('#print-open').click();assert.equal(await page.evaluate(()=>window.sharedPhoto.type),'image/jpeg');}
   if(edition==='basic'&&count===2){
-   assert.match(await page.locator('#qr-result').textContent(),/24|까지/);await page.screenshot({path:'test-output/qr-result.png'});
+   assert.equal(await page.locator('#qr-result').count(),0);await page.screenshot({path:'test-output/qr-result.png'});
    if(process.env.QR_TEST_DECODER){
     const decode=(await import(process.env.QR_TEST_DECODER)).default;
     const pixels=await page.locator('#result').evaluate(img=>{const c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;const x=c.getContext('2d');x.drawImage(img,0,0);const size=Math.round(c.width*.10),pad=8,inset=Math.round(Math.min(c.width,c.height)*.04);return {width:size+pad*2,height:size+pad*2,data:Array.from(x.getImageData(c.width-size-inset-pad,c.height-size-inset-pad,size+pad*2,size+pad*2).data)};});

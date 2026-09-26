@@ -415,3 +415,5 @@ footer{align-items:center;gap:12px}footer>span:last-child{font-size:11px;letter-
 #basic-layout-picker button{min-height:36px;padding:6px 12px;font-size:13px;flex:1;white-space:nowrap}
 #basic-layout-picker button[aria-pressed="true"]{background:#294e42;color:white;border-color:#294e42}
 @media(max-width:699px){.askive-brand img{width:105px;height:54px}.brand-meaning{display:block}.brand-meaning strong{font-size:12px}.brand-meaning span{font-size:10px}}
+
+.is-result #status:empty{display:none}.is-result .studio-bottom{display:none}
