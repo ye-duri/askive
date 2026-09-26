@@ -501,25 +501,48 @@ body,button,input,select,textarea,.brand-meaning,footer,footer span,footer butto
 @media(max-width:699px){#intro-panel{grid-template-columns:1fr;gap:26px;padding:12px 0 20px;min-height:0}.intro-copy{text-align:center}.intro-copy .eyebrow{font-size:9px;margin:8px 0 18px}#intro-title{font-size:34px;line-height:1.5;margin-bottom:16px}.intro-description{font-size:14px;margin-bottom:22px}#intro-start{margin:auto;max-width:100%;min-height:58px}.intro-note{font-size:10px;margin-top:12px}.intro-exhibition{height:300px;margin:0 8px}.intro-exhibition-caption{font-size:8px}}
 #intro-panel>*{min-width:0}.intro-exhibition{overflow:hidden}.intro-frame{min-width:0;max-width:43%}
 
-/* A little color, with neutral mats so every printed frame stays distinct. */
-body{background:#f6f3ed}
-.topbar{background:#fffdf8;border-bottom-color:#dedde9}
-.primary,.shutter,.is-result #print-open{background:#4c658a;border-color:#4c658a}
-.primary:hover,.shutter:hover,.is-result #print-open:hover{background:#3d5476}
-.intro-copy .eyebrow{color:#8b5366}
-#intro-title{color:#344862}
-.intro-exhibition{background:#e5e6ef;border-color:#cbd0e1}
-.intro-exhibition-caption{color:#58647e}
-.intro-description{color:#646875}
-#intro-start{box-shadow:0 6px 0 #d8dfec}
-.edition-options #edition-basic{background:#edf2fa;border-color:#cad5e6}
-.edition-options #edition-special{background:#fbefef;border-color:#e7cfd7}
-.edition-options #edition-basic:hover{background:#e3ebf7;border-color:#829ac1}
-.edition-options #edition-special:hover{background:#f7e5eb;border-color:#bc869b}
-.edition-gallery{background:#e0e3e5;border-color:#bec7cc}
-#edition-basic .edition-description strong{color:#4c658a}
-#edition-special .edition-description strong{color:#985f75}
-.cut-options button[aria-pressed=true],#basic-layout-picker button[aria-pressed=true],.filter-option[aria-pressed=true]{background:#4c658a;border-color:#4c658a;color:#fff}
-.frame-card[aria-pressed=true],.editing-frame-card[aria-pressed=true]{background:#e7edf8;border-color:#7890b7}
-.is-selecting .photo-choice[aria-pressed=true]{border-color:#7890b7;background:#e7edf8}
-.is-result .studio-console{background:#eff2f9;border-color:#d0d9e9}
+/* Bright editorial studio: white paper, midnight ink, restrained blue accents. */
+:root{--studio-paper:#fff;--studio-mat:#e9edf3;--club-ink:#17263b;--club-muted:#647085;--club-line:#e0e6ef}
+body{background:#ffffff;color:#17263b}
+.topbar{background:#fff;border-bottom:1px solid #e6ebf2}
+.brand-meaning{border-color:#dce3ed}.brand-meaning strong{color:#17263b}
+main{max-width:1440px}
+.primary,.shutter,.is-result #print-open{background:#203959;border-color:#203959;border-radius:6px;box-shadow:none}
+.primary:hover,.shutter:hover,.is-result #print-open:hover{background:#2b4c76}
+.permission-panel,.studio,.controls,#selection-panel,dialog{background:#fff;border-color:#e0e6ef;box-shadow:0 12px 38px #1d385308;border-radius:12px}
+#intro-panel{gap:56px;padding:36px 16px 54px;min-height:min(740px,calc(100svh - 165px));grid-template-columns:1fr 1.12fr}
+.intro-copy .eyebrow{color:#527caa;letter-spacing:.2em;font-size:10px;margin-bottom:28px}
+#intro-title{color:#172d49;font-size:clamp(36px,4.2vw,60px);line-height:1.45;letter-spacing:-.055em}
+.intro-description{color:#5f6d7f;font-size:16px;line-height:1.9}
+#intro-start{box-shadow:none;max-width:260px;min-height:60px}
+.intro-note{color:#7a8593;font-size:11px}
+.intro-exhibition{height:510px;background:#f0f5fc;border:0;border-radius:2px;overflow:hidden}
+.intro-exhibition::before{content:"";position:absolute;left:10%;right:10%;top:10%;bottom:12%;border:1px solid #d9e4f3;pointer-events:none}
+.intro-frame{width:37%;max-width:37%;height:76%;top:10%;filter:drop-shadow(0 1px 1px #20345130) drop-shadow(0 16px 14px #20345120)}
+.intro-frame-left{left:4%;transform:rotate(-9deg)}
+.intro-frame-center{left:32%;top:8%;transform:rotate(2deg)}
+.intro-frame-right{right:3%;transform:rotate(10deg)}
+.intro-exhibition-caption{color:#667c9a;letter-spacing:.18em;bottom:19px}
+#edition-panel{border:0;box-shadow:none;padding-top:24px}
+#edition-panel>.eyebrow{color:#527caa;font-size:11px;letter-spacing:.18em;margin-bottom:18px}
+#edition-panel>h2{color:#172d49;margin-bottom:32px}
+.edition-options #edition-basic,.edition-options #edition-special{background:#fff;border:1px solid #dce3ed;border-radius:8px;box-shadow:0 8px 28px #243e5808;padding:24px;gap:24px}
+.edition-options #edition-basic:hover,.edition-options #edition-special:hover{background:#fff;border-color:#7d9bbe;box-shadow:0 12px 32px #243e5812}
+.edition-gallery{background:#edf2f8;border:0;border-radius:3px;padding:24px 14px}
+#edition-special .edition-gallery{background:#f7f0f3}
+.edition-sample small{color:#617088}
+#edition-basic .edition-description strong,#edition-special .edition-description strong{color:#203959}
+.edition-description>span{color:#667387}
+.cut-options button{background:#f6f8fc;border-color:#dbe3ee;color:#394d66}
+.cut-options button[aria-pressed=true],#basic-layout-picker button[aria-pressed=true],.filter-option[aria-pressed=true]{background:#203959;border-color:#203959;color:#fff}
+.frame-card,.editing-frame-card{background:#f7f9fc;border-color:#dae2ee}
+.frame-card[aria-pressed=true],.editing-frame-card[aria-pressed=true]{background:#edf3fc;border-color:#557faf}
+.is-selecting .photo-choice[aria-pressed=true]{border-color:#557faf;background:#edf3fc}
+.is-selecting .selection-photos,.is-selecting .editor-filter-panel{background:#fff;border-color:#e1e7ef}
+.is-selecting .selection-preview{background:var(--studio-mat);border-color:#ccd6e3}
+.is-result .studio-console{background:#fff;border-color:#e1e7ef}
+.secondary,select,.filter-option{background:#f7f9fc;border-color:#d8e0ec;color:#344b66}
+.studio-top,.privacy,footer{border-color:#e3e9f1}
+footer,footer span,footer button{color:#768295}
+@media(max-width:1050px){#intro-panel{gap:30px;padding-left:0;padding-right:0}.intro-exhibition{height:420px}#intro-title{font-size:40px}}
+@media(max-width:699px){#intro-panel{grid-template-columns:1fr;gap:30px;padding:24px 0 12px;min-height:0}.intro-copy .eyebrow{font-size:9px;margin-bottom:22px}#intro-title{font-size:35px;line-height:1.5}.intro-description{font-size:14px}#intro-start{max-width:100%}.intro-exhibition{height:330px;margin:0;border-radius:3px}.intro-exhibition-caption{font-size:7px}#edition-panel{padding:8px 0}.edition-options #edition-basic,.edition-options #edition-special{padding:18px}.edition-gallery{padding:20px 12px}}
