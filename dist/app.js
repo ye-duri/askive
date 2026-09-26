@@ -245,21 +245,28 @@ function renderSelection() {
   const slot=outputSize(selected,cutCount).slots[0], ratio=slot.h/slot.w;
   shotSession.photos.forEach((photo,index)=>{
     const button=document.createElement('button');button.className='photo-choice';button.disabled=busy||frameLoading;
-    const order=chosen.indexOf(index);button.setAttribute('aria-pressed',String(order>=0));button.setAttribute('aria-label',`${index+1}번 사진${order>=0?`, ${order+1}번째 선택`:''}`);
+    const uses=chosen.filter(i=>i===index).length;button.setAttribute('aria-pressed',String(uses>0));button.setAttribute('aria-label',`${index+1}번 사진 추가${uses?`, ${uses}칸에 사용 중`:''}`);
     const thumb=photoTile(photo,{w:420,h:Math.round(420*ratio)},$('photo-filter').value || 'original');
     const label=document.createElement('span');label.textContent=`사진 ${index+1}`;button.append(thumb,label);
-    if(order>=0){const badge=document.createElement('b');badge.textContent=String(order+1);button.append(badge);}
+    if(uses){const badge=document.createElement('b');badge.textContent=`${uses}회`;button.append(badge);}
     button.onclick=()=>{
       if(busy)return;
-      const current=chosen.indexOf(index);
-      if(current>=0)chosen.splice(current,1);
-      else if(chosen.length<cutCount)chosen.push(index);
-      else{$('selection-status').textContent=`${cutCount}장을 모두 골랐어요. 바꾸려면 선택한 사진을 먼저 눌러 해제해 주세요.`;return;}
+      if(chosen.length<cutCount)chosen.push(index);
+      else{$('selection-status').textContent='모든 칸을 채웠어요. 아래 선택 목록에서 뺄 칸을 누른 뒤 사진을 추가해 주세요.';return;}
       $('selection-status').textContent=chosen.length===cutCount?'오른쪽 전체 사진을 확인하고 완성해 주세요.':'선택한 순서대로 프레임에 들어갑니다.';
       renderSelection();renderEditingFrames();controls();
     };
     $('photo-grid').append(button);
   });
+  $('chosen-slots').replaceChildren();
+  for(let slotIndex=0;slotIndex<cutCount;slotIndex++){
+    const chip=document.createElement('button');chip.className='chosen-slot';
+    const photoIndex=chosen[slotIndex];chip.disabled=photoIndex===undefined||busy||frameLoading;
+    chip.textContent=photoIndex===undefined?`${slotIndex+1}칸 · 비어 있음`:`${slotIndex+1}칸 · 사진 ${photoIndex+1} ×`;
+    chip.setAttribute('aria-label',photoIndex===undefined?`${slotIndex+1}번째 빈 칸`:`${slotIndex+1}번째 칸의 사진 ${photoIndex+1} 제거`);
+    chip.onclick=()=>{if(busy||frameLoading)return;chosen.splice(slotIndex,1);renderSelection();renderEditingFrames();controls();$('selection-status').textContent='한 칸을 비웠어요. 넣을 사진을 골라 주세요.';};
+    $('chosen-slots').append(chip);
+  }
   $('photo-grid').scrollTop=photoScroll;
   $('photo-grid').scrollLeft=photoScrollLeft;
   $('selection-count').textContent=`${chosen.length} / ${cutCount} 선택`;
@@ -274,7 +281,7 @@ function renderSelection() {
 }
 function openSelection() {
   phase='shoot';selecting=true; $('result').hidden=true; $('result-actions').hidden=true;
-  $('stage-label').textContent='04 / 사진 선택';renderSelection();renderEditingFrames();controls();
+  $('stage-label').textContent='04 / 사진 선택';renderSelection();renderEditingFrames();controls();window.scrollTo(0,0);
 }
 async function capture() {
  if($('capture').disabled||automatic)return;
@@ -376,7 +383,7 @@ function resetSession(message='이용이 종료됐어요. 사진을 지웠습니
   shotSession=null;chosen=[];blob=null;selecting=false;printReady=false;printShareFile=null;
   for(const id of ['selection-canvas','print-canvas']){$(id).width=1;$(id).height=1;}
   for(const id of ['result','print-image','selection-frame-overlay','overlay','map-image'])$(id).removeAttribute('src');
-  for(const id of ['photo-grid','shot-thumbs','map-slots','editing-frames','after-frames'])$(id).replaceChildren();
+  for(const id of ['photo-grid','chosen-slots','shot-thumbs','map-slots','editing-frames','after-frames'])$(id).replaceChildren();
   if(resultURL)URL.revokeObjectURL(resultURL);resultURL=null;
   for(const url of localURLs)URL.revokeObjectURL(url);localURLs.length=0;
   frames=frames.filter(f=>!f.temporary);selected=null;

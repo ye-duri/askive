@@ -333,3 +333,54 @@ footer{align-items:center;gap:12px}footer>span:last-child{font-size:11px;letter-
 .is-basic.is-selecting .selection-composite{min-height:170px}
 @media(min-width:700px){.is-basic.is-selecting .selection-layout{grid-template-columns:minmax(0,1.45fr) minmax(240px,1fr) 140px}.is-basic.is-selecting #selection-panel{height:calc(100svh - 90px);grid-template-rows:auto minmax(0,1fr)}.is-basic.is-selecting .selection-preview{overflow-y:auto}}
 @media(max-width:699px){.askive-brand img{height:46px}.is-basic.is-selecting .selection-composite{min-height:300px;flex:none}.is-basic.is-selecting .editing-frame-card{flex-basis:100px}.is-basic.is-selecting .selection-preview{overflow:visible}}
+
+/* Editing is a workspace: dedicate the viewport to photos, not the site masthead. */
+.is-selecting .topbar{display:none}
+.is-selecting main{max-width:none;width:100%;margin:0;padding:8px}
+.is-selecting .workspace{margin:0;gap:0}
+.is-selecting #selection-panel{margin:0;padding:12px;gap:10px;border-radius:18px}
+.is-selecting .selection-heading{margin:0;gap:10px;min-height:0;padding:0 2px}
+.is-selecting .selection-heading .editor-sheep{display:none}
+.is-selecting .selection-heading h2{font-size:21px;line-height:1.3;margin:0}
+.is-selecting .selection-heading p{margin:4px 0 0;font-size:12px;line-height:1.4}
+#chosen-slots{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;flex-shrink:0}
+.chosen-slot{min-height:36px;padding:5px 8px;border:1px solid #c6d1c0;border-radius:8px;background:#eaf0e3;color:#284d3f;font-size:12px}
+.chosen-slot:disabled{opacity:.55}
+.is-selecting .photo-choice b{width:auto;min-width:32px;padding:0 4px;border-radius:9px}
+@media screen and (min-width:700px){
+ .is-selecting #selection-panel,.is-basic.is-selecting #selection-panel{height:calc(100dvh - 16px);display:grid;grid-template-rows:auto minmax(0,1fr)}
+ .is-selecting .selection-layout,.is-basic.is-selecting .selection-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) 126px;gap:10px;min-height:0}
+ .is-selecting .selection-photos,.is-selecting .selection-preview{height:auto;min-height:0;display:flex;flex-direction:column;padding:10px}
+ .is-selecting .photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:clamp(155px,23dvh,240px);height:auto;flex:1;align-content:start;overflow-y:auto;gap:9px}
+ .is-selecting .photo-choice{width:100%;height:100%}
+ .is-selecting .selection-composite,.is-basic.is-selecting .selection-composite{flex:1;min-height:160px;height:0;width:100%;margin:0}
+ .is-selecting .editor-sidebar{grid-column:auto;display:flex;flex-direction:column;min-width:0}
+ .is-selecting .editor-filter-panel{padding:9px 6px}
+ .is-basic.is-selecting .editing-frame-section{padding-top:6px;margin-top:6px}
+ .is-basic.is-selecting .editing-frame-card{min-height:80px;flex-basis:85px;gap:2px}
+ .is-basic.is-selecting .editing-frame-card img{height:48px;width:42px}
+ .is-basic.is-selecting #upload-label{margin-top:4px;padding:4px;font-size:11px}
+ .is-basic.is-selecting #upload-label .upload-note{display:none}
+}
+@media screen and (max-width:699px){
+ .is-selecting #selection-panel{padding:8px;gap:10px}
+ .is-selecting .selection-heading h2{font-size:18px}
+ .is-selecting .selection-heading p{font-size:11px}
+ .is-selecting .selection-layout{gap:10px}
+ .is-selecting .selection-photos{padding:8px}
+ .is-selecting .chosen-slot{min-height:38px;font-size:11px}
+}
+@media screen and (min-width:700px) and (orientation:portrait){
+ .is-selecting .selection-layout,.is-basic.is-selecting .selection-layout{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);grid-template-rows:minmax(0,1fr) auto}
+ .is-selecting .editor-sidebar{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) 180px;align-items:center;gap:12px}
+ .is-selecting .editor-filter-panel{padding:0;border:0;background:none}
+ .is-selecting .editor-filter-panel .editor-label,.is-selecting .editor-filter-panel .help{display:none}
+ .is-selecting .editor-sidebar .filter-options{grid-template-columns:repeat(4,minmax(0,1fr))!important;margin:0;gap:6px}
+ .is-selecting #filter-mono{margin:0}
+ .is-selecting .editor-actions{margin:0;padding:0}
+ .is-selecting .editor-actions .shutter{min-height:56px}
+ .is-selecting .photo-grid{grid-template-columns:1fr;grid-auto-rows:200px}
+ .is-selecting .selection-composite canvas,.is-selecting .selection-composite img{object-position:center top}
+}
+@media screen and (max-width:699px){.is-selecting .selection-heading p{display:block!important}}
+@media screen and (min-width:700px) and (orientation:portrait){.is-selecting .editor-sidebar .filter-options{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important}.is-selecting .editor-sidebar .filter-option{width:100%;min-width:0;min-height:48px}}
