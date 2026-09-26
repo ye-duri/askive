@@ -404,3 +404,6 @@ footer{align-items:center;gap:12px}footer>span:last-child{font-size:11px;letter-
 @media screen and (max-width:699px){
  .is-basic.is-selecting .selection-composite{height:480px;min-height:360px}
 }
+
+/* P postcard samples share the exported artwork aspect ratio. */
+.edition-photo img,.frame-thumb{aspect-ratio:100/148;object-fit:contain}

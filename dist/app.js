@@ -174,6 +174,10 @@ function shotCount() { return cutCount; }
 function outputSize(frame, count) {
   const width = frame.width, height = frame.height;
   if (frame.slots) return {width,height,slots:frame.slots.map(([x,y,w,h])=>({x:Math.round(x*width),y:Math.round(y*height),w:Math.round(w*width),h:Math.round(h*height)}))};
+  if(Math.abs(width/height-100/148)<.002){
+    const cols=count>=4?2:1,rows=Math.ceil(count/cols),w=(1104-(cols-1)*24)/cols,h=(1320-(rows-1)*24)/rows;
+    return {width,height,slots:Array.from({length:count},(_,i)=>({x:Math.round((48+i%cols*(w+24))*width/1200),y:Math.round((48+Math.floor(i/cols)*(h+24))*height/1776),w:Math.round(w*width/1200),h:Math.round(h*height/1776)}))};
+  }
   const x = Math.round(width*42/1080), y = Math.round(height*42/1440), gap = Math.round(width*24/1080);
   const cols = count>=4?2:1, rows = Math.ceil(count/cols);
   const w = Math.floor((width-2*x-(cols-1)*gap)/cols), h = Math.floor((height*1176/1440-(rows-1)*gap)/rows);
@@ -339,7 +343,7 @@ $('finish-selection').onclick=async()=>{
   if(busy||frameLoading||selectedCount()!==cutCount||!shotSession||shotSession.photos.length!==CAPTURE_TOTAL)return;
   busy=true;renderSelection();controls();const revision=sessionRun;
   try{
-    let canvas=document.createElement('canvas');composeSelection(canvas);
+    let canvas=document.createElement('canvas');composeSelection(canvas);canvas=fitPostcard(canvas);
     if(qrConsent){
       $('selection-status').textContent='QR 앨범을 준비하고 있어요…';
       canvas=await publishAlbum(canvas,revision);if(revision!==sessionRun)return;
@@ -348,6 +352,7 @@ $('finish-selection').onclick=async()=>{
     const nextURL=URL.createObjectURL(nextBlob);$('result').src=nextURL;
     try{await $('result').decode();}catch(e){URL.revokeObjectURL(nextURL);throw e;}
     if(revision!==sessionRun){URL.revokeObjectURL(nextURL);return;}if(resultURL)URL.revokeObjectURL(resultURL);blob=nextBlob;resultURL=nextURL;selecting=false;
+    $('size-label').textContent=`${canvas.width} × ${canvas.height} · SELPHY P · 100 × 148mm`;
     $('viewfinder').style.aspectRatio=`${canvas.width}/${canvas.height}`;$('viewfinder').style.setProperty('--preview-ratio',String(canvas.width/canvas.height));
     $('result').hidden=false;$('capture-actions').hidden=true;$('result-actions').hidden=false;
     try{await updatePrint();}catch{status('인쇄용 사진 준비에 실패했어요. 사진 저장을 이용해 주세요.',true);}
@@ -403,9 +408,9 @@ function resetSession(message='이용이 종료됐어요. 사진을 지웠습니
   sessionRun++;cameraRun++;frameRun++;countdownRun++;printRevision++;
   stopStream();busy=false;cameraBusy=false;frameLoading=false;uploadBusy=false;
   for(const photo of shotSession?.photos||[]){photo.width=1;photo.height=1;}
-  shotSession=null;chosen=[];activeSlot=-1;blob=null;selecting=false;printReady=false;printShareFile=null;
+  shotSession=null;chosen=[];activeSlot=-1;blob=null;selecting=false;printReady=false;printShareFile=null;nativePrintBusy=false;
   for(const id of ['selection-canvas','print-canvas']){$(id).width=1;$(id).height=1;}
-  for(const id of ['result','print-image','selection-frame-overlay','overlay','map-image'])$(id).removeAttribute('src');
+  for(const id of ['result','selection-frame-overlay','overlay','map-image'])$(id).removeAttribute('src');
   for(const id of ['photo-grid','preview-slot-controls','shot-thumbs','map-slots','editing-frames','after-frames'])$(id).replaceChildren();
   if(resultURL)URL.revokeObjectURL(resultURL);resultURL=null;
   for(const url of localURLs)URL.revokeObjectURL(url);localURLs.length=0;
@@ -478,41 +483,60 @@ $('upload').onchange = async e => {
   }catch(e){if(id)frames=frames.filter(f=>f.id!==id);if(url){URL.revokeObjectURL(url);const i=localURLs.indexOf(url);if(i>=0)localURLs.splice(i,1);}if(revision===sessionRun)status(e.message,true);}
   finally{if(revision===sessionRun){uploadBusy=false;renderFrames();controls();}}
 };
-// Prepare before the click so Safari keeps the user activation for print/share.
-let printReady=false,printRevision=0,printShareFile=null;
-async function updatePrint(){
- printReady=false;printShareFile=null;$('print-open').disabled=true;$('print-share').disabled=true;
- const revision=++printRevision;
- if(!blob)return;
- const canvas=$('print-canvas');canvas.width=1181;canvas.height=1748; // 100 × 148 mm at 300 dpi
- const c=canvas.getContext('2d'),img=$('result');
- c.fillStyle='#fff';c.fillRect(0,0,canvas.width,canvas.height);
- const scale=Math.min(canvas.width/img.naturalWidth,canvas.height/img.naturalHeight);
- const w=img.naturalWidth*scale,h=img.naturalHeight*scale;
- c.drawImage(img,(canvas.width-w)/2,(canvas.height-h)/2,w,h);
- const jpg=await toBlob(canvas,'image/jpeg',.96);
- if(revision!==printRevision)return;
- $('print-image').src=canvas.toDataURL('image/jpeg',.96);
- await $('print-image').decode();
- if(revision!==printRevision)return;
- printShareFile=new File([jpg],'yonsei-studio-print.jpg',{type:'image/jpeg'});
- printReady=true;$('print-open').disabled=false;
- $('print-share').hidden=!navigator.canShare?.({files:[printShareFile]});
- $('print-share').disabled=false;
+// P paper: 100 × 177 mm before tearing; design for 100 × 148 mm AFTER tearing.
+// Exact 100:148 ratio, 304.8 dpi. Never stretch faces or crop the frame.
+function fitPostcard(source){
+ const result=document.createElement('canvas');
+ const landscape=source.width>source.height;
+ result.width=landscape?1776:1200;result.height=landscape?1200:1776;
+ const c=result.getContext('2d');
+ const scale=Math.min(result.width/source.width,result.height/source.height);
+ const w=Math.round(source.width*scale),h=Math.round(source.height*scale);
+ const x=Math.floor((result.width-w)/2),y=Math.floor((result.height-h)/2);
+ // Extend only the outermost artwork pixels into the extra paper area.
+ // The image, photo apertures and logo remain proportionally identical.
+ if(y){c.drawImage(source,0,0,source.width,1,0,0,result.width,y);c.drawImage(source,0,source.height-1,source.width,1,0,y+h,result.width,result.height-y-h);}
+ if(x){c.drawImage(source,0,0,1,source.height,0,0,x,result.height);c.drawImage(source,source.width-1,0,1,source.height,x+w,0,result.width-x-w,result.height);}
+ c.drawImage(source,x,y,w,h);return result;
 }
-$('print-open').onclick=()=>{
- if(!printReady){status('인쇄용 사진을 준비 중이에요. 잠시 후 다시 눌러 주세요.',true);return;}
- try{printing=true;externalActionStarted=Date.now();window.print();}
- catch{printing=false;lastActivity=Date.now();status('인쇄 창을 열지 못했어요. 사진 파일로 인쇄를 이용해 주세요.',true);}
-};
-$('print-share').onclick=async()=>{
- if(!printReady||!printShareFile)return;
+// Prepare the JPEG before clicking so iPad keeps the user gesture for file sharing.
+let printReady=false,printRevision=0,printShareFile=null,nativePrintBusy=false;
+async function updatePrint(){
+ printReady=false;printShareFile=null;$('print-open').disabled=true;
+ const revision=++printRevision;if(!blob)return;
+ const canvas=$('print-canvas'),img=$('result');
+ canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;
+ const c=canvas.getContext('2d');c.fillStyle='#fff';c.fillRect(0,0,canvas.width,canvas.height);c.drawImage(img,0,0);
+ const jpg=await toBlob(canvas,'image/jpeg',.96);if(revision!==printRevision)return;
+ printShareFile=new File([jpg],'yonsei-studio-P-100x148mm.jpg',{type:'image/jpeg'});
+ printReady=true;$('print-open').disabled=false;
+}
+$('print-open').onclick=async()=>{
+ if(!printReady||!printShareFile){status('인쇄용 사진을 준비 중이에요. 잠시 후 다시 눌러 주세요.',true);return;}
+ const file=printShareFile;
+ if(window.webkit?.messageHandlers?.yonseiPrint){
+  if(nativePrintBusy)return;
+  nativePrintBusy=true;printing=true;externalActionStarted=Date.now();$('print-open').disabled=true;
+  const reader=new FileReader();
+  reader.onload=()=>window.webkit.messageHandlers.yonseiPrint.postMessage({type:'print',jpeg:String(reader.result).split(',')[1]});
+  reader.onerror=()=>{nativePrintBusy=false;printing=false;$('print-open').disabled=false;status('인쇄 파일을 읽지 못했어요.',true);};
+  reader.readAsDataURL(file);return;
+ }
  try{
-  printing=true;externalActionStarted=Date.now();
-  await navigator.share({files:[printShareFile]});
- }catch(e){if(e.name!=='AbortError')status('사진 공유 메뉴를 열지 못했어요. 사진 저장 후 인쇄해 주세요.',true);}
+  if(navigator.share&&navigator.canShare?.({files:[file]})){
+   printing=true;externalActionStarted=Date.now();
+   await navigator.share({files:[file]});
+   status('공유 메뉴에서 프린트를 선택해 주세요. 실제 출력 여부는 프린터에서 확인해 주세요.');
+  }else{
+   download(file,file.name);status('인쇄용 JPG를 저장했어요. 사진 앱이나 SELPHY Photo Layout에서 열어 인쇄해 주세요.');
+  }
+ }catch(e){if(e.name!=='AbortError'){download(file,file.name);status('공유 메뉴를 열지 못해 인쇄용 JPG를 저장했어요. 사진 앱에서 열어 인쇄해 주세요.',true);}}
  finally{printing=false;lastActivity=Date.now();}
 };
+window.addEventListener('yonsei-print-state',e=>{
+ const d=e.detail||{};status(d.message||'프린터 상태를 확인해 주세요.',d.state==='error');
+ if(d.state!=='busy'){nativePrintBusy=false;printing=false;lastActivity=Date.now();$('print-open').disabled=!printReady;}
+});
 window.addEventListener('afterprint',()=>{printing=false;lastActivity=Date.now();});
 window.addEventListener('focus',()=>{printing=false;checkIdle();});
 window.addEventListener('pagehide',()=>{resetSession();});
@@ -543,7 +567,7 @@ function addAlbumQR(canvas,url){
  const unit=Math.max(2,Math.floor(canvas.width*.10/(modules+8))),size=(modules+8)*unit;
  const result=document.createElement('canvas');result.width=canvas.width;result.height=canvas.height;
  const c=result.getContext('2d');c.drawImage(canvas,0,0);
- const inset=Math.round(canvas.width*.025),left=canvas.width-size-inset,y=canvas.height-size-inset;
+ const inset=Math.round(Math.min(canvas.width,canvas.height)*.04),left=canvas.width-size-inset,y=canvas.height-size-inset;
  c.fillStyle='#fff';c.fillRect(left,y,size,size);c.fillStyle='#111';
  for(let row=0;row<modules;row++)for(let col=0;col<modules;col++)if(qr.isDark(row,col))c.fillRect(left+Math.round((col+4)*unit),y+Math.round((row+4)*unit),Math.round((col+5)*unit)-Math.round((col+4)*unit),Math.round((row+5)*unit)-Math.round((row+4)*unit));
  return result;

@@ -10,7 +10,7 @@ try{
  browser=await chromium.launch({...(process.env.PLAYWRIGHT_CHANNEL?{channel:process.env.PLAYWRIGHT_CHANNEL}:{}),headless:true,args:['--use-fake-ui-for-media-stream','--use-fake-device-for-media-stream']});
  const uploads=[];
  const page=await browser.newPage({permissions:['camera'],viewport:{width:1024,height:768}});page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(r.url().includes('/api/gallery/albums')&&['POST','PUT'].includes(r.method()))uploads.push(r.url());});
- await page.addInitScript(()=>{window.printCalls=0;window.print=()=>window.printCalls++;const native=setTimeout;window.testTicks=0;window.setTimeout=(fn,ms,...args)=>{if(ms===1000)window.testTicks++;return native(fn,ms===1000?10:ms,...args);};});
+ await page.addInitScript(()=>{window.printCalls=0;window.print=()=>window.printCalls++;navigator.canShare=()=>true;navigator.share=async ({files})=>{window.sharedPhoto={name:files[0].name,type:files[0].type,size:files[0].size};};const native=setTimeout;window.testTicks=0;window.setTimeout=(fn,ms,...args)=>{if(ms===1000)window.testTicks++;return native(fn,ms===1000?10:ms,...args);};});
  await page.goto(base);await page.locator('#permission-start').click();await page.locator('#kiosk-code').fill(secret);await page.locator('#kiosk-unlock').click();await page.locator('#kiosk-access').waitFor({state:'hidden'});await page.locator('#permission-next').click();
  assert.equal(await page.locator('#timer').count(),0);assert.equal(await page.locator('#send-open').count(),0);
  assert.equal(await page.locator('#operator-settings').count(),0);assert.equal(await page.locator('#cancel').count(),0);await page.screenshot({path:'test-output/edition-tablet.png'});
@@ -33,14 +33,14 @@ try{
    assert.match(await page.locator('#qr-result').textContent(),/24|까지/);await page.screenshot({path:'test-output/qr-result.png'});
    if(process.env.QR_TEST_DECODER){
     const decode=(await import(process.env.QR_TEST_DECODER)).default;
-    const pixels=await page.locator('#result').evaluate(img=>{const c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;const x=c.getContext('2d');x.drawImage(img,0,0);const size=Math.round(c.width*.10),pad=8,inset=Math.round(c.width*.025);return {width:size+pad*2,height:size+pad*2,data:Array.from(x.getImageData(c.width-size-inset-pad,c.height-size-inset-pad,size+pad*2,size+pad*2).data)};});
+    const pixels=await page.locator('#result').evaluate(img=>{const c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;const x=c.getContext('2d');x.drawImage(img,0,0);const size=Math.round(c.width*.10),pad=8,inset=Math.round(Math.min(c.width,c.height)*.04);return {width:size+pad*2,height:size+pad*2,data:Array.from(x.getImageData(c.width-size-inset-pad,c.height-size-inset-pad,size+pad*2,size+pad*2).data)};});
     const decoded=decode(new Uint8ClampedArray(pixels.data),pixels.width,pixels.height);assert.ok(decoded,'Small QR must decode');assert.match(decoded.data,/gallery.html#/);console.log('PASS: compact 10% QR decoded from final image');
    }
    const id=await page.evaluate(()=>document.querySelector('#result').src);assert.match(id,/^blob:/);
    // Validate gallery through its real API using authenticated cookie, then expiry deletion through UI.
    const files=await (await import('node:fs/promises')).readdir(dir);const albumId=files.find(f=>f.endsWith('_meta.json')).split('_')[0];
    const galleryPage=await browser.newPage();await galleryPage.goto(base+'/gallery.html#'+albumId);await galleryPage.locator('#gallery-photos img').last().waitFor();assert.equal(await galleryPage.locator('#gallery-photos img').count(),9);await galleryPage.close();
-   await page.locator('#print-open').click();assert.equal(await page.evaluate(()=>window.printCalls),1);assert.equal(await page.locator('#print-dialog').count(),0);await page.emulateMedia({media:'print'});const sheet=await page.locator('#print-sheet').boundingBox();assert.ok(Math.abs(sheet.x)<1&&Math.abs(sheet.y)<1,'Print starts at paper origin');assert.ok(Math.abs(sheet.width-100/25.4*96)<1);assert.ok(Math.abs(sheet.height-148/25.4*96)<1);await page.pdf({path:'test-output/print.pdf',preferCSSPageSize:true,printBackground:true,displayHeaderFooter:true});await page.emulateMedia({media:'screen'});
+   await page.locator('#print-open').click();assert.equal(await page.evaluate(()=>window.printCalls),0);assert.equal(await page.evaluate(()=>window.sharedPhoto.type),'image/jpeg');assert.equal(await page.locator('#result').evaluate(e=>e.naturalWidth),1200);assert.equal(await page.locator('#result').evaluate(e=>e.naturalHeight),1776);
    assert.equal(await page.locator('#qr-delete').count(),0);assert.equal(await page.locator('#reselect').count(),0);await page.evaluate(async id=>fetch('/api/gallery/albums/'+id,{method:'DELETE'}),albumId);assert.equal((await fetch(base+'/api/gallery/albums/'+albumId)).status,404);
   }
   if(!(edition==='basic'&&count===2)){assert.equal(uploads.length,uploadCount,'Non-consenting sessions must never POST/PUT albums');assert.equal((await readdir(dir)).length,0,'No photos or metadata stored without consent');}
@@ -49,5 +49,5 @@ try{
  await page.reload();await page.locator('#edition-panel').waitFor({state:'visible'});
  await page.locator('#edition-basic').click();await page.locator('#cuts-4').click();await page.locator('#setup-done').click();await page.locator('#selection-panel').waitFor({state:'visible'});await page.setViewportSize({width:390,height:844});await page.screenshot({path:'test-output/mobile-selection.png'});
  const scroll=await page.locator('#photo-grid').evaluate(e=>({x:e.scrollWidth>e.clientWidth,y:getComputedStyle(e).overflowY}));assert.equal(scroll.x,true);assert.equal(scroll.y,'hidden');
- assert.deepEqual(errors,[]);console.log('PASS: 5 edition/cut flows; 8 auto captures × 5 countdown ticks; photo-only mono; QR 9-photo viewer/delete; print PDF; permission reuse; mobile horizontal list.');
+ assert.deepEqual(errors,[]);console.log('PASS: 5 edition/cut flows; 8 auto captures × 5 countdown ticks; photo-only mono; QR 9-photo viewer/delete; photo-file printing; permission reuse; mobile horizontal list.');
 }finally{await browser?.close();await new Promise(r=>app.close(r));await rm(dir,{recursive:true,force:true});}

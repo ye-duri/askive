@@ -18,6 +18,6 @@ try{
   if(width>=700){const preview=await page.locator('.selection-composite').boundingBox();assert.ok(preview.height>=height*.45,`Preview has room: ${preview.height}`);assert.ok(box.y+box.height<=height+1);}
   else assert.ok(await page.locator('#photo-grid').evaluate(e=>e.scrollWidth>e.clientWidth));
  }
- await page.locator('#finish-selection').click();await page.locator('#result').waitFor({state:'visible'});await page.locator('#retake').click();assert.equal(await page.locator('.preview-slot').count(),0);
+ await page.locator('#finish-selection').click();await page.locator('#result').waitFor({state:'visible'});await page.evaluate(()=>{window.nativeCalls=[];window.webkit={messageHandlers:{yonseiPrint:{postMessage:msg=>window.nativeCalls.push(msg)}}};});await page.locator('#print-open').click();await page.waitForFunction(()=>window.nativeCalls.length===1);assert.equal(await page.locator('#print-open').isDisabled(),true);assert.ok(await page.evaluate(()=>window.nativeCalls[0].jpeg.startsWith('/9j/')));await page.evaluate(()=>window.dispatchEvent(new CustomEvent('yonsei-print-state',{detail:{state:'sent',message:'test sent'}})));assert.equal(await page.locator('#print-open').isEnabled(),true);await page.locator('#retake').click();assert.equal(await page.locator('.preview-slot').count(),0);
  console.log('PASS: duplicate selections, single-slot removal, cap, frame preservation, completion, reset and three responsive layouts');
 }finally{await browser?.close();await new Promise(r=>app.close(r));}
