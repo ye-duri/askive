@@ -20,6 +20,7 @@ try{
   assert.equal(await page.locator('#qr-consent').isChecked(),false);assert.equal(await page.locator('#setup-done').textContent(),'촬영시작');
   if(edition==='special')assert.equal(await page.locator('#cuts-2').isVisible(),false);else assert.equal(await page.locator('#frames').isVisible(),false);
   if(edition==='basic'&&count===2)await page.locator('#qr-consent').check();
+  if(edition==='special')await page.locator('[data-id="'+(count===4?'sheep-farewell-four':'sheep-club-six')+'"]').click();
   const before=await page.evaluate(()=>window.testTicks);await page.locator('#setup-done').click();
 
   await page.locator('#selection-panel').waitFor({state:'visible'});assert.equal(await page.locator('.photo-choice').count(),8);assert.equal(await page.evaluate(()=>window.testTicks)-before,40);
