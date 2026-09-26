@@ -1,0 +1,19 @@
+name = "askive"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-09-26"
+send_metrics = false
+r2_buckets = []
+[vars]
+CLEANUP_ENABLED = "0"
+CLEANUP_HEALTH = "0"
+[env.preview]
+r2_buckets = []
+[env.preview.vars]
+CLEANUP_ENABLED = "0"
+CLEANUP_HEALTH = "0"
+[[env.production.r2_buckets]]
+binding = "PHOTOS"
+bucket_name = "yonsei-studio-photos"
+[env.production.vars]
+CLEANUP_ENABLED = "1"
+CLEANUP_HEALTH = "1"

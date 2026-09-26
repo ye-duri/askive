@@ -11,3 +11,8 @@ coverage/
 *.pfx
 credentials*.json
 secrets/
+
+.local-albums/
+.wrangler/
+.dev.vars
+test-output/
