@@ -5,8 +5,9 @@
   "scripts": {
     "start": "node --env-file-if-exists=.env server.mjs",
     "check": "node --check dist/app.js && node --check dist/gallery.js && node --check server.mjs && node --check lib/gallery.mjs",
-    "test": "node tests/security.mjs && node tests/gallery.mjs",
-    "test:browser": "node tests/browser.mjs"
+    "test": "node tests/security.mjs && node tests/gallery.mjs && node tests/camera-ready.mjs",
+    "test:browser": "node tests/browser.mjs",
+    "test:camera": "node tests/camera-recovery.mjs"
   },
   "engines": {
     "node": ">=24.21.0 <25"

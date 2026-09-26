@@ -1,3 +1,4 @@
+import {withTimeout, waitForVideo} from './media-ready.mjs';
 import qrcode from './vendor/qrcode.mjs';
 const $ = id => document.getElementById(id);
 const video = $('video');
@@ -111,7 +112,7 @@ async function refreshCameras() {
 }
 function cameraDisconnected(active) {
   if(stream!==active)return;
-  cameraRun++;stopStream();cancelCountdown();$('welcome').hidden=false;
+  cameraRun++;cameraBusy=false;stopStream();cancelCountdown();$('welcome').hidden=false;
   $('camera-state').textContent='카메라 연결 끊김';
   status('카메라 연결이 끊겼어요. 촬영한 사진은 유지됩니다. 같은 카메라를 다시 연결한 뒤 카메라 켜기를 눌러 주세요.',true);
   controls();void refreshCameras();
@@ -123,7 +124,7 @@ async function startCamera() {
   $('camera-state').textContent = '카메라 연결 중';
   try {
     const source=cameraDeviceId ? {deviceId:{exact:cameraDeviceId}} : {facingMode:{ideal:'user'}};
-    const next = await navigator.mediaDevices.getUserMedia({audio:false, video:{...source,width:{ideal:1920},height:{ideal:1440}}});
+    const next = await withTimeout(navigator.mediaDevices.getUserMedia({audio:false, video:{...source,width:{ideal:1920},height:{ideal:1440}}}),20000,'카메라 연결 시간이 초과됐어요. 연결을 확인한 뒤 다시 시도해 주세요.',late=>late.getTracks().forEach(t=>t.stop()));
     if (run !== cameraRun) { next.getTracks().forEach(t => t.stop()); return; }
     stream = next;
     const track=next.getVideoTracks()[0];
@@ -132,7 +133,10 @@ async function startCamera() {
     facing = track.getSettings().facingMode || '';
     track.addEventListener('ended',()=>cameraDisconnected(next));
     const targetVideo=phase==='permission'?$('permission-video'):video;
-    targetVideo.srcObject = next; await targetVideo.play();
+    if(phase==='permission'){cameraAccessGranted=true;controls();}
+    targetVideo.srcObject = next;
+    await withTimeout(targetVideo.play(),12000,'영상 재생이 시작되지 않았어요. 카메라를 사용하는 다른 앱을 닫고 다시 시도해 주세요.');
+    await waitForVideo(targetVideo,()=>run!==cameraRun||stream!==next);
     if(run!==cameraRun || stream!==next)return;
     if(phase==='permission')cameraAccessGranted=true;
     video.style.transform = 'scaleX(-1)';
@@ -140,12 +144,12 @@ async function startCamera() {
     $('mirror-label').textContent = '좌우 반전';
     $('welcome').hidden = true; settingsOpen = false; document.body.classList.remove('config-open'); $('camera-state').textContent = track.label || '카메라 켜짐'; $('stage-label').textContent = '02 / 촬영';
     status(phase==='permission'?'카메라가 연결됐어요. 테스트 영상을 확인한 뒤 다음으로 넘어가 주세요.':phase==='setup'?'카메라·프레임·카운트다운을 고른 뒤 촬영하기를 눌러 주세요.':'준비되면 한 장씩 촬영해 주세요.');
-    await refreshCameras();
+    void refreshCameras();
   } catch(e) {
     if(run!==cameraRun)return;
     stopStream(); $('welcome').hidden = false; $('camera-state').textContent = '카메라 꺼짐';
     const errors = {NotAllowedError:'카메라 권한이 꺼져 있어요. 브라우저의 사이트 설정에서 카메라를 허용한 뒤 다시 켜 주세요.',NotFoundError:'선택한 카메라를 찾지 못했어요. 연결을 확인하거나 다른 카메라를 선택해 주세요.',OverconstrainedError:'선택한 카메라에 연결할 수 없어요. 목록을 새로고침하고 다시 선택해 주세요.',NotReadableError:'다른 앱이 카메라를 사용 중일 수 있어요. 앱을 닫고 다시 시도해 주세요.'};
-    status(phase==='shoot' && ['NotFoundError','OverconstrainedError'].includes(e.name) ? '처음 선택한 카메라를 찾지 못했어요. 같은 카메라를 다시 연결한 뒤 카메라 켜기를 눌러 주세요.' : errors[e.name] || '카메라를 켜지 못했어요. 연결을 확인하고 다시 시도해 주세요.', true);
+    status(phase==='shoot' && ['NotFoundError','OverconstrainedError'].includes(e.name) ? '처음 선택한 카메라를 찾지 못했어요. 같은 카메라를 다시 연결한 뒤 카메라 켜기를 눌러 주세요.' : errors[e.name] || (e.name==='TimeoutError'?e.message:'카메라를 켜지 못했어요. 연결을 확인하고 다시 시도해 주세요.'), true);
   } finally { if(run===cameraRun){cameraBusy = false; controls();} }
 }
 for(const prefix of ['permission']) {
@@ -156,7 +160,7 @@ for(const prefix of ['permission']) {
   };
   $(prefix+'-camera-refresh').onclick=async()=>{
     if(phase!=='permission'||busy||cameraBusy||blob||selecting)return;
-    await refreshCameras();
+    void refreshCameras();
   };
 }
 navigator.mediaDevices?.addEventListener?.('devicechange',async()=>{
@@ -353,9 +357,13 @@ $('permission-next').onclick=()=>{
 };
 $('setup-done').onclick=async()=>{
  if($('setup-done').disabled)return;
+ const revision=sessionRun;
+ phase='shoot';qrConsent=qrEnabled&&$('qr-consent').checked;settingsOpen=false;document.body.classList.remove('config-open');
+ $('stage-label').textContent='03 / 촬영';showShotPreview();controls();window.scrollTo(0,0);
+ status('카메라 영상을 준비하고 있어요…');
  if(!stream)await startCamera();
- if(!stream)return;
- phase='shoot';qrConsent=qrEnabled&&$('qr-consent').checked;settingsOpen=false;document.body.classList.remove('config-open');$('stage-label').textContent='03 / 촬영';showShotPreview();controls();status('5초마다 자동으로 촬영합니다.');await capture();
+ if(revision!==sessionRun||!stream||video.readyState<2||!video.videoWidth)return;
+ status('5초마다 자동으로 촬영합니다.');await capture();
 };
 video.addEventListener('loadeddata',controls);
 $('capture').onclick = capture;
@@ -365,7 +373,7 @@ function resetSession(message='이용이 종료됐어요. 사진을 지웠습니
   sessionRun++;cameraRun++;frameRun++;countdownRun++;printRevision++;
   stopStream();busy=false;cameraBusy=false;frameLoading=false;uploadBusy=false;
   for(const photo of shotSession?.photos||[]){photo.width=1;photo.height=1;}
-  shotSession=null;chosen=[];blob=null;selecting=false;printReady=false;
+  shotSession=null;chosen=[];blob=null;selecting=false;printReady=false;printShareFile=null;
   for(const id of ['selection-canvas','print-canvas']){$(id).width=1;$(id).height=1;}
   for(const id of ['result','print-image','selection-frame-overlay','overlay','map-image'])$(id).removeAttribute('src');
   for(const id of ['photo-grid','shot-thumbs','map-slots','editing-frames','after-frames'])$(id).replaceChildren();
@@ -441,9 +449,9 @@ $('upload').onchange = async e => {
   finally{if(revision===sessionRun){uploadBusy=false;renderFrames();controls();}}
 };
 const papers={postcard:{w:100,h:148,label:'SELPHY 엽서'},'4x6':{w:101.6,h:152.4,label:'4 × 6인치'},a4:{w:210,h:297,label:'A4'}};
-let printReady = false, printRevision = 0;
+let printReady = false, printRevision = 0, printShareFile=null;
 async function updatePrint(){
-  printReady = false; $('print').disabled = true; $('print-file').disabled = true;
+  printReady = false;printShareFile=null;$('print-share').disabled=true; $('print').disabled = true; $('print-file').disabled = true;
   const revision = ++printRevision;
   if(!blob)return;
   const p=papers[$('paper').value], canvas=$('print-canvas');
@@ -453,13 +461,27 @@ async function updatePrint(){
   const cover=$('print-fit').value==='cover'&&!album;if(album)$('print-fit').value='contain';const scale=(cover?Math.max:Math.min)(canvas.width/img.naturalWidth,canvas.height/img.naturalHeight);
   const w=img.naturalWidth*scale,h=img.naturalHeight*scale;ctx.drawImage(img,(canvas.width-w)/2,(canvas.height-h)/2,w,h);
   $('print-image').src=canvas.toDataURL('image/jpeg',.96);
-  $('print-page-style').textContent=`@page {size:${p.w}mm ${p.h}mm;margin:0} @media print {html,body{width:100%!important;height:100%!important;overflow:hidden!important;}#print-sheet{position:fixed!important;inset:0!important;width:100%!important;height:100%!important;}#print-image{width:100%!important;height:100%!important;object-fit:fill!important;}}`;
+  $('print-page-style').textContent=`@page {size:${p.w}mm ${p.h}mm;margin:0} @media print {html,body{width:100%!important;height:100%!important;overflow:hidden!important;}#print-sheet{position:fixed!important;inset:0!important;width:100%!important;height:100%!important;}#print-image{width:100%!important;height:100%!important;object-fit:contain!important;}}`;
   await $('print-image').decode();
+  const shareFile=new File([await toBlob(canvas,'image/jpeg',.96)],filename('jpg'),{type:'image/jpeg'});
   if (revision !== printRevision) return;
+  printShareFile=shareFile;$('print-share').disabled=false;
   printReady = true; $('print').disabled = false; $('print-file').disabled = false;
   $('print-info').textContent=`${p.label} · ${p.w} × ${p.h}mm · ${album?'QR이 잘리지 않도록 전체 프레임을 표시합니다.':cover?'가장자리의 사진·프레임이 잘릴 수 있어요.':'전체 프레임을 유지하며 빈 부분은 흰색으로 인쇄해요.'}`;
 }
 $('print-open').onclick=async()=>{try{if(album)$('print-fit').value='contain';await updatePrint();$('print-dialog').showModal();}catch{status('인쇄 미리보기를 만들지 못했어요.',true);}};
+$('print-share').onclick=async()=>{
+ if(!printReady||!printShareFile)return;
+ const file=printShareFile;
+ try{
+  if(navigator.canShare?.({files:[file]})&&navigator.share){
+   printing=true;externalActionStarted=Date.now();
+   await navigator.share({files:[file]});
+   $('print-status').textContent='사진 공유 메뉴를 열었어요. 실제 인쇄 완료는 프린터에서 확인해 주세요.';
+  }else{download(file,file.name);$('print-status').textContent='이 브라우저는 사진 파일 공유를 지원하지 않아 JPG로 저장했어요.';}
+ }catch(e){if(e.name!=='AbortError')$('print-status').textContent='사진 공유를 열지 못했어요. 인쇄용 JPG 저장을 이용해 주세요.';}
+ finally{printing=false;lastActivity=Date.now();}
+};
 $('print-close').onclick=()=>{printing=false;lastActivity=Date.now();$('print-dialog').close();};
 $('paper').onchange=$('print-fit').onchange=()=>updatePrint().catch(()=>status('인쇄 미리보기 오류',true));
 $('print').onclick=()=>{
@@ -473,7 +495,7 @@ $('print-file').onclick=()=>{
   if (!printReady) return;
   const p=papers[$('paper').value];
   const data=$('print-image').src;
-  const html=`<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>순간 · 사진 인쇄</title><style>body{font-family:system-ui;background:#f3f6ff;color:#23304a;margin:24px}main{max-width:700px;margin:auto}button{padding:16px 24px;background:#3e62e8;color:white;border:0;border-radius:10px;font-size:18px;cursor:pointer}img{display:block;max-width:100%;width:360px;margin:24px auto}p{line-height:1.7}@page{size:${p.w}mm ${p.h}mm;margin:0}@media print{html,body,main{margin:0;padding:0;width:${p.w}mm;height:100vh;background:white}header{display:none}img{margin:0;width:100vw;height:100vh;object-fit:fill;max-width:none;display:block;print-color-adjust:exact}}</style><main><header><h1>사진이 준비됐어요.</h1><p>용지 ${p.w} × ${p.h}mm · 세로 방향 · 머리글/바닥글 끄기<br>프린터에서 Canon SELPHY CP1500을 선택해 주세요.</p><button onclick="window.print()">인쇄 창 열기</button><p>창이 열리지 않으면 브라우저 메뉴의 인쇄 또는 ⌘P / Ctrl+P를 사용하세요.<br>이 파일에는 촬영 사진이 포함되어 있습니다. 공용 기기에서는 사용 후 삭제해 주세요.</p></header><img src="${data}" alt="촬영한 사진"></main></html>`;
+  const html=`<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>순간 · 사진 인쇄</title><style>body{font-family:system-ui;background:#f3f6ff;color:#23304a;margin:24px}main{max-width:700px;margin:auto}button{padding:16px 24px;background:#3e62e8;color:white;border:0;border-radius:10px;font-size:18px;cursor:pointer}img{display:block;max-width:100%;width:360px;margin:24px auto}p{line-height:1.7}@page{size:${p.w}mm ${p.h}mm;margin:0}@media print{html,body,main{margin:0;padding:0;width:${p.w}mm;height:100vh;background:white}header{display:none}img{margin:0;width:100vw;height:100vh;object-fit:contain;max-width:none;display:block;print-color-adjust:exact}}</style><main><header><h1>사진이 준비됐어요.</h1><p>용지 ${p.w} × ${p.h}mm · 세로 방향 · 머리글/바닥글 끄기<br>프린터에서 Canon SELPHY CP1500을 선택해 주세요.</p><button onclick="window.print()">인쇄 창 열기</button><p>창이 열리지 않으면 브라우저 메뉴의 인쇄 또는 ⌘P / Ctrl+P를 사용하세요.<br>이 파일에는 촬영 사진이 포함되어 있습니다. 공용 기기에서는 사용 후 삭제해 주세요.</p></header><img src="${data}" alt="촬영한 사진"></main></html>`;
   download(new Blob([html],{type:'text/html;charset=utf-8'}),filename('html'));
   $('print-status').textContent = '인쇄 파일 저장을 요청했어요. 다운로드한 HTML 파일을 Safari 또는 Chrome으로 열고 인쇄해 주세요.';
 };

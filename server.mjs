@@ -36,7 +36,7 @@ export function createApp(env=process.env){
    if(!['GET','HEAD'].includes(req.method))throw fail(405,'지원하지 않는 요청입니다.');
    let pathname;try{pathname=decodeURIComponent(url.pathname==='/'?'/index.html':url.pathname);}catch{throw fail(400,'잘못된 경로입니다.');}
    // Only known public entry files and image assets are served, even if a secret is accidentally copied into dist.
-   if(!['/index.html','/styles.css','/app.js','/delivery.js','/frames.json','/gallery.html','/gallery.js','/gallery.css','/vendor/qrcode.mjs','/fonts/nanum-pen.ttf','/fonts/OFL.txt'].includes(pathname)&&!/^\/frames\/[a-zA-Z0-9_-]+\.(svg|png|webp|jpe?g)$/.test(pathname))throw fail(404,'파일이 없습니다.');
+   if(!['/index.html','/styles.css','/app.js','/media-ready.mjs','/delivery.js','/frames.json','/gallery.html','/gallery.js','/gallery.css','/vendor/qrcode.mjs','/fonts/nanum-pen.ttf','/fonts/OFL.txt'].includes(pathname)&&!/^\/frames\/[a-zA-Z0-9_-]+\.(svg|png|webp|jpe?g)$/.test(pathname))throw fail(404,'파일이 없습니다.');
    const file=await realpath(path.resolve(root,'.'+pathname));if(!file.startsWith(root+path.sep)||file!==path.resolve(root,'.'+pathname))throw fail(404,'파일이 없습니다.');
    const data=await readFile(file);const mime={'.ttf':'font/ttf','.txt':'text/plain; charset=utf-8','.html':'text/html; charset=utf-8','.mjs':'text/javascript','.js':'text/javascript','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp','.jpg':'image/jpeg','.jpeg':'image/jpeg'}[path.extname(file)]||'application/octet-stream';
    res.writeHead(200,{'Content-Type':mime,'Cache-Control':'no-cache','X-Content-Type-Options':'nosniff'});res.end(req.method==='HEAD'?undefined:data);

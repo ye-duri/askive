@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {withTimeout,waitForVideo} from '../dist/media-ready.mjs';
+assert.equal(await withTimeout(Promise.resolve('ready'),20,'timeout'),'ready');
+await assert.rejects(withTimeout(Promise.reject(new Error('denied')),20,'timeout'),/denied/);
+let lateStopped=false;
+await assert.rejects(withTimeout(new Promise(r=>setTimeout(()=>r('stream'),30)),5,'timeout',()=>lateStopped=true),{name:'TimeoutError'});
+await new Promise(r=>setTimeout(r,40));assert.equal(lateStopped,true);
+await waitForVideo({readyState:2,videoWidth:640,videoHeight:480},()=>false);
+await assert.rejects(waitForVideo({readyState:0},()=>true),{name:'AbortError'});
+await assert.rejects(waitForVideo({readyState:0},()=>false,5),{name:'TimeoutError'});
+console.log('PASS: camera timeout, late-stream cleanup, decoded frame and cancellation checks');
