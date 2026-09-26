@@ -500,3 +500,26 @@ body,button,input,select,textarea,.brand-meaning,footer,footer span,footer butto
 @media(max-width:900px){#intro-panel{gap:20px}.intro-exhibition{height:390px}#intro-title{font-size:38px}}
 @media(max-width:699px){#intro-panel{grid-template-columns:1fr;gap:26px;padding:12px 0 20px;min-height:0}.intro-copy{text-align:center}.intro-copy .eyebrow{font-size:9px;margin:8px 0 18px}#intro-title{font-size:34px;line-height:1.5;margin-bottom:16px}.intro-description{font-size:14px;margin-bottom:22px}#intro-start{margin:auto;max-width:100%;min-height:58px}.intro-note{font-size:10px;margin-top:12px}.intro-exhibition{height:300px;margin:0 8px}.intro-exhibition-caption{font-size:8px}}
 #intro-panel>*{min-width:0}.intro-exhibition{overflow:hidden}.intro-frame{min-width:0;max-width:43%}
+
+/* A little color, with neutral mats so every printed frame stays distinct. */
+body{background:#f6f3ed}
+.topbar{background:#fffdf8;border-bottom-color:#dedde9}
+.primary,.shutter,.is-result #print-open{background:#4c658a;border-color:#4c658a}
+.primary:hover,.shutter:hover,.is-result #print-open:hover{background:#3d5476}
+.intro-copy .eyebrow{color:#8b5366}
+#intro-title{color:#344862}
+.intro-exhibition{background:#e5e6ef;border-color:#cbd0e1}
+.intro-exhibition-caption{color:#58647e}
+.intro-description{color:#646875}
+#intro-start{box-shadow:0 6px 0 #d8dfec}
+.edition-options #edition-basic{background:#edf2fa;border-color:#cad5e6}
+.edition-options #edition-special{background:#fbefef;border-color:#e7cfd7}
+.edition-options #edition-basic:hover{background:#e3ebf7;border-color:#829ac1}
+.edition-options #edition-special:hover{background:#f7e5eb;border-color:#bc869b}
+.edition-gallery{background:#e0e3e5;border-color:#bec7cc}
+#edition-basic .edition-description strong{color:#4c658a}
+#edition-special .edition-description strong{color:#985f75}
+.cut-options button[aria-pressed=true],#basic-layout-picker button[aria-pressed=true],.filter-option[aria-pressed=true]{background:#4c658a;border-color:#4c658a;color:#fff}
+.frame-card[aria-pressed=true],.editing-frame-card[aria-pressed=true]{background:#e7edf8;border-color:#7890b7}
+.is-selecting .photo-choice[aria-pressed=true]{border-color:#7890b7;background:#e7edf8}
+.is-result .studio-console{background:#eff2f9;border-color:#d0d9e9}
