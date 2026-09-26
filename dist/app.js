@@ -365,7 +365,16 @@ $('finish-selection').onclick=async()=>{
 function renderEditingFrames(){
  $('frame-selection-hint').textContent=selectedCount()===cutCount?'옆으로 넘겨 선택 →':`사진 ${cutCount}장을 먼저 골라 주세요`;
  $('editing-frames').replaceChildren();
- for(const frame of matchingFrames()){
+ let picker=$('basic-layout-picker');
+ if(!picker){picker=document.createElement('div');picker.id='basic-layout-picker';picker.setAttribute('role','group');picker.setAttribute('aria-label','사진 배치 선택');$('editing-frames').before(picker);}
+ picker.replaceChildren();picker.hidden=edition!=='basic';
+ const available=matchingFrames(),activeLayout=selected?.layout||available.find(f=>f.layout)?.layout;
+ if(edition==='basic')for(const layout of [...new Set(available.map(f=>f.layout).filter(Boolean))]){
+  const frame=available.find(f=>f.layout===layout&&f.color===selected?.color)||available.find(f=>f.layout===layout);
+  const button=document.createElement('button');button.className='secondary';button.textContent=frame.layoutName;button.setAttribute('aria-pressed',String(activeLayout===layout));button.disabled=busy||frameLoading||selectedCount()!==cutCount;
+  button.onclick=()=>chooseFrame(frame.id).catch(e=>{$('selection-status').textContent=e.message;});picker.append(button);
+ }
+ for(const frame of available.filter(f=>edition!=='basic'||!f.layout||f.layout===activeLayout)){
   const b=document.createElement('button');b.className='editing-frame-card';b.disabled=busy||frameLoading||selectedCount()!==cutCount;b.setAttribute('aria-pressed',String(selected?.id===frame.id));
   const img=document.createElement('img');img.src=frame.src;img.alt='';const label=document.createElement('span');label.textContent=frame.name;b.append(img,label);
   b.onclick=async()=>{if(busy||frameLoading)return;try{await chooseFrame(frame.id);$('selection-status').textContent='프레임을 바꿨어요. 사진 위치를 확인해 주세요.';}catch{$('selection-status').textContent='프레임을 불러오지 못했어요. 기존 프레임을 유지합니다.';}finally{renderEditingFrames();renderSelection();}};
@@ -542,7 +551,7 @@ window.addEventListener('focus',()=>{printing=false;checkIdle();});
 window.addEventListener('pagehide',()=>{resetSession();});
 window.addEventListener('pageshow',()=>{if(!stream){$('welcome').hidden=false;$('camera-state').textContent='카메라 꺼짐';controls();}});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkIdle();if(document.hidden && busy){cancelCountdown();status('화면이 전환되어 촬영을 취소했어요.');}});
-async function init(){try{const response=await fetch('frames.json');if(!response.ok)throw new Error('프레임 목록을 읽지 못했어요.');frames=await response.json();renderFrames();if(frames.length)await chooseFrame(frames[0].id);}catch(e){status(e.message,true);}}
+async function init(){try{const response=await fetch('frames.json');if(!response.ok)throw new Error('프레임 목록을 읽지 못했어요.');frames=await response.json();renderFrames();if(matchingFrames().length)await chooseFrame(matchingFrames()[0].id);}catch(e){status(e.message,true);}}
 await init();
 try{if(new URLSearchParams(location.search).get('setup')!=='1'&&sessionStorage.getItem('yonsei-camera-confirmed')==='1'){let permission;try{permission=await navigator.permissions?.query({name:'camera'});}catch{}if(permission?.state!=='denied'){cameraConfirmed=true;cameraDeviceId=sessionStorage.getItem('yonsei-camera-id')||'';phase='edition';controls();window.scrollTo(0,0);}}}catch{}
 for(const name of ['basic','special'])$('edition-'+name).onclick=async()=>{

@@ -10,6 +10,8 @@ try{
  await page.locator('.preview-slot').nth(2).click();assert.equal(await page.locator('#selection-count').textContent(),'5 / 6 선택');assert.equal(await page.locator('#finish-selection').isEnabled(),false);
  await page.locator('.photo-choice').nth(1).click();assert.match(await page.locator('.preview-slot').nth(2).getAttribute('aria-label'),/사진 2/);
  await page.locator('.editing-frame-card').nth(1).click();await page.waitForFunction(()=>!document.querySelector('#finish-selection').disabled);assert.match(await page.locator('.preview-slot').nth(2).getAttribute('aria-label'),/사진 2/);
+ assert.equal(await page.locator('#basic-layout-picker button').count(),3);assert.equal(await page.locator('.editing-frame-card').count(),9);
+ for(let n=0;n<3;n++){await page.locator('#basic-layout-picker button').nth(n).click();await page.waitForFunction(()=>!document.querySelector('#finish-selection').disabled);assert.equal(await page.locator('.preview-slot').count(),6);assert.match(await page.locator('.preview-slot').nth(2).getAttribute('aria-label'),/사진 2/);assert.equal(await page.locator('.editing-frame-card').count(),9);}
  for(const [name,width,height] of [['tablet',1024,768],['portrait',768,1024],['phone',390,844]]){
   await page.setViewportSize({width,height});await page.screenshot({path:`test-output/editor-${name}.png`});
   await page.locator('.preview-slot').nth(3).click();assert.equal(await page.locator('#selection-count').textContent(),'5 / 6 선택');assert.match(await page.locator('.preview-slot').nth(2).getAttribute('aria-label'),/사진 2/);await page.locator('.photo-choice').first().click();assert.match(await page.locator('.preview-slot').nth(3).getAttribute('aria-label'),/사진 1/);await page.evaluate(()=>window.scrollTo(0,0));
