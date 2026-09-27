@@ -627,7 +627,8 @@ async function publishAlbum(canvas,revision){
  const url=new URL('gallery.html',location.href);url.hash=current.id;
  const composite=addAlbumQR(canvas,url.href);const data=new FormData();
  for(let i=0;i<8;i++)data.append(String(i),await toBlob(shotSession.photos[i],'image/jpeg',.85),`${i}.jpg`);
- data.append('8',await toBlob(composite,'image/jpeg',.9),'result.jpg');
+ // Keep the downloadable album clean; only the printed copy carries its album QR.
+ data.append('8',await toBlob(canvas,'image/jpeg',.9),'result.jpg');
  if(revision!==sessionRun)return canvas;
  await apiJSON(`/api/gallery/albums/${current.id}`,{method:'PUT',body:data});
  if(revision!==sessionRun){void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'});return canvas;}

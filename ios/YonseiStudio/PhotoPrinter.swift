@@ -1,73 +1,98 @@
 import UIKit
 import SwiftUI
+import Combine
 import ImageIO
+import CryptoKit
+import Security
 
+// Retains the existing web bridge name, but sends to the operator's Mac only.
 @MainActor
-final class PhotoPrinter: NSObject, ObservableObject, UIPrintInteractionControllerDelegate {
-    @Published var status = "처음 한 번 CP1500을 선택해 주세요"
+final class PhotoPrinter: NSObject, ObservableObject {
+    @Published var status = "운영 설정에서 Mac을 연결해 주세요"
     @Published var isBusy = false
-    private var selected: UIPrinter? {
-        guard let text = UserDefaults.standard.string(forKey: "printerURL"), let url = URL(string: text) else { return nil }
-        return UIPrinter(url: url)
+    @Published var connectionCode = ""
+    private static let keyQuery: [String: Any] = [kSecClass as String:kSecClassGenericPassword, kSecAttrService as String:"kr.yeduri.YonseiStudio.mac", kSecAttrAccount as String:"connection"]
+    override init() {
+        super.init()
+        var query = Self.keyQuery
+        query[kSecReturnData as String] = true
+        var value: CFTypeRef?
+        if SecItemCopyMatching(query as CFDictionary, &value) == errSecSuccess, let data = value as? Data, let text = String(data:data, encoding:.utf8) {
+            connectionCode = text
+            status = "Mac 연결 설정됨"
+        }
     }
-    func choosePrinter(completion: ((UIPrinter?) -> Void)? = nil) {
-        guard !isBusy else { completion?(nil); return }
-        guard let scene = UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene }).first(where: { $0.activationState == .foregroundActive }),
-              let view = scene.windows.first(where: { $0.isKeyWindow })?.rootViewController?.view else { completion?(nil); return }
-        isBusy = true
-        let picker = UIPrinterPickerController(initiallySelectedPrinter: selected)
-        picker.present(from: CGRect(x: view.bounds.midX, y: 20, width: 1, height: 1), in: view, animated: true) { [weak self] controller, chosen, error in
-            guard let self else { return }; self.isBusy = false
-            guard chosen, error == nil, let printer = controller.selectedPrinter else { completion?(nil); return }
-            UserDefaults.standard.set(printer.url.absoluteString, forKey: "printerURL")
-            self.status = printer.displayName
-            completion?(printer)
+    private func connection() throws -> (URL, String) {
+        guard var parts = URLComponents(string:connectionCode.trimmingCharacters(in:.whitespacesAndNewlines)),
+              parts.scheme == "http", let host = parts.host,
+              host.range(of:"^[a-zA-Z0-9-]+\\.local$", options:.regularExpression) != nil,
+              parts.port == 4178, parts.user == nil, parts.password == nil, parts.query == nil,
+              let token = parts.fragment, token.range(of:"^[a-f0-9]{48}$",options:.regularExpression) != nil else {
+            throw NSError(domain:"MacConnection",code:1,userInfo:[NSLocalizedDescriptionKey:"Mac 관리 화면의 연결 코드를 그대로 붙여 넣어 주세요."])
+        }
+        parts.fragment = nil; parts.path = "/"
+        guard let url = parts.url else { throw URLError(.badURL) }
+        return (url, token)
+    }
+    private func request(path: String, data: Data? = nil) async throws -> [String:Any] {
+        let (base, token) = try connection()
+        var request = URLRequest(url:base.appendingPathComponent(path))
+        request.timeoutInterval = 30
+        request.setValue("Bearer \(token)",forHTTPHeaderField:"Authorization")
+        if let data {
+            request.httpMethod = "POST"; request.httpBody = data
+            request.setValue("image/jpeg",forHTTPHeaderField:"Content-Type")
+            request.setValue(SHA256.hash(data:data).map { String(format:"%02x",$0) }.joined(),forHTTPHeaderField:"X-Job-ID")
+        }
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.timeoutIntervalForResource = 40
+        let session = URLSession(configuration:configuration,delegate:NoRedirect(),delegateQueue:nil)
+        defer { session.finishTasksAndInvalidate() }
+        let (bytes,response) = try await session.data(for:request)
+        guard let http = response as? HTTPURLResponse, let result = try JSONSerialization.jsonObject(with:bytes) as? [String:Any] else { throw URLError(.badServerResponse) }
+        guard (200..<300).contains(http.statusCode) else { throw NSError(domain:"MacConnection",code:http.statusCode,userInfo:[NSLocalizedDescriptionKey:result["error"] as? String ?? "Mac 연결을 확인해 주세요."]) }
+        return result
+    }
+    func testConnection() {
+        guard !isBusy else { return };isBusy = true;status = "Mac 연결 확인 중"
+        Task {
+            defer { isBusy = false }
+            do {
+                let result = try await request(path:"health")
+                guard result["version"] as? Int == 1 else { throw URLError(.badServerResponse) }
+                let encoded = connectionCode.trimmingCharacters(in:.whitespacesAndNewlines).data(using:.utf8)!
+                let update = [kSecValueData as String:encoded]
+                let found = SecItemUpdate(Self.keyQuery as CFDictionary,update as CFDictionary)
+                if found == errSecItemNotFound {
+                    var query = Self.keyQuery;query[kSecValueData as String] = encoded
+                    query[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
+                    guard SecItemAdd(query as CFDictionary,nil) == errSecSuccess else { throw URLError(.cannotWriteToFile) }
+                } else if found != errSecSuccess { throw URLError(.cannotWriteToFile) }
+                status = "Mac 연결 완료"
+            } catch { status = "연결 실패: \(error.localizedDescription)" }
         }
     }
     func printPhoto(_ encoded: String, report: @escaping (String,String) -> Void) {
-        guard !isBusy else { report("busy", "인쇄 전송 중입니다."); return }
-        guard encoded.utf8.count < 8_500_000,
-              let data = Data(base64Encoded: encoded), data.starts(with: [0xff,0xd8,0xff]),
-              let source = CGImageSourceCreateWithData(data as CFData, nil), CGImageSourceGetCount(source) == 1,
-              let props = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [CFString:Any],
+        guard !isBusy else { report("error","Mac 연결 작업이 진행 중이에요. 잠시 후 다시 눌러 주세요.");return }
+        guard encoded.utf8.count < 8_500_000, let data = Data(base64Encoded:encoded),
+              let source = CGImageSourceCreateWithData(data as CFData,nil), CGImageSourceGetCount(source) == 1,
+              let props = CGImageSourceCopyPropertiesAtIndex(source,0,nil) as? [CFString:Any],
               let w = props[kCGImagePropertyPixelWidth] as? Int, let h = props[kCGImagePropertyPixelHeight] as? Int,
-              w > 0, h > 0, w <= 6000, h <= 6000, w*h <= 24_000_000 else {
-            report("error", "인쇄용 사진 형식이나 크기를 확인해 주세요."); return
-        }
-        if let printer = selected { submit(data, to: printer, report: report) }
-        else {
-            choosePrinter { [weak self] printer in
-                guard let printer else { report("cancelled", "프린터 선택을 취소했습니다."); return }
-                self?.submit(data, to: printer, report: report)
+              w > 0,h > 0,w <= 6000,h <= 6000,w*h <= 24_000_000 else { report("error","인쇄용 사진을 확인해 주세요.");return }
+        isBusy = true;status = "Mac으로 사진 전송 중";report("busy",status)
+        Task {
+            defer { isBusy = false }
+            do {
+                let result = try await request(path:"jobs",data:data)
+                guard result["received"] as? Bool == true else { throw URLError(.badServerResponse) }
+                status = "Mac 수신 완료 · 매수 선택 대기";report("sent",status)
+            } catch {
+                status = "Mac 전송 실패 · 같은 Wi-Fi와 도우미 실행을 확인해 주세요"
+                report("error",status+". 다시 눌러도 같은 사진은 중복 접수되지 않아요.")
             }
         }
     }
-    private func submit(_ data: Data, to printer: UIPrinter, report: @escaping (String,String) -> Void) {
-        isBusy = true; status = "프린터 연결 확인 중"; report("busy", status)
-        printer.contactPrinter { [weak self] available in
-            guard let self else { return }
-            guard available else { self.isBusy = false; self.status = "CP1500 연결을 확인해 주세요"; report("error", self.status); return }
-            let controller = UIPrintInteractionController.shared
-            let info = UIPrintInfo(dictionary: nil)
-            info.jobName = "연세스튜디오"
-            info.outputType = .photo
-            info.orientation = .portrait
-            info.duplex = .none
-            controller.printInfo = info
-            controller.printingItem = data
-            controller.delegate = self
-            controller.showsNumberOfCopies = false
-            self.status = "사진 전송 중"
-            let accepted = controller.print(to: printer) { [weak self] controller, completed, error in
-                controller.printingItem = nil
-                guard let self else { return }; self.isBusy = false
-                self.status = completed && error == nil ? "프린터 전송 완료" : "인쇄 중단 · 프린터 확인"
-                report(completed && error == nil ? "sent" : "error", self.status)
-            }
-            if !accepted { controller.printingItem = nil; self.isBusy = false; self.status = "인쇄를 시작하지 못했습니다"; report("error", self.status) }
-        }
-    }
-    func printInteractionController(_ printInteractionController: UIPrintInteractionController, choosePaper paperList: [UIPrintPaper]) -> UIPrintPaper {
-        UIPrintPaper.bestPaper(forPageSize: CGSize(width: 100/25.4*72, height: 148/25.4*72), withPapersFrom: paperList)
-    }
+}
+private final class NoRedirect: NSObject, URLSessionTaskDelegate {
+    func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) { completionHandler(nil) }
 }

@@ -1,17 +1,32 @@
-# iPad 앱 연결 소스 — Xcode 빌드 전
+# 연세스튜디오 iPad 앱
 
-현재 Mac에는 Xcode가 없어 UIKit 컴파일·실물 인쇄는 아직 확인하지 못했습니다. 이 폴더는 Swift 소스이며 .xcodeproj 완성본이 아닙니다.
+사진 인쇄 버튼 → Mac 수신 → 매니저 매수 선택 → CP1500 출력 순서입니다.
 
-1. 호환 Xcode 설치 후 iOS App 프로젝트를 생성합니다. 이름 YonseiStudio, SwiftUI, Swift. iOS 16 이상을 대상으로 합니다.
-2. 기본 생성된 App 파일과 ContentView 파일을 이 폴더의 Swift 3개 파일로 교체합니다. 앱 진입점 @main은 하나만 남깁니다.
-3. Target → Signing & Capabilities에서 본인 Team을 선택하고 Bundle Identifier를 고유하게 설정합니다.
-4. Target → Info에 Privacy - Camera Usage Description = 사진 촬영을 위해 카메라를 사용합니다. / Privacy - Local Network Usage Description = 행사장의 CP1500 프린터에 연결합니다. 를 추가합니다.
-5. Bonjour services 배열에 _ipp._tcp, _ipps._tcp 를 추가합니다.
-6. iPad를 Mac에 연결해 개발자 모드를 켜고 Run 합니다. iPad와 CP1500은 같은 Wi-Fi에 연결합니다.
-7. 앱 상단 프린터 설정에서 CP1500을 한 번 선택합니다. 이후 웹의 인쇄 버튼이 JPG를 Swift로 전달하고 저장된 프린터에 print(to:)를 호출합니다.
+## 현재 프로젝트 업데이트
 
-공유 메뉴와 웹페이지 인쇄를 사용하지 않습니다. UIKit 진행/오류 화면은 나타날 수 있습니다. 앱은 서버 배포 사이트를 불러오므로 인터넷이 필요합니다. 프린터 직접 Wi-Fi가 인터넷을 끊으면 행사장 공유기 연결을 사용하세요.
+1. Xcode에서 `ios/YonseiStudio.xcodeproj`를 엽니다.
+2. 상단 실행 대상을 실제 `iPad (4)`로 선택하고 **⌘R** 또는 ▶를 누릅니다. 기존 Team 설정을 유지합니다.
+3. iPad에서 업데이트된 앱을 실행합니다.
+4. Mac에서 `mac-print/Start.command`를 실행합니다.
+5. Mac 관리 화면의 **iPad 연결 설정**에서 연결 코드를 복사합니다.
+6. iPad 앱 **운영 설정 → Mac 연결**에 붙여 넣고 **연결 확인 · 저장**을 누릅니다. 로컬 네트워크 권한을 허용합니다.
+7. 사진 촬영 후 **사진 인쇄**를 누릅니다. Mac에 사진이 도착하면 매니저가 매수를 정하고 인쇄합니다.
 
-인쇄 재시도는 자동으로 하지 않습니다. 오류가 나면 실제 출력 여부를 확인한 뒤 다시 누르세요. 브라우저/앱 콜백만으로 종이 출력 상태를 확정하지 않습니다.
+세부 운영·보관·오류 안내는 [Mac 인쇄 도우미 안내](../mac-print/README.md)를 참조하세요. Mac 도우미는 운영 중 계속 실행해야 합니다.
 
-보안: 허용된 HTTPS 호스트의 최상위 프레임만 네이티브 인쇄를 호출할 수 있습니다. 이미지 크기·형식 제한, 중복 전송 잠금이 있습니다. 사진은 앱이 파일로 저장하지 않고 메모리에서 처리합니다. 시스템 인쇄 스풀의 보관 동작은 iPadOS가 관리합니다.
+## 처음 설치할 때
+
+Signing & Capabilities에서 Automatically manage signing과 본인의 Team을 선택합니다. 실제 iPad를 Xcode에 연결해 이 컴퓨터 신뢰를 허용하고, iPad 설정 → 개인정보 보호 및 보안 → 개발자 모드를 활성화합니다. 실행 후 개발자 신뢰 안내가 나오면 기기 설정에서 승인합니다.
+
+## 코드 구성
+
+- 웹 `dist/app.js`: 인쇄용 JPEG를 `yonseiPrint` 메시지로 전달합니다.
+- `StudioWebView.swift`: 허용된 웹사이트의 요청만 네이티브 코드에 전달합니다.
+- `PhotoPrinter.swift`: 연결 코드를 Keychain에 저장하고 Mac에 사진을 전송합니다. 동일 사진 재전송은 같은 작업 ID를 사용합니다.
+- `Info.plist`: 카메라·로컬 네트워크 권한과 로컬 호스트 HTTP 연결을 설정합니다.
+
+QR에 동의한 사진의 인쇄본에는 QR이 들어갑니다. QR 웹 앨범에 저장되는 완성본은 QR을 넣기 전 이미지입니다.
+
+## 검증 범위
+
+2026-09-28: iPhoneOS SDK에서 서명 없이 앱 빌드 성공. Mac 서비스의 인증·중복 방지·매수 선택·재시작 보관 및 브라우저 UI는 모의 인쇄 테스트 통과. 업데이트한 실제 iPad와 Mac 사이의 전송 및 CP1500 실물 출력은 설치 후 확인해야 합니다.

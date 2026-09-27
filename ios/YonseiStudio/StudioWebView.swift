@@ -3,6 +3,7 @@ import WebKit
 
 struct StudioWebView: UIViewRepresentable {
     @ObservedObject var printer: PhotoPrinter
+    var settingsRevision: Int = 0
     func makeCoordinator() -> Coordinator { Coordinator(printer) }
     func makeUIView(context: Context) -> WKWebView {
         let config = WKWebViewConfiguration()
@@ -13,17 +14,25 @@ struct StudioWebView: UIViewRepresentable {
         web.navigationDelegate = context.coordinator
         web.uiDelegate = context.coordinator
         web.isOpaque = false
+        web.allowsBackForwardNavigationGestures = false
+        web.scrollView.bounces = false
         context.coordinator.web = web
         web.load(URLRequest(url: URL(string: "https://askive.pages.dev/")!))
         return web
     }
-    func updateUIView(_ view: WKWebView, context: Context) {}
+    func updateUIView(_ view: WKWebView, context: Context) {
+        guard context.coordinator.settingsRevision != settingsRevision else { return }
+        context.coordinator.settingsRevision = settingsRevision
+        view.load(URLRequest(url: URL(string: "https://askive.pages.dev/?setup=1")!))
+    }
     static func dismantleUIView(_ view: WKWebView, coordinator: Coordinator) {
         view.configuration.userContentController.removeScriptMessageHandler(forName: "yonseiPrint")
     }
+    @MainActor
     final class Coordinator: NSObject, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
         let printer: PhotoPrinter
         weak var web: WKWebView?
+        var settingsRevision = 0
         init(_ printer: PhotoPrinter) { self.printer = printer }
         func trusted(_ url: URL?) -> Bool {
             url?.scheme == "https" && url?.host == "askive.pages.dev" && (url?.port == nil || url?.port == 443)
@@ -43,7 +52,7 @@ struct StudioWebView: UIViewRepresentable {
             }
         }
         func webView(_ webView: WKWebView, requestMediaCapturePermissionFor origin: WKSecurityOrigin, initiatedByFrame frame: WKFrameInfo, type: WKMediaCaptureType, decisionHandler: @escaping (WKPermissionDecision) -> Void) {
-            decisionHandler(origin.protocol == "https" && origin.host == "askive.pages.dev" && frame.isMainFrame && type == .camera ? .grant : .deny)
+            decisionHandler(origin.protocol == "https" && origin.host == "askive.pages.dev" && [0,443].contains(origin.port) && trusted(webView.url) && frame.isMainFrame && type == .camera ? .grant : .deny)
         }
     }
 }

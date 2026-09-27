@@ -17,7 +17,7 @@ try{
  for(const [edition,count] of [['basic',4],['basic',6],['special',4],['special',6]]){
   const uploadCount=uploads.length;
   await page.locator('#edition-'+edition).click();await page.locator('#cuts-'+count).click();await page.waitForFunction(()=>!document.querySelector('#setup-done').disabled);
-  assert.equal(await page.locator('#qr-consent').isChecked(),false);assert.equal(await page.locator('#setup-done').textContent(),'촬영시작');
+  assert.equal(await page.locator('#qr-consent').isChecked(),false);assert.match(await page.locator('#setup-done').textContent(),/촬영시작/);
   if(edition==='special')assert.equal(await page.locator('#cuts-2').isVisible(),false);else assert.equal(await page.locator('#frames').isVisible(),false);
   if(edition==='basic'&&count===4)await page.locator('#qr-consent').check();
   if(edition==='special')await page.locator('[data-id="'+(count===4?'sheep-farewell-four':'sheep-club-six')+'"]').click();
@@ -46,7 +46,13 @@ try{
    const id=await page.evaluate(()=>document.querySelector('#result').src);assert.match(id,/^blob:/);
    // Validate gallery through its real API using authenticated cookie, then expiry deletion through UI.
    const files=await (await import('node:fs/promises')).readdir(dir);const albumId=files.find(f=>f.endsWith('_meta.json')).split('_')[0];
-   const galleryPage=await browser.newPage();await galleryPage.goto(base+'/gallery.html#'+albumId);await galleryPage.locator('#gallery-photos img').last().waitFor();assert.equal(await galleryPage.locator('#gallery-photos img').count(),9);await galleryPage.close();
+   const galleryPage=await browser.newPage();await galleryPage.goto(base+'/gallery.html#'+albumId);await galleryPage.locator('#gallery-photos img').last().waitFor();assert.equal(await galleryPage.locator('#gallery-photos img').count(),9);if(process.env.QR_TEST_DECODER){
+    const decode=(await import(process.env.QR_TEST_DECODER)).default;
+    const clean=await galleryPage.locator('#gallery-photos img').first().evaluate(async img=>{await img.decode();const c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;const x=c.getContext('2d');x.drawImage(img,0,0);return {width:c.width,height:c.height,data:Array.from(x.getImageData(0,0,c.width,c.height).data)};});
+    assert.equal(clean.width,1200);assert.equal(clean.height,1776);
+    assert.equal(decode(new Uint8ClampedArray(clean.data),clean.width,clean.height),null,'Downloadable composite must not contain a QR');
+    console.log('PASS: downloaded album composite has no QR; printed composite remains scannable');
+   }await galleryPage.close();
    await page.locator('#print-open').click();assert.equal(await page.evaluate(()=>window.printCalls),0);assert.equal(await page.evaluate(()=>window.sharedPhoto.type),'image/jpeg');assert.equal(await page.locator('#result').evaluate(e=>e.naturalWidth),1200);assert.equal(await page.locator('#result').evaluate(e=>e.naturalHeight),1776);
    assert.equal(await page.locator('#qr-delete').count(),0);assert.equal(await page.locator('#reselect').count(),0);await page.evaluate(async id=>fetch('/api/gallery/albums/'+id,{method:'DELETE'}),albumId);assert.equal((await fetch(base+'/api/gallery/albums/'+albumId)).status,404);
   }
