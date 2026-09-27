@@ -10,7 +10,7 @@ try{
  browser=await chromium.launch({...(process.env.PLAYWRIGHT_CHANNEL?{channel:process.env.PLAYWRIGHT_CHANNEL}:{}),headless:true,args:['--use-fake-ui-for-media-stream','--use-fake-device-for-media-stream']});
  const uploads=[];
  const page=await browser.newPage({permissions:['camera'],viewport:{width:1024,height:768}});page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(r.url().includes('/api/gallery/albums')&&['POST','PUT'].includes(r.method()))uploads.push(r.url());});
- await page.addInitScript(()=>{window.printCalls=0;window.print=()=>window.printCalls++;navigator.canShare=()=>true;navigator.share=async ({files})=>{window.sharedPhoto={name:files[0].name,type:files[0].type,size:files[0].size};};const native=setTimeout;window.testTicks=0;window.setTimeout=(fn,ms,...args)=>{if(ms===1000)window.testTicks++;return native(fn,ms===1000?10:ms,...args);};});
+ await page.addInitScript(()=>{window.shutterSounds=0;const bufferSource=AudioContext.prototype.createBufferSource;AudioContext.prototype.createBufferSource=function(){window.shutterSounds++;return bufferSource.call(this);};window.printCalls=0;window.print=()=>window.printCalls++;navigator.canShare=()=>true;navigator.share=async ({files})=>{window.sharedPhoto={name:files[0].name,type:files[0].type,size:files[0].size};};const native=setTimeout;window.testTicks=0;window.setTimeout=(fn,ms,...args)=>{if(ms===1000)window.testTicks++;return native(fn,ms===1000?10:ms,...args);};});
  await page.goto(base);await page.locator('#intro-start').click();await page.locator('#permission-start').click();await page.locator('#kiosk-code').fill(secret);await page.locator('#kiosk-unlock').click();await page.locator('#kiosk-access').waitFor({state:'hidden'});await page.locator('#permission-next').click();
  assert.equal(await page.locator('#timer').count(),0);assert.equal(await page.locator('#send-open').count(),0);
  assert.equal(await page.locator('#operator-settings').count(),0);assert.equal(await page.locator('#cancel').count(),0);await page.screenshot({path:'test-output/edition-tablet.png'});
@@ -21,9 +21,9 @@ try{
   if(edition==='special')assert.equal(await page.locator('#cuts-2').isVisible(),false);else assert.equal(await page.locator('#frames').isVisible(),false);
   if(edition==='basic'&&count===4)await page.locator('#qr-consent').check();
   if(edition==='special')await page.locator('[data-id="'+(count===4?'sheep-farewell-four':'sheep-club-six')+'"]').click();
-  const before=await page.evaluate(()=>window.testTicks);await page.locator('#setup-done').click();
+  const soundsBefore=await page.evaluate(()=>window.shutterSounds);const before=await page.evaluate(()=>window.testTicks);await page.locator('#setup-done').click();
 
-  await page.locator('#selection-panel').waitFor({state:'visible'});assert.equal(await page.locator('.photo-choice').count(),8);assert.equal(await page.evaluate(()=>window.testTicks)-before,64);
+  await page.locator('#selection-panel').waitFor({state:'visible'});assert.equal(await page.locator('.photo-choice').count(),8);assert.equal(await page.evaluate(()=>window.testTicks)-before,64);assert.equal(await page.evaluate(()=>window.shutterSounds)-soundsBefore,8);
   for(let i=0;i<count;i++)await page.locator('.photo-choice').nth(i).click();
   if(edition==='basic'){assert.equal(await page.locator('#frame-step').isVisible(),false);assert.equal(await page.locator('#editor-frames-panel').isVisible(),true);await page.locator('.editing-frame-card').nth(1).click();assert.equal(await page.locator('.photo-choice[aria-pressed=true]').count(),count);await page.screenshot({path:'test-output/combined-selection.png'});}
   await page.locator('#filter-mono').click();
