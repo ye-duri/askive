@@ -11,6 +11,7 @@ let cameraDeviceId = '', cameraDevices = [], deviceListRun = 0;
 let shotSession = null;
 let advanceCapture = null;
 let initializing=true;
+let selectionDeadline=0, selectionClock=null;
 let settingsOpen = false;
 let phase = new URLSearchParams(location.search).get('setup')==='1'?'permission':'intro';
 let edition='basic', automatic=false, qrEnabled=false, qrConsent=false, album=null;
@@ -310,9 +311,29 @@ function renderPreviewSlots(){
 }
 new ResizeObserver(positionPreviewSlots).observe($('selection-canvas'));
 window.addEventListener('resize',positionPreviewSlots);
+function stopSelectionClock(){
+ clearInterval(selectionClock);selectionClock=null;selectionDeadline=0;$('selection-timer').hidden=true;
+}
+function startSelectionClock(){
+ stopSelectionClock();selectionDeadline=Date.now()+90000;
+ selectionClock=setInterval(updateSelectionClock,250);updateSelectionClock();
+}
+function updateSelectionClock(){
+ if(!selecting||!selectionDeadline)return;
+ const remaining=Math.max(0,Math.ceil((selectionDeadline-Date.now())/1000));
+ $('selection-timer').hidden=false;
+ $('selection-timer').textContent=`남은 시간 ${remaining}초`;
+ $('selection-timer').classList.toggle('is-urgent',remaining<=10);
+ if(remaining||busy||frameLoading)return;
+ chosen=Array.from({length:cutCount},(_,index)=>Number.isInteger(chosen[index])?chosen[index]:index);
+ activeSlot=-1;renderSelection();renderEditingFrames();
+ $('selection-status').textContent='선택 시간이 끝났어요. 사진을 자동 완성합니다.';
+ $('finish-selection').onclick();
+}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateSelectionClock();});
 function openSelection() {
   phase='shoot';selecting=true; $('result').hidden=true; $('result-actions').hidden=true;
-  $('stage-label').textContent='04 / 사진 선택';renderSelection();renderEditingFrames();controls();window.scrollTo(0,0);
+  $('stage-label').textContent='04 / 사진 선택';renderSelection();renderEditingFrames();controls();window.scrollTo(0,0);startSelectionClock();
 }
 function waitCaptureTick(){
  return new Promise(resolve=>{
@@ -354,7 +375,7 @@ for(const name of ['original','bright','vivid','mono']) $('filter-'+name).onclic
 $('photo-filter').onchange=()=>{if(!busy&&!frameLoading)renderSelection();};
 $('finish-selection').onclick=async()=>{
   if(busy||frameLoading||selectedCount()!==cutCount||!shotSession||shotSession.photos.length!==CAPTURE_TOTAL)return;
-  busy=true;renderSelection();controls();const revision=sessionRun;
+  stopSelectionClock();busy=true;renderSelection();controls();const revision=sessionRun;
   await new Promise(resolve=>setTimeout(resolve,32));if(revision!==sessionRun)return;
   try{
     let canvas=document.createElement('canvas');composeSelection(canvas);canvas=fitPostcard(canvas);
@@ -429,6 +450,7 @@ $('capture').onclick = capture;
 
 $('save').onclick = () => {if(blob) {download(blob,filename('png'));status('사진 저장을 요청했어요. 다운로드 또는 사진 앱을 확인해 주세요.');}};
 function resetSession(message='이용이 종료됐어요. 사진을 지웠습니다.') {
+  stopSelectionClock();
   sessionRun++;cameraRun++;frameRun++;countdownRun++;printRevision++;
   stopStream();busy=false;cameraBusy=false;frameLoading=false;uploadBusy=false;
   for(const photo of shotSession?.photos||[]){photo.width=1;photo.height=1;}
