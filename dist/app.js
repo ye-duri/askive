@@ -624,11 +624,9 @@ function playShutterSound(){
  try{
   const context=buttonAudio;if(!context||context.state!=='running')return;
   const buffer=context.createBuffer(1,Math.ceil(context.sampleRate*.16),context.sampleRate),samples=buffer.getChannelData(0);
-  for(let i=0;i<samples.length;i++){const t=i/context.sampleRate;const envelope=Math.exp(-t*48)+(t>.055?.65*Math.exp(-(t-.055)*55):0);samples[i]=(Math.random()*2-1)*envelope;}
+  for(let i=0;i<samples.length;i++){const t=i/context.sampleRate;const envelope=Math.exp(-t*70)+(t>.045?.8*Math.exp(-(t-.045)*85):0);samples[i]=(Math.random()*2-1)*envelope;}
   const source=context.createBufferSource(),gain=context.createGain(),filter=context.createBiquadFilter();
-  source.buffer=buffer;filter.type='lowpass';filter.frequency.value=2100;filter.Q.value=.7;gain.gain.value=.25;
-  const body=context.createOscillator(),bodyGain=context.createGain(),now=context.currentTime;
-  body.type='sine';body.frequency.setValueAtTime(190,now);body.frequency.exponentialRampToValueAtTime(85,now+.12);bodyGain.gain.setValueAtTime(.2,now);bodyGain.gain.exponentialRampToValueAtTime(.001,now+.14);body.connect(bodyGain);bodyGain.connect(context.destination);body.start(now);body.stop(now+.15);body.onended=()=>{body.disconnect();bodyGain.disconnect();};
+  source.buffer=buffer;filter.type='bandpass';filter.frequency.value=2600;filter.Q.value=.65;gain.gain.value=.3;
   source.connect(filter);filter.connect(gain);gain.connect(context.destination);source.start();
   source.onended=()=>{source.disconnect();filter.disconnect();gain.disconnect();};
  }catch{}
