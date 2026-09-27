@@ -322,7 +322,7 @@ function updateSelectionClock(){
  if(!selecting||!selectionDeadline)return;
  const remaining=Math.max(0,Math.ceil((selectionDeadline-Date.now())/1000));
  $('selection-timer').hidden=false;
- $('selection-timer').textContent=`남은 시간 ${remaining}초`;
+ $('selection-timer-value').textContent=`${remaining}초`;
  $('selection-timer').classList.toggle('is-urgent',remaining<=10);
  if(remaining||busy||frameLoading)return;
  chosen=Array.from({length:cutCount},(_,index)=>Number.isInteger(chosen[index])?chosen[index]:index);

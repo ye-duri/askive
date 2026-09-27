@@ -3,6 +3,12 @@ const app=createApp({});await new Promise(r=>app.listen(0,'127.0.0.1',r));const 
 for(const [edition,count,partial] of [['basic',4,false],['special',6,true]]){
  const page=await browser.newPage({permissions:['camera']});await page.addInitScript(()=>{const now=Date.now;window.timeOffset=0;Date.now=()=>now()+window.timeOffset;const wait=setTimeout;window.setTimeout=(f,t,...args)=>wait(f,t===1000?5:t,...args);});await page.goto(`http://127.0.0.1:${app.address().port}`);await page.locator('#intro-start').click();await page.locator('#permission-start').click();await page.locator('#permission-next').click();await page.locator('#edition-'+edition).click();await page.locator('#cuts-'+count).click();await page.locator('#setup-done').click();await page.locator('#selection-panel').waitFor({state:'visible'});
  assert.equal(await page.locator('#selection-timer').isVisible(),true);assert.match(await page.locator('#selection-timer').textContent(),/남은 시간 (90|89)초/);
+ for(const [width,height] of [[1180,820],[820,1180],[390,844]]){
+  await page.setViewportSize({width,height});
+  const fits=await page.evaluate(()=>{const timer=document.querySelector('#selection-timer');const box=timer.getBoundingClientRect();const heading=document.querySelector('.selection-heading').getBoundingClientRect();return box.left>=0&&box.right<=innerWidth&&box.top>=heading.top&&box.bottom<=heading.bottom+1&&timer.scrollWidth<=timer.clientWidth&&document.documentElement.scrollWidth<=innerWidth;});
+  assert.ok(fits,`Countdown fits header at ${width}x${height}`);
+ }
+ await page.setViewportSize({width:1180,height:820});
  if(partial){await page.locator('.photo-choice').nth(7).click();await page.locator('.photo-choice').nth(6).click();await page.locator('.preview-slot').first().click();}
  await page.evaluate(()=>window.timeOffset=61000);await page.locator('#selection-timer').waitFor({state:'visible'});assert.equal(await page.locator('#result').isVisible(),false);
  await page.evaluate(()=>window.timeOffset=82000);await page.waitForFunction(()=>document.querySelector('#selection-timer').classList.contains('is-urgent'));
