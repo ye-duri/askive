@@ -609,11 +609,12 @@ document.addEventListener('click',event=>{
   const context=buttonAudio;
   const sound=()=>{
    if(context.state!=='running')return;
-   const oscillator=context.createOscillator(),gain=context.createGain(),tone=context.createBiquadFilter(),now=context.currentTime;
-   oscillator.type='triangle';oscillator.frequency.setValueAtTime(260,now);oscillator.frequency.exponentialRampToValueAtTime(145,now+.065);tone.type='lowpass';tone.frequency.value=850;tone.Q.value=.5;
-   gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(.24,now+.004);gain.gain.exponentialRampToValueAtTime(.001,now+.095);
-   oscillator.connect(tone);tone.connect(gain);gain.connect(context.destination);oscillator.start(now);oscillator.stop(now+.12);
-   oscillator.onended=()=>{oscillator.disconnect();tone.disconnect();gain.disconnect();};
+   const source=context.createBufferSource(),gain=context.createGain(),tone=context.createBiquadFilter();
+   const buffer=context.createBuffer(1,Math.ceil(context.sampleRate*.028),context.sampleRate),samples=buffer.getChannelData(0);
+   for(let i=0;i<samples.length;i++)samples[i]=(Math.random()*2-1)*Math.exp(-i/samples.length*7);
+   source.buffer=buffer;tone.type='lowpass';tone.frequency.value=2600;tone.Q.value=.6;gain.gain.value=.22;
+   source.connect(tone);tone.connect(gain);gain.connect(context.destination);source.start();
+   source.onended=()=>{source.disconnect();tone.disconnect();gain.disconnect();};
   };
   if(context.state==='running')sound();else context.resume().then(sound).catch(()=>{});
  }catch{}

@@ -651,3 +651,12 @@ footer,footer span,footer button{color:#536985}
 
 @media(min-width:800px) and (orientation:landscape){.is-shooting:not(.config-open) .studio{grid-template-columns:minmax(0,calc((100svh - 175px)*var(--shoot-ratio,.85))) clamp(210px,22vw,270px);justify-content:center}}
 .is-setup #setup-done{margin-top:14px}
+
+.is-setup.is-basic .cut-options button{min-height:320px;padding-top:30px;padding-bottom:30px}.is-setup.is-basic .cut-example{width:128px;height:190px}@media(max-width:599px){.is-setup.is-basic .cut-options button{min-height:280px;padding-top:24px;padding-bottom:24px}.is-setup.is-basic .cut-example{width:116px;height:172px}}
+@media(min-width:800px){
+.is-setup:not(.is-basic) .controls{grid-template-columns:290px minmax(0,1fr)!important;gap:12px 20px!important}
+.is-setup:not(.is-basic) .cut-options{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.is-setup:not(.is-basic) .cut-options button{min-height:54px;padding:8px}
+.is-setup:not(.is-basic) #selected-frame-preview{margin-top:14px}
+#selected-frame-image{max-height:410px}.selected-frame-mat{padding:8px}
+}
