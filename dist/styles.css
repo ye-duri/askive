@@ -697,3 +697,6 @@ footer,footer span,footer button{color:#536985}
 
 .is-setup.is-basic .cut-picker>.basic-color-note{display:table;margin:10px auto 18px;padding:9px 16px;border-radius:10px;background:#e5edf8;color:#304969;font-size:15px;font-weight:650;line-height:1.5;max-width:100%;box-sizing:border-box;word-break:keep-all}
 @media(max-width:699px){.is-setup.is-basic .cut-picker>.basic-color-note{font-size:13px;padding:8px 12px}}
+
+
+#print-receipt{width:min(420px,calc(100vw - 40px));box-sizing:border-box;padding:30px 24px;text-align:center;border:1px solid #d7e2ec;border-radius:24px;background:#fffdf8;color:#203959;box-shadow:0 20px 80px #20395930}#print-receipt::backdrop{background:#20395966;backdrop-filter:blur(4px)}#print-receipt .sheep{display:block;position:relative;width:90px;height:115px;margin:0 auto 12px}#print-receipt h2{font-size:24px;margin:0 0 14px}#print-receipt-message{font-size:16px;line-height:1.7;word-break:keep-all}#print-receipt .print-receipt-thanks{font-size:12px;color:#718092;margin:18px 0}#print-receipt-close{width:100%;margin-top:8px}

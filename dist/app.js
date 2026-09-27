@@ -454,6 +454,7 @@ function resetSession(message='이용이 종료됐어요. 사진을 지웠습니
   sessionRun++;cameraRun++;frameRun++;countdownRun++;printRevision++;
   stopStream();busy=false;cameraBusy=false;frameLoading=false;uploadBusy=false;
   for(const photo of shotSession?.photos||[]){photo.width=1;photo.height=1;}
+  $('print-receipt').close();
   shotSession=null;chosen=[];activeSlot=-1;blob=null;selecting=false;printReady=false;printShareFile=null;nativePrintBusy=false;
   for(const id of ['selection-canvas','print-canvas']){$(id).width=1;$(id).height=1;}
   for(const id of ['result','selection-frame-overlay','overlay','map-image'])$(id).removeAttribute('src');
@@ -545,13 +546,18 @@ async function updatePrint(){
 }
 $('print-open').onclick=async()=>{
  if(!printReady||!printShareFile){status('인쇄용 사진을 준비 중이에요. 잠시 후 다시 눌러 주세요.',true);return;}
+ $('print-receipt').close();
  const file=printShareFile;
  if(window.webkit?.messageHandlers?.yonseiPrint){
   if(nativePrintBusy)return;
   nativePrintBusy=true;printing=true;externalActionStarted=Date.now();$('print-open').disabled=true;
+  $('print-receipt-title').textContent='사진 출력 중입니다.';
+  $('print-receipt-message').textContent='사진을 전송하고 있어요. 잠시만 기다려 주세요.';
+  $('print-receipt-close').hidden=true;
+  $('print-receipt').showModal();
   const reader=new FileReader();
   reader.onload=()=>window.webkit.messageHandlers.yonseiPrint.postMessage({type:'print',jpeg:String(reader.result).split(',')[1]});
-  reader.onerror=()=>{nativePrintBusy=false;printing=false;$('print-open').disabled=false;status('인쇄 파일을 읽지 못했어요.',true);};
+  reader.onerror=()=>{$('print-receipt').close();nativePrintBusy=false;printing=false;$('print-open').disabled=false;status('인쇄 파일을 읽지 못했어요.',true);};
   reader.readAsDataURL(file);return;
  }
  try{
@@ -565,8 +571,17 @@ $('print-open').onclick=async()=>{
  }catch(e){if(e.name!=='AbortError'){download(file,file.name);status('공유 메뉴를 열지 못해 인쇄용 JPG를 저장했어요. 사진 앱에서 열어 인쇄해 주세요.',true);}}
  finally{printing=false;lastActivity=Date.now();}
 };
+$('print-receipt-close').onclick=()=>$('print-receipt').close();
+$('print-receipt').addEventListener('cancel',e=>{if(nativePrintBusy)e.preventDefault();});
 window.addEventListener('yonsei-print-state',e=>{
- const d=e.detail||{};status(d.message||'프린터 상태를 확인해 주세요.',d.state==='error');
+ if(!nativePrintBusy)return;
+ const d=e.detail||{};
+ if(d.state==='sent'){
+  $('print-receipt-title').textContent='전송이 완료되었습니다.';
+  $('print-receipt-message').textContent='전송이 완료됐어요. 잠시 후 매니저에게 사진을 받아 주세요.';
+  $('print-receipt-close').hidden=false;
+ }else if(d.state!=='busy')$('print-receipt').close();
+ status(d.state==='sent'?'':d.message||'프린터 상태를 확인해 주세요.',d.state==='error');
  if(d.state!=='busy'){nativePrintBusy=false;printing=false;lastActivity=Date.now();$('print-open').disabled=!printReady;}
 });
 window.addEventListener('afterprint',()=>{printing=false;lastActivity=Date.now();});
