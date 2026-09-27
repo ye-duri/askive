@@ -1,4 +1,5 @@
 import http from 'node:http';
+import {printPDF} from './print-pdf.mjs';
 import {randomBytes,createHash,timingSafeEqual} from 'node:crypto';
 import {mkdirSync,readFileSync,writeFileSync,renameSync,existsSync,readdirSync,unlinkSync} from 'node:fs';
 import {join,dirname} from 'node:path';
@@ -16,7 +17,7 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
  const jobs=new Map();
  const save=j=>{const path=join(directory,j.id+'.json');writeFileSync(path+'.tmp',JSON.stringify(j),{mode:0o600});renameSync(path+'.tmp',path);};
  for(const name of readdirSync(directory).filter(n=>/^[a-f0-9]{64}\.json$/.test(n))){try{const j=JSON.parse(readFileSync(join(directory,name)));if(j.state==='sending'){j.state='uncertain';j.error='재시작 전 인쇄 전송 결과를 확인해 주세요.';save(j);}jobs.set(j.id,j);}catch{}}
- function cleanup(){for(const [id,j] of jobs)if(Date.now()-j.createdAt>=86400000&&j.state!=='sending'){for(const suffix of ['.jpg','.json'])try{unlinkSync(join(directory,id+suffix));}catch{}jobs.delete(id);}}
+ function cleanup(){for(const [id,j] of jobs)if(Date.now()-j.createdAt>=86400000&&j.state!=='sending'){for(const suffix of ['.jpg','.json','.pdf'])try{unlinkSync(join(directory,id+suffix));}catch{}jobs.delete(id);}}
  cleanup();const cleanupTimer=setInterval(cleanup,60000);cleanupTimer.unref();
  const json=(res,status,data)=>{res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(data));};
  function auth(req){const a=Buffer.from(req.headers.authorization||''),b=Buffer.from('Bearer '+token);return a.length===b.length&&timingSafeEqual(a,b);}
@@ -50,18 +51,20 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
   if(match){const j=jobs.get(match[1]);if(!j)return json(res,404,{error:'사진이 없거나 만료됐습니다.'});
    if(req.method==='GET'&&match[2]==='image'){res.writeHead(200,{'Content-Type':'image/jpeg'});return res.end(readFileSync(join(directory,j.id+'.jpg')));}
    if(req.method==='POST'&&match[2]==='print'){
-    const {printer,copies}=JSON.parse((await body(req,2048)).toString());
+    const {printer,copies,scale=95}=JSON.parse((await body(req,2048)).toString());
+    if(!Number.isInteger(scale)||scale<85||scale>100)return json(res,400,{error:'인쇄 배율은 85~100%입니다.'});
     if(!Number.isInteger(copies)||copies<1||copies>10)return json(res,400,{error:'매수는 1~10장입니다.'});
     if(!(await printers()).some(p=>p.name===printer))return json(res,400,{error:'등록된 프린터를 선택해 주세요.'});
     const options=await run('/usr/bin/lpoptions',['-p',printer,'-l']);
     if(!options.includes('Postcard.Fullbleed'))return json(res,400,{error:'엽서 무테 용지를 지원하는 CP1500을 선택해 주세요.'});
     if(j.state!=='waiting')return json(res,409,{error:'이미 전송한 작업입니다. Mac 인쇄 센터에서 확인해 주세요.'});
-    j.state='sending';j.copies=copies;j.printer=printer;save(j);
-    try{const out=await run('/usr/bin/lp',['-d',printer,'-n',String(copies),'-t','Yonsei '+j.id.slice(0,8),'-o','media=Postcard.Fullbleed','-o','print-scaling=fill','-o','fill','-o','job-sheets=none',join(directory,j.id+'.jpg')]);j.state='submitted';j.cupsJob=out.trim();}
+    const pdfPath=join(directory,j.id+'.pdf');writeFileSync(pdfPath,printPDF(readFileSync(join(directory,j.id+'.jpg')),scale),{mode:0o600});
+    j.state='sending';j.copies=copies;j.scale=scale;j.printer=printer;save(j);
+    try{const out=await run('/usr/bin/lp',['-d',printer,'-n',String(copies),'-t','Yonsei '+j.id.slice(0,8),'-o','media=Postcard.Fullbleed','-o','print-scaling=none','-o','job-sheets=none',pdfPath]);j.state='submitted';j.cupsJob=out.trim();}
     catch{j.state='uncertain';j.error='전송 결과를 확인하지 못했어요. 중복 인쇄를 막기 위해 Mac 인쇄 센터에서 먼저 확인해 주세요.';}
     save(j);return json(res,200,j);
    }
-   if(req.method==='DELETE'&&!match[2]){if(j.state==='sending')return json(res,409,{error:'전송 중에는 지울 수 없습니다.'});for(const suffix of ['.jpg','.json'])try{unlinkSync(join(directory,j.id+suffix));}catch{}jobs.delete(j.id);return json(res,200,{deleted:true});}
+   if(req.method==='DELETE'&&!match[2]){if(j.state==='sending')return json(res,409,{error:'전송 중에는 지울 수 없습니다.'});for(const suffix of ['.jpg','.json','.pdf'])try{unlinkSync(join(directory,j.id+suffix));}catch{}jobs.delete(j.id);return json(res,200,{deleted:true});}
   }
   if(req.method==='GET'&&['/','/admin.js','/admin.css'].includes(path)){res.setHeader('Content-Security-Policy',"default-src 'self'; frame-ancestors 'none'; base-uri 'none'");res.setHeader('Content-Type',path.endsWith('.js')?'text/javascript':path.endsWith('.css')?'text/css':'text/html; charset=utf-8');return res.end(readFileSync(join(root,'public',path==='/'?'index.html':path.slice(1))));}
   json(res,404,{error:'없는 경로'});

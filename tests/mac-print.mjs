@@ -1,4 +1,5 @@
 import http from 'node:http';
+import {printPDF} from '../mac-print/print-pdf.mjs';
 import {createPrintServer} from '../mac-print/server.mjs';
 import {mkdtemp,readFile,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';import {join} from 'node:path';import {createHash} from 'node:crypto';import assert from 'node:assert/strict';
@@ -6,7 +7,7 @@ const directory=await mkdtemp(join(tmpdir(),'yonsei-test-'));const calls=[];
 const run=async(cmd,args)=>{calls.push([cmd,args]);if(cmd.endsWith('lpstat'))return 'CP1500에 대한 기기: dnssd://test\n';if(cmd.endsWith('lpoptions'))return 'PageSize: Postcard Postcard.Fullbleed';if(cmd.endsWith('/lp')){await new Promise(r=>setTimeout(r,100));return 'request id is CP1500-42 (1 file(s))';}throw Error('Unexpected command');};
 let server=createPrintServer({directory,run,hostName:'test.local'});const start=async()=>{await new Promise(r=>server.listen(0,'127.0.0.1',r));return `http://127.0.0.1:${server.address().port}`;};let base=await start();
 try{
- const state=await(await fetch(base+'/admin/state')).json();const token=new URL(state.connection).hash.slice(1);const jpeg=Buffer.from([255,216,255,224,0,2,255,217]);const id=createHash('sha256').update(jpeg).digest('hex');const headers={Authorization:'Bearer '+token,'Content-Type':'image/jpeg','X-Job-ID':id};
+ const state=await(await fetch(base+'/admin/state')).json();const token=new URL(state.connection).hash.slice(1);const jpeg=Buffer.from([255,216,255,192,0,17,8,6,240,4,176,3,1,17,0,2,17,0,3,17,0,255,217]);const id=createHash('sha256').update(jpeg).digest('hex');const landscape=Buffer.from(jpeg);landscape.writeUInt16BE(1200,7);landscape.writeUInt16BE(1776,9);assert.match(printPDF(landscape,95).toString('latin1'),/398\.551181 0 0 269\.291339 10\.488189 7\.086614 cm/);assert.throws(()=>printPDF(Buffer.from('bad'),95));const headers={Authorization:'Bearer '+token,'Content-Type':'image/jpeg','X-Job-ID':id};
  assert.equal((await fetch(base+'/jobs',{method:'POST',body:jpeg})).status,401);
  assert.equal(await new Promise(resolve=>{http.get(base+'/admin/state',{headers:{Host:'evil.example'}},r=>{r.resume();resolve(r.statusCode);});}),403);
  assert.equal((await fetch(base+'/jobs',{method:'POST',body:jpeg,headers:{...headers,Origin:'https://evil.example'}})).status,403);
@@ -15,10 +16,11 @@ try{
  assert.equal(calls.filter(c=>c[0].endsWith('/lp')).length,0);
  assert.equal((await fetch(base+`/admin/jobs/${id}/print`,{method:'POST',body:'{}'})).status,403);
  const admin={'Content-Type':'application/json','X-Yonsei-Admin':'1',Origin:base};
- const print=copies=>fetch(base+`/admin/jobs/${id}/print`,{method:'POST',headers:admin,body:JSON.stringify({printer:'CP1500',copies})});
+ const print=(copies,scale)=>fetch(base+`/admin/jobs/${id}/print`,{method:'POST',headers:admin,body:JSON.stringify({printer:'CP1500',copies,scale})});
  assert.equal((await print(0)).status,400);assert.equal((await print(11)).status,400);
+ assert.equal((await print(1,84)).status,400);assert.equal((await print(1,101)).status,400);
  const responses=await Promise.all([print(3),print(3)]);assert.deepEqual(responses.map(r=>r.status).sort(),[200,409]);
- const lp=calls.filter(c=>c[0].endsWith('/lp'));assert.equal(lp.length,1);assert.ok(lp[0][1].includes('3'));assert.ok(lp[0][1].includes('media=Postcard.Fullbleed'));
+ const lp=calls.filter(c=>c[0].endsWith('/lp'));assert.equal(lp.length,1);assert.ok(lp[0][1].includes('3'));assert.ok(lp[0][1].includes('media=Postcard.Fullbleed'));assert.ok(lp[0][1].includes('print-scaling=none'));assert.ok(lp[0][1].at(-1).endsWith('.pdf'));const pdf=await readFile(lp[0][1].at(-1),'latin1');assert.match(pdf,/269\.291339 0 0 398\.551181 7\.086614 10\.488189 cm/);assert.ok(!lp[0][1].includes('fill'));assert.ok(!lp[0][1].includes('print-scaling=fill'));
  await new Promise(r=>server.close(r));server=createPrintServer({directory,run,hostName:'test.local'});base=await start();
  const restored=await(await fetch(base+'/admin/state')).json();assert.equal(restored.jobs[0].state,'submitted');assert.equal(new URL(restored.connection).hash.slice(1),token);
  console.log('PASS authenticated receipt, deduplication, localhost-only admin, CSRF rejection, copy limits, concurrent print guard, persisted queue and token. No physical print sent.');
