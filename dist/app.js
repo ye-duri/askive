@@ -207,7 +207,7 @@ function updateShotMode() {
   const count = shotCount();
   $('shoot-instruction').textContent=`총 8장 촬영 후 원하는 ${cutCount}장을 선택해요.`;
   $('capture').textContent = '촬영시작';
-  $('shot-progress').textContent = '0 / 8장 · 5초마다 자동 촬영';
+  $('shot-progress').textContent = '0 / 8장 · 8초마다 자동 촬영';
   $('shot-thumbs').replaceChildren();
   if (selected) { const size = outputSize(selected, count); $('size-label').textContent = `${size.width} × ${size.height} · PNG`; showShotPreview(); }
   controls();
@@ -313,7 +313,7 @@ async function capture() {
  try {
   while(shotSession.taken<CAPTURE_TOTAL){
    $('shot-progress').textContent=`${shotSession.taken+1} / ${CAPTURE_TOTAL}장 · 포즈를 준비해 주세요`;
-   for(let n=5;n>0;n--){$('countdown').textContent=n;$('countdown').hidden=false;await new Promise(r=>setTimeout(r,1000));if(run!==countdownRun||revision!==sessionRun)return;}
+   for(let n=8;n>0;n--){$('countdown').textContent=n;$('countdown').hidden=false;await new Promise(r=>setTimeout(r,1000));if(run!==countdownRun||revision!==sessionRun)return;}
    if(!stream||video.readyState<2||!video.videoWidth)throw new Error('카메라 연결을 확인한 뒤 남은 촬영을 이어가 주세요.');
    const photo=document.createElement('canvas');const scale=Math.min(1,1440/Math.max(video.videoWidth,video.videoHeight));photo.width=Math.round(video.videoWidth*scale);photo.height=Math.round(video.videoHeight*scale);
    const ctx=photo.getContext('2d');ctx.save();ctx.translate(photo.width,0);ctx.scale(-1,1);ctx.drawImage(video,0,0,photo.width,photo.height);ctx.restore();
@@ -406,7 +406,7 @@ $('setup-done').onclick=async()=>{
  status('카메라 영상을 준비하고 있어요…');
  if(!stream)await startCamera();
  if(revision!==sessionRun||!stream||video.readyState<2||!video.videoWidth)return;
- status('5초마다 자동으로 촬영합니다.');await capture();
+ status('8초마다 자동으로 촬영합니다.');await capture();
 };
 video.addEventListener('loadeddata',controls);
 $('capture').onclick = capture;

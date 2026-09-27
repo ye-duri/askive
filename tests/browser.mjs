@@ -23,7 +23,7 @@ try{
   if(edition==='special')await page.locator('[data-id="'+(count===4?'sheep-farewell-four':'sheep-club-six')+'"]').click();
   const before=await page.evaluate(()=>window.testTicks);await page.locator('#setup-done').click();
 
-  await page.locator('#selection-panel').waitFor({state:'visible'});assert.equal(await page.locator('.photo-choice').count(),8);assert.equal(await page.evaluate(()=>window.testTicks)-before,40);
+  await page.locator('#selection-panel').waitFor({state:'visible'});assert.equal(await page.locator('.photo-choice').count(),8);assert.equal(await page.evaluate(()=>window.testTicks)-before,64);
   for(let i=0;i<count;i++)await page.locator('.photo-choice').nth(i).click();
   if(edition==='basic'){assert.equal(await page.locator('#frame-step').isVisible(),false);assert.equal(await page.locator('#editor-frames-panel').isVisible(),true);await page.locator('.editing-frame-card').nth(1).click();assert.equal(await page.locator('.photo-choice[aria-pressed=true]').count(),count);await page.screenshot({path:'test-output/combined-selection.png'});}
   await page.locator('#filter-mono').click();
@@ -56,5 +56,5 @@ try{
  await page.reload();await page.locator('#intro-start').click();await page.locator('#edition-panel').waitFor({state:'visible'});
  await page.locator('#edition-basic').click();await page.locator('#cuts-4').click();await page.locator('#setup-done').click();await page.locator('#selection-panel').waitFor({state:'visible'});await page.setViewportSize({width:390,height:844});await page.screenshot({path:'test-output/mobile-selection.png'});
  const scroll=await page.locator('#photo-grid').evaluate(e=>({x:e.scrollWidth>e.clientWidth,y:getComputedStyle(e).overflowY}));assert.equal(scroll.x,true);assert.equal(scroll.y,'hidden');
- assert.deepEqual(errors,[]);console.log('PASS: 4 edition/cut flows; 8 auto captures × 5 countdown ticks; photo-only mono; QR 9-photo viewer/delete; photo-file printing; permission reuse; mobile horizontal list.');
+ assert.deepEqual(errors,[]);console.log('PASS: 4 edition/cut flows; 8 auto captures × 8 countdown ticks; photo-only mono; QR 9-photo viewer/delete; photo-file printing; permission reuse; mobile horizontal list.');
 }finally{await browser?.close();await new Promise(r=>app.close(r));await rm(dir,{recursive:true,force:true});}
