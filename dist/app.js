@@ -26,7 +26,7 @@ const status = (message, error = false) => { $('status').textContent = message; 
 const loadImage = src => new Promise((resolve, reject) => { const img = new Image(); img.onload = () => resolve(img); img.onerror = () => reject(new Error('프레임 이미지를 열 수 없어요.')); img.src = src; });
 const toBlob = (canvas, type = 'image/png', quality = .96) => new Promise((resolve, reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error('이미지를 만들지 못했어요.')), type, quality));
 function controls() {
- for(const n of [2,4,6]){ $('cuts-'+n).hidden=edition==='special'&&n===2;$('cuts-'+n).disabled=frameLoading||busy||!!shotSession;$('cuts-'+n).setAttribute('aria-pressed',String(n===cutCount)); }
+ for(const n of [2,4,6]){ $('cuts-'+n).hidden=n===2;$('cuts-'+n).disabled=frameLoading||busy||!!shotSession;$('cuts-'+n).setAttribute('aria-pressed',String(n===cutCount)); }
  for(const [cls,on] of Object.entries({'is-intro':phase==='intro','is-basic':edition==='basic','is-permission':phase==='permission','is-edition':phase==='edition','is-setup':phase==='setup','is-frame-step':phase==='frame','is-shooting':phase==='shoot'&&!blob&&!selecting,'is-selecting':selecting,'is-result':!!blob}))document.body.classList.toggle(cls,on);
  $('intro-panel').hidden=phase!=='intro';
  $('edition-panel').hidden=phase!=='edition';$('frame-step').hidden=phase!=='frame';
@@ -39,7 +39,6 @@ function controls() {
  $('setup-done').disabled=!selected||frameLoading||cameraBusy;
  for(const id of ['frames','setup-frame-heading'])$(id).hidden=edition!=='special';
  $('selection-panel').hidden=!selecting;
- renderCaptureLayouts();
  $('edit-settings').hidden=true;
  $('capture').disabled=phase!=='shoot'||!stream||!video.videoWidth||busy||cameraBusy||frameLoading||!!blob||selecting;
  $('capture').hidden=automatic;
@@ -187,7 +186,7 @@ function showShotPreview() {
     const slot=outputSize(selected,cutCount).slots[0];
     $('viewfinder').style.aspectRatio=`${slot.w}/${slot.h}`;$('viewfinder').style.setProperty('--preview-ratio',String(slot.w/slot.h));
     Object.assign(video.style,{left:'0',top:'0',width:'100%',height:'100%'});$('overlay').hidden=true;
-    $('preview-hint').textContent='선택한 배치의 사진 칸에 맞춰 보여요. 촬영 후 배치를 바꾸면 잘리는 범위가 달라질 수 있어요.';return;
+    $('preview-hint').textContent='프레임의 사진 칸에 맞춰 보여요. 기본과 엇갈림 모두 같은 구도로 담겨요.';return;
   }
   const size = outputSize(selected,shotCount()), index = (shotSession?.taken || 0) % size.slots.length, slot = size.slots[index];
   // Include a narrow border around the photo so overlapping artwork and frame edges remain visible.
@@ -361,21 +360,6 @@ $('finish-selection').onclick=async()=>{
   }catch(e){if(revision===sessionRun)$('selection-status').textContent=e.message||'합성하지 못했어요. 다시 시도해 주세요.';}
   finally{if(revision===sessionRun){busy=false;if(selecting)renderSelection();controls();}}
 };
-function renderCaptureLayouts(){
- const panel=$('capture-layout-panel'),picker=$('capture-layout-picker');
- panel.hidden=edition!=='basic'||phase!=='setup';
- if(panel.hidden)return;
- picker.replaceChildren();
- const available=matchingFrames();
- for(const layout of [...new Set(available.map(f=>f.layout).filter(Boolean))]){
-  const frame=available.find(f=>f.layout===layout&&f.color===selected?.color)||available.find(f=>f.layout===layout);
-  const button=document.createElement('button');button.type='button';button.className='capture-layout-card';
-  button.disabled=busy||frameLoading||!!shotSession;button.setAttribute('aria-pressed',String(selected?.layout===layout));
-  const img=document.createElement('img');img.src=frame.src;img.alt='';
-  const label=document.createElement('span');label.textContent=frame.layoutName;button.append(img,label);
-  button.onclick=()=>chooseFrame(frame.id).catch(e=>status(e.message,true));picker.append(button);
- }
-}
 function renderEditingFrames(){
  $('frame-selection-hint').textContent='사진과 프레임을 자유롭게 골라 주세요';
  $('editing-frames').replaceChildren();
@@ -396,7 +380,7 @@ function renderEditingFrames(){
  }
 }
 for(const n of [2,4,6])$('cuts-'+n).onclick=async()=>{
- if(busy||frameLoading||shotSession||n===cutCount)return;
+ if(n===2||busy||frameLoading||shotSession||n===cutCount)return;
  const previous=cutCount;cutCount=n;
  try{await chooseFrame(matchingFrames()[0].id);}catch(e){cutCount=previous;renderFrames();status('프레임을 불러오지 못했어요. 다시 선택해 주세요.',true);}
  controls();

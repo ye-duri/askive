@@ -4,10 +4,10 @@ r=Path(__file__).resolve().parents[1]
 ink=base64.b64encode((r/'branding/signature/yonsei-signature.png').read_bytes()).decode()
 colors=[('black','검정','#171717','#FFFFFF'),('white','흰색','#FFFFFF','#772F40'),('cherry','체리 레드','#B83A48','#FFFFFF'),('pink','분홍','#E78FA6','#772F40'),('beige','베이지','#EFE5D3','#654536'),('khaki','카키','#82835A','#FFFFFF'),('lime','라임','#CEDF6C','#254632'),('sora','소라','#B6C5EA','#243C68'),('dusty','더스티 블루','#6D88A7','#FFFFFF')]
 layouts={
-2:[('side','좌우',[[48,48,540,1440],[612,48,540,1440]]),('wide','상하',[[48,48,1104,708],[48,780,1104,708]]),('offset','엇갈림',[[48,48,540,1280],[612,208,540,1280]])],
-4:[('grid','기본 2×2',[[x,y,540,708] for y in [48,780] for x in [48,612]]),('offset','엇갈림',[[48,48,540,628],[612,208,540,628],[48,700,540,628],[612,860,540,628]]),('landscape','가로 2×2',[[x,y,828,432] for y in [48,504] for x in [48,900]])],
-6:[('grid','2열',[[x,y,540,464] for y in [48,536,1024] for x in [48,612]]),('wide','3열',[[x,y,352,708] for y in [48,780] for x in [48,424,800]]),('offset','엇갈림',[[x,48+i*448+(128 if col else 0),540,424] for i in range(3) for col,x in enumerate([48,612])])]
+4:[('grid','기본',[[x,y,540,628] for y in [128,780] for x in [48,612]]),('offset','엇갈림',[[48,48,540,628],[612,208,540,628],[48,700,540,628],[612,860,540,628]])],
+6:[('grid','기본',[[x,112+i*448,540,424] for i in range(3) for x in [48,612]]),('offset','엇갈림',[[x,48+i*448+(128 if col else 0),540,424] for i in range(3) for col,x in enumerate([48,612])])]
 }
+
 def logo(color,x,y,w,h):
  return f'<defs><filter id="ink" x="0" y="0" width="100%" height="100%"><feFlood flood-color="{color}"/><feComposite in2="SourceAlpha" operator="in"/></filter></defs><svg x="{x}" y="{y}" width="{w}" height="{h}" viewBox="216 21 1351 753"><image width="1774" height="887" href="data:image/png;base64,{ink}" filter="url(#ink)"/></svg>'
 old=json.loads((r/'dist/frames.json').read_text());frames=[];details=[]
