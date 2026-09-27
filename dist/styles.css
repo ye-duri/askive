@@ -660,3 +660,4 @@ footer,footer span,footer button{color:#536985}
 .is-setup:not(.is-basic) #selected-frame-preview{margin-top:14px}
 #selected-frame-image{max-height:410px}.selected-frame-mat{padding:8px}
 }
+@media(min-width:800px) and (orientation:landscape){.is-shooting:not(.config-open) .studio{column-gap:clamp(32px,4vw,52px)}}
