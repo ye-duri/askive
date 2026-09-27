@@ -30,7 +30,7 @@ const toBlob = (canvas, type = 'image/png', quality = .96) => new Promise((resol
 function controls() {
  const loading=initializing||frameLoading||cameraBusy||(busy&&!automatic&&selecting);
  $('transition-loading').hidden=!loading;
- $('transition-loading-text').textContent=cameraBusy?'카메라를 연결하고 있어요':frameLoading||initializing?'프레임을 준비하고 있어요':'소중한 사진을 완성하고 있어요';
+ $('transition-loading-text').textContent=busy&&!automatic&&selecting?'소중한 사진을 완성하고 있어요':'로딩 중이에요.';
  $('transition-loading').setAttribute('aria-busy',String(loading));
  for(const n of [2,4,6]){ $('cuts-'+n).hidden=n===2;$('cuts-'+n).disabled=frameLoading||busy||!!shotSession;$('cuts-'+n).setAttribute('aria-pressed',String(n===cutCount)); }
  for(const [cls,on] of Object.entries({'is-intro':phase==='intro','is-basic':edition==='basic','is-permission':phase==='permission','is-edition':phase==='edition','is-setup':phase==='setup','is-frame-step':phase==='frame','is-shooting':phase==='shoot'&&!blob&&!selecting,'is-selecting':selecting,'is-result':!!blob}))document.body.classList.toggle(cls,on);
