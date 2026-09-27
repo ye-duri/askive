@@ -720,3 +720,23 @@ footer,footer span,footer button{color:#536985}
  .is-setup:not(.is-basic) .cut-picker h2{margin:4px 0}
  .is-setup:not(.is-basic) #selected-frame-name{margin-top:4px}
 }
+
+/* Keep the iPad kiosk page stationary; overflowing content stays inside cards. */
+@media screen and (min-width:768px) and (min-height:600px){
+ html:has(body main #intro-panel),body:has(#intro-panel){height:100dvh;overflow:hidden;overscroll-behavior:none}
+ body:has(#intro-panel){display:flex;flex-direction:column}
+ body:has(#intro-panel)>.topbar{flex-shrink:0;width:100%}
+ body:has(#intro-panel) main{flex:1;min-height:0;width:100%;display:flex;flex-direction:column;overflow:hidden;padding-top:8px;padding-bottom:0}
+ body:has(#intro-panel) main>footer{flex:0 0 28px;min-height:28px;margin:4px 0 0;padding:0 4px}
+ body:has(#intro-panel) main>.heading{flex-shrink:0}
+ body:has(#intro-panel) main>.workspace{flex:1;min-height:0;max-height:100%;width:100%;overflow:hidden}
+ body:has(#intro-panel) main>#intro-panel,body:has(#intro-panel) main>.permission-panel{flex:1;min-height:0;max-height:100%;overflow:auto;overscroll-behavior:contain}
+ .is-setup .controls{max-height:100%;overflow-y:auto;overscroll-behavior:contain}
+ .is-selecting #selection-panel{max-height:100%;overflow-y:auto;overscroll-behavior:contain}
+ .is-shooting:not(.config-open) .studio,.is-result .studio{min-height:0;max-height:100%;height:100%;overflow:auto;overscroll-behavior:contain}
+ dialog{max-height:90dvh;overflow:auto;overscroll-behavior:contain}
+}
+@media screen and (min-width:768px) and (min-height:600px){
+ body:has(#intro-panel) main>.workspace{margin-top:0!important;margin-bottom:0!important}
+ .is-setup .controls{padding-top:8px!important;padding-bottom:8px!important}
+}
