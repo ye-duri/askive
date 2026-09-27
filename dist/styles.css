@@ -546,3 +546,6 @@ main{max-width:1440px}
 footer,footer span,footer button{color:#536985}
 @media(max-width:1050px){#intro-panel{gap:30px;padding-left:0;padding-right:0}.intro-exhibition{height:420px}#intro-title{font-size:40px}}
 @media(max-width:699px){#intro-panel{grid-template-columns:1fr;gap:30px;padding:24px 0 12px;min-height:0}.intro-copy .eyebrow{font-size:9px;margin-bottom:22px}#intro-title{font-size:35px;line-height:1.5}.intro-description{font-size:14px}#intro-start{max-width:100%}.intro-exhibition{height:330px;margin:0;border-radius:3px}.intro-exhibition-caption{font-size:7px}#edition-panel{padding:8px 0}.edition-options #edition-basic,.edition-options #edition-special{padding:18px}.edition-gallery{padding:20px 12px}}
+
+/* Basic capture framing: choose geometry before shooting, edit freely afterwards. */
+#capture-layout-panel{width:100%;margin-top:18px}#capture-layout-picker{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:680px}.capture-layout-card{display:grid;justify-items:center;gap:10px;padding:14px 8px;background:#f5f8fc;color:#203959;border:2px solid #cad5e3;border-radius:12px;min-height:150px}.capture-layout-card img{width:100%;height:110px;object-fit:contain}.capture-layout-card[aria-pressed=true]{border-color:#203959;background:#e5eefb}.capture-layout-card:disabled{opacity:.55}#video{object-position:center}
