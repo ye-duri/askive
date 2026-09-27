@@ -638,3 +638,15 @@ footer,footer span,footer button{color:#536985}
 .is-setup .qr-consent{padding:7px 12px;gap:10px;align-items:center}.is-setup .qr-consent input{margin-top:0}.is-setup .qr-consent-note{margin:3px 0 0;font-size:12px;line-height:1.4}.is-setup .qr-consent strong{font-size:16px}.is-setup .qr-consent small{font-size:15px}
 
 #selected-frame-preview{display:none}.is-setup:not(.is-basic) #selected-frame-preview{display:block;margin-top:18px;text-align:center}#selected-frame-preview h3{font-size:14px;margin:0 0 10px}.selected-frame-mat{padding:10px;background:#e1e7ee;border-radius:10px;display:flex;justify-content:center;align-items:center}#selected-frame-image{display:block;max-width:100%;width:auto;height:auto;max-height:320px;background:white;box-shadow:0 3px 10px #23354b20}#selected-frame-name{font-size:12px;color:#59697d;line-height:1.4;margin:8px 0 0}@media(max-width:799px){.is-setup:not(.is-basic) #selected-frame-preview{max-width:240px;margin:16px auto 0}#selected-frame-image{max-height:260px}}
+/* Larger cut cards and a camera-first shooting layout. */
+.is-setup.is-basic .cut-options button{min-height:280px;padding:22px 18px;gap:14px}.is-setup.is-basic .cut-example{width:116px;height:172px}
+.is-shooting main{width:100%;max-width:1480px;box-sizing:border-box;padding-left:16px;padding-right:16px}
+@media(min-width:800px) and (orientation:landscape){
+.is-shooting:not(.config-open) .studio{max-width:none;grid-template-columns:minmax(0,1fr) clamp(210px,22vw,270px);gap:10px 20px;padding:12px 16px;min-height:calc(100svh - 88px)}
+.is-shooting:not(.config-open) .viewfinder{width:min(100%,calc((100svh - 175px)*var(--preview-ratio,.85)))}
+.is-shooting:not(.config-open) .studio-console{padding:16px 12px;max-width:270px}.is-shooting .studio-console .shot-progress{font-size:16px}
+.is-shooting .console-mascot{height:72px}.is-shooting .console-mascot .sheep{transform:scale(.6)}
+}
+@media(max-width:599px){.is-setup.is-basic .cut-options button{min-height:245px;padding:18px 8px}.is-setup.is-basic .cut-example{width:108px;height:160px}}
+
+@media(min-width:800px) and (orientation:landscape){.is-shooting:not(.config-open) .studio{grid-template-columns:minmax(0,calc((100svh - 175px)*var(--shoot-ratio,.85))) clamp(210px,22vw,270px);justify-content:center}}

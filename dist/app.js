@@ -192,7 +192,7 @@ function showShotPreview() {
   if (!selected || blob) return;
   if(edition==='basic'){
     const slot=outputSize(selected,cutCount).slots[0];
-    $('viewfinder').style.aspectRatio=`${slot.w}/${slot.h}`;$('viewfinder').style.setProperty('--preview-ratio',String(slot.w/slot.h));
+    $('viewfinder').style.aspectRatio=`${slot.w}/${slot.h}`;$('viewfinder').style.setProperty('--preview-ratio',String(slot.w/slot.h));document.querySelector('.studio').style.setProperty('--shoot-ratio',String(slot.w/slot.h));
     Object.assign(video.style,{left:'0',top:'0',width:'100%',height:'100%'});$('overlay').hidden=true;
     $('preview-hint').textContent='프레임의 사진 칸에 맞춰 보여요. 기본과 엇갈림 모두 같은 구도로 담겨요.';return;
   }
@@ -202,7 +202,7 @@ function showShotPreview() {
   const left = Math.max(0,slot.x-pad), top = Math.max(0,slot.y-pad);
   const w = Math.min(size.width,slot.x+slot.w+pad)-left, h = Math.min(size.height,slot.y+slot.h+pad)-top;
   $('viewfinder').style.aspectRatio = `${w}/${h}`;
-  $('viewfinder').style.setProperty('--preview-ratio',String(w/h));
+  $('viewfinder').style.setProperty('--preview-ratio',String(w/h));document.querySelector('.studio').style.setProperty('--shoot-ratio',String(w/h));
   Object.assign(video.style,{left:`${(slot.x-left)/w*100}%`,top:`${(slot.y-top)/h*100}%`,width:`${slot.w/w*100}%`,height:`${slot.h/h*100}%`});
   const overlay = $('overlay'); overlay.hidden = false;
   Object.assign(overlay.style,{left:`${-left/w*100}%`,top:`${-top/h*100}%`,width:`${size.width/w*100}%`,height:`${size.height/h*100}%`});
