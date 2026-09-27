@@ -9,6 +9,7 @@ let sessionRun=0, uploadBusy=false, lastActivity=Date.now(), idleWarning=false, 
 const UPLOAD_LIMITS={count:5, bytes:30*1024*1024, fileBytes:10*1024*1024, pixels:24000000};
 let cameraDeviceId = '', cameraDevices = [], deviceListRun = 0;
 let shotSession = null;
+let advanceCapture = null;
 let settingsOpen = false;
 let phase = new URLSearchParams(location.search).get('setup')==='1'?'permission':'intro';
 let edition='basic', automatic=false, qrEnabled=false, qrConsent=false, album=null;
@@ -42,6 +43,7 @@ function controls() {
  $('edit-settings').hidden=true;
  $('capture').disabled=phase!=='shoot'||!stream||!video.videoWidth||busy||cameraBusy||frameLoading||!!blob||selecting;
  $('capture').hidden=automatic;
+ $('capture-now').disabled=!automatic||phase!=='shoot'||!stream||cameraBusy;
  document.querySelectorAll('.frame-card').forEach(b=>b.disabled=busy||frameLoading||!!blob||(!!shotSession&&phase!=='frame'&&!selecting));
  $('start').disabled=cameraBusy;
  for(const suffix of ['camera','camera-refresh'])$('permission-'+suffix).disabled=phase!=='permission'||busy||cameraBusy;
@@ -306,14 +308,21 @@ function openSelection() {
   phase='shoot';selecting=true; $('result').hidden=true; $('result-actions').hidden=true;
   $('stage-label').textContent='04 / 사진 선택';renderSelection();renderEditingFrames();controls();window.scrollTo(0,0);
 }
+function waitCaptureTick(){
+ return new Promise(resolve=>{
+  const finish=manual=>{clearTimeout(timer);if(advanceCapture===skip)advanceCapture=null;resolve(manual);};
+  const skip=()=>finish(true),timer=setTimeout(()=>finish(false),1000);advanceCapture=skip;
+ });
+}
+$('capture-now').onclick=()=>{if(automatic&&phase==='shoot'&&stream&&!cameraBusy)advanceCapture?.();};
 async function capture() {
  if($('capture').disabled||automatic)return;
- automatic=true;busy=true;const run=++countdownRun;const revision=sessionRun;
+ $('capture-admin').open=false;automatic=true;busy=true;const run=++countdownRun;const revision=sessionRun;
  if(!shotSession)shotSession={photos:[],taken:0};controls();
  try {
   while(shotSession.taken<CAPTURE_TOTAL){
    $('shot-progress').textContent=`${shotSession.taken+1} / ${CAPTURE_TOTAL}장 · 포즈를 준비해 주세요`;
-   for(let n=8;n>0;n--){$('countdown').textContent=n;$('countdown').hidden=false;await new Promise(r=>setTimeout(r,1000));if(run!==countdownRun||revision!==sessionRun)return;}
+   for(let n=8;n>0;n--){$('countdown').textContent=n;$('countdown').hidden=false;const manual=await waitCaptureTick();if(run!==countdownRun||revision!==sessionRun)return;if(manual)break;}
    if(!stream||video.readyState<2||!video.videoWidth)throw new Error('카메라 연결을 확인한 뒤 남은 촬영을 이어가 주세요.');
    const photo=document.createElement('canvas');const scale=Math.min(1,1440/Math.max(video.videoWidth,video.videoHeight));photo.width=Math.round(video.videoWidth*scale);photo.height=Math.round(video.videoHeight*scale);
    const ctx=photo.getContext('2d');ctx.save();ctx.translate(photo.width,0);ctx.scale(-1,1);ctx.drawImage(video,0,0,photo.width,photo.height);ctx.restore();
@@ -580,3 +589,24 @@ async function publishAlbum(canvas,revision){
  if(revision!==sessionRun){void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'});return canvas;}
  return composite;
 }
+
+// A short local feedback tone, unlocked by an actual button click.
+let buttonAudio = null;
+document.addEventListener('click',event=>{
+ const button=event.target instanceof Element?event.target.closest('button'):null;
+ if(!event.isTrusted||!button||button.disabled)return;
+ const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return;
+ try{
+  if(!buttonAudio||buttonAudio.state==='closed')buttonAudio=new Audio();
+  const context=buttonAudio;
+  const sound=()=>{
+   if(context.state!=='running')return;
+   const oscillator=context.createOscillator(),gain=context.createGain(),now=context.currentTime;
+   oscillator.type='sine';oscillator.frequency.setValueAtTime(660,now);oscillator.frequency.exponentialRampToValueAtTime(480,now+.045);
+   gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(.045,now+.005);gain.gain.exponentialRampToValueAtTime(.001,now+.055);
+   oscillator.connect(gain);gain.connect(context.destination);oscillator.start(now);oscillator.stop(now+.06);
+   oscillator.onended=()=>{oscillator.disconnect();gain.disconnect();};
+  };
+  if(context.state==='running')sound();else context.resume().then(sound).catch(()=>{});
+ }catch{}
+},true);

@@ -575,3 +575,22 @@ footer,footer span,footer button{color:#536985}
 @media(max-width:699px){.is-setup .controls{padding:10px!important}.is-setup:not(.is-basic) .frames{grid-template-columns:repeat(2,minmax(0,1fr));max-height:410px}.is-setup:not(.is-basic) .frame-thumb{height:180px!important}}
 .is-setup:not(.is-basic) .frame-card{height:auto;min-height:250px;justify-content:flex-start}.is-setup:not(.is-basic) .frame-thumb{flex-shrink:0;margin-bottom:0;aspect-ratio:auto;object-fit:contain}.is-setup:not(.is-basic) .frames{grid-auto-rows:minmax(250px,auto);box-sizing:border-box}
 @media(max-width:699px){.is-setup:not(.is-basic) .frame-card{min-height:225px}.is-setup:not(.is-basic) .frames{grid-auto-rows:minmax(225px,auto)}}
+/* Keep capture progress directly beneath and centered on the camera image. */
+.is-shooting:not(.config-open) .studio{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto auto;justify-items:center;gap:10px;min-height:0}
+.is-shooting:not(.config-open) .studio-top{grid-column:1;grid-row:1;width:100%}
+.is-shooting:not(.config-open) .viewfinder{grid-column:1;grid-row:2;width:min(100%,calc((100svh - 245px)*var(--preview-ratio,.85)));max-width:900px;min-width:0;margin:0 auto}
+.is-shooting:not(.config-open) .studio-console{grid-column:1;grid-row:3;justify-self:center;align-self:start;width:min(100%,540px);max-width:100%;box-sizing:border-box;margin:0 auto;padding:12px 18px;border-radius:14px;background:#f4f7fc;border:1px solid #d4ddea;text-align:center}
+.is-shooting .studio-console .shot-progress{margin:0;font-size:18px;line-height:1.5}
+.is-shooting .capture-note,.is-shooting #status:not(.error),.is-shooting #shot-thumbs:empty,.is-shooting #capture-actions:has(#capture[hidden]){display:none}
+.is-shooting:not(.config-open) .studio-bottom{grid-column:1;grid-row:4;width:100%}
+/* Final photo and its actions share one centered column. */
+.is-result .studio{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto auto;justify-items:center;gap:18px;min-height:0}
+.is-result .studio-top{grid-column:1;grid-row:1;width:100%}
+.is-result .viewfinder{grid-column:1;grid-row:2;justify-self:center;width:min(100%,calc(60svh * var(--preview-ratio,.675)));max-width:800px;max-height:none;margin:0 auto}
+.is-result .studio-console{grid-column:1;grid-row:3;justify-self:center;align-self:start;width:min(100%,600px);max-width:100%;box-sizing:border-box;margin:0 auto;padding:18px 20px;text-align:center}
+.is-result .studio-console .shot-progress{margin:0 0 12px}.is-result #status:empty,.is-result #shot-thumbs:empty{display:none}
+.is-result .studio-bottom{grid-column:1;grid-row:4;width:100%}
+
+#capture-admin{display:none}.is-shooting #capture-admin{display:block;margin:5px 0 0;text-align:center}.is-shooting #capture-admin summary{display:inline-block;font-size:11px;color:#788597;cursor:pointer;padding:3px 10px}.is-shooting #capture-admin button{display:block;margin:8px auto 0;min-height:44px}.is-shooting:not(.config-open) .viewfinder{width:min(100%,calc((100svh - 280px)*var(--preview-ratio,.85)))}
+
+.cut-example{display:none}.is-setup.is-basic .cut-picker{text-align:center}.is-setup.is-basic .cut-options{width:100%;max-width:600px;margin:12px auto;align-items:stretch}.is-setup.is-basic .cut-options button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:18px;min-height:230px}.is-setup.is-basic .cut-example{display:block;width:100px;height:148px;background:#fff;object-fit:contain;box-shadow:0 2px 8px #192a4020}.is-setup.is-basic .cut-options button>span{font-size:21px}.is-setup.is-basic .setup-left{width:100%;box-sizing:border-box}@media(max-width:599px){.is-setup.is-basic .cut-options button{padding:14px 8px;min-height:210px}}
