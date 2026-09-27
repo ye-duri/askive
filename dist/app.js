@@ -601,16 +601,17 @@ let buttonAudio = null;
 document.addEventListener('click',event=>{
  const button=event.target instanceof Element?event.target.closest('button'):null;
  if(!event.isTrusted||!button||button.disabled)return;
+ try{if(navigator.audioSession)navigator.audioSession.type='playback';}catch{}
  const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return;
  try{
-  if(!buttonAudio||buttonAudio.state==='closed')buttonAudio=new Audio();
+  if(!buttonAudio||buttonAudio.state==='closed')buttonAudio=new Audio({latencyHint:'interactive'});
   const context=buttonAudio;
   const sound=()=>{
    if(context.state!=='running')return;
    const oscillator=context.createOscillator(),gain=context.createGain(),now=context.currentTime;
    oscillator.type='sine';oscillator.frequency.setValueAtTime(660,now);oscillator.frequency.exponentialRampToValueAtTime(480,now+.045);
-   gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(.045,now+.005);gain.gain.exponentialRampToValueAtTime(.001,now+.055);
-   oscillator.connect(gain);gain.connect(context.destination);oscillator.start(now);oscillator.stop(now+.06);
+   gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(.16,now+.008);gain.gain.exponentialRampToValueAtTime(.001,now+.11);
+   oscillator.connect(gain);gain.connect(context.destination);oscillator.start(now);oscillator.stop(now+.12);
    oscillator.onended=()=>{oscillator.disconnect();gain.disconnect();};
   };
   if(context.state==='running')sound();else context.resume().then(sound).catch(()=>{});

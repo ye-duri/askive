@@ -605,3 +605,19 @@ footer,footer span,footer button{color:#536985}
 }
 
 .loading-mascot{position:relative;width:120px;height:140px;display:grid;justify-items:center;align-items:start}.loading-mascot .sheep{position:relative;z-index:1;animation:sheep-hop 1.3s ease-in-out infinite;transform-origin:50% 100%}.loading-shadow{position:absolute;bottom:4px;width:60px;height:9px;border-radius:50%;background:#20395918;animation:sheep-shadow 1.3s ease-in-out infinite}.loading-dots{display:flex;gap:7px}.loading-dots i{width:7px;height:7px;border-radius:50%;background:#7895b4;animation:loading-dot 1.2s ease-in-out infinite}.loading-dots i:nth-child(2){animation-delay:.15s}.loading-dots i:nth-child(3){animation-delay:.3s}@keyframes sheep-hop{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}@keyframes sheep-shadow{0%,100%{transform:scaleX(1);opacity:.8}50%{transform:scaleX(.7);opacity:.4}}@keyframes loading-dot{0%,80%,100%{opacity:.3;transform:translateY(0)}40%{opacity:1;transform:translateY(-4px)}}@media(prefers-reduced-motion:reduce){.loading-mascot .sheep,.loading-shadow,.loading-dots i{animation:none}}
+/* Let the basic preparation panel fill the tablet, leaving only a narrow blue gutter. */
+.is-setup.is-basic main{max-width:1480px;padding-left:20px;padding-right:20px;box-sizing:border-box;width:100%}
+.is-setup.is-basic .workspace{width:100%;grid-template-columns:minmax(0,1fr)}
+.is-setup.is-basic .controls{width:100%;max-width:none;box-sizing:border-box;margin:0}
+.is-setup.is-basic .cut-options{max-width:880px;gap:16px}
+@media(max-width:599px){.is-setup.is-basic main{padding-left:12px;padding-right:12px}.is-setup.is-basic .cut-options{gap:10px}}
+@media(min-width:800px) and (orientation:landscape){
+.is-shooting:not(.config-open) .studio{grid-template-columns:minmax(0,1.4fr) minmax(260px,1fr);grid-template-rows:auto 1fr auto;gap:18px 28px;max-width:1120px;margin:0 auto;width:100%;box-sizing:border-box;min-height:calc(100svh - 100px);padding:18px 24px}
+.is-shooting:not(.config-open) .studio-top{grid-column:1/-1;grid-row:1}
+.is-shooting:not(.config-open) .viewfinder{grid-column:1;grid-row:2;align-self:center;justify-self:center;width:min(100%,calc((100svh - 210px)*var(--preview-ratio,.85)));max-width:100%;margin:0}
+.is-shooting:not(.config-open) .studio-console{grid-column:2;grid-row:2;align-self:center;justify-self:center;width:100%;max-width:440px;margin:0;padding:20px 18px}
+.is-shooting:not(.config-open) .studio-bottom{grid-column:1/-1;grid-row:3}
+}
+
+.console-mascot{display:none}.is-shooting .console-mascot,.is-result .console-mascot{display:flex;justify-content:center;order:-2;height:88px;margin:0 0 6px;overflow:hidden}.console-mascot .sheep{transform:scale(.72);transform-origin:center top}.is-shooting .studio-console .shot-progress,.is-result .studio-console .shot-progress{order:-1}
+@media(max-width:799px),(orientation:portrait){.is-shooting .console-mascot{height:44px;margin:0}.is-shooting .console-mascot .sheep{transform:scale(.4)}.is-shooting:not(.config-open) .viewfinder{width:min(100%,calc((100svh - 330px)*var(--preview-ratio,.85)))}}
