@@ -53,7 +53,6 @@ function controls() {
  $('start').disabled=cameraBusy;
  for(const suffix of ['camera','camera-refresh'])$('permission-'+suffix).disabled=phase!=='permission'||busy||cameraBusy;
  $('frame-next').disabled=frameLoading||!selected;
- $('frame-preview-open').disabled=frameLoading||!selected;
  $('qr-consent').disabled=!qrEnabled;
  $('qr-availability').hidden=qrEnabled;
  $('qr-availability').textContent=qrEnabled?'':galleryConfig.configured?'QR 저장을 사용하려면 최초 카메라 화면에서 운영 코드를 연결해 주세요.':'QR 저장 서버 연결 전입니다. 지금은 저장·인쇄를 이용할 수 있어요.';
@@ -86,6 +85,7 @@ async function chooseFrame(id) {
   try {
   const img = await loadImage(frame.src); if (run !== frameRun) return;
   selected = prepareFrame(frame,img);
+  $('selected-frame-image').src=frame.src;$('selected-frame-name').textContent=frame.name;
   $('overlay').src = frame.src;
   $('viewfinder').style.aspectRatio = `${selected.width}/${selected.height}`;
   if(selecting){renderSelection();renderEditingFrames();}else if(phase==='frame')renderAfterFrames();else updateShotMode();
@@ -609,11 +609,11 @@ document.addEventListener('click',event=>{
   const context=buttonAudio;
   const sound=()=>{
    if(context.state!=='running')return;
-   const oscillator=context.createOscillator(),gain=context.createGain(),now=context.currentTime;
-   oscillator.type='sine';oscillator.frequency.setValueAtTime(660,now);oscillator.frequency.exponentialRampToValueAtTime(480,now+.045);
-   gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(.16,now+.008);gain.gain.exponentialRampToValueAtTime(.001,now+.11);
-   oscillator.connect(gain);gain.connect(context.destination);oscillator.start(now);oscillator.stop(now+.12);
-   oscillator.onended=()=>{oscillator.disconnect();gain.disconnect();};
+   const oscillator=context.createOscillator(),gain=context.createGain(),tone=context.createBiquadFilter(),now=context.currentTime;
+   oscillator.type='triangle';oscillator.frequency.setValueAtTime(260,now);oscillator.frequency.exponentialRampToValueAtTime(145,now+.065);tone.type='lowpass';tone.frequency.value=850;tone.Q.value=.5;
+   gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(.24,now+.004);gain.gain.exponentialRampToValueAtTime(.001,now+.095);
+   oscillator.connect(tone);tone.connect(gain);gain.connect(context.destination);oscillator.start(now);oscillator.stop(now+.12);
+   oscillator.onended=()=>{oscillator.disconnect();tone.disconnect();gain.disconnect();};
   };
   if(context.state==='running')sound();else context.resume().then(sound).catch(()=>{});
  }catch{}
@@ -622,19 +622,14 @@ document.addEventListener('click',event=>{
 function playShutterSound(){
  try{
   const context=buttonAudio;if(!context||context.state!=='running')return;
-  const buffer=context.createBuffer(1,Math.ceil(context.sampleRate*.11),context.sampleRate),samples=buffer.getChannelData(0);
-  for(let i=0;i<samples.length;i++){const t=i/context.sampleRate;const envelope=Math.exp(-t*65)+(t>.04?.45*Math.exp(-(t-.04)*95):0);samples[i]=(Math.random()*2-1)*envelope;}
+  const buffer=context.createBuffer(1,Math.ceil(context.sampleRate*.16),context.sampleRate),samples=buffer.getChannelData(0);
+  for(let i=0;i<samples.length;i++){const t=i/context.sampleRate;const envelope=Math.exp(-t*48)+(t>.055?.65*Math.exp(-(t-.055)*55):0);samples[i]=(Math.random()*2-1)*envelope;}
   const source=context.createBufferSource(),gain=context.createGain(),filter=context.createBiquadFilter();
-  source.buffer=buffer;filter.type='highpass';filter.frequency.value=900;gain.gain.value=.13;
+  source.buffer=buffer;filter.type='lowpass';filter.frequency.value=2100;filter.Q.value=.7;gain.gain.value=.25;
+  const body=context.createOscillator(),bodyGain=context.createGain(),now=context.currentTime;
+  body.type='sine';body.frequency.setValueAtTime(190,now);body.frequency.exponentialRampToValueAtTime(85,now+.12);bodyGain.gain.setValueAtTime(.2,now);bodyGain.gain.exponentialRampToValueAtTime(.001,now+.14);body.connect(bodyGain);bodyGain.connect(context.destination);body.start(now);body.stop(now+.15);body.onended=()=>{body.disconnect();bodyGain.disconnect();};
   source.connect(filter);filter.connect(gain);gain.connect(context.destination);source.start();
   source.onended=()=>{source.disconnect();filter.disconnect();gain.disconnect();};
  }catch{}
 }
 
-$('frame-preview-open').onclick=()=>{
- if(frameLoading||!selected)return;
- $('frame-preview-title').textContent=selected.name;
- $('frame-preview-image').src=selected.src;
- $('frame-preview-dialog').showModal();
-};
-$('frame-preview-close').onclick=()=>$('frame-preview-dialog').close();
