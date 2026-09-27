@@ -4,7 +4,7 @@ for(const [edition,count,partial] of [['basic',4,false],['special',6,true]]){
  const page=await browser.newPage({permissions:['camera']});await page.addInitScript(()=>{const now=Date.now;window.timeOffset=0;Date.now=()=>now()+window.timeOffset;const wait=setTimeout;window.setTimeout=(f,t,...args)=>wait(f,t===1000?5:t,...args);});await page.goto(`http://127.0.0.1:${app.address().port}`);await page.locator('#intro-start').click();await page.locator('#permission-start').click();await page.locator('#permission-next').click();await page.locator('#edition-'+edition).click();await page.locator('#cuts-'+count).click();await page.locator('#setup-done').click();await page.locator('#selection-panel').waitFor({state:'visible'});
  assert.equal(await page.locator('#selection-timer').isVisible(),true);assert.match(await page.locator('#selection-timer').textContent(),/남은 시간 (90|89)초/);
  for(const [width,height] of [[1180,820],[820,1180],[390,844]]){
-  await page.setViewportSize({width,height});
+  await page.setViewportSize({width,height});await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
   const fits=await page.evaluate(()=>{const timer=document.querySelector('#selection-timer');const box=timer.getBoundingClientRect();const heading=document.querySelector('.selection-heading').getBoundingClientRect();return box.left>=0&&box.right<=innerWidth&&box.top>=heading.top&&box.bottom<=heading.bottom+1&&timer.scrollWidth<=timer.clientWidth&&document.documentElement.scrollWidth<=innerWidth;});
   assert.ok(fits,`Countdown fits header at ${width}x${height}`);
  }
