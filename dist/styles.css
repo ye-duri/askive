@@ -621,3 +621,16 @@ footer,footer span,footer button{color:#536985}
 
 .console-mascot{display:none}.is-shooting .console-mascot,.is-result .console-mascot{display:flex;justify-content:center;order:-2;height:88px;margin:0 0 6px;overflow:hidden}.console-mascot .sheep{transform:scale(.72);transform-origin:center top}.is-shooting .studio-console .shot-progress,.is-result .studio-console .shot-progress{order:-1}
 @media(max-width:799px),(orientation:portrait){.is-shooting .console-mascot{height:44px;margin:0}.is-shooting .console-mascot .sheep{transform:scale(.4)}.is-shooting:not(.config-open) .viewfinder{width:min(100%,calc((100svh - 330px)*var(--preview-ratio,.85)))}}
+/* Special edition: compact cut settings on the left, generous frame browser on the right. */
+@media(min-width:800px){
+.is-setup:not(.is-basic) .controls{grid-template-columns:220px minmax(0,1fr)!important;gap:12px 22px!important;align-items:start}
+.is-setup:not(.is-basic) .setup-left{grid-column:1;grid-row:1/4;align-self:start;box-sizing:border-box}
+.is-setup:not(.is-basic) .cut-options{grid-template-columns:1fr;max-width:none}
+.is-setup:not(.is-basic) .cut-options button{min-height:64px}
+.is-setup:not(.is-basic) #setup-frame-heading{grid-column:2;grid-row:1}
+.is-setup:not(.is-basic) .frames{grid-column:2;grid-row:2;max-height:480px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.is-setup:not(.is-basic) #setup-actions{grid-column:2;grid-row:3}
+.is-setup:not(.is-basic) .privacy{grid-column:1/-1;grid-row:4}
+}
+
+#setup-frame-heading{flex-wrap:wrap}#frame-preview-open{margin-left:auto;font-size:12px;padding:7px 12px;min-height:38px}#setup-frame-heading .subtle{margin-left:0}#frame-preview-dialog{width:min(92vw,860px);max-width:92vw;max-height:92dvh;box-sizing:border-box;padding:20px;border:1px solid #d5dfeb;border-radius:20px;background:#f8faff}#frame-preview-dialog::backdrop{background:#182d48aa;backdrop-filter:blur(3px)}#frame-preview-title{font-size:20px;margin:0}#frame-preview-dialog .dialog-head{margin-bottom:14px}.frame-preview-mat{display:flex;justify-content:center;align-items:center;padding:18px;background:#dfe7f0;border-radius:12px}#frame-preview-image{display:block;max-width:100%;max-height:calc(85dvh - 125px);width:auto;height:auto;background:#fff;box-shadow:0 6px 20px #24364d2b}

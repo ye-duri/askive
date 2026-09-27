@@ -53,6 +53,7 @@ function controls() {
  $('start').disabled=cameraBusy;
  for(const suffix of ['camera','camera-refresh'])$('permission-'+suffix).disabled=phase!=='permission'||busy||cameraBusy;
  $('frame-next').disabled=frameLoading||!selected;
+ $('frame-preview-open').disabled=frameLoading||!selected;
  $('qr-consent').disabled=!qrEnabled;
  $('qr-availability').hidden=qrEnabled;
  $('qr-availability').textContent=qrEnabled?'':galleryConfig.configured?'QR 저장을 사용하려면 최초 카메라 화면에서 운영 코드를 연결해 주세요.':'QR 저장 서버 연결 전입니다. 지금은 저장·인쇄를 이용할 수 있어요.';
@@ -629,3 +630,11 @@ function playShutterSound(){
   source.onended=()=>{source.disconnect();filter.disconnect();gain.disconnect();};
  }catch{}
 }
+
+$('frame-preview-open').onclick=()=>{
+ if(frameLoading||!selected)return;
+ $('frame-preview-title').textContent=selected.name;
+ $('frame-preview-image').src=selected.src;
+ $('frame-preview-dialog').showModal();
+};
+$('frame-preview-close').onclick=()=>$('frame-preview-dialog').close();
