@@ -650,3 +650,4 @@ footer,footer span,footer button{color:#536985}
 @media(max-width:599px){.is-setup.is-basic .cut-options button{min-height:245px;padding:18px 8px}.is-setup.is-basic .cut-example{width:108px;height:160px}}
 
 @media(min-width:800px) and (orientation:landscape){.is-shooting:not(.config-open) .studio{grid-template-columns:minmax(0,calc((100svh - 175px)*var(--shoot-ratio,.85))) clamp(210px,22vw,270px);justify-content:center}}
+.is-setup #setup-done{margin-top:14px}
