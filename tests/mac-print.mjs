@@ -20,7 +20,7 @@ try{
  assert.equal((await print(0)).status,400);assert.equal((await print(11)).status,400);
  assert.equal((await print(1,84)).status,400);assert.equal((await print(1,101)).status,400);
  const responses=await Promise.all([print(3),print(3)]);assert.deepEqual(responses.map(r=>r.status).sort(),[200,409]);
- const lp=calls.filter(c=>c[0].endsWith('/lp'));assert.equal(lp.length,1);assert.ok(lp[0][1].includes('3'));assert.ok(lp[0][1].includes('media=Postcard.Fullbleed'));assert.ok(lp[0][1].includes('print-scaling=none'));assert.ok(lp[0][1].at(-1).endsWith('.pdf'));const pdf=await readFile(lp[0][1].at(-1),'latin1');assert.match(pdf,/269\.291339 0 0 398\.551181 7\.086614 10\.488189 cm/);assert.ok(!lp[0][1].includes('fill'));assert.ok(!lp[0][1].includes('print-scaling=fill'));
+ const lp=calls.filter(c=>c[0].endsWith('/lp'));assert.equal(lp.length,1);assert.ok(lp[0][1].includes('3'));assert.ok(lp[0][1].includes('media=Postcard.Fullbleed'));assert.ok(lp[0][1].includes('print-scaling=none'));assert.ok(lp[0][1].at(-1).endsWith('.pdf'));const pdf=await readFile(lp[0][1].at(-1),'latin1');assert.match(pdf,/266\.456693 0 0 394\.355906 8\.503937 12\.585827 cm/);assert.ok(!lp[0][1].includes('fill'));assert.ok(!lp[0][1].includes('print-scaling=fill'));
  assert.equal((await print(1,94)).status,409);
  const again=await Promise.all([print(2,94,true,1),print(2,94,true,1)]);assert.deepEqual(again.map(r=>r.status).sort(),[200,409]);assert.equal(calls.filter(c=>c[0].endsWith('/lp')).length,2);assert.equal((await print(2,94,true,1)).status,409);
  const job=(await(await fetch(base+'/admin/state')).json()).jobs[0];assert.equal(job.attempt,2);assert.equal(job.scale,94);assert.equal(job.copies,2);assert.equal(job.history.length,2);

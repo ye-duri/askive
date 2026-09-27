@@ -1,5 +1,5 @@
 // Fix physical placement before handing the job to macOS's print pipeline.
-export function printPDF(jpeg,scale=95){
+export function printPDF(jpeg,scale=94){
  if(!Number.isInteger(scale)||scale<85||scale>100)throw Error('Invalid print scale');
  let width,height,components;
  for(let i=2;i<jpeg.length;){

@@ -1,5 +1,5 @@
 const $=s=>document.getElementById(s);let printing=false,last='',selected=localStorage.getItem('yonsei-printer')||'';
-const savedScale=Number(localStorage.getItem('yonsei-print-scale')||95);$('scale').value=Number.isInteger(savedScale)&&savedScale>=85&&savedScale<=100?savedScale:95;
+const savedScale=Number(localStorage.getItem('yonsei-print-scale')||94);$('scale').value=Number.isInteger(savedScale)&&savedScale>=85&&savedScale<=100?savedScale:94;
 $('scale').onchange=()=>{if($('scale').checkValidity())localStorage.setItem('yonsei-print-scale',$('scale').value);};
 async function api(path,options={}){const r=await fetch(path,{...options,headers:{'Content-Type':'application/json','X-Yonsei-Admin':'1',...options.headers}});const d=await r.json();if(!r.ok)throw Error(d.error);return d;}
 const labels={waiting:'인쇄 대기',sending:'프린터로 전송 중',submitted:'인쇄 대기열 전송 완료',uncertain:'인쇄 센터 확인 필요'};

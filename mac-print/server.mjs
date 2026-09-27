@@ -51,7 +51,7 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
   if(match){const j=jobs.get(match[1]);if(!j)return json(res,404,{error:'사진이 없거나 만료됐습니다.'});
    if(req.method==='GET'&&match[2]==='image'){res.writeHead(200,{'Content-Type':'image/jpeg'});return res.end(readFileSync(join(directory,j.id+'.jpg')));}
    if(req.method==='POST'&&match[2]==='print'){
-    const {printer,copies,scale=95,reprint=false,expectedAttempt=0}=JSON.parse((await body(req,2048)).toString());
+    const {printer,copies,scale=94,reprint=false,expectedAttempt=0}=JSON.parse((await body(req,2048)).toString());
     if(!Number.isInteger(scale)||scale<85||scale>100)return json(res,400,{error:'인쇄 배율은 85~100%입니다.'});
     if(!Number.isInteger(copies)||copies<1||copies>10)return json(res,400,{error:'매수는 1~10장입니다.'});
     if(!(await printers()).some(p=>p.name===printer))return json(res,400,{error:'등록된 프린터를 선택해 주세요.'});
