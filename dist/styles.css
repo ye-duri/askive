@@ -817,3 +817,22 @@ footer,footer span,footer button{color:#536985}
  .is-setup.is-basic .setup-left .cut-picker{grid-column:1;grid-row:1;min-width:0}
  .is-setup.is-basic #edition-back{position:relative;top:auto;left:auto;grid-column:1;grid-row:1;align-self:start;justify-self:start;margin:12px 0 0;z-index:1}
 }
+
+/* Match the special heading to the back button and give the catalogue the spare row space. */
+@media (min-width:800px){
+ .is-setup:not(.is-basic) #setup-frame-heading{min-height:40px;margin:8px 0 0;align-items:center}
+ .is-setup:not(.is-basic) .controls{grid-template-rows:48px minmax(0,1fr) auto auto}
+ .is-setup:not(.is-basic) .frames{height:clamp(343px,calc(100dvh - 391px),700px);min-height:0;max-height:none;align-self:stretch}
+ .is-setup:not(.is-basic) #setup-actions{align-self:start}
+ .is-setup .qr-consent{margin-bottom:0}
+ .is-setup.is-basic .cut-options button{min-height:clamp(210px,calc(100dvh - 378px),342px)}
+}
+@media (min-width:800px) and (min-height:800px){
+ .is-setup:not(.is-basic) .frames{height:clamp(380px,calc(100dvh - 443px),720px)}
+ .is-setup.is-basic .cut-options button{min-height:clamp(312px,calc(100dvh - 472px),588px)}
+}
+@media (min-width:800px) and (max-height:740px){
+ .is-setup.is-basic .cut-options button{min-height:322px}
+}
+
+@media(min-width:800px){.is-setup.is-basic #setup-done{min-height:58px;margin-top:8px;font-size:20px;padding:6px 16px}.is-setup.is-basic #setup-done span{font-size:24px}}
