@@ -16,7 +16,7 @@ frames=[]
 for theme,name,bg,ink,t1,t2 in themes:
  for variant,count in [('four',4),('six',6),('wide',4)]:
   W,H=(1776,1200) if variant=='wide' else (1200,1776);rows=count//2
-  left,top,gap=(72,90,28) if variant=='wide' else (72,190,44);bottom=H-240;sw=(W-2*left-gap)/2
+  left,top,gap=(136,90,28) if variant=='wide' else (72,190,44);bottom=H-(192 if variant=='wide' else 240);sw=(W-2*left-gap)/2
   stagger=70 if variant!='wide' else 28
   sh=(bottom-top-stagger-gap*(rows-1))/rows
   slots=[[left+c*(sw+gap),top+r*(sh+gap)+(stagger if c else 0),sw,sh] for r in range(rows) for c in range(2)]

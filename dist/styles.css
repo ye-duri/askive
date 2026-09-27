@@ -678,3 +678,7 @@ footer,footer span,footer button{color:#536985}
 .selection-deadline{margin-top:12px;padding:10px;min-width:0;max-width:100%;box-sizing:border-box}
 .selection-deadline p{margin:0;overflow-wrap:anywhere}
 @media(max-width:699px){.is-selecting .selection-heading>div{flex-basis:100%}.is-selecting .selection-heading #selection-timer{padding:8px 16px}#selection-timer-value{font-size:24px}}
+
+.capture-timing-note{display:none}.is-shooting .capture-timing-note{display:block;margin:8px 0 0;text-align:center;font-size:14px;line-height:1.5;color:#52647a}
+
+#setup-done{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:14px 20px}#setup-done small{font-size:12px;font-weight:500;line-height:1.4;opacity:.85}
