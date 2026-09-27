@@ -16,8 +16,8 @@ frames=[]
 for theme,name,bg,ink,t1,t2 in themes:
  for variant,count in [('four',4),('six',6),('wide',4)]:
   W,H=(1776,1200) if variant=='wide' else (1200,1776);rows=count//2
-  left,top,gap=72,190,44;bottom=H-240;sw=(W-2*left-gap)/2
-  stagger=70 if variant!='wide' else 38
+  left,top,gap=(72,90,28) if variant=='wide' else (72,190,44);bottom=H-240;sw=(W-2*left-gap)/2
+  stagger=70 if variant!='wide' else 28
   sh=(bottom-top-stagger-gap*(rows-1))/rows
   slots=[[left+c*(sw+gap),top+r*(sh+gap)+(stagger if c else 0),sw,sh] for r in range(rows) for c in range(2)]
   kinds=[('rect' if theme=='farewell' else 'round' if theme=='club' else ('oval' if i%2==0 else 'round') if theme=='friends' else ('arch' if i%2==0 else 'cloud')) for i in range(count)]
@@ -34,8 +34,9 @@ for theme,name,bg,ink,t1,t2 in themes:
   else:
    for x,y in [(42,110),(W-42,180),(36,H*.5),(W-40,H*.65),(45,H-120)]:
     a.append(f'<g fill="{ink}" transform="translate({x} {y})">'+''.join(f'<ellipse cx="{dx}" cy="{dy}" rx="13" ry="19" transform="rotate({rot} {dx} {dy})"/>' for dx,dy,rot in [(-10,-10,-45),(10,-10,45),(-10,10,45),(10,10,-45)])+'</g>')
-  a.append(f'<text x="76" y="94" font-size="62" font-weight="850" letter-spacing="-2" fill="{ink}">{t1}</text><text x="80" y="147" font-size="42" font-weight="600" letter-spacing="5" fill="{ink}">{t2}</text>')
-  a.append(f'<path d="M{W-340} 72q80 -48 142 8t122 0" fill="none" stroke="{ink}" stroke-width="4" stroke-linecap="round"/>')
+  title_y,subtitle_y,title_size,subtitle_size=(38,67,34,22) if variant=='wide' else (94,147,62,42)
+  a.append(f'<text x="76" y="{title_y}" font-size="{title_size}" font-weight="850" letter-spacing="-2" fill="{ink}">{t1}</text><text x="80" y="{subtitle_y}" font-size="{subtitle_size}" font-weight="600" letter-spacing="5" fill="{ink}">{t2}</text>')
+  a.append(f'<path d="M{W-340} {38 if variant=="wide" else 72}q80 -48 142 8t122 0" fill="none" stroke="{ink}" stroke-width="4" stroke-linecap="round"/>')
   for i,((x,y,w,h),kind) in enumerate(zip(slots,kinds)):
    a.append(shape(x-9,y-9,w+18,h+18,kind,'#FFFDF8'))
    a.append(shape(x-4,y-4,w+8,h+8,kind,'none',ink,3))
