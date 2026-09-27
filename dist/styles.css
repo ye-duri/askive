@@ -732,7 +732,7 @@ footer,footer span,footer button{color:#536985}
  .is-setup .setup-left{margin-bottom:0}
  .is-setup .privacy p br{display:none}
  .is-setup footer .privacy-link{min-height:28px;padding:4px}
- .is-setup:not(.is-basic) .frames{max-height:clamp(210px,calc(100dvh - 405px),440px)}
+ .is-setup:not(.is-basic) .frames{max-height:clamp(210px,calc(100dvh - 393px),452px)}
 }
 @media (min-width:768px) and (max-height:740px){
  .is-setup .topbar{height:56px}
@@ -773,7 +773,7 @@ footer,footer span,footer button{color:#536985}
  .is-setup .setup-left{gap:6px!important}
  .is-setup.is-basic .cut-options button{min-height:clamp(280px,calc(100dvh - 520px),540px);padding:24px;gap:16px}
  .is-setup.is-basic .cut-example{height:clamp(190px,calc(100dvh - 690px),270px)}
- .is-setup:not(.is-basic) .frames{max-height:clamp(320px,calc(100dvh - 460px),680px)}
+ .is-setup:not(.is-basic) .frames{max-height:clamp(320px,calc(100dvh - 448px),692px)}
  .is-setup #setup-done{min-height:76px;margin-top:12px}
  .is-setup .qr-consent{padding:10px 12px}
 }
@@ -788,16 +788,32 @@ footer,footer span,footer button{color:#536985}
 @media (max-width:599px){.topbar>.privacy-link{font-size:10px}.topbar{gap:8px}}
 @media (min-width:768px){
  .is-setup #edition-back,.is-setup.is-basic #edition-back{width:266px;max-width:100%;height:40px;min-height:40px;padding:6px 12px;font-size:14px;line-height:1.4;align-self:flex-start}
- .is-setup.is-basic .cut-picker h2{margin:0 0 8px;padding-left:280px;min-height:32px}
- .is-setup.is-basic .cut-options button{min-height:clamp(190px,calc(100dvh - 400px),320px)}
+ .is-setup.is-basic .cut-picker h2{margin:0 0 8px;padding:0;min-height:32px;text-align:center}
+ .is-setup.is-basic .cut-options button{min-height:clamp(190px,calc(100dvh - 384px),336px)}
 }
 @media (min-width:768px) and (min-height:800px){
- .is-setup.is-basic .cut-options button{min-height:clamp(300px,calc(100dvh - 500px),560px)}
+ .is-setup.is-basic .cut-options button{min-height:clamp(300px,calc(100dvh - 484px),576px)}
 }
 @media (min-width:768px) and (max-height:740px){
- .is-setup.is-basic .cut-options button{min-height:290px}
+ .is-setup.is-basic .cut-options button{min-height:306px}
 }
 @media (min-width:768px){
  .is-setup.is-basic .setup-left .cut-picker{padding-top:16px!important}
  .is-setup.is-basic #edition-back{top:12px}
+}
+
+@media (min-width:800px) and (max-width:900px){
+ .is-setup.is-basic .cut-picker h2{font-size:18px}
+}
+@media (min-width:768px) and (max-width:799px){
+ .is-setup.is-basic .setup-left .cut-picker{padding-top:60px!important}
+}
+@media (min-width:768px){
+ .is-setup:not(.is-basic) .cut-picker h2{margin:10px 0}
+}
+@media (min-width:768px){
+ .is-setup:not(.is-basic) .setup-left{padding-top:8px!important}
+ .is-setup.is-basic .setup-left{display:grid;grid-template-columns:minmax(0,1fr)}
+ .is-setup.is-basic .setup-left .cut-picker{grid-column:1;grid-row:1;min-width:0}
+ .is-setup.is-basic #edition-back{position:relative;top:auto;left:auto;grid-column:1;grid-row:1;align-self:start;justify-self:start;margin:12px 0 0;z-index:1}
 }
