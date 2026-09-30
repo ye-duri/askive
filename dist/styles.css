@@ -836,3 +836,29 @@ footer,footer span,footer button{color:#536985}
 }
 
 @media(min-width:800px){.is-setup.is-basic #setup-done{min-height:58px;margin-top:8px;font-size:20px;padding:6px 16px}.is-setup.is-basic #setup-done span{font-size:24px}}
+
+/* 12.9-inch iPad: 2732x2048 physical pixels, 1366x1024 CSS pixels. */
+.countdown{background:transparent;text-shadow:0 2px 6px #0009,0 0 20px #0006}
+@media screen and (min-width:1000px) and (orientation:landscape) and (min-aspect-ratio:6/5) and (max-aspect-ratio:3/2){
+ body{--tablet-gutter:20px}
+ .topbar{width:100%;max-width:none;height:76px;padding:8px 28px}
+ body:is(.is-intro,.is-edition,.is-setup,.is-shooting,.is-result,.is-selecting) main{width:100%;max-width:none;padding:16px var(--tablet-gutter) 12px}
+ .is-intro #intro-panel{min-height:calc(100dvh - 145px);padding:24px 32px;gap:40px}
+ .intro-exhibition{height:min(64dvh,650px)}
+ .is-edition .edition-options{width:100%;max-width:none}
+ .is-edition .edition-options button{min-height:calc(100dvh - 300px)}
+ .is-edition .edition-sample img{height:clamp(220px,32dvh,340px)}
+ .is-setup .workspace,#edition-panel{max-width:none;width:100%}
+ .is-setup .controls{width:100%;max-width:none!important;min-height:calc(100dvh - 165px);padding:20px!important}
+ .is-setup.is-basic .cut-options{max-width:1100px;width:100%;gap:24px}
+ .is-setup.is-basic .cut-options button{min-height:calc(100dvh - 470px)}
+ .is-setup.is-basic .cut-example{height:clamp(220px,34dvh,370px)}
+ .is-setup:not(.is-basic) .controls{grid-template-columns:320px minmax(0,1fr)!important}
+ .is-setup:not(.is-basic) .frames{height:calc(100dvh - 424px)}
+ .is-setup:not(.is-basic) .frame-thumb{height:220px!important}
+ .is-shooting:not(.config-open) .studio,.is-result .studio{min-height:calc(100dvh - 145px);max-width:none;width:100%;padding:16px 24px;grid-template-columns:minmax(0,1fr) 300px;column-gap:36px}
+ .is-shooting:not(.config-open) .viewfinder,.is-result .viewfinder{width:min(100%,calc((100dvh - 235px)*var(--preview-ratio,.85)));max-height:none}
+ .is-shooting:not(.config-open) .studio-console{max-width:300px}
+ body.is-selecting main{padding:8px}
+ .is-selecting #selection-panel{height:calc(100dvh - 135px)}
+}
