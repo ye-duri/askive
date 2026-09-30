@@ -131,7 +131,7 @@ async function startCamera() {
   $('camera-state').textContent = '카메라 연결 중';
   try {
     const source=cameraDeviceId ? {deviceId:{exact:cameraDeviceId}} : {facingMode:{ideal:'user'}};
-    const next = await withTimeout(navigator.mediaDevices.getUserMedia({audio:false, video:{...source,width:{ideal:1920},height:{ideal:1440},frameRate:{ideal:30}}}),20000,'카메라 연결 시간이 초과됐어요. 연결을 확인한 뒤 다시 시도해 주세요.',late=>late.getTracks().forEach(t=>t.stop()));
+    const next = await withTimeout(navigator.mediaDevices.getUserMedia({audio:false, video:{...source,width:{ideal:1280},height:{ideal:720},frameRate:{ideal:30}}}),20000,'카메라 연결 시간이 초과됐어요. 연결을 확인한 뒤 다시 시도해 주세요.',late=>late.getTracks().forEach(t=>t.stop()));
     if (run !== cameraRun) { next.getTracks().forEach(t => t.stop()); return; }
     stream = next;
     const track=next.getVideoTracks()[0];
