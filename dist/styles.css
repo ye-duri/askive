@@ -860,5 +860,7 @@ footer,footer span,footer button{color:#536985}
  .is-shooting:not(.config-open) .viewfinder,.is-result .viewfinder{width:min(100%,calc((100dvh - 235px)*var(--preview-ratio,.85)));max-height:none}
  .is-shooting:not(.config-open) .studio-console{max-width:300px}
  body.is-selecting main{padding:8px}
- .is-selecting #selection-panel{height:calc(100dvh - 135px)}
+ .is-selecting #selection-panel,.is-basic.is-selecting #selection-panel{height:calc(100dvh - 16px)}
+ .is-shooting:not(.config-open) .studio{grid-template-columns:minmax(0,min(calc(100% - 336px),calc((100dvh - 235px)*var(--preview-ratio,.85)))) 300px;justify-content:center}
+ .is-shooting:not(.config-open) .viewfinder{width:100%}
 }
