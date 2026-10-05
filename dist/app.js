@@ -1,3 +1,4 @@
+import {prepareNaturalPhoto,naturalPhoto} from './photo-tone.js';
 import {withTimeout, waitForVideo} from './media-ready.mjs';
 import qrcode from './vendor/qrcode.mjs';
 const $ = id => document.getElementById(id);
@@ -241,11 +242,12 @@ function filterPixels(data, name) {
   }
 }
 function photoTile(photo, slot, filter='original') {
+  if(filter==='natural')photo=naturalPhoto(photo);
   const tile=document.createElement('canvas');tile.width=slot.w;tile.height=slot.h;
   const ctx=tile.getContext('2d'),scale=Math.max(tile.width/photo.width,tile.height/photo.height);
   const w=photo.width*scale,h=photo.height*scale;
   ctx.drawImage(photo,(tile.width-w)/2,(tile.height-h)/2,w,h);
-  if(filter!=='original'){const pixels=ctx.getImageData(0,0,tile.width,tile.height);filterPixels(pixels.data,filter);ctx.putImageData(pixels,0,0);}
+  if(filter!=='original'&&filter!=='natural'){const pixels=ctx.getImageData(0,0,tile.width,tile.height);filterPixels(pixels.data,filter);ctx.putImageData(pixels,0,0);}
   return tile;
 }
 function composeSelection(canvas,frame=selected,includeFrame=true) {
@@ -282,7 +284,7 @@ function renderSelection() {
   $('selection-count').textContent=`${selectedCount()} / ${cutCount} 선택`;
   $('finish-selection').disabled=selectedCount()!==cutCount || busy || frameLoading;
   $('finish-selection').textContent=selectedCount()===cutCount?`이 ${cutCount}장으로 완성하기`:`${cutCount-selectedCount()}장을 더 선택해 주세요`;
-  for(const name of ['original','bright','vivid','mono']) { $('filter-'+name).disabled=busy||frameLoading; $('filter-'+name).setAttribute('aria-pressed',String(($('photo-filter').value || 'original')===name)); }
+  for(const name of ['natural','original','bright','vivid','mono']) { $('filter-'+name).disabled=busy||frameLoading; $('filter-'+name).setAttribute('aria-pressed',String(($('photo-filter').value || 'original')===name)); }
   $('photo-filter').disabled=busy||frameLoading;
   // Keep the original frame in an independent DOM layer. Only the photo canvas changes with filters.
   composeSelection($('selection-canvas'),selected,false);
@@ -361,7 +363,7 @@ async function capture() {
    const ctx=photo.getContext('2d');ctx.save();ctx.translate(photo.width,0);ctx.scale(-1,1);ctx.drawImage(video,0,0,photo.width,photo.height);ctx.restore();
    shotSession.photos.push(photo);shotSession.taken++;playShutterSound();$('countdown').hidden=true;
    $('shot-progress').textContent=`${shotSession.taken} / ${CAPTURE_TOTAL}장 촬영 완료`;
-   $('flash').classList.remove('active');void $('flash').offsetWidth;$('flash').classList.add('active');showShotPreview();
+   $('flash').classList.remove('active');void $('flash').offsetWidth;$('flash').classList.add('active');await prepareNaturalPhoto(photo);if(run!==countdownRun||revision!==sessionRun)return;showShotPreview();
   }
   chosen=[];activeSlot=-1;$('flash').classList.remove('active');stopStream();busy=false;automatic=false;$('camera-state').textContent='촬영 완료';
   openSelection();
@@ -377,7 +379,7 @@ function renderAfterFrames(){
  }
 }
 $('frame-next').onclick=()=>{if(!frameLoading&&selected)openSelection();};
-for(const name of ['original','bright','vivid','mono']) $('filter-'+name).onclick=()=>{if(!busy&&!frameLoading){$('photo-filter').value=name;renderSelection();}};
+for(const name of ['natural','original','bright','vivid','mono']) $('filter-'+name).onclick=()=>{if(!busy&&!frameLoading){$('photo-filter').value=name;renderSelection();}};
 $('photo-filter').onchange=()=>{if(!busy&&!frameLoading)renderSelection();};
 $('finish-selection').onclick=async()=>{
   if(busy||frameLoading||selectedCount()!==cutCount||!shotSession||shotSession.photos.length!==CAPTURE_TOTAL)return;
@@ -469,7 +471,7 @@ function resetSession(message='이용이 종료됐어요. 사진을 지웠습니
   if(resultURL)URL.revokeObjectURL(resultURL);resultURL=null;
   for(const url of localURLs)URL.revokeObjectURL(url);localURLs.length=0;
   frames=frames.filter(f=>!f.temporary);selected=null;
-  $('photo-filter').value='original';$('selection-status').textContent='';
+  $('photo-filter').value='natural';$('selection-status').textContent='';
   $('result-admin-tools').open=false;$('result').hidden=true;$('result-actions').hidden=true;$('capture-actions').hidden=false;
   $('countdown').hidden=true;$('welcome').hidden=false;
   for(const id of ['idle-dialog'])if($(id).open)$(id).close();
