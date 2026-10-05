@@ -63,7 +63,7 @@ function renderFrames() {
   for (const frame of matchingFrames()) {
     const button = document.createElement('button'); button.className = 'frame-card'; button.dataset.id = frame.id;
     button.setAttribute('aria-pressed', String(selected?.id === frame.id));
-    const img = document.createElement('img'); img.src = frame.src; img.className = 'frame-thumb'; img.alt = ''; img.loading = 'lazy';
+    const img = document.createElement('img'); img.src = frame.thumbnail||frame.src; img.className = 'frame-thumb'; img.alt = ''; img.loading = 'lazy';
     const label = document.createElement('span'); label.textContent = frame.name;
     button.append(img, label); button.onclick = () => chooseFrame(frame.id).catch(e => status(e.message, true));
     if(!frame.temporary)$('frames').append(button);
@@ -366,7 +366,7 @@ function renderAfterFrames(){
  $('after-frames').replaceChildren();
  for(const frame of matchingFrames()){
   const b=document.createElement('button');b.className='frame-card';b.setAttribute('aria-pressed',String(frame.id===selected?.id));b.disabled=frameLoading;
-  const img=document.createElement('img');img.src=frame.src;img.alt='';img.className='frame-thumb';const label=document.createElement('span');label.textContent=frame.name;b.append(img,label);
+  const img=document.createElement('img');img.src=frame.thumbnail||frame.src;img.alt='';img.className='frame-thumb';const label=document.createElement('span');label.textContent=frame.name;b.append(img,label);
   b.onclick=async()=>{try{await chooseFrame(frame.id);}catch(e){status(e.message,true);}finally{renderAfterFrames();controls();}};$('after-frames').append(b);
  }
 }
@@ -411,7 +411,7 @@ function renderEditingFrames(){
  }
  for(const frame of available.filter(f=>edition!=='basic'||!f.layout||f.layout===activeLayout)){
   const b=document.createElement('button');b.className='editing-frame-card';b.disabled=busy||frameLoading;b.setAttribute('aria-pressed',String(selected?.id===frame.id));
-  const img=document.createElement('img');img.src=frame.src;img.alt='';const label=document.createElement('span');label.textContent=frame.name;b.append(img,label);
+  const img=document.createElement('img');img.src=frame.thumbnail||frame.src;img.alt='';const label=document.createElement('span');label.textContent=frame.name;b.append(img,label);
   b.onclick=async()=>{if(busy||frameLoading)return;try{await chooseFrame(frame.id);$('selection-status').textContent='프레임을 바꿨어요. 사진 위치를 확인해 주세요.';}catch{$('selection-status').textContent='프레임을 불러오지 못했어요. 기존 프레임을 유지합니다.';}finally{renderEditingFrames();renderSelection();}};
   $('editing-frames').append(b);
  }

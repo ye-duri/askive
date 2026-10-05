@@ -5,7 +5,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "black",
-    "src": "frames/basic-4-grid-black-rich.svg",
+    "src": "frames/basic-4-grid-black-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -34,7 +34,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-grid-black-thumb.webp"
   },
   {
     "id": "basic-4-grid-white",
@@ -42,7 +43,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "white",
-    "src": "frames/basic-4-grid-white-rich.svg",
+    "src": "frames/basic-4-grid-white-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -71,7 +72,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-grid-white-thumb.webp"
   },
   {
     "id": "basic-4-grid-cherry",
@@ -79,7 +81,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "cherry",
-    "src": "frames/basic-4-grid-cherry-rich.svg",
+    "src": "frames/basic-4-grid-cherry-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -108,7 +110,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-grid-cherry-thumb.webp"
   },
   {
     "id": "basic-4-grid-pink",
@@ -116,7 +119,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "pink",
-    "src": "frames/basic-4-grid-pink-rich.svg",
+    "src": "frames/basic-4-grid-pink-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -145,7 +148,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-grid-pink-thumb.webp"
   },
   {
     "id": "basic-4-grid-beige",
@@ -153,7 +157,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "beige",
-    "src": "frames/basic-4-grid-beige-rich.svg",
+    "src": "frames/basic-4-grid-beige-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -182,7 +186,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-grid-beige-thumb.webp"
   },
   {
     "id": "basic-4-grid-khaki",
@@ -190,7 +195,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "khaki",
-    "src": "frames/basic-4-grid-khaki-rich.svg",
+    "src": "frames/basic-4-grid-khaki-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -219,7 +224,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-grid-khaki-thumb.webp"
   },
   {
     "id": "basic-4-grid-lime",
@@ -227,7 +233,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "lime",
-    "src": "frames/basic-4-grid-lime-rich.svg",
+    "src": "frames/basic-4-grid-lime-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -256,7 +262,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-grid-lime-thumb.webp"
   },
   {
     "id": "basic-4-grid-sora",
@@ -264,7 +271,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "sora",
-    "src": "frames/basic-4-grid-sora-rich.svg",
+    "src": "frames/basic-4-grid-sora-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -293,7 +300,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-grid-sora-thumb.webp"
   },
   {
     "id": "basic-4-grid-dusty",
@@ -301,7 +309,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "dusty",
-    "src": "frames/basic-4-grid-dusty-rich.svg",
+    "src": "frames/basic-4-grid-dusty-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -330,7 +338,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-grid-dusty-thumb.webp"
   },
   {
     "id": "basic-4-offset-black",
@@ -338,7 +347,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "black",
-    "src": "frames/basic-4-offset-black-rich.svg",
+    "src": "frames/basic-4-offset-black-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -367,7 +376,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-offset-black-thumb.webp"
   },
   {
     "id": "basic-4-offset-white",
@@ -375,7 +385,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "white",
-    "src": "frames/basic-4-offset-white-rich.svg",
+    "src": "frames/basic-4-offset-white-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -404,7 +414,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-offset-white-thumb.webp"
   },
   {
     "id": "basic-4-offset-cherry",
@@ -412,7 +423,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "cherry",
-    "src": "frames/basic-4-offset-cherry-rich.svg",
+    "src": "frames/basic-4-offset-cherry-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -441,7 +452,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-offset-cherry-thumb.webp"
   },
   {
     "id": "basic-4-offset-pink",
@@ -449,7 +461,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "pink",
-    "src": "frames/basic-4-offset-pink-rich.svg",
+    "src": "frames/basic-4-offset-pink-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -478,7 +490,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-offset-pink-thumb.webp"
   },
   {
     "id": "basic-4-offset-beige",
@@ -486,7 +499,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "beige",
-    "src": "frames/basic-4-offset-beige-rich.svg",
+    "src": "frames/basic-4-offset-beige-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -515,7 +528,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-offset-beige-thumb.webp"
   },
   {
     "id": "basic-4-offset-khaki",
@@ -523,7 +537,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "khaki",
-    "src": "frames/basic-4-offset-khaki-rich.svg",
+    "src": "frames/basic-4-offset-khaki-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -552,7 +566,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-offset-khaki-thumb.webp"
   },
   {
     "id": "basic-4-offset-lime",
@@ -560,7 +575,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "lime",
-    "src": "frames/basic-4-offset-lime-rich.svg",
+    "src": "frames/basic-4-offset-lime-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -589,7 +604,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-offset-lime-thumb.webp"
   },
   {
     "id": "basic-4-offset-sora",
@@ -597,7 +613,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "sora",
-    "src": "frames/basic-4-offset-sora-rich.svg",
+    "src": "frames/basic-4-offset-sora-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -626,7 +642,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-offset-sora-thumb.webp"
   },
   {
     "id": "basic-4-offset-dusty",
@@ -634,7 +651,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "dusty",
-    "src": "frames/basic-4-offset-dusty-rich.svg",
+    "src": "frames/basic-4-offset-dusty-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -663,7 +680,8 @@
         0.45,
         0.3536036036036036
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-4-offset-dusty-thumb.webp"
   },
   {
     "id": "basic-6-grid-black",
@@ -671,7 +689,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "black",
-    "src": "frames/basic-6-grid-black-rich.svg",
+    "src": "frames/basic-6-grid-black-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -712,7 +730,8 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-grid-black-thumb.webp"
   },
   {
     "id": "basic-6-grid-white",
@@ -720,7 +739,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "white",
-    "src": "frames/basic-6-grid-white-rich.svg",
+    "src": "frames/basic-6-grid-white-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -761,7 +780,8 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-grid-white-thumb.webp"
   },
   {
     "id": "basic-6-grid-cherry",
@@ -769,7 +789,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "cherry",
-    "src": "frames/basic-6-grid-cherry-rich.svg",
+    "src": "frames/basic-6-grid-cherry-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -810,7 +830,8 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-grid-cherry-thumb.webp"
   },
   {
     "id": "basic-6-grid-pink",
@@ -818,7 +839,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "pink",
-    "src": "frames/basic-6-grid-pink-rich.svg",
+    "src": "frames/basic-6-grid-pink-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -859,7 +880,8 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-grid-pink-thumb.webp"
   },
   {
     "id": "basic-6-grid-beige",
@@ -867,7 +889,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "beige",
-    "src": "frames/basic-6-grid-beige-rich.svg",
+    "src": "frames/basic-6-grid-beige-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -908,7 +930,8 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-grid-beige-thumb.webp"
   },
   {
     "id": "basic-6-grid-khaki",
@@ -916,7 +939,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "khaki",
-    "src": "frames/basic-6-grid-khaki-rich.svg",
+    "src": "frames/basic-6-grid-khaki-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -957,7 +980,8 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-grid-khaki-thumb.webp"
   },
   {
     "id": "basic-6-grid-lime",
@@ -965,7 +989,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "lime",
-    "src": "frames/basic-6-grid-lime-rich.svg",
+    "src": "frames/basic-6-grid-lime-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1006,7 +1030,8 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-grid-lime-thumb.webp"
   },
   {
     "id": "basic-6-grid-sora",
@@ -1014,7 +1039,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "sora",
-    "src": "frames/basic-6-grid-sora-rich.svg",
+    "src": "frames/basic-6-grid-sora-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1055,7 +1080,8 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-grid-sora-thumb.webp"
   },
   {
     "id": "basic-6-grid-dusty",
@@ -1063,7 +1089,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "dusty",
-    "src": "frames/basic-6-grid-dusty-rich.svg",
+    "src": "frames/basic-6-grid-dusty-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1104,7 +1130,8 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-grid-dusty-thumb.webp"
   },
   {
     "id": "basic-6-offset-black",
@@ -1112,7 +1139,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "black",
-    "src": "frames/basic-6-offset-black-rich.svg",
+    "src": "frames/basic-6-offset-black-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1153,7 +1180,8 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-offset-black-thumb.webp"
   },
   {
     "id": "basic-6-offset-white",
@@ -1161,7 +1189,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "white",
-    "src": "frames/basic-6-offset-white-rich.svg",
+    "src": "frames/basic-6-offset-white-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1202,7 +1230,8 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-offset-white-thumb.webp"
   },
   {
     "id": "basic-6-offset-cherry",
@@ -1210,7 +1239,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "cherry",
-    "src": "frames/basic-6-offset-cherry-rich.svg",
+    "src": "frames/basic-6-offset-cherry-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1251,7 +1280,8 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-offset-cherry-thumb.webp"
   },
   {
     "id": "basic-6-offset-pink",
@@ -1259,7 +1289,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "pink",
-    "src": "frames/basic-6-offset-pink-rich.svg",
+    "src": "frames/basic-6-offset-pink-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1300,7 +1330,8 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-offset-pink-thumb.webp"
   },
   {
     "id": "basic-6-offset-beige",
@@ -1308,7 +1339,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "beige",
-    "src": "frames/basic-6-offset-beige-rich.svg",
+    "src": "frames/basic-6-offset-beige-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1349,7 +1380,8 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-offset-beige-thumb.webp"
   },
   {
     "id": "basic-6-offset-khaki",
@@ -1357,7 +1389,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "khaki",
-    "src": "frames/basic-6-offset-khaki-rich.svg",
+    "src": "frames/basic-6-offset-khaki-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1398,7 +1430,8 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-offset-khaki-thumb.webp"
   },
   {
     "id": "basic-6-offset-lime",
@@ -1406,7 +1439,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "lime",
-    "src": "frames/basic-6-offset-lime-rich.svg",
+    "src": "frames/basic-6-offset-lime-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1447,7 +1480,8 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-offset-lime-thumb.webp"
   },
   {
     "id": "basic-6-offset-sora",
@@ -1455,7 +1489,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "sora",
-    "src": "frames/basic-6-offset-sora-rich.svg",
+    "src": "frames/basic-6-offset-sora-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1496,7 +1530,8 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-offset-sora-thumb.webp"
   },
   {
     "id": "basic-6-offset-dusty",
@@ -1504,7 +1539,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "dusty",
-    "src": "frames/basic-6-offset-dusty-rich.svg",
+    "src": "frames/basic-6-offset-dusty-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1545,14 +1580,15 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/basic-6-offset-dusty-thumb.webp"
   },
   {
     "id": "with-you-six",
     "name": "함께찍기 · 6컷",
     "count": 6,
     "edition": "special",
-    "src": "frames/with-you-six-rich.svg",
+    "src": "frames/with-you-six-print.png",
     "slots": [
       [
         0.03916666666666667,
@@ -1591,12 +1627,13 @@
         0.23141891891891891
       ]
     ],
-    "paper": "selphy-p"
+    "paper": "selphy-p",
+    "thumbnail": "frames/with-you-six-thumb.webp"
   },
   {
     "id": "sheep-farewell-four",
     "name": "잘 다녀와 · 4컷",
-    "src": "frames/sheep-farewell-four-rich.svg",
+    "src": "frames/sheep-farewell-four-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -1625,12 +1662,13 @@
         0.4216666666666667,
         0.34684684684684686
       ]
-    ]
+    ],
+    "thumbnail": "frames/sheep-farewell-four-thumb.webp"
   },
   {
     "id": "sheep-farewell-six",
     "name": "잘 다녀와 · 6컷",
-    "src": "frames/sheep-farewell-six-rich.svg",
+    "src": "frames/sheep-farewell-six-print.png",
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
@@ -1671,12 +1709,13 @@
         0.4216666666666667,
         0.22297297297297297
       ]
-    ]
+    ],
+    "thumbnail": "frames/sheep-farewell-six-thumb.webp"
   },
   {
     "id": "sheep-farewell-wide",
     "name": "잘 다녀와 · 가로 4컷",
-    "src": "frames/sheep-farewell-wide-rich.svg",
+    "src": "frames/sheep-farewell-wide-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -1705,12 +1744,13 @@
         0.4155405405405405,
         0.3591666666666667
       ]
-    ]
+    ],
+    "thumbnail": "frames/sheep-farewell-wide-thumb.webp"
   },
   {
     "id": "sheep-club-four",
     "name": "우리의 모임 · 4컷",
-    "src": "frames/sheep-club-four-rich.svg",
+    "src": "frames/sheep-club-four-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -1739,12 +1779,13 @@
         0.4216666666666667,
         0.34684684684684686
       ]
-    ]
+    ],
+    "thumbnail": "frames/sheep-club-four-thumb.webp"
   },
   {
     "id": "sheep-club-six",
     "name": "우리의 모임 · 6컷",
-    "src": "frames/sheep-club-six-rich.svg",
+    "src": "frames/sheep-club-six-print.png",
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
@@ -1785,12 +1826,13 @@
         0.4216666666666667,
         0.22297297297297297
       ]
-    ]
+    ],
+    "thumbnail": "frames/sheep-club-six-thumb.webp"
   },
   {
     "id": "sheep-club-wide",
     "name": "우리의 모임 · 가로 4컷",
-    "src": "frames/sheep-club-wide-rich.svg",
+    "src": "frames/sheep-club-wide-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -1819,12 +1861,13 @@
         0.4155405405405405,
         0.3591666666666667
       ]
-    ]
+    ],
+    "thumbnail": "frames/sheep-club-wide-thumb.webp"
   },
   {
     "id": "sheep-friends-four",
     "name": "베스트 프렌드 · 4컷",
-    "src": "frames/sheep-friends-four-rich.svg",
+    "src": "frames/sheep-friends-four-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -1853,12 +1896,13 @@
         0.4216666666666667,
         0.34684684684684686
       ]
-    ]
+    ],
+    "thumbnail": "frames/sheep-friends-four-thumb.webp"
   },
   {
     "id": "sheep-friends-six",
     "name": "베스트 프렌드 · 6컷",
-    "src": "frames/sheep-friends-six-rich.svg",
+    "src": "frames/sheep-friends-six-print.png",
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
@@ -1899,12 +1943,13 @@
         0.4216666666666667,
         0.22297297297297297
       ]
-    ]
+    ],
+    "thumbnail": "frames/sheep-friends-six-thumb.webp"
   },
   {
     "id": "sheep-friends-wide",
     "name": "베스트 프렌드 · 가로 4컷",
-    "src": "frames/sheep-friends-wide-rich.svg",
+    "src": "frames/sheep-friends-wide-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -1933,12 +1978,13 @@
         0.4155405405405405,
         0.3591666666666667
       ]
-    ]
+    ],
+    "thumbnail": "frames/sheep-friends-wide-thumb.webp"
   },
   {
     "id": "sheep-garden-four",
     "name": "클로버 가든 · 4컷",
-    "src": "frames/sheep-garden-four-rich.svg",
+    "src": "frames/sheep-garden-four-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -1967,12 +2013,13 @@
         0.4216666666666667,
         0.34684684684684686
       ]
-    ]
+    ],
+    "thumbnail": "frames/sheep-garden-four-thumb.webp"
   },
   {
     "id": "sheep-garden-six",
     "name": "클로버 가든 · 6컷",
-    "src": "frames/sheep-garden-six-rich.svg",
+    "src": "frames/sheep-garden-six-print.png",
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
@@ -2013,12 +2060,13 @@
         0.4216666666666667,
         0.22297297297297297
       ]
-    ]
+    ],
+    "thumbnail": "frames/sheep-garden-six-thumb.webp"
   },
   {
     "id": "sheep-garden-wide",
     "name": "클로버 가든 · 가로 4컷",
-    "src": "frames/sheep-garden-wide-rich.svg",
+    "src": "frames/sheep-garden-wide-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2047,12 +2095,13 @@
         0.4155405405405405,
         0.3591666666666667
       ]
-    ]
+    ],
+    "thumbnail": "frames/sheep-garden-wide-thumb.webp"
   },
   {
     "id": "hanmaeum-2026-festival-grid",
     "name": "한마음잔치 · 기본",
-    "src": "frames/hanmaeum-2026-festival-grid-rich.svg",
+    "src": "frames/hanmaeum-2026-festival-grid-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2081,12 +2130,13 @@
         0.45,
         0.36486486486486486
       ]
-    ]
+    ],
+    "thumbnail": "frames/hanmaeum-2026-festival-grid-thumb.webp"
   },
   {
     "id": "hanmaeum-2026-festival-offset",
     "name": "한마음잔치 · 엇갈림",
-    "src": "frames/hanmaeum-2026-festival-offset-rich.svg",
+    "src": "frames/hanmaeum-2026-festival-offset-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2115,12 +2165,13 @@
         0.44916666666666666,
         0.36430180180180183
       ]
-    ]
+    ],
+    "thumbnail": "frames/hanmaeum-2026-festival-offset-thumb.webp"
   },
   {
     "id": "hanmaeum-2026-festival-offset-wide-art",
     "name": "한마음잔치 · 엇갈림 와이드 장식",
-    "src": "frames/hanmaeum-2026-festival-offset-wide-art-rich.svg",
+    "src": "frames/hanmaeum-2026-festival-offset-wide-art-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2149,12 +2200,13 @@
         0.44916666666666666,
         0.36430180180180183
       ]
-    ]
+    ],
+    "thumbnail": "frames/hanmaeum-2026-festival-offset-wide-art-thumb.webp"
   },
   {
     "id": "hanmaeum-2026-musical-grid",
     "name": "그날 · 기본",
-    "src": "frames/hanmaeum-2026-musical-grid-rich.svg",
+    "src": "frames/hanmaeum-2026-musical-grid-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2183,12 +2235,13 @@
         0.45,
         0.36486486486486486
       ]
-    ]
+    ],
+    "thumbnail": "frames/hanmaeum-2026-musical-grid-thumb.webp"
   },
   {
     "id": "hanmaeum-2026-musical-offset",
     "name": "그날 · 엇갈림",
-    "src": "frames/hanmaeum-2026-musical-offset-rich.svg",
+    "src": "frames/hanmaeum-2026-musical-offset-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2217,12 +2270,13 @@
         0.44916666666666666,
         0.36430180180180183
       ]
-    ]
+    ],
+    "thumbnail": "frames/hanmaeum-2026-musical-offset-thumb.webp"
   },
   {
     "id": "hanmaeum-2026-yugwansun-grid",
     "name": "유관순 · 기본",
-    "src": "frames/hanmaeum-2026-yugwansun-grid-rich.svg",
+    "src": "frames/hanmaeum-2026-yugwansun-grid-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2251,12 +2305,13 @@
         0.45,
         0.36486486486486486
       ]
-    ]
+    ],
+    "thumbnail": "frames/hanmaeum-2026-yugwansun-grid-thumb.webp"
   },
   {
     "id": "hanmaeum-2026-yugwansun-offset",
     "name": "유관순 · 엇갈림",
-    "src": "frames/hanmaeum-2026-yugwansun-offset-rich.svg",
+    "src": "frames/hanmaeum-2026-yugwansun-offset-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2285,12 +2340,13 @@
         0.44916666666666666,
         0.36430180180180183
       ]
-    ]
+    ],
+    "thumbnail": "frames/hanmaeum-2026-yugwansun-offset-thumb.webp"
   },
   {
     "id": "hanmaeum-2026-together-four",
     "name": "연세가족 · 함께 4컷",
-    "src": "frames/hanmaeum-2026-together-four-rich.svg",
+    "src": "frames/hanmaeum-2026-together-four-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2319,12 +2375,13 @@
         0.45,
         0.36486486486486486
       ]
-    ]
+    ],
+    "thumbnail": "frames/hanmaeum-2026-together-four-thumb.webp"
   },
   {
     "id": "hanmaeum-2026-together-six",
     "name": "연세가족 · 함께 6컷",
-    "src": "frames/hanmaeum-2026-together-six-rich.svg",
+    "src": "frames/hanmaeum-2026-together-six-print.png",
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
@@ -2365,6 +2422,7 @@
         0.45,
         0.23873873873873874
       ]
-    ]
+    ],
+    "thumbnail": "frames/hanmaeum-2026-together-six-thumb.webp"
   }
 ]
