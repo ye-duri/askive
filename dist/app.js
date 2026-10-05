@@ -46,6 +46,7 @@ function controls() {
  $('permission-start').textContent=cameraBusy?'카메라 연결 중…':cameraAccessGranted?'다시 테스트':'카메라 허용';
  $('setup-done').disabled=!selected||frameLoading||cameraBusy;
  const pickingCuts=edition==='special'&&specialCutStep;
+ document.querySelector('.basic-color-note').textContent=edition==='special'?'다음 단계에서 원하는 프레임을 선택할 수 있어요.':'프레임 색상은 촬영 후 자유롭게 변경할 수 있어요.';
  $('setup-done').querySelector('span').textContent=pickingCuts?'프레임 선택하기':'촬영시작';
  $('setup-done').querySelector('small').textContent=pickingCuts?'선택한 컷 수에 맞는 프레임을 골라요':'누르면 8초 타이머가 시작돼요';
  $('edition-back').textContent=edition==='special'&&!specialCutStep?'← 컷 수 선택':'← 종류 선택';

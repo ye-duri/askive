@@ -874,8 +874,6 @@ body{background-color:#eee5f7;color:#342641}
 button:focus-visible,a:focus-visible,select:focus-visible{outline-color:#8963ae}
 
 /* Special edition: choose the cut count before choosing artwork. */
-.is-special-cuts .basic-color-note{display:none!important}
-.is-special-cuts #setup-actions .qr-consent,.is-special-cuts #qr-availability{display:none!important}
 .is-special-frames.is-setup .cut-picker{display:none!important}
 .is-special-frames.is-setup .setup-left{display:flex!important;flex-direction:column;gap:18px!important}
 .is-special-frames.is-setup #selected-frame-preview{flex:1;min-height:0;margin:0}
