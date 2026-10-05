@@ -2122,41 +2122,6 @@
     "thumbnail": "frames/hanmaeum-2026-festival-offset-thumb.webp"
   },
   {
-    "id": "hanmaeum-2026-festival-offset-wide-art",
-    "name": "한마음잔치 · 엇갈림 와이드 장식",
-    "src": "frames/hanmaeum-2026-festival-offset-wide-art-print.png",
-    "count": 4,
-    "edition": "special",
-    "paper": "selphy-p",
-    "slots": [
-      [
-        0.043333333333333335,
-        0.22804054054054054,
-        0.44916666666666666,
-        0.36430180180180183
-      ],
-      [
-        0.5075,
-        0.03322072072072072,
-        0.44916666666666666,
-        0.36430180180180183
-      ],
-      [
-        0.043333333333333335,
-        0.6024774774774775,
-        0.44916666666666666,
-        0.36430180180180183
-      ],
-      [
-        0.5075,
-        0.40765765765765766,
-        0.44916666666666666,
-        0.36430180180180183
-      ]
-    ],
-    "thumbnail": "frames/hanmaeum-2026-festival-offset-wide-art-thumb.webp"
-  },
-  {
     "id": "hanmaeum-2026-musical-grid",
     "name": "그날 · 기본",
     "src": "frames/hanmaeum-2026-musical-grid-20261006-print.png",
