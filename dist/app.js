@@ -13,6 +13,7 @@ let advanceCapture = null;
 let initializing=true;
 let selectionDeadline=0, selectionClock=null;
 let settingsOpen = false;
+let specialCutStep=false;
 let phase = new URLSearchParams(location.search).get('setup')==='1'?'permission':'intro';
 let edition='basic', automatic=false, qrEnabled=false, qrConsent=false, album=null;
 let galleryConfig={configured:false,authorized:false};
@@ -34,7 +35,7 @@ function controls() {
  $('transition-loading-text').textContent=busy&&!automatic&&selecting?'소중한 사진을 완성하고 있어요':'로딩 중이에요.';
  $('transition-loading').setAttribute('aria-busy',String(loading));
  for(const n of [2,4,6]){ $('cuts-'+n).hidden=n===2;$('cuts-'+n).disabled=frameLoading||busy||!!shotSession;$('cuts-'+n).setAttribute('aria-pressed',String(n===cutCount)); }
- for(const [cls,on] of Object.entries({'is-intro':phase==='intro','is-basic':edition==='basic','is-permission':phase==='permission','is-edition':phase==='edition','is-setup':phase==='setup','is-frame-step':phase==='frame','is-shooting':phase==='shoot'&&!blob&&!selecting,'is-selecting':selecting,'is-result':!!blob}))document.body.classList.toggle(cls,on);
+ for(const [cls,on] of Object.entries({'is-intro':phase==='intro','is-basic':edition==='basic'||(edition==='special'&&specialCutStep),'is-special-cuts':edition==='special'&&specialCutStep,'is-special-frames':edition==='special'&&!specialCutStep,'is-permission':phase==='permission','is-edition':phase==='edition','is-setup':phase==='setup','is-frame-step':phase==='frame','is-shooting':phase==='shoot'&&!blob&&!selecting,'is-selecting':selecting,'is-result':!!blob}))document.body.classList.toggle(cls,on);
  $('intro-panel').hidden=phase!=='intro';
  $('edition-panel').hidden=phase!=='edition';$('frame-step').hidden=phase!=='frame';
  $('permission-panel').hidden=phase!=='permission';$('setup-heading').hidden=phase!=='setup';$('setup-actions').hidden=phase!=='setup';
@@ -44,7 +45,11 @@ function controls() {
  for(const id of ['permission-camera-controls','camera-test','permission-next'])$(id).hidden=!test;
  $('permission-start').textContent=cameraBusy?'카메라 연결 중…':cameraAccessGranted?'다시 테스트':'카메라 허용';
  $('setup-done').disabled=!selected||frameLoading||cameraBusy;
- for(const id of ['frames','setup-frame-heading'])$(id).hidden=edition!=='special';
+ const pickingCuts=edition==='special'&&specialCutStep;
+ $('setup-done').querySelector('span').textContent=pickingCuts?'프레임 선택하기':'촬영시작';
+ $('setup-done').querySelector('small').textContent=pickingCuts?'선택한 컷 수에 맞는 프레임을 골라요':'누르면 8초 타이머가 시작돼요';
+ $('edition-back').textContent=edition==='special'&&!specialCutStep?'← 컷 수 선택':'← 종류 선택';
+ for(const id of ['frames','setup-frame-heading'])$(id).hidden=edition!=='special'||specialCutStep;
  $('selection-panel').hidden=!selecting;
  $('edit-settings').hidden=true;
  $('capture').disabled=phase!=='shoot'||!stream||!video.videoWidth||busy||cameraBusy||frameLoading||!!blob||selecting;
@@ -437,6 +442,7 @@ $('permission-next').onclick=()=>{
 };
 $('setup-done').onclick=async()=>{
  if($('setup-done').disabled)return;
+ if(edition==='special'&&specialCutStep){specialCutStep=false;controls();window.scrollTo(0,0);$('edition-back').focus({preventScroll:true});return;}
  const revision=sessionRun;
  phase='shoot';qrConsent=qrEnabled&&$('qr-consent').checked;settingsOpen=false;document.body.classList.remove('config-open');
  $('stage-label').textContent='03 / 촬영';showShotPreview();controls();window.scrollTo(0,0);
@@ -593,9 +599,9 @@ async function init(){controls();try{const response=await fetch('frames.json',{s
 await init();
 try{if(new URLSearchParams(location.search).get('setup')!=='1'&&sessionStorage.getItem('yonsei-camera-confirmed')==='1'){let permission;try{permission=await navigator.permissions?.query({name:'camera'});}catch{}if(permission?.state!=='denied'){cameraConfirmed=true;cameraDeviceId=sessionStorage.getItem('yonsei-camera-id')||'';controls();window.scrollTo(0,0);}}}catch{}
 for(const name of ['basic','special'])$('edition-'+name).onclick=async()=>{
- edition=name;if(name==='special'&&cutCount===2)cutCount=4;phase='setup';selected=null;renderFrames();await chooseFrame(matchingFrames()[0].id);controls();
+ edition=name;specialCutStep=name==='special';if(name==='special'&&cutCount===2)cutCount=4;phase='setup';selected=null;renderFrames();await chooseFrame(matchingFrames()[0].id);controls();
 };
-$('edition-back').onclick=()=>{phase='edition';controls();window.scrollTo(0,0);};
+$('edition-back').onclick=()=>{if(edition==='special'&&!specialCutStep){specialCutStep=true;}else{phase='edition';specialCutStep=false;}controls();window.scrollTo(0,0);};
 
 await loadGalleryConfig();
 
