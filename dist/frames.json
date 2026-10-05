@@ -2206,7 +2206,7 @@
   {
     "id": "hanmaeum-2026-musical-grid",
     "name": "그날 · 기본",
-    "src": "frames/hanmaeum-2026-musical-grid-print.png",
+    "src": "frames/hanmaeum-2026-musical-grid-20261006-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2236,12 +2236,12 @@
         0.36486486486486486
       ]
     ],
-    "thumbnail": "frames/hanmaeum-2026-musical-grid-thumb.webp"
+    "thumbnail": "frames/hanmaeum-2026-musical-grid-20261006-thumb.webp"
   },
   {
     "id": "hanmaeum-2026-musical-offset",
     "name": "그날 · 엇갈림",
-    "src": "frames/hanmaeum-2026-musical-offset-print.png",
+    "src": "frames/hanmaeum-2026-musical-offset-20261006-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2271,7 +2271,7 @@
         0.36430180180180183
       ]
     ],
-    "thumbnail": "frames/hanmaeum-2026-musical-offset-thumb.webp"
+    "thumbnail": "frames/hanmaeum-2026-musical-offset-20261006-thumb.webp"
   },
   {
     "id": "hanmaeum-2026-yugwansun-grid",
