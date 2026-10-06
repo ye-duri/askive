@@ -2,7 +2,11 @@
 export function createShootingMusic(AudioClass=Audio){
  const audio=new AudioClass();audio.preload='none';audio.loop=true;
  let track='',revision=0;
- function stop(){revision++;audio.pause();audio.muted=true;try{audio.currentTime=0;}catch{}}
+ function stop(){
+  revision++;audio.pause();audio.muted=true;track='';
+  // Abort remaining downloads and release the media pipeline between sessions.
+  if(audio.getAttribute('src')){audio.removeAttribute('src');audio.load();}
+ }
  function prepare(frame){
   stop();
   track=frame?.edition==='special'?(frame.id.includes('musical')?(/-(offset|six-landscape)$/.test(frame.id)?'musical-time':'musical'):frame.id.includes('yugwansun')?'yugwansun':frame.id.includes('festival')?'festival':frame.id.startsWith('hanmaeum-2026-together-')?'family':''):'';
