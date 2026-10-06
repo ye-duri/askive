@@ -5,7 +5,7 @@ export function createShootingMusic(AudioClass=Audio){
  function stop(){revision++;audio.pause();audio.muted=true;try{audio.currentTime=0;}catch{}}
  function prepare(frame){
   stop();
-  track=frame?.edition==='special'?(frame.id.includes('musical')?(/-(offset|six-landscape)$/.test(frame.id)?'musical-time':'musical'):frame.id.includes('yugwansun')?'yugwansun':frame.id.includes('festival')?'festival':''):'';
+  track=frame?.edition==='special'?(frame.id.includes('musical')?(/-(offset|six-landscape)$/.test(frame.id)?'musical-time':'musical'):frame.id.includes('yugwansun')?'yugwansun':frame.id.includes('festival')?'festival':frame.id.startsWith('hanmaeum-2026-together-')?'family':''):'';
   if(!track){audio.removeAttribute('src');return;}
   const src=`audio/${track}.mp3`;if(audio.getAttribute('src')!==src)audio.src=src;
   // Called directly from the start-button gesture, before camera setup awaits.
