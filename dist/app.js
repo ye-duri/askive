@@ -1,3 +1,5 @@
+import {createShootingMusic} from './shooting-music.js';
+const shootingMusic=createShootingMusic();
 import {prepareNaturalPhoto,naturalPhoto} from './photo-tone.js';
 import {withTimeout, waitForVideo} from './media-ready.mjs';
 import qrcode from './vendor/qrcode.mjs';
@@ -229,6 +231,7 @@ function updateShotMode() {
   controls();
 }
 function cancelCountdown() {
+  shootingMusic.stop();
   countdownRun++; automatic=false; busy = false; $('countdown').hidden = true;
   $('shot-progress').textContent = `${shotSession?.taken || 0} / ${CAPTURE_TOTAL}장 완료 · 이번 촬영을 취소했어요.`; controls();
 }
@@ -352,6 +355,7 @@ function waitCaptureTick(){
 $('capture-now').onclick=()=>{if(automatic&&phase==='shoot'&&stream&&!cameraBusy)advanceCapture?.();};
 async function capture() {
  if($('capture').disabled||automatic)return;
+ shootingMusic.start(selected);
  $('capture-admin').open=false;automatic=true;busy=true;const run=++countdownRun;const revision=sessionRun;
  if(!shotSession)shotSession={photos:[],taken:0};controls();
  try {
@@ -368,7 +372,7 @@ async function capture() {
   chosen=[];activeSlot=-1;$('flash').classList.remove('active');stopStream();busy=false;automatic=false;$('camera-state').textContent='촬영 완료';
   openSelection();
  }catch(e){status(e.message||'촬영을 이어갈 수 없어요. 연결을 확인해 주세요.',true);}
- finally{if(run===countdownRun){busy=false;automatic=false;$('countdown').hidden=true;$('capture').textContent='남은 사진 이어 찍기';controls();}}
+ finally{if(run===countdownRun){shootingMusic.stop();busy=false;automatic=false;$('countdown').hidden=true;$('capture').textContent='남은 사진 이어 찍기';controls();}}
 }
 function renderAfterFrames(){
  $('after-frames').replaceChildren();
@@ -446,12 +450,13 @@ $('permission-next').onclick=()=>{
 $('setup-done').onclick=async()=>{
  if($('setup-done').disabled)return;
  if(edition==='special'&&specialCutStep){specialCutStep=false;controls();window.scrollTo(0,0);$('edition-back').focus({preventScroll:true});return;}
+ shootingMusic.prepare(selected);
  const revision=sessionRun;
  phase='shoot';qrConsent=qrEnabled&&$('qr-consent').checked;settingsOpen=false;document.body.classList.remove('config-open');
  $('stage-label').textContent='03 / 촬영';showShotPreview();controls();window.scrollTo(0,0);
  status('카메라 영상을 준비하고 있어요…');
  if(!stream)await startCamera();
- if(revision!==sessionRun||!stream||video.readyState<2||!video.videoWidth)return;
+ if(revision!==sessionRun||!stream||video.readyState<2||!video.videoWidth){shootingMusic.stop();return;}
  status('8초마다 자동으로 촬영합니다.');await capture();
 };
 video.addEventListener('loadeddata',controls);
@@ -459,6 +464,7 @@ $('capture').onclick = capture;
 
 $('save').onclick = () => {if(blob) {download(blob,filename('png'));status('사진 저장을 요청했어요. 다운로드 또는 사진 앱을 확인해 주세요.');}};
 function resetSession(message='이용이 종료됐어요. 사진을 지웠습니다.') {
+  shootingMusic.stop();
   stopSelectionClock();
   sessionRun++;cameraRun++;frameRun++;countdownRun++;printRevision++;
   stopStream();busy=false;cameraBusy=false;frameLoading=false;uploadBusy=false;
