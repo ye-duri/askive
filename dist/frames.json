@@ -2264,7 +2264,7 @@
   {
     "id": "hanmaeum-2026-together-four",
     "name": "연세가족 · 함께 4컷",
-    "src": "frames/hanmaeum-2026-together-four-print.png",
+    "src": "frames/hanmaeum-2026-together-four-20261008.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2294,12 +2294,12 @@
         0.36486486486486486
       ]
     ],
-    "thumbnail": "frames/hanmaeum-2026-together-four-thumb.webp"
+    "thumbnail": "frames/hanmaeum-2026-together-four-20261008-thumb.webp"
   },
   {
     "id": "hanmaeum-2026-together-six",
     "name": "연세가족 · 함께 6컷",
-    "src": "frames/hanmaeum-2026-together-six-print.png",
+    "src": "frames/hanmaeum-2026-together-six-20261008.png",
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
@@ -2341,7 +2341,7 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/hanmaeum-2026-together-six-thumb.webp"
+    "thumbnail": "frames/hanmaeum-2026-together-six-20261008-thumb.webp"
   },
   {
     "id": "hanmaeum-2026-festival-six-portrait",
@@ -2634,6 +2634,135 @@
         0.466796875,
         0.310546875,
         0.3388671875
+      ]
+    ]
+  },
+  {
+    "id": "hanmaeum-2026-anniversary-four",
+    "name": "40주년 · 4컷",
+    "src": "frames/hanmaeum-2026-anniversary-four.png",
+    "thumbnail": "frames/hanmaeum-2026-anniversary-four-thumb.webp",
+    "count": 4,
+    "edition": "special",
+    "paper": "selphy-p",
+    "slots": [
+      [
+        0.029097963142580018,
+        0.04062909567496723,
+        0.4568380213385063,
+        0.4017038007863696
+      ],
+      [
+        0.5140640155189137,
+        0.04062909567496723,
+        0.4568380213385063,
+        0.4017038007863696
+      ],
+      [
+        0.029097963142580018,
+        0.4613368283093054,
+        0.4568380213385063,
+        0.4017038007863696
+      ],
+      [
+        0.5140640155189137,
+        0.4613368283093054,
+        0.4568380213385063,
+        0.4017038007863696
+      ]
+    ]
+  },
+  {
+    "id": "hanmaeum-2026-anniversary-six-portrait",
+    "name": "40주년 · 6컷 · 세로",
+    "src": "frames/hanmaeum-2026-anniversary-six-portrait.png",
+    "thumbnail": "frames/hanmaeum-2026-anniversary-six-portrait-thumb.webp",
+    "count": 6,
+    "edition": "special",
+    "paper": "selphy-p",
+    "slots": [
+      [
+        0.029296875,
+        0.03515625,
+        0.455078125,
+        0.291015625
+      ],
+      [
+        0.513671875,
+        0.034505208333333336,
+        0.45703125,
+        0.291015625
+      ],
+      [
+        0.0302734375,
+        0.3430989583333333,
+        0.453125,
+        0.2669270833333333
+      ],
+      [
+        0.5146484375,
+        0.34375,
+        0.4560546875,
+        0.2669270833333333
+      ],
+      [
+        0.0302734375,
+        0.626953125,
+        0.453125,
+        0.24153645833333334
+      ],
+      [
+        0.515625,
+        0.6282552083333334,
+        0.4541015625,
+        0.240234375
+      ]
+    ]
+  },
+  {
+    "id": "hanmaeum-2026-anniversary-six-landscape",
+    "name": "40주년 · 6컷 · 가로",
+    "src": "frames/hanmaeum-2026-anniversary-six-landscape.png",
+    "thumbnail": "frames/hanmaeum-2026-anniversary-six-landscape-thumb.webp",
+    "count": 6,
+    "edition": "special",
+    "paper": "selphy-p",
+    "slots": [
+      [
+        0.022786458333333332,
+        0.0703125,
+        0.3079427083333333,
+        0.388671875
+      ],
+      [
+        0.3509114583333333,
+        0.0703125,
+        0.298828125,
+        0.388671875
+      ],
+      [
+        0.6712239583333334,
+        0.0703125,
+        0.306640625,
+        0.3896484375
+      ],
+      [
+        0.0234375,
+        0.482421875,
+        0.3072916666666667,
+        0.37109375
+      ],
+      [
+        0.3502604166666667,
+        0.482421875,
+        0.3001302083333333,
+        0.369140625
+      ],
+      [
+        0.6712239583333334,
+        0.482421875,
+        0.3059895833333333,
+        0.3701171875
       ]
     ]
   }
