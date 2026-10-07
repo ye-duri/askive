@@ -2054,7 +2054,7 @@
   {
     "id": "hanmaeum-2026-festival-grid",
     "name": "한마음잔치 · 기본",
-    "src": "frames/hanmaeum-2026-festival-grid-print.png",
+    "src": "frames/hanmaeum-2026-festival-grid-20261007.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2084,12 +2084,12 @@
         0.36486486486486486
       ]
     ],
-    "thumbnail": "frames/hanmaeum-2026-festival-grid-thumb.webp"
+    "thumbnail": "frames/hanmaeum-2026-festival-grid-20261007-thumb.webp"
   },
   {
     "id": "hanmaeum-2026-festival-offset",
     "name": "한마음잔치 · 엇갈림",
-    "src": "frames/hanmaeum-2026-festival-offset-print.png",
+    "src": "frames/hanmaeum-2026-festival-offset-20261007.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2119,7 +2119,7 @@
         0.36430180180180183
       ]
     ],
-    "thumbnail": "frames/hanmaeum-2026-festival-offset-thumb.webp"
+    "thumbnail": "frames/hanmaeum-2026-festival-offset-20261007-thumb.webp"
   },
   {
     "id": "hanmaeum-2026-musical-grid",
@@ -2348,8 +2348,8 @@
     "name": "한마음잔치 6컷 · 세로",
     "layout": "grid",
     "layoutName": "세로",
-    "src": "frames/hanmaeum-2026-festival-six-portrait-print.png",
-    "thumbnail": "frames/hanmaeum-2026-festival-six-portrait-thumb.webp",
+    "src": "frames/hanmaeum-2026-festival-six-portrait-20261007.png",
+    "thumbnail": "frames/hanmaeum-2026-festival-six-portrait-20261007-thumb.webp",
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
@@ -2357,38 +2357,38 @@
       [
         0.04296875,
         0.068359375,
-        0.4482421875,
-        0.2708333333333333
+        0.44921875,
+        0.22200520833333334
       ],
       [
-        0.5087890625,
+        0.5078125,
         0.068359375,
-        0.4482421875,
-        0.2708333333333333
+        0.44921875,
+        0.22200520833333334
       ],
       [
         0.04296875,
-        0.3515625,
-        0.4482421875,
-        0.26953125
+        0.30078125,
+        0.44921875,
+        0.22265625
       ],
       [
-        0.5087890625,
-        0.3515625,
-        0.4482421875,
-        0.26953125
+        0.5078125,
+        0.30078125,
+        0.44921875,
+        0.22265625
       ],
       [
         0.04296875,
-        0.6315104166666666,
-        0.4482421875,
-        0.2701822916666667
+        0.5345052083333334,
+        0.44921875,
+        0.22265625
       ],
       [
-        0.5087890625,
-        0.6315104166666666,
-        0.4482421875,
-        0.2701822916666667
+        0.5078125,
+        0.5345052083333334,
+        0.44921875,
+        0.22265625
       ]
     ]
   },
@@ -2397,47 +2397,47 @@
     "name": "한마음잔치 6컷 · 가로",
     "layout": "grid",
     "layoutName": "가로",
-    "src": "frames/hanmaeum-2026-festival-six-landscape-print.png",
-    "thumbnail": "frames/hanmaeum-2026-festival-six-landscape-thumb.webp",
+    "src": "frames/hanmaeum-2026-festival-six-landscape-20261007.png",
+    "thumbnail": "frames/hanmaeum-2026-festival-six-landscape-20261007-thumb.webp",
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
     "slots": [
       [
-        0.028645833333333332,
-        0.095703125,
-        0.30859375,
-        0.328125
+        0.032552083333333336,
+        0.109375,
+        0.3046875,
+        0.279296875
       ],
       [
-        0.34765625,
-        0.095703125,
-        0.3053385416666667,
-        0.328125
+        0.349609375,
+        0.109375,
+        0.30078125,
+        0.279296875
       ],
       [
-        0.6627604166666666,
-        0.095703125,
-        0.30859375,
-        0.328125
+        0.6634114583333334,
+        0.109375,
+        0.3040364583333333,
+        0.279296875
       ],
       [
-        0.028645833333333332,
-        0.4384765625,
-        0.30859375,
-        0.33203125
+        0.032552083333333336,
+        0.4072265625,
+        0.3046875,
+        0.2724609375
       ],
       [
-        0.34765625,
-        0.4384765625,
-        0.3053385416666667,
-        0.33203125
+        0.349609375,
+        0.4072265625,
+        0.30078125,
+        0.2724609375
       ],
       [
-        0.6627604166666666,
-        0.4384765625,
-        0.30859375,
-        0.33203125
+        0.6634114583333334,
+        0.4072265625,
+        0.3040364583333333,
+        0.2724609375
       ]
     ]
   },
