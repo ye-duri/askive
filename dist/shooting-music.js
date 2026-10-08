@@ -9,7 +9,7 @@ export function createShootingMusic(AudioClass=Audio){
  }
  function prepare(frame){
   stop();
-  track=frame?.edition==='special'?(frame.id.includes('musical')?(/-(offset|six-landscape)$/.test(frame.id)?'musical-time':'musical'):frame.id.includes('yugwansun')?'yugwansun':frame.id.includes('festival')?'festival':frame.id.startsWith('hanmaeum-2026-anniversary-')?'anniversary':frame.id.startsWith('hanmaeum-2026-together-')?'family':''):'';
+  track=frame?.edition==='special'?(frame.id.includes('musical')?(/-(offset|six-landscape)$/.test(frame.id)?'musical-time':'musical'):frame.id.includes('yugwansun')?'yugwansun':frame.id.includes('festival')?'festival':frame.id.startsWith('hanmaeum-2026-anniversary-')?'anniversary':frame.id.startsWith('hanmaeum-2026-together-')?'family':/^hanmaeum-2026-daecheong-(green|paper)-/.test(frame.id)?'daecheong':''):'';
   if(!track){audio.removeAttribute('src');return;}
   const src=`audio/${track}.mp3`;if(audio.getAttribute('src')!==src)audio.src=src;
   // Called directly from the start-button gesture, before camera setup awaits.
