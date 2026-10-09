@@ -64,13 +64,13 @@ function controls() {
  $('start').disabled=cameraBusy;
  for(const suffix of ['camera','camera-refresh'])$('permission-'+suffix).disabled=phase!=='permission'||busy||cameraBusy;
  $('frame-next').disabled=frameLoading||!selected;
- $('qr-consent').disabled=!qrEnabled;
- $('selection-qr-consent').disabled=!qrEnabled||busy||frameLoading;
- $('selection-qr-consent').checked=qrConsent;
- $('selection-qr-availability').hidden=qrEnabled;
- $('selection-qr-availability').textContent='QR 저장 연결이 준비되지 않았어요. 사진 저장과 인쇄는 사용할 수 있어요.';
- $('qr-availability').hidden=qrEnabled;
- $('qr-availability').textContent=qrEnabled?'':galleryConfig.configured?'QR 저장을 사용하려면 최초 카메라 화면에서 운영 코드를 연결해 주세요.':'QR 저장 서버 연결 전입니다. 지금은 저장·인쇄를 이용할 수 있어요.';
+ $('result-qr-add').disabled=!qrEnabled||!blob||uploadBusy||nativePrintBusy||qrConsent;
+ $('result-qr-add').textContent=uploadBusy?'QR 준비 중…':qrConsent?'QR 추가 완료':'QR로 사진 받기 (선택)';
+ if(!qrEnabled)$('result-qr-status').textContent='QR 저장 연결이 준비되지 않았어요. 사진 인쇄는 가능합니다.';
+ $('retake').disabled=uploadBusy||nativePrintBusy;
+ $('save').disabled=uploadBusy;
+ $('print-open').disabled=!printReady||uploadBusy||nativePrintBusy;
+
 }
 function renderFrames() {
   $('frames').replaceChildren();
@@ -399,12 +399,6 @@ function renderAfterFrames(){
 $('frame-next').onclick=()=>{if(!frameLoading&&selected)openSelection();};
 for(const name of ['natural','original','bright','vivid','mono']) $('filter-'+name).onclick=()=>{if(!busy&&!frameLoading){$('photo-filter').value=name;renderSelection();}};
 $('photo-filter').onchange=()=>{if(!busy&&!frameLoading)renderSelection();};
-$('qr-consent').onchange=()=>{qrConsent=qrEnabled&&$('qr-consent').checked;controls();};
-$('selection-qr-consent').onchange=()=>{
- if(busy||frameLoading)return;
- qrConsent=qrEnabled&&$('selection-qr-consent').checked;
- $('qr-consent').checked=qrConsent;controls();
-};
 $('finish-selection').onclick=async()=>{
   if(busy||frameLoading||selectedCount()!==cutCount||!shotSession||shotSession.photos.length!==CAPTURE_TOTAL)return;
   stopSelectionClock();busy=true;const revision=sessionRun;let completionNotice='';
@@ -416,12 +410,6 @@ $('finish-selection').onclick=async()=>{
     const original=frame.originalImage?await withTimeout(frame.originalImage(),12000,'프레임 원본을 불러오지 못했어요. 완성하기를 다시 눌러 주세요.'):frame.img;
     if(revision!==sessionRun)return;
     let canvas=document.createElement('canvas');composeSelection(canvas,{...frame,img:original});canvas=fitPostcard(canvas);
-    if(qrConsent){
-      $('selection-status').textContent='QR 앨범을 준비하고 있어요…';
-      try{canvas=await publishAlbum(canvas,revision,10000);}
-      catch(e){if(revision!==sessionRun)return;completionNotice='QR 저장 연결이 지연되어 QR 없이 사진을 완성했어요. 사진 인쇄와 저장은 가능합니다.';}
-      if(revision!==sessionRun)return;
-    }
     const nextBlob=await withTimeout(toBlob(canvas),15000,'사진 처리 시간이 초과됐어요. 완성하기를 다시 눌러 주세요.');if(revision!==sessionRun)return;
     const nextURL=URL.createObjectURL(nextBlob);$('result').src=nextURL;
     try{await withTimeout($('result').decode(),10000,'완성 사진을 열지 못했어요. 다시 시도해 주세요.');}catch(e){URL.revokeObjectURL(nextURL);throw e;}
@@ -479,7 +467,7 @@ $('setup-done').onclick=async()=>{
  if(edition==='special'&&specialCutStep){specialCutStep=false;controls();window.scrollTo(0,0);$('edition-back').focus({preventScroll:true});return;}
  shootingMusic.prepare(selected);
  const revision=sessionRun;
- phase='shoot';qrConsent=qrEnabled&&$('qr-consent').checked;settingsOpen=false;document.body.classList.remove('config-open');
+ phase='shoot';qrConsent=false;settingsOpen=false;document.body.classList.remove('config-open');
  $('stage-label').textContent='03 / 촬영';showShotPreview();controls();window.scrollTo(0,0);
  status('카메라 영상을 준비하고 있어요…');
  if(!stream)await startCamera();
@@ -508,7 +496,7 @@ function resetSession(message='이용이 종료됐어요. 사진을 지웠습니
   $('result-admin-tools').open=false;$('result').hidden=true;$('result-actions').hidden=true;$('capture-actions').hidden=false;
   $('countdown').hidden=true;$('welcome').hidden=false;
   for(const id of ['idle-dialog'])if($(id).open)$(id).close();
-  $('qr-consent').checked=false;qrConsent=false;album=null;automatic=false;idleWarning=false;printing=false;externalActionStarted=0;lastActivity=Date.now();
+  $('result-qr-status').textContent='';qrConsent=false;album=null;automatic=false;idleWarning=false;printing=false;externalActionStarted=0;lastActivity=Date.now();
   phase='intro';renderFrames();controls();status(message);
   const fallback=matchingFrames()[0];if(fallback)return chooseFrame(fallback.id).catch(()=>status('기본 프레임을 다시 선택해 주세요.',true));
 }
@@ -586,7 +574,36 @@ async function updatePrint(){
  printShareFile=new File([jpg],'yonsei-studio-P-100x148mm.jpg',{type:'image/jpeg'});
  printReady=true;$('print-open').disabled=false;
 }
+$('result-qr-add').onclick=async()=>{
+ if(!blob||!qrEnabled||uploadBusy||nativePrintBusy||qrConsent)return;
+ const revision=sessionRun,previous={blob,url:resultURL,file:printShareFile,ready:printReady};
+ uploadBusy=true;qrConsent=true;controls();$('result-qr-status').textContent='QR 사진을 준비하고 있어요…';
+ let nextURL=null;
+ try{
+  const original=await withTimeout(loadImage(previous.url),10000,'완성 사진을 읽지 못했어요.');
+  if(revision!==sessionRun)return;
+  let canvas=document.createElement('canvas');canvas.width=original.naturalWidth;canvas.height=original.naturalHeight;canvas.getContext('2d').drawImage(original,0,0);
+  canvas=await publishAlbum(canvas,revision,10000);if(revision!==sessionRun)return;
+  const nextBlob=await withTimeout(toBlob(canvas),10000,'QR 사진 처리 시간 초과');if(revision!==sessionRun)return;
+  nextURL=URL.createObjectURL(nextBlob);$('result').src=nextURL;
+  await withTimeout($('result').decode(),10000,'QR 사진을 열지 못했어요.');if(revision!==sessionRun)return;
+  blob=nextBlob;
+  await withTimeout(updatePrint(),10000,'인쇄 준비 시간 초과');if(revision!==sessionRun)return;
+  resultURL=nextURL;nextURL=null;URL.revokeObjectURL(previous.url);
+  $('result-qr-status').textContent='QR 준비 완료! 사진 인쇄를 누르면 QR이 함께 출력됩니다.';
+ }catch(e){
+  if(revision===sessionRun){
+   ++printRevision;blob=previous.blob;resultURL=previous.url;$('result').src=previous.url;
+   printShareFile=previous.file;printReady=previous.ready;qrConsent=false;
+   $('result-qr-status').textContent='QR 준비에 실패했어요. 다시 선택하거나 QR 없이 인쇄해 주세요.';
+  }
+ }finally{
+  if(nextURL)URL.revokeObjectURL(nextURL);
+  if(revision===sessionRun){uploadBusy=false;controls();}
+ }
+};
 $('print-open').onclick=async()=>{
+ if(uploadBusy)return;
  if(!printReady||!printShareFile){status('인쇄용 사진을 준비 중이에요. 잠시 후 다시 눌러 주세요.',true);return;}
  $('print-receipt').close();
  const file=printShareFile;
