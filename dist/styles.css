@@ -879,3 +879,7 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline-color:#8963ae}
 .is-special-frames.is-setup #selected-frame-preview{flex:1;min-height:0;margin:0}
 .is-special-frames.is-setup #selected-frame-preview .selected-frame-mat{max-height:calc(100dvh - 365px)}
 .is-special-frames.is-setup .frames{align-content:start;grid-auto-rows:max-content}
+
+.selection-qr{width:100%;margin:0 0 10px;align-items:flex-start}.selection-qr input{flex-shrink:0;min-width:20px;min-height:20px}.selection-qr .qr-consent-note{font-size:12px;line-height:1.5}#selection-qr-availability{margin:0 0 10px}
+
+#selection-qr-availability:not([hidden]){display:block;width:100%;font-size:12px}

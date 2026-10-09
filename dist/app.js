@@ -65,6 +65,10 @@ function controls() {
  for(const suffix of ['camera','camera-refresh'])$('permission-'+suffix).disabled=phase!=='permission'||busy||cameraBusy;
  $('frame-next').disabled=frameLoading||!selected;
  $('qr-consent').disabled=!qrEnabled;
+ $('selection-qr-consent').disabled=!qrEnabled||busy||frameLoading;
+ $('selection-qr-consent').checked=qrConsent;
+ $('selection-qr-availability').hidden=qrEnabled;
+ $('selection-qr-availability').textContent='QR 저장 연결이 준비되지 않았어요. 사진 저장과 인쇄는 사용할 수 있어요.';
  $('qr-availability').hidden=qrEnabled;
  $('qr-availability').textContent=qrEnabled?'':galleryConfig.configured?'QR 저장을 사용하려면 최초 카메라 화면에서 운영 코드를 연결해 주세요.':'QR 저장 서버 연결 전입니다. 지금은 저장·인쇄를 이용할 수 있어요.';
 }
@@ -395,6 +399,12 @@ function renderAfterFrames(){
 $('frame-next').onclick=()=>{if(!frameLoading&&selected)openSelection();};
 for(const name of ['natural','original','bright','vivid','mono']) $('filter-'+name).onclick=()=>{if(!busy&&!frameLoading){$('photo-filter').value=name;renderSelection();}};
 $('photo-filter').onchange=()=>{if(!busy&&!frameLoading)renderSelection();};
+$('qr-consent').onchange=()=>{qrConsent=qrEnabled&&$('qr-consent').checked;controls();};
+$('selection-qr-consent').onchange=()=>{
+ if(busy||frameLoading)return;
+ qrConsent=qrEnabled&&$('selection-qr-consent').checked;
+ $('qr-consent').checked=qrConsent;controls();
+};
 $('finish-selection').onclick=async()=>{
   if(busy||frameLoading||selectedCount()!==cutCount||!shotSession||shotSession.photos.length!==CAPTURE_TOTAL)return;
   stopSelectionClock();busy=true;const revision=sessionRun;let completionNotice='';
