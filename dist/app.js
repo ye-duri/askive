@@ -144,10 +144,9 @@ async function startCamera() {
   $('camera-state').textContent = '카메라 연결 중';
   try {
     const source=cameraDeviceId ? {deviceId:{exact:cameraDeviceId}} : {facingMode:{ideal:'user'}};
-    // Only four-shot landscape frames need the full 4:3 source on iPad.
-    // Permission tests and all other frames retain the original camera request.
-    const wideFour=phase!=='permission' && selected && frameCount(selected)===4 && selected.width>selected.height;
-    const resolution=wideFour
+    // Use the full 4:3 camera source for every shooting frame on iPad.
+    // Frame apertures crop with cover in both live preview and final composition.
+    const resolution=phase!=='permission'
       ? {width:{ideal:1440},height:{ideal:1080},aspectRatio:{ideal:4/3},resizeMode:{ideal:'crop-and-scale'}}
       : {width:{ideal:1920},height:{ideal:1080}};
     const next = await withTimeout(navigator.mediaDevices.getUserMedia({audio:false, video:{...source,...resolution,frameRate:{ideal:30}}}),20000,'카메라 연결 시간이 초과됐어요. 연결을 확인한 뒤 다시 시도해 주세요.',late=>late.getTracks().forEach(t=>t.stop()));
