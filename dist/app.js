@@ -398,31 +398,34 @@ for(const name of ['natural','original','bright','vivid','mono']) $('filter-'+na
 $('photo-filter').onchange=()=>{if(!busy&&!frameLoading)renderSelection();};
 $('finish-selection').onclick=async()=>{
   if(busy||frameLoading||selectedCount()!==cutCount||!shotSession||shotSession.photos.length!==CAPTURE_TOTAL)return;
-  stopSelectionClock();busy=true;renderSelection();controls();const revision=sessionRun;
-  await new Promise(resolve=>setTimeout(resolve,32));if(revision!==sessionRun)return;
+  stopSelectionClock();busy=true;const revision=sessionRun;let completionNotice='';
   try{
+    renderSelection();controls();
+    await new Promise(resolve=>setTimeout(resolve,32));if(revision!==sessionRun)return;
     // Never export the reduced screen image, even when the original is still loading.
     const frame=selected;
-    const original=frame.originalImage?await frame.originalImage():frame.img;
+    const original=frame.originalImage?await withTimeout(frame.originalImage(),12000,'프레임 원본을 불러오지 못했어요. 완성하기를 다시 눌러 주세요.'):frame.img;
     if(revision!==sessionRun)return;
     let canvas=document.createElement('canvas');composeSelection(canvas,{...frame,img:original});canvas=fitPostcard(canvas);
     if(qrConsent){
       $('selection-status').textContent='QR 앨범을 준비하고 있어요…';
-      canvas=await publishAlbum(canvas,revision);if(revision!==sessionRun)return;
+      try{canvas=await publishAlbum(canvas,revision,10000);}
+      catch(e){if(revision!==sessionRun)return;completionNotice='QR 저장 연결이 지연되어 QR 없이 사진을 완성했어요. 사진 인쇄와 저장은 가능합니다.';}
+      if(revision!==sessionRun)return;
     }
-    const nextBlob=await toBlob(canvas);if(revision!==sessionRun)return;
+    const nextBlob=await withTimeout(toBlob(canvas),15000,'사진 처리 시간이 초과됐어요. 완성하기를 다시 눌러 주세요.');if(revision!==sessionRun)return;
     const nextURL=URL.createObjectURL(nextBlob);$('result').src=nextURL;
-    try{await $('result').decode();}catch(e){URL.revokeObjectURL(nextURL);throw e;}
+    try{await withTimeout($('result').decode(),10000,'완성 사진을 열지 못했어요. 다시 시도해 주세요.');}catch(e){URL.revokeObjectURL(nextURL);throw e;}
     if(revision!==sessionRun){URL.revokeObjectURL(nextURL);return;}if(resultURL)URL.revokeObjectURL(resultURL);blob=nextBlob;resultURL=nextURL;selecting=false;
     $('size-label').textContent=`${canvas.width} × ${canvas.height} · SELPHY P · 100 × 148mm`;
     $('viewfinder').style.aspectRatio=`${canvas.width}/${canvas.height}`;$('viewfinder').style.setProperty('--preview-ratio',String(canvas.width/canvas.height));
     $('result-admin-tools').open=false;$('result').hidden=false;$('capture-actions').hidden=true;$('result-actions').hidden=false;
-    try{await updatePrint();}catch{status('인쇄용 사진 준비에 실패했어요. 사진 저장을 이용해 주세요.',true);}
+    try{await withTimeout(updatePrint(),10000,'인쇄용 사진 준비 시간 초과');}catch{completionNotice='인쇄용 사진 준비에 실패했어요. 사진 저장을 이용해 주세요.';}
     if(revision!==sessionRun)return;
     $('shot-progress').textContent='소중한 사진이 완성되었습니다.';$('stage-label').textContent='05 / 나의 순간';
-    status('');
+    status(completionNotice,!!completionNotice);
   }catch(e){if(revision===sessionRun)$('selection-status').textContent=e.message||'합성하지 못했어요. 다시 시도해 주세요.';}
-  finally{if(revision===sessionRun){busy=false;if(selecting)renderSelection();controls();}}
+  finally{if(revision===sessionRun){busy=false;try{if(selecting)renderSelection();}finally{controls();}}}
 };
 function renderEditingFrames(){
  $('frame-selection-hint').textContent='사진과 프레임을 자유롭게 골라 주세요';
@@ -649,18 +652,19 @@ function addAlbumQR(canvas,url){
  for(let row=0;row<modules;row++)for(let col=0;col<modules;col++)if(qr.isDark(row,col))c.fillRect(left+Math.round((col+4)*unit),y+Math.round((row+4)*unit),Math.round((col+5)*unit)-Math.round((col+4)*unit),Math.round((row+5)*unit)-Math.round((row+4)*unit));
  return result;
 }
-async function apiJSON(url,options){const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),45000);try{const r=await fetch(url,{...options,signal:controller.signal});const d=await r.json();if(!r.ok)throw new Error(d.error||'QR 저장 실패');return d;}catch(e){if(e.name==='AbortError')throw new Error('QR 저장 응답이 늦어지고 있어요. 연결을 확인한 뒤 다시 시도해 주세요.');throw e;}finally{clearTimeout(timeout);}}
-async function publishAlbum(canvas,revision){
+async function apiJSON(url,options,timeoutMs=45000){const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),timeoutMs);try{const r=await fetch(url,{...options,signal:controller.signal});const d=await r.json();if(!r.ok)throw new Error(d.error||'QR 저장 실패');return d;}catch(e){if(e.name==='AbortError')throw new Error('QR 저장 응답이 늦어지고 있어요. 연결을 확인한 뒤 다시 시도해 주세요.');throw e;}finally{clearTimeout(timeout);}}
+async function publishAlbum(canvas,revision,timeoutMs=45000){
+ const deadline=Date.now()+timeoutMs;const remaining=()=>{const ms=deadline-Date.now();if(ms<=0)throw new Error('QR 저장 시간 초과');return ms;};
  if(!qrConsent||!qrEnabled)throw new Error('QR 사진 보관 동의가 필요합니다.');
  let current=album;
- if(!current){current=await apiJSON('/api/gallery/albums',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({consent:true,policyVersion:'2026-09-26-qr-v1'})});if(revision!==sessionRun){void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'});return canvas;}album=current;}
+ if(!current){current=await apiJSON('/api/gallery/albums',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({consent:true,policyVersion:'2026-09-26-qr-v1'})},remaining());if(revision!==sessionRun){void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'});return canvas;}album=current;}
  const url=new URL('gallery.html',location.href);url.hash=current.id;
  const composite=addAlbumQR(canvas,url.href);const data=new FormData();
- for(let i=0;i<8;i++)data.append(String(i),await toBlob(shotSession.photos[i],'image/jpeg',.85),`${i}.jpg`);
+ for(let i=0;i<8;i++)data.append(String(i),await withTimeout(toBlob(shotSession.photos[i],'image/jpeg',.85),remaining(),'QR 사진 처리 시간 초과'),`${i}.jpg`);
  // Keep the downloadable album clean; only the printed copy carries its album QR.
- data.append('8',await toBlob(canvas,'image/jpeg',.9),'result.jpg');
+ data.append('8',await withTimeout(toBlob(canvas,'image/jpeg',.9),remaining(),'QR 사진 처리 시간 초과'),'result.jpg');
  if(revision!==sessionRun)return canvas;
- await apiJSON(`/api/gallery/albums/${current.id}`,{method:'PUT',body:data});
+ await apiJSON(`/api/gallery/albums/${current.id}`,{method:'PUT',body:data},remaining());
  if(revision!==sessionRun){void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'});return canvas;}
  return composite;
 }
