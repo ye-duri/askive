@@ -1,0 +1,685 @@
+{
+  "profile": {
+    "saturation": 1.12,
+    "gamma": 1.16
+  },
+  "notes": "Baked into PNG assets; no runtime frame filter. Original alpha masks retained. Musical six-shot mesh patches were already graded and excluded.",
+  "updatedFrames": [
+    {
+      "id": "hanmaeum-2026-festival-grid",
+      "oldSrc": "frames/hanmaeum-2026-festival-grid-20261007.png",
+      "oldThumbnail": "frames/hanmaeum-2026-festival-grid-20261007-thumb.webp",
+      "src": "frames/hanmaeum-2026-festival-grid-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-festival-grid-ink-20261009-thumb.webp",
+      "sourceSha256": "71a6a8b5c39a36fb1a3ff2e873bf1d6b76a74b0a61cf019cc76c83092b723bd9",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1200,
+      "height": 1776
+    },
+    {
+      "id": "hanmaeum-2026-festival-offset",
+      "oldSrc": "frames/hanmaeum-2026-festival-offset-20261007.png",
+      "oldThumbnail": "frames/hanmaeum-2026-festival-offset-20261007-thumb.webp",
+      "src": "frames/hanmaeum-2026-festival-offset-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-festival-offset-ink-20261009-thumb.webp",
+      "sourceSha256": "0f34f7eb3a71ecb9dbe465fcc92de3282fb98b075a90c7b5ac2e509e54071e39",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1200,
+      "height": 1776
+    },
+    {
+      "id": "hanmaeum-2026-together-four",
+      "oldSrc": "frames/hanmaeum-2026-together-four-r1009.png",
+      "oldThumbnail": "frames/hanmaeum-2026-together-four-r1009-thumb.webp",
+      "src": "frames/hanmaeum-2026-together-four-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-together-four-ink-20261009-thumb.webp",
+      "sourceSha256": "a1f78554e2acab3dfff5b8d1ca2da1cceed095245e3a2641ae1dd0b478ccc807",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1200,
+      "height": 1776
+    },
+    {
+      "id": "hanmaeum-2026-together-six",
+      "oldSrc": "frames/hanmaeum-2026-together-six-r1008.png",
+      "oldThumbnail": "frames/hanmaeum-2026-together-six-r1008-thumb.webp",
+      "src": "frames/hanmaeum-2026-together-six-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-together-six-ink-20261009-thumb.webp",
+      "sourceSha256": "9d6fc31771aead9c2004a2c14d3e5c6eaaf2679392590302a0e8fd172e455467",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1200,
+      "height": 1776
+    },
+    {
+      "id": "hanmaeum-2026-festival-six-portrait",
+      "oldSrc": "frames/hanmaeum-2026-festival-six-portrait-20261007.png",
+      "oldThumbnail": "frames/hanmaeum-2026-festival-six-portrait-20261007-thumb.webp",
+      "src": "frames/hanmaeum-2026-festival-six-portrait-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-festival-six-portrait-ink-20261009-thumb.webp",
+      "sourceSha256": "24866ab1759a238b521aeb9b33b88d917ab868c765b2d0fbcff3e0f685b9372b",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "hanmaeum-2026-festival-six-landscape",
+      "oldSrc": "frames/hanmaeum-2026-festival-six-landscape-header-v2.png",
+      "oldThumbnail": "frames/hanmaeum-2026-festival-six-landscape-header-v2-thumb.webp",
+      "src": "frames/hanmaeum-2026-festival-six-landscape-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-festival-six-landscape-ink-20261009-thumb.webp",
+      "sourceSha256": "d01ce578f24d7e9ae1040a0f29c54cf317a3b6f8e3fa0ced426f993b81522fce",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "hanmaeum-2026-musical-six-portrait",
+      "oldSrc": "frames/hanmaeum-2026-musical-six-portrait-mesh-v2.png",
+      "oldThumbnail": "frames/hanmaeum-2026-musical-six-portrait-mesh-v2.webp",
+      "src": "frames/hanmaeum-2026-musical-six-portrait-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-musical-six-portrait-ink-20261009-thumb.webp",
+      "sourceSha256": "c0b5e860a5dd6901dbeecfe8d6b2841b7423981d1a5882c002d88632f1881ead",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [
+        [
+          521,
+          284,
+          460,
+          246
+        ]
+      ],
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "hanmaeum-2026-musical-six-landscape",
+      "oldSrc": "frames/hanmaeum-2026-musical-six-landscape-mesh-v2.png",
+      "oldThumbnail": "frames/hanmaeum-2026-musical-six-landscape-mesh-v2.webp",
+      "src": "frames/hanmaeum-2026-musical-six-landscape-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-musical-six-landscape-ink-20261009-thumb.webp",
+      "sourceSha256": "dfeddc7caca58d40b14cf69214038674d44d0af47234d00bd9b8f475a038092b",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [
+        [
+          1021,
+          266,
+          473,
+          192
+        ]
+      ],
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "hanmaeum-2026-yugwansun-six-portrait",
+      "oldSrc": "frames/hanmaeum-2026-yugwansun-six-portrait-print.png",
+      "oldThumbnail": "frames/hanmaeum-2026-yugwansun-six-portrait-thumb.webp",
+      "src": "frames/hanmaeum-2026-yugwansun-six-portrait-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-yugwansun-six-portrait-ink-20261009-thumb.webp",
+      "sourceSha256": "990c12945699aab7b7740ddba9a48ad920708d11e7b964abb7b8a760cd9577f5",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "hanmaeum-2026-yugwansun-six-landscape",
+      "oldSrc": "frames/hanmaeum-2026-yugwansun-six-landscape-print.png",
+      "oldThumbnail": "frames/hanmaeum-2026-yugwansun-six-landscape-thumb.webp",
+      "src": "frames/hanmaeum-2026-yugwansun-six-landscape-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-yugwansun-six-landscape-ink-20261009-thumb.webp",
+      "sourceSha256": "081bff255ad5f060d19c0a9ba46d9efb1431f9bcfec96eb86fd454a1ffab6669",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "hanmaeum-2026-anniversary-four",
+      "oldSrc": "frames/hanmaeum-2026-anniversary-four-r1008.png",
+      "oldThumbnail": "frames/hanmaeum-2026-anniversary-four-r1008-thumb.webp",
+      "src": "frames/hanmaeum-2026-anniversary-four-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-anniversary-four-ink-20261009-thumb.webp",
+      "sourceSha256": "f71d4d7c5fe86084a7491bfb30c39e87fbe991c7d5afdb80fffbd26d75354e89",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1200,
+      "height": 1776
+    },
+    {
+      "id": "hanmaeum-2026-anniversary-six-portrait",
+      "oldSrc": "frames/hanmaeum-2026-anniversary-six-portrait-r1008.png",
+      "oldThumbnail": "frames/hanmaeum-2026-anniversary-six-portrait-r1008-thumb.webp",
+      "src": "frames/hanmaeum-2026-anniversary-six-portrait-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-anniversary-six-portrait-ink-20261009-thumb.webp",
+      "sourceSha256": "a8d9e7a613c7760bd84a8db9f9ee564511a19ceae1c82b61b36a46ca806ec15f",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1030,
+      "height": 1526
+    },
+    {
+      "id": "hanmaeum-2026-anniversary-six-landscape",
+      "oldSrc": "frames/hanmaeum-2026-anniversary-six-landscape-r1008.png",
+      "oldThumbnail": "frames/hanmaeum-2026-anniversary-six-landscape-r1008-thumb.webp",
+      "src": "frames/hanmaeum-2026-anniversary-six-landscape-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-anniversary-six-landscape-ink-20261009-thumb.webp",
+      "sourceSha256": "96ff24119d2f6e89f4bf40ccb3e881decd72d101926f50383cc1fe6cf048750b",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "hanmaeum-2026-daecheong-green-four",
+      "oldSrc": "frames/hanmaeum-2026-daecheong-green-four-r1008.png",
+      "oldThumbnail": "frames/hanmaeum-2026-daecheong-green-four-r1008-thumb.webp",
+      "src": "frames/hanmaeum-2026-daecheong-green-four-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-daecheong-green-four-ink-20261009-thumb.webp",
+      "sourceSha256": "a1f47640cf2f37c52e4c7d9365cf4c6cfa529594e97fc952f31842f36dc68630",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1200,
+      "height": 1776
+    },
+    {
+      "id": "hanmaeum-2026-daecheong-green-six-landscape",
+      "oldSrc": "frames/hanmaeum-2026-daecheong-green-six-landscape-r1008.png",
+      "oldThumbnail": "frames/hanmaeum-2026-daecheong-green-six-landscape-r1008-thumb.webp",
+      "src": "frames/hanmaeum-2026-daecheong-green-six-landscape-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-landscape-ink-20261009-thumb.webp",
+      "sourceSha256": "315898b1ed95731c1ed07a816aa866e1d0280879d9fa2b120d65e8264a1c7191",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "hanmaeum-2026-daecheong-green-six-portrait",
+      "oldSrc": "frames/hanmaeum-2026-daecheong-green-six-portrait-r1008.png",
+      "oldThumbnail": "frames/hanmaeum-2026-daecheong-green-six-portrait-r1008-thumb.webp",
+      "src": "frames/hanmaeum-2026-daecheong-green-six-portrait-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-portrait-ink-20261009-thumb.webp",
+      "sourceSha256": "2b5606eb1b4eee5f8f534aae89c14100a39efe236470812ecdc26a20e3355293",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1031,
+      "height": 1526
+    },
+    {
+      "id": "hanmaeum-2026-daecheong-paper-four",
+      "oldSrc": "frames/hanmaeum-2026-daecheong-paper-four-r1008.png",
+      "oldThumbnail": "frames/hanmaeum-2026-daecheong-paper-four-r1008-thumb.webp",
+      "src": "frames/hanmaeum-2026-daecheong-paper-four-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-daecheong-paper-four-ink-20261009-thumb.webp",
+      "sourceSha256": "b58757bbe986d458bfc1cc0503d2df17c76870772caf330ec3aaec4b045be54f",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1200,
+      "height": 1776
+    },
+    {
+      "id": "hanmaeum-2026-daecheong-paper-six-landscape",
+      "oldSrc": "frames/hanmaeum-2026-daecheong-paper-six-landscape-r1008.png",
+      "oldThumbnail": "frames/hanmaeum-2026-daecheong-paper-six-landscape-r1008-thumb.webp",
+      "src": "frames/hanmaeum-2026-daecheong-paper-six-landscape-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-daecheong-paper-six-landscape-ink-20261009-thumb.webp",
+      "sourceSha256": "3931e9e59e995c68a5117c36dd5837318dd21c2c5a209b3076eb60572accf3ef",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1526,
+      "height": 1031
+    },
+    {
+      "id": "hanmaeum-2026-daecheong-paper-six-portrait",
+      "oldSrc": "frames/hanmaeum-2026-daecheong-paper-six-portrait-r1008.png",
+      "oldThumbnail": "frames/hanmaeum-2026-daecheong-paper-six-portrait-r1008-thumb.webp",
+      "src": "frames/hanmaeum-2026-daecheong-paper-six-portrait-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-daecheong-paper-six-portrait-ink-20261009-thumb.webp",
+      "sourceSha256": "82644d6fb59c74ee0456d50a23a1e2517dd1f1c4748000bf95996cc94db86281",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1031,
+      "height": 1526
+    },
+    {
+      "id": "hanmaeum-2026-together-six-landscape",
+      "oldSrc": "frames/hanmaeum-2026-together-six-landscape-r1008.png",
+      "oldThumbnail": "frames/hanmaeum-2026-together-six-landscape-r1008-thumb.webp",
+      "src": "frames/hanmaeum-2026-together-six-landscape-ink-20261009.png",
+      "thumbnail": "frames/hanmaeum-2026-together-six-landscape-ink-20261009-thumb.webp",
+      "sourceSha256": "ea621eabd9b4225d9de393fbc9191103b2d21cb8732f3ef21de1801d06cbd619",
+      "profile": {
+        "saturation": 1.12,
+        "gamma": 1.16
+      },
+      "alreadyGradedRectangles": [],
+      "width": 1776,
+      "height": 1200
+    }
+  ],
+  "catalogAssets": [
+    {
+      "id": "basic-4-grid-black",
+      "src": "frames/basic-4-grid-black-print.png",
+      "sha256": "22c073f1328be533f7972b71679ac86f3c4f11353865cc55abdc11fee6d24107"
+    },
+    {
+      "id": "basic-4-grid-white",
+      "src": "frames/basic-4-grid-white-print.png",
+      "sha256": "37313fc0f826462c35ad5a60a3c6529a0798624ac77ca91c197b9a9ef9758885"
+    },
+    {
+      "id": "basic-4-grid-cherry",
+      "src": "frames/basic-4-grid-cherry-print.png",
+      "sha256": "42aa65958bb1f8e1f12138c7fe36e17edbf497a088821e40851c8e00cfa3eef4"
+    },
+    {
+      "id": "basic-4-grid-pink",
+      "src": "frames/basic-4-grid-pink-print.png",
+      "sha256": "71fe98392c67f0a7c4a41aad4007c5face142df4821266bfb9a7d4e50ee05b50"
+    },
+    {
+      "id": "basic-4-grid-beige",
+      "src": "frames/basic-4-grid-beige-print.png",
+      "sha256": "6e4c3f2a69e6f343fe7ad1dd397fa9f82135e24b9113e64f1b5672b4c28f51c5"
+    },
+    {
+      "id": "basic-4-grid-khaki",
+      "src": "frames/basic-4-grid-khaki-print.png",
+      "sha256": "20b04d4a576b301ff03735cba0291be930cb02780dedefc749a31f9c3836d4ca"
+    },
+    {
+      "id": "basic-4-grid-lime",
+      "src": "frames/basic-4-grid-lime-print.png",
+      "sha256": "5cbe88bf3a510eee265429ab64709a8777cf40c21564380c79ae0821372ff167"
+    },
+    {
+      "id": "basic-4-grid-sora",
+      "src": "frames/basic-4-grid-sora-print.png",
+      "sha256": "7084cfc96630588efbc59148169deb7f1af3cccd95f727aa2d74121e984e43e5"
+    },
+    {
+      "id": "basic-4-grid-dusty",
+      "src": "frames/basic-4-grid-dusty-print.png",
+      "sha256": "0828da0c55976d86bfe657371a31aa48ca3eab7f9e64afa4f0a46a106641a9f0"
+    },
+    {
+      "id": "basic-4-offset-black",
+      "src": "frames/basic-4-offset-black-print.png",
+      "sha256": "ffa9b208e0875735b7f3a4fd8d7d1e7b9024c15125cbe9ccfe16539638fe55c2"
+    },
+    {
+      "id": "basic-4-offset-white",
+      "src": "frames/basic-4-offset-white-print.png",
+      "sha256": "a4fc131db5e155320f4568b9afc8e4dc6595db630d6d6bb3bf66223d693eb12d"
+    },
+    {
+      "id": "basic-4-offset-cherry",
+      "src": "frames/basic-4-offset-cherry-print.png",
+      "sha256": "f7b15c523fe368abb64bd9dd5ba69d52a8f1316f8d112f46cd6db4d873fed745"
+    },
+    {
+      "id": "basic-4-offset-pink",
+      "src": "frames/basic-4-offset-pink-print.png",
+      "sha256": "07101e471c99ac34caaba96b249ad1fcda7ccc6b73ea185b4eb422f9af8262d1"
+    },
+    {
+      "id": "basic-4-offset-beige",
+      "src": "frames/basic-4-offset-beige-print.png",
+      "sha256": "609d316f0ab7403f2529eb3765b78d27649383573699d28625469d00396340cd"
+    },
+    {
+      "id": "basic-4-offset-khaki",
+      "src": "frames/basic-4-offset-khaki-print.png",
+      "sha256": "c2bc22ceebf30466a97c5e1a7db19cb897e536dbb9d51568d2cc360ecc508bed"
+    },
+    {
+      "id": "basic-4-offset-lime",
+      "src": "frames/basic-4-offset-lime-print.png",
+      "sha256": "a8c96a99355da0aff8f935b3a171770bb4e6724cc3f5679e71c8715e16fc8346"
+    },
+    {
+      "id": "basic-4-offset-sora",
+      "src": "frames/basic-4-offset-sora-print.png",
+      "sha256": "ba9c893c3e574022d0ae4cf2572ea28441968757cdcc1152930d29162f0dccf9"
+    },
+    {
+      "id": "basic-4-offset-dusty",
+      "src": "frames/basic-4-offset-dusty-print.png",
+      "sha256": "a2fcbed137f36e2e8aa4121ca2eb0dd3731cc19fd30c3d0a4e39a6482cadf527"
+    },
+    {
+      "id": "basic-6-grid-black",
+      "src": "frames/basic-6-grid-black-print.png",
+      "sha256": "78d5a07387d99799b33b0c8c2d012150ee89c536a18688862340f4e8bdff19cd"
+    },
+    {
+      "id": "basic-6-grid-white",
+      "src": "frames/basic-6-grid-white-print.png",
+      "sha256": "ae6f931463f4a9d61d359a8eb2f629187eb265ce6fcf650d4e34a42ccd3a06b9"
+    },
+    {
+      "id": "basic-6-grid-cherry",
+      "src": "frames/basic-6-grid-cherry-print.png",
+      "sha256": "471b8e82f6a0549cc72923667ef790f7444408695ae0695d63ae4b1507c3ce6c"
+    },
+    {
+      "id": "basic-6-grid-pink",
+      "src": "frames/basic-6-grid-pink-print.png",
+      "sha256": "1fe85393372aa690351360ef28a6d120b1a168ba322144d7c3d2caf1ab9aafb4"
+    },
+    {
+      "id": "basic-6-grid-beige",
+      "src": "frames/basic-6-grid-beige-print.png",
+      "sha256": "9b9165324db599bb331441ccb907772ecbf177a99141719d9f953222638098f1"
+    },
+    {
+      "id": "basic-6-grid-khaki",
+      "src": "frames/basic-6-grid-khaki-print.png",
+      "sha256": "04587a63655178c9ee6683c348b1123ed01a56203a25de3723753c649f80dfa8"
+    },
+    {
+      "id": "basic-6-grid-lime",
+      "src": "frames/basic-6-grid-lime-print.png",
+      "sha256": "122a7e8dd6de26f858edd00eeab3b547ec934871881bc1ea65cfab5ae6456c14"
+    },
+    {
+      "id": "basic-6-grid-sora",
+      "src": "frames/basic-6-grid-sora-print.png",
+      "sha256": "8d3bf9d6eeae8a198358b40dda2284c851c3f61f57ea4cc29a21cc8b20633a2e"
+    },
+    {
+      "id": "basic-6-grid-dusty",
+      "src": "frames/basic-6-grid-dusty-print.png",
+      "sha256": "ef3ede256f5088fbe8828dabd11089b21beca27a0b239d4e69ca4f4cf256e59f"
+    },
+    {
+      "id": "basic-6-offset-black",
+      "src": "frames/basic-6-offset-black-print.png",
+      "sha256": "3b11ad31a088270ce0510e38e42ecb3fd51617ddc2c0b46f9abd16ca792012c8"
+    },
+    {
+      "id": "basic-6-offset-white",
+      "src": "frames/basic-6-offset-white-print.png",
+      "sha256": "11d2bfe0120cf7e01c0ce34566841179da0c4cf3b1e90430bbc8b01a7f5edbad"
+    },
+    {
+      "id": "basic-6-offset-cherry",
+      "src": "frames/basic-6-offset-cherry-print.png",
+      "sha256": "94b2bb2a8739c97298879c2d4881077cbc783d28cb5d0ed3fc8fcd8456394609"
+    },
+    {
+      "id": "basic-6-offset-pink",
+      "src": "frames/basic-6-offset-pink-print.png",
+      "sha256": "66b75c22b1c33888ba3afeb3139a2d19b4a476206ee3de46429339eb38f074ea"
+    },
+    {
+      "id": "basic-6-offset-beige",
+      "src": "frames/basic-6-offset-beige-print.png",
+      "sha256": "5e475f6387f73d5ba0c60d3b7cd0603311e405a671a38ed8c25280dd04d7185b"
+    },
+    {
+      "id": "basic-6-offset-khaki",
+      "src": "frames/basic-6-offset-khaki-print.png",
+      "sha256": "8efdde180d1046533abc975e36b9cdf953c7067590029e4f06f835a920033d43"
+    },
+    {
+      "id": "basic-6-offset-lime",
+      "src": "frames/basic-6-offset-lime-print.png",
+      "sha256": "4d55bb3c2e85075b1da52b50df4b7bbe0bc6a932ac3e49b5d7f589a4fd9995af"
+    },
+    {
+      "id": "basic-6-offset-sora",
+      "src": "frames/basic-6-offset-sora-print.png",
+      "sha256": "797f0a7da9b48ed7b16a7c9022cf8d83f080b00ccdb6121f20c229a9b5a77930"
+    },
+    {
+      "id": "basic-6-offset-dusty",
+      "src": "frames/basic-6-offset-dusty-print.png",
+      "sha256": "f7221d55c1f6725771103719506b199230c571e25d0722e6546d9200595c2b3f"
+    },
+    {
+      "id": "sheep-farewell-four",
+      "src": "frames/sheep-farewell-four-print.png",
+      "sha256": "f766ff7ddad8899bfd6a1263dd3bdf0d75aca9f63e83442ee1a1fda426cc2981"
+    },
+    {
+      "id": "sheep-farewell-six",
+      "src": "frames/sheep-farewell-six-print.png",
+      "sha256": "4bbe3b6fb513e01d1b31d2f489283d81d8c5ab2fd4751fd12d26d088c152c17f"
+    },
+    {
+      "id": "sheep-farewell-wide",
+      "src": "frames/sheep-farewell-wide-print.png",
+      "sha256": "0e2eae06c921b0061208e03102ea09e2e4f91cd9153ce91ecbc849a3e26ee1bd"
+    },
+    {
+      "id": "sheep-club-four",
+      "src": "frames/sheep-club-four-print.png",
+      "sha256": "24aaee1ea5bd5c0cfcdad71558848339acfbd75369ef9de4e018da0bc37ae6fc"
+    },
+    {
+      "id": "sheep-club-six",
+      "src": "frames/sheep-club-six-print.png",
+      "sha256": "a424ed653244cddcd0824d42b377eca7c6c8585d2a0fc3cfb85fb5ccec36bca0"
+    },
+    {
+      "id": "sheep-club-wide",
+      "src": "frames/sheep-club-wide-print.png",
+      "sha256": "ef563fb94f4d93e8fc48d8eb24fbb88e2c62d67bf05175b19f320cd35384b68f"
+    },
+    {
+      "id": "sheep-friends-four",
+      "src": "frames/sheep-friends-four-print.png",
+      "sha256": "bdd19cd2aef437e897da8e757d3c2c2e95986c662b6deb9e36e2b389fbda62f4"
+    },
+    {
+      "id": "sheep-friends-six",
+      "src": "frames/sheep-friends-six-print.png",
+      "sha256": "41bf6e26b3c2279ef61a35070541faeb30280205afb384dfc7b5f6d5916912fd"
+    },
+    {
+      "id": "sheep-friends-wide",
+      "src": "frames/sheep-friends-wide-print.png",
+      "sha256": "243e6891f64fae999eed9f7ded7727eb0983b5a7a424a86f42b8bbe481b738e9"
+    },
+    {
+      "id": "sheep-garden-four",
+      "src": "frames/sheep-garden-four-print.png",
+      "sha256": "c330011f30abee9f96ca658f153a3b2a6b1608fa0e8ea88b02be6495da345071"
+    },
+    {
+      "id": "sheep-garden-six",
+      "src": "frames/sheep-garden-six-print.png",
+      "sha256": "2977b7ad8c8cdb86ba9dc50d182f579b637ac1122bb53e7bb0cacdafa0f60d46"
+    },
+    {
+      "id": "sheep-garden-wide",
+      "src": "frames/sheep-garden-wide-print.png",
+      "sha256": "88e1cb30d8cf58e4a96f533f798ad7be54cfe5857c2bcf3cd5ec93fa375798f7"
+    },
+    {
+      "id": "hanmaeum-2026-festival-grid",
+      "src": "frames/hanmaeum-2026-festival-grid-ink-20261009.png",
+      "sha256": "f9bf99eb23cd32183ed99563f289d22d5cadcec0afa607e674c8e74660b373d3"
+    },
+    {
+      "id": "hanmaeum-2026-festival-offset",
+      "src": "frames/hanmaeum-2026-festival-offset-ink-20261009.png",
+      "sha256": "b3abd60a0a073fc9b867781a433ce7a9df576d605837638878329ad9ae1d103c"
+    },
+    {
+      "id": "hanmaeum-2026-musical-grid",
+      "src": "frames/hanmaeum-2026-musical-grid-20261006-print.png",
+      "sha256": "20762c06b16c6f321e60c9622b99c0b16345f5b18fdff1b72111946f3c6e095b"
+    },
+    {
+      "id": "hanmaeum-2026-musical-offset",
+      "src": "frames/hanmaeum-2026-musical-offset-20261006-print.png",
+      "sha256": "0c46dc94eec4bbc7d1ed12d6e2718e121b3ec6eea79a117a12110660ed292ba4"
+    },
+    {
+      "id": "hanmaeum-2026-yugwansun-grid",
+      "src": "frames/hanmaeum-2026-yugwansun-grid-print.png",
+      "sha256": "44efbf6a09a976a6199adf43f80f62c515a7b525d8c1a5368a5fe9a68a27eea1"
+    },
+    {
+      "id": "hanmaeum-2026-yugwansun-offset",
+      "src": "frames/hanmaeum-2026-yugwansun-offset-print.png",
+      "sha256": "ce68a61934c9422cf1c4cb78d04918e7c7631b770dc01439a86ca9b823d6e144"
+    },
+    {
+      "id": "hanmaeum-2026-together-four",
+      "src": "frames/hanmaeum-2026-together-four-ink-20261009.png",
+      "sha256": "e415fbfd4f2f8a1826ad952eb264bb4a64b40501358a53269d38eaf16ff6b875"
+    },
+    {
+      "id": "hanmaeum-2026-together-six",
+      "src": "frames/hanmaeum-2026-together-six-ink-20261009.png",
+      "sha256": "fbcdbd103ef0a8c80b6b6d6ce6898c03ffd6d27f46841cdb4ec4ccb9f3302208"
+    },
+    {
+      "id": "hanmaeum-2026-festival-six-portrait",
+      "src": "frames/hanmaeum-2026-festival-six-portrait-ink-20261009.png",
+      "sha256": "079fc35f1b6deca3e98854ce40a68b29f4e64584dca227b2dbb4fc650afdc9aa"
+    },
+    {
+      "id": "hanmaeum-2026-festival-six-landscape",
+      "src": "frames/hanmaeum-2026-festival-six-landscape-ink-20261009.png",
+      "sha256": "c69e1171b0fb29eac8ef20ad6901cc1d6fa2839ac7af15807a87d2cb91080302"
+    },
+    {
+      "id": "hanmaeum-2026-musical-six-portrait",
+      "src": "frames/hanmaeum-2026-musical-six-portrait-ink-20261009.png",
+      "sha256": "3c4d3ea6287538f1a8aa218474dbd7d97d337c74dc5d9fc100bd688a8db744a6"
+    },
+    {
+      "id": "hanmaeum-2026-musical-six-landscape",
+      "src": "frames/hanmaeum-2026-musical-six-landscape-ink-20261009.png",
+      "sha256": "beead82906d1a2edec66bcb43389c4a4b4539b5d6cd6704e772e222897055cc4"
+    },
+    {
+      "id": "hanmaeum-2026-yugwansun-six-portrait",
+      "src": "frames/hanmaeum-2026-yugwansun-six-portrait-ink-20261009.png",
+      "sha256": "934ef3a84dd3f7b28cd4e66596b9ce4b9839cc08197cd9db19e31a1ec7c17b6a"
+    },
+    {
+      "id": "hanmaeum-2026-yugwansun-six-landscape",
+      "src": "frames/hanmaeum-2026-yugwansun-six-landscape-ink-20261009.png",
+      "sha256": "5c4bb8479cdd546bfb2f83101adf366b01347e08560f72210ac3a50080e3c1e5"
+    },
+    {
+      "id": "hanmaeum-2026-anniversary-four",
+      "src": "frames/hanmaeum-2026-anniversary-four-ink-20261009.png",
+      "sha256": "4165a5f1eebd14a6046863d8fa6c7c77b11baefd22b71742852bc6fa113b3b52"
+    },
+    {
+      "id": "hanmaeum-2026-anniversary-six-portrait",
+      "src": "frames/hanmaeum-2026-anniversary-six-portrait-ink-20261009.png",
+      "sha256": "d9cf3165a35ae12de55aff8d3364da905f71aa8cd2b77a3a1bf37907c0e4163e"
+    },
+    {
+      "id": "hanmaeum-2026-anniversary-six-landscape",
+      "src": "frames/hanmaeum-2026-anniversary-six-landscape-ink-20261009.png",
+      "sha256": "b810615e5c0b759fcc35e0872e4531bb7fda37f9dbe52263995c0a8baf19fae0"
+    },
+    {
+      "id": "hanmaeum-2026-daecheong-green-four",
+      "src": "frames/hanmaeum-2026-daecheong-green-four-ink-20261009.png",
+      "sha256": "4f174dbda912756f15430b80b3c23348d7ee09138c5bf64e4d2be9485f5d7011"
+    },
+    {
+      "id": "hanmaeum-2026-daecheong-green-six-landscape",
+      "src": "frames/hanmaeum-2026-daecheong-green-six-landscape-ink-20261009.png",
+      "sha256": "f72eb80e74c0b582250871b9e5b4f6f53e99a77de10ca7d39deadc75793fd14b"
+    },
+    {
+      "id": "hanmaeum-2026-daecheong-green-six-portrait",
+      "src": "frames/hanmaeum-2026-daecheong-green-six-portrait-ink-20261009.png",
+      "sha256": "6548dd33628566a4abfc8961c0257d65ba8bf63d53b6adc64a2c7d074a1e451f"
+    },
+    {
+      "id": "hanmaeum-2026-daecheong-paper-four",
+      "src": "frames/hanmaeum-2026-daecheong-paper-four-ink-20261009.png",
+      "sha256": "31201e927228f341d838a64dd152ba0a719ae92d5f73869aee3cb49458ff0af8"
+    },
+    {
+      "id": "hanmaeum-2026-daecheong-paper-six-landscape",
+      "src": "frames/hanmaeum-2026-daecheong-paper-six-landscape-ink-20261009.png",
+      "sha256": "0f34ac3158dc8d5e542cfdf49051e18f2fa98bfbc7f83f05f75cb5169e54f69b"
+    },
+    {
+      "id": "hanmaeum-2026-daecheong-paper-six-portrait",
+      "src": "frames/hanmaeum-2026-daecheong-paper-six-portrait-ink-20261009.png",
+      "sha256": "630acb1d5d39076c3a0f3aed21e5ed8ae1058c63c1cf7cbf911da760b2ed7db0"
+    },
+    {
+      "id": "hanmaeum-2026-together-six-landscape",
+      "src": "frames/hanmaeum-2026-together-six-landscape-ink-20261009.png",
+      "sha256": "6d22579da2fc19b4aeecb4af83ce9eda5630f2710a03fe267ae1beca4ccb6953"
+    }
+  ]
+}
