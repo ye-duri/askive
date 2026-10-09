@@ -65,7 +65,12 @@ function controls() {
  for(const suffix of ['camera','camera-refresh'])$('permission-'+suffix).disabled=phase!=='permission'||busy||cameraBusy;
  $('frame-next').disabled=frameLoading||!selected;
  $('result-qr-add').disabled=!qrEnabled||!blob||uploadBusy||nativePrintBusy||qrConsent;
- $('result-qr-add').textContent=uploadBusy?'QR 준비 중…':qrConsent?'QR 추가 완료':'QR로 사진 받기 (선택)';
+ $('result-qr-add').checked=qrConsent;
+ $('result-qr-card').classList.toggle('is-checked',qrConsent);
+ $('result-qr-card').classList.toggle('is-unavailable',!qrEnabled);
+ $('result-qr-card').setAttribute('aria-busy',String(uploadBusy));
+ $('result-qr-title').textContent=uploadBusy?'QR 준비 중…':qrConsent?'QR 선택 완료':'QR로 사진 받기';
+ $('result-qr-hint').textContent=uploadBusy?'잠시만 기다려 주세요':qrConsent?'인쇄 사진에 QR이 함께 나와요':'원하시면 여기를 체크해 주세요';
  if(!qrEnabled)$('result-qr-status').textContent='QR 저장 연결이 준비되지 않았어요. 사진 인쇄는 가능합니다.';
  $('retake').disabled=uploadBusy||nativePrintBusy;
  $('save').disabled=uploadBusy;

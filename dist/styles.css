@@ -883,3 +883,10 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline-color:#8963ae}
 
 
 .result-qr{width:100%;padding-top:10px;border-top:1px solid #e0d5ec}.result-qr .help{font-size:12px;line-height:1.5;margin:8px 0;text-align:left}#result-qr-status{color:#5d3586}
+
+.result-qr-card{display:flex;align-items:center;gap:14px;width:100%;box-sizing:border-box;padding:18px 16px;border:2px solid #a87ad1;border-radius:16px;background:#f1e6fc;box-shadow:0 3px 12px #60388c12;cursor:pointer;text-align:left;color:#41215f}
+.result-qr-card input{appearance:auto;-webkit-appearance:checkbox;accent-color:#72439a;width:30px;height:30px;min-width:30px;margin:0;flex:0 0 30px;cursor:pointer}
+.result-qr-copy{display:flex;flex-direction:column;gap:5px;min-width:0;word-break:keep-all}
+.result-qr-kicker{font-size:11px;color:#76558b}.result-qr-copy strong{font-size:20px;line-height:1.3}.result-qr-copy #result-qr-hint{font-size:13px;line-height:1.5}.result-qr-detail{font-size:12px;font-weight:700;color:#72439a}
+.result-qr-card.is-checked{border-color:#71409a;background:#e8d7f7}.result-qr-card.is-unavailable{background:#f1eef4;border-color:#ccc3d4;cursor:default}.result-qr-card:focus-within{outline:3px solid #9361c5;outline-offset:3px}.result-qr-card input:disabled{opacity:1}.result-qr-card[aria-busy=true]{cursor:wait}
+.result-qr-card input{appearance:none;-webkit-appearance:none;border:2px solid #9564bd;border-radius:6px;background:#fff;display:grid;place-content:center}.result-qr-card input:checked{background:#72439a;border-color:#72439a}.result-qr-card input:checked::after{content:'✓';color:#fff;font-size:23px;font-weight:800;line-height:1}
