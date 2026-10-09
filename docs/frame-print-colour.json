@@ -3,7 +3,7 @@
     "saturation": 1.12,
     "gamma": 1.16
   },
-  "notes": "Baked into PNG assets; no runtime frame filter. Original alpha masks retained. Musical six-shot mesh patches were already graded and excluded. Pastor frames use the original natural artwork without print colour boost as of 2026-10-09.",
+  "notes": "Baked into PNG assets; no runtime frame filter. Original alpha masks retained. Musical six-shot mesh patches were already graded and excluded. Pastor frames use the original natural artwork without print colour boost as of 2026-10-09. Pastor cutouts retain original colour; backgrounds keep saturation 1.12 and gamma 1.16 as of 2026-10-09.",
   "updatedFrames": [
     {
       "id": "hanmaeum-2026-festival-grid",
@@ -593,13 +593,13 @@
     },
     {
       "id": "hanmaeum-2026-together-four",
-      "src": "frames/hanmaeum-2026-together-four-natural-20261009.png",
-      "sha256": "a1f78554e2acab3dfff5b8d1ca2da1cceed095245e3a2641ae1dd0b478ccc807"
+      "src": "frames/hanmaeum-2026-together-four-natural-person-ink-bg-20261009.png",
+      "sha256": "8e711e1e889a3da5e0b1eef7780cab3452c2da558bead743807b2f59129bcce8"
     },
     {
       "id": "hanmaeum-2026-together-six",
-      "src": "frames/hanmaeum-2026-together-six-natural-20261009.png",
-      "sha256": "9d6fc31771aead9c2004a2c14d3e5c6eaaf2679392590302a0e8fd172e455467"
+      "src": "frames/hanmaeum-2026-together-six-natural-person-ink-bg-20261009.png",
+      "sha256": "7d19269336980eaf67e15705c3dbd114e9dfbbfcfbb4a2c39fe8d869c4c9d3ba"
     },
     {
       "id": "hanmaeum-2026-festival-six-portrait",
@@ -678,13 +678,13 @@
     },
     {
       "id": "hanmaeum-2026-together-six-landscape",
-      "src": "frames/hanmaeum-2026-together-six-landscape-natural-20261009.png",
-      "sha256": "ea621eabd9b4225d9de393fbc9191103b2d21cb8732f3ef21de1801d06cbd619"
+      "src": "frames/hanmaeum-2026-together-six-landscape-natural-person-ink-bg-20261009.png",
+      "sha256": "5492de67f2a0233b5aa8e97a4b340665898607483f843cf29fc4be9ea197d51c"
     }
   ],
   "frameProfileOverrides": {
-    "hanmaeum-2026-together-four": "original-natural-no-print-boost",
-    "hanmaeum-2026-together-six": "original-natural-no-print-boost",
-    "hanmaeum-2026-together-six-landscape": "original-natural-no-print-boost"
+    "hanmaeum-2026-together-four": "background-saturation-1.12-gamma-1.16-person-original",
+    "hanmaeum-2026-together-six": "background-saturation-1.12-gamma-1.16-person-original",
+    "hanmaeum-2026-together-six-landscape": "background-saturation-1.12-gamma-1.16-person-original"
   }
 }
