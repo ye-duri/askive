@@ -140,7 +140,9 @@ async function startCamera() {
   $('camera-state').textContent = '카메라 연결 중';
   try {
     const source=cameraDeviceId ? {deviceId:{exact:cameraDeviceId}} : {facingMode:{ideal:'user'}};
-    const next = await withTimeout(navigator.mediaDevices.getUserMedia({audio:false, video:{...source,width:{ideal:1920},height:{ideal:1080},frameRate:{ideal:30}}}),20000,'카메라 연결 시간이 초과됐어요. 연결을 확인한 뒤 다시 시도해 주세요.',late=>late.getTracks().forEach(t=>t.stop()));
+    // Request a full 4:3 camera image. A forced 16:9 stream can include side bars on iPad.
+    // Preview and photoTile crop this source to each slot with cover scaling.
+    const next = await withTimeout(navigator.mediaDevices.getUserMedia({audio:false, video:{...source,width:{ideal:1440},height:{ideal:1080},aspectRatio:{ideal:4/3},resizeMode:{ideal:'crop-and-scale'},frameRate:{ideal:30}}}),20000,'카메라 연결 시간이 초과됐어요. 연결을 확인한 뒤 다시 시도해 주세요.',late=>late.getTracks().forEach(t=>t.stop()));
     if (run !== cameraRun) { next.getTracks().forEach(t => t.stop()); return; }
     stream = next;
     const track=next.getVideoTracks()[0];
