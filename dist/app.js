@@ -71,7 +71,7 @@ function controls() {
  $('result-qr-card').setAttribute('aria-busy',String(uploadBusy));
  $('result-qr-title').textContent=uploadBusy?'QR 준비 중…':qrConsent?'QR 선택 완료':'QR로 사진 받기';
  $('result-qr-hint').textContent=uploadBusy?'잠시만 기다려 주세요':qrConsent?'인쇄 사진에 QR이 함께 나와요':'원하시면 여기를 체크해 주세요';
- if(!qrEnabled)$('result-qr-status').textContent='QR 저장 연결이 준비되지 않았어요. 사진 인쇄는 가능합니다.';
+ if(!qrEnabled)$('result-qr-status').textContent=galleryConfig.configured?'이 기기의 QR 저장 인증이 필요합니다. 운영 설정에서 QR 저장 연결을 해주세요. 사진 인쇄는 가능합니다.':'QR 저장 서버에 연결하지 못했어요. 인터넷 연결을 확인해 주세요. 사진 인쇄는 가능합니다.';
  $('retake').disabled=uploadBusy||nativePrintBusy;
  $('save').disabled=uploadBusy;
  $('print-open').disabled=!printReady||uploadBusy||nativePrintBusy;
@@ -588,7 +588,7 @@ $('result-qr-add').onclick=async()=>{
   const original=await withTimeout(loadImage(previous.url),10000,'완성 사진을 읽지 못했어요.');
   if(revision!==sessionRun)return;
   let canvas=document.createElement('canvas');canvas.width=original.naturalWidth;canvas.height=original.naturalHeight;canvas.getContext('2d').drawImage(original,0,0);
-  canvas=await publishAlbum(canvas,revision,10000);if(revision!==sessionRun)return;
+  canvas=await publishAlbum(canvas,revision,45000);if(revision!==sessionRun)return;
   const nextBlob=await withTimeout(toBlob(canvas),10000,'QR 사진 처리 시간 초과');if(revision!==sessionRun)return;
   nextURL=URL.createObjectURL(nextBlob);$('result').src=nextURL;
   await withTimeout($('result').decode(),10000,'QR 사진을 열지 못했어요.');if(revision!==sessionRun)return;
@@ -600,7 +600,8 @@ $('result-qr-add').onclick=async()=>{
   if(revision===sessionRun){
    ++printRevision;blob=previous.blob;resultURL=previous.url;$('result').src=previous.url;
    printShareFile=previous.file;printReady=previous.ready;qrConsent=false;
-   $('result-qr-status').textContent='QR 준비에 실패했어요. 다시 선택하거나 QR 없이 인쇄해 주세요.';
+   if(e.status===401){galleryConfig.authorized=false;qrEnabled=false;}
+   $('result-qr-status').textContent=`${e.message||'QR 준비에 실패했어요.'} 다시 선택하거나 QR 없이 인쇄해 주세요.`;
   }
  }finally{
   if(nextURL)URL.revokeObjectURL(nextURL);
@@ -683,7 +684,7 @@ function addAlbumQR(canvas,url){
  for(let row=0;row<modules;row++)for(let col=0;col<modules;col++)if(qr.isDark(row,col))c.fillRect(left+Math.round((col+4)*unit),y+Math.round((row+4)*unit),Math.round((col+5)*unit)-Math.round((col+4)*unit),Math.round((row+5)*unit)-Math.round((row+4)*unit));
  return result;
 }
-async function apiJSON(url,options,timeoutMs=45000){const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),timeoutMs);try{const r=await fetch(url,{...options,signal:controller.signal});const d=await r.json();if(!r.ok)throw new Error(d.error||'QR 저장 실패');return d;}catch(e){if(e.name==='AbortError')throw new Error('QR 저장 응답이 늦어지고 있어요. 연결을 확인한 뒤 다시 시도해 주세요.');throw e;}finally{clearTimeout(timeout);}}
+async function apiJSON(url,options,timeoutMs=45000){const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),timeoutMs);try{const r=await fetch(url,{...options,signal:controller.signal});const d=await r.json();if(!r.ok){const error=new Error(d.error||'QR 저장 실패');error.status=r.status;throw error;}return d;}catch(e){if(e.name==='AbortError')throw new Error('QR 저장 응답이 늦어지고 있어요. 연결을 확인한 뒤 다시 시도해 주세요.');throw e;}finally{clearTimeout(timeout);}}
 async function publishAlbum(canvas,revision,timeoutMs=45000){
  const deadline=Date.now()+timeoutMs;const remaining=()=>{const ms=deadline-Date.now();if(ms<=0)throw new Error('QR 저장 시간 초과');return ms;};
  if(!qrConsent||!qrEnabled)throw new Error('QR 사진 보관 동의가 필요합니다.');
