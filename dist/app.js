@@ -1,3 +1,4 @@
+import {loadFrameImages} from './frame-images.mjs';
 import {createShootingMusic} from './shooting-music.js';
 const shootingMusic=createShootingMusic();
 import {prepareNaturalPhoto,naturalPhoto} from './photo-tone.js';
@@ -82,21 +83,24 @@ function renderFrames() {
 }
 function prepareFrame(frame,img){
   if (!img.naturalWidth || !img.naturalHeight) throw new Error('프레임 크기를 확인할 수 없어요.');
-  const ratio = img.naturalWidth / img.naturalHeight;
+  const sourceWidth=frame.sourceWidth||img.naturalWidth, sourceHeight=frame.sourceHeight||img.naturalHeight;
+  const ratio = sourceWidth / sourceHeight;
   if (ratio < .25 || ratio > 4) throw new Error('프레임의 가로세로 비율은 1:4~4:1이어야 해요.');
-  const scale = Math.min(1, 2400 / Math.max(img.naturalWidth, img.naturalHeight));
+  const scale = Math.min(1, 2400 / Math.max(sourceWidth, sourceHeight));
   if (frame.slots && (!Array.isArray(frame.slots) || frame.slots.length !== frameCount(frame) || frame.slots.some(r => !Array.isArray(r) || r.length !== 4 || !r.every(Number.isFinite) || r[0]<0 || r[1]<0 || r[2]<=0 || r[3]<=0 || r[0]+r[2]>1 || r[1]+r[3]>1))) throw new Error('프레임의 사진 영역 설정이 올바르지 않아요.');
-  return {...frame, img, width: Math.round(img.naturalWidth * scale), height: Math.round(img.naturalHeight * scale)};
+  return {...frame, img, width: Math.round(sourceWidth * scale), height: Math.round(sourceHeight * scale)};
 }
 async function chooseFrame(id) {
   if (busy || blob || (shotSession&&!selecting&&phase!=='frame')) throw new Error('촬영을 마치거나 다시 촬영을 누른 뒤 프레임을 바꿔 주세요.');
   const frame = matchingFrames().find(f => f.id === id); if (!frame) throw new Error('없는 프레임입니다.');
   const run = ++frameRun; frameLoading = true; controls();if(selecting){renderEditingFrames();renderSelection();}
   try {
-  const img = await loadImage(frame.src); if (run !== frameRun) return;
-  selected = prepareFrame(frame,img);
-  $('selected-frame-image').src=frame.src;$('selected-frame-name').textContent=frame.name;
-  $('overlay').src = frame.src;
+  const images = await loadFrameImages(frame,src=>withTimeout(loadImage(src),20000,'프레임을 불러오지 못했어요. 다시 선택해 주세요.')); if (run !== frameRun) return;
+  selected = {...prepareFrame(frame,images.image),displaySrc:images.displaySrc,originalImage:images.original};
+  // Download print quality in the background without blocking selection or shooting.
+  void images.original().catch(()=>{});
+  $('selected-frame-image').src=images.displaySrc;$('selected-frame-name').textContent=frame.name;
+  $('overlay').src = images.displaySrc;
   $('viewfinder').style.aspectRatio = `${selected.width}/${selected.height}`;
   if(selecting){renderSelection();renderEditingFrames();}else if(phase==='frame')renderAfterFrames();else updateShotMode();
   renderFrames(); return {id: selected.id, name: selected.name};
@@ -222,7 +226,7 @@ function showShotPreview() {
   Object.assign(video.style,{left:`${(slot.x-left)/w*100}%`,top:`${(slot.y-top)/h*100}%`,width:`${slot.w/w*100}%`,height:`${slot.h/h*100}%`});
   const overlay = $('overlay'); overlay.hidden = false;
   Object.assign(overlay.style,{left:`${-left/w*100}%`,top:`${-top/h*100}%`,width:`${size.width/w*100}%`,height:`${size.height/h*100}%`});
-  $('map-image').src = selected.src; $('frame-map').style.aspectRatio = `${size.width}/${size.height}`;
+  $('map-image').src = selected.displaySrc||selected.src; $('frame-map').style.aspectRatio = `${size.width}/${size.height}`;
   $('map-slots').replaceChildren();
   size.slots.forEach((r,i)=>{const box=document.createElement('div'); box.className=`map-slot${i===index?' active':''}${i<index?' done':''}`;box.textContent=String(i+1);Object.assign(box.style,{left:`${r.x/size.width*100}%`,top:`${r.y/size.height*100}%`,width:`${r.w/size.width*100}%`,height:`${r.h/size.height*100}%`});$('map-slots').append(box);});
   $('preview-hint').textContent = `포즈 참고: ${index+1}번째 사진 자리 · 프레임 디자인에 맞춰 포즈를 잡아 주세요. 장식은 좌우 반전되지 않아요.`;
@@ -297,7 +301,8 @@ function renderSelection() {
   $('photo-filter').disabled=busy||frameLoading;
   // Keep the original frame in an independent DOM layer. Only the photo canvas changes with filters.
   composeSelection($('selection-canvas'),selected,false);
-  if($('selection-frame-overlay').getAttribute('src')!==selected.src)$('selection-frame-overlay').setAttribute('src',selected.src);
+  const displaySrc=selected.displaySrc||selected.src;
+  if($('selection-frame-overlay').getAttribute('src')!==displaySrc)$('selection-frame-overlay').setAttribute('src',displaySrc);
   renderPreviewSlots();
 
 }
@@ -396,7 +401,11 @@ $('finish-selection').onclick=async()=>{
   stopSelectionClock();busy=true;renderSelection();controls();const revision=sessionRun;
   await new Promise(resolve=>setTimeout(resolve,32));if(revision!==sessionRun)return;
   try{
-    let canvas=document.createElement('canvas');composeSelection(canvas);canvas=fitPostcard(canvas);
+    // Never export the reduced screen image, even when the original is still loading.
+    const frame=selected;
+    const original=frame.originalImage?await frame.originalImage():frame.img;
+    if(revision!==sessionRun)return;
+    let canvas=document.createElement('canvas');composeSelection(canvas,{...frame,img:original});canvas=fitPostcard(canvas);
     if(qrConsent){
       $('selection-status').textContent='QR 앨범을 준비하고 있어요…';
       canvas=await publishAlbum(canvas,revision);if(revision!==sessionRun)return;

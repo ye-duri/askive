@@ -35,7 +35,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-black-thumb.webp"
+    "thumbnail": "frames/basic-4-grid-black-thumb.webp",
+    "preview": "frames/basic-4-grid-black-screen-32d4e0a97f.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-4-grid-white",
@@ -73,7 +76,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-white-thumb.webp"
+    "thumbnail": "frames/basic-4-grid-white-thumb.webp",
+    "preview": "frames/basic-4-grid-white-screen-4f237a3770.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-4-grid-cherry",
@@ -111,7 +117,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-cherry-thumb.webp"
+    "thumbnail": "frames/basic-4-grid-cherry-thumb.webp",
+    "preview": "frames/basic-4-grid-cherry-screen-0e8affc7bb.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-4-grid-pink",
@@ -149,7 +158,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-pink-thumb.webp"
+    "thumbnail": "frames/basic-4-grid-pink-thumb.webp",
+    "preview": "frames/basic-4-grid-pink-screen-9b32a57a69.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-4-grid-beige",
@@ -187,7 +199,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-beige-thumb.webp"
+    "thumbnail": "frames/basic-4-grid-beige-thumb.webp",
+    "preview": "frames/basic-4-grid-beige-screen-00b2f5427a.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-4-grid-khaki",
@@ -225,7 +240,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-khaki-thumb.webp"
+    "thumbnail": "frames/basic-4-grid-khaki-thumb.webp",
+    "preview": "frames/basic-4-grid-khaki-screen-186bfa9873.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-4-grid-lime",
@@ -263,7 +281,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-lime-thumb.webp"
+    "thumbnail": "frames/basic-4-grid-lime-thumb.webp",
+    "preview": "frames/basic-4-grid-lime-screen-0571aa94ed.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-4-grid-sora",
@@ -301,7 +322,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-sora-thumb.webp"
+    "thumbnail": "frames/basic-4-grid-sora-thumb.webp",
+    "preview": "frames/basic-4-grid-sora-screen-13b08161dc.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-4-grid-dusty",
@@ -339,7 +363,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-dusty-thumb.webp"
+    "thumbnail": "frames/basic-4-grid-dusty-thumb.webp",
+    "preview": "frames/basic-4-grid-dusty-screen-404ee5a628.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-4-offset-black",
@@ -377,7 +404,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-black-thumb.webp"
+    "thumbnail": "frames/basic-4-offset-black-thumb.webp",
+    "preview": "frames/basic-4-offset-black-screen-f661c8eccb.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-4-offset-white",
@@ -415,7 +445,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-white-thumb.webp"
+    "thumbnail": "frames/basic-4-offset-white-thumb.webp",
+    "preview": "frames/basic-4-offset-white-screen-7549488862.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-4-offset-cherry",
@@ -453,7 +486,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-cherry-thumb.webp"
+    "thumbnail": "frames/basic-4-offset-cherry-thumb.webp",
+    "preview": "frames/basic-4-offset-cherry-screen-c618d135ee.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-4-offset-pink",
@@ -491,7 +527,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-pink-thumb.webp"
+    "thumbnail": "frames/basic-4-offset-pink-thumb.webp",
+    "preview": "frames/basic-4-offset-pink-screen-ded9108352.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-4-offset-beige",
@@ -529,7 +568,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-beige-thumb.webp"
+    "thumbnail": "frames/basic-4-offset-beige-thumb.webp",
+    "preview": "frames/basic-4-offset-beige-screen-c6fad3377a.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-4-offset-khaki",
@@ -567,7 +609,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-khaki-thumb.webp"
+    "thumbnail": "frames/basic-4-offset-khaki-thumb.webp",
+    "preview": "frames/basic-4-offset-khaki-screen-c674dc0b9a.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-4-offset-lime",
@@ -605,7 +650,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-lime-thumb.webp"
+    "thumbnail": "frames/basic-4-offset-lime-thumb.webp",
+    "preview": "frames/basic-4-offset-lime-screen-67e94b9b18.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-4-offset-sora",
@@ -643,7 +691,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-sora-thumb.webp"
+    "thumbnail": "frames/basic-4-offset-sora-thumb.webp",
+    "preview": "frames/basic-4-offset-sora-screen-378f51ea4c.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-4-offset-dusty",
@@ -681,7 +732,10 @@
         0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-dusty-thumb.webp"
+    "thumbnail": "frames/basic-4-offset-dusty-thumb.webp",
+    "preview": "frames/basic-4-offset-dusty-screen-fc4507423b.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-grid-black",
@@ -731,7 +785,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-black-thumb.webp"
+    "thumbnail": "frames/basic-6-grid-black-thumb.webp",
+    "preview": "frames/basic-6-grid-black-screen-5483954860.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-grid-white",
@@ -781,7 +838,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-white-thumb.webp"
+    "thumbnail": "frames/basic-6-grid-white-thumb.webp",
+    "preview": "frames/basic-6-grid-white-screen-2c60833b67.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-grid-cherry",
@@ -831,7 +891,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-cherry-thumb.webp"
+    "thumbnail": "frames/basic-6-grid-cherry-thumb.webp",
+    "preview": "frames/basic-6-grid-cherry-screen-0cde75c344.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-grid-pink",
@@ -881,7 +944,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-pink-thumb.webp"
+    "thumbnail": "frames/basic-6-grid-pink-thumb.webp",
+    "preview": "frames/basic-6-grid-pink-screen-e317637f5b.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-grid-beige",
@@ -931,7 +997,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-beige-thumb.webp"
+    "thumbnail": "frames/basic-6-grid-beige-thumb.webp",
+    "preview": "frames/basic-6-grid-beige-screen-5afbe4045d.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-grid-khaki",
@@ -981,7 +1050,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-khaki-thumb.webp"
+    "thumbnail": "frames/basic-6-grid-khaki-thumb.webp",
+    "preview": "frames/basic-6-grid-khaki-screen-24166ceb66.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-grid-lime",
@@ -1031,7 +1103,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-lime-thumb.webp"
+    "thumbnail": "frames/basic-6-grid-lime-thumb.webp",
+    "preview": "frames/basic-6-grid-lime-screen-0d40956455.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-grid-sora",
@@ -1081,7 +1156,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-sora-thumb.webp"
+    "thumbnail": "frames/basic-6-grid-sora-thumb.webp",
+    "preview": "frames/basic-6-grid-sora-screen-fe8fcba39e.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-grid-dusty",
@@ -1131,7 +1209,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-dusty-thumb.webp"
+    "thumbnail": "frames/basic-6-grid-dusty-thumb.webp",
+    "preview": "frames/basic-6-grid-dusty-screen-d3f8329bc7.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-offset-black",
@@ -1181,7 +1262,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-black-thumb.webp"
+    "thumbnail": "frames/basic-6-offset-black-thumb.webp",
+    "preview": "frames/basic-6-offset-black-screen-39d51739a2.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-offset-white",
@@ -1231,7 +1315,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-white-thumb.webp"
+    "thumbnail": "frames/basic-6-offset-white-thumb.webp",
+    "preview": "frames/basic-6-offset-white-screen-14fd158e5f.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-offset-cherry",
@@ -1281,7 +1368,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-cherry-thumb.webp"
+    "thumbnail": "frames/basic-6-offset-cherry-thumb.webp",
+    "preview": "frames/basic-6-offset-cherry-screen-b811d08143.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-offset-pink",
@@ -1331,7 +1421,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-pink-thumb.webp"
+    "thumbnail": "frames/basic-6-offset-pink-thumb.webp",
+    "preview": "frames/basic-6-offset-pink-screen-3c213f290f.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-offset-beige",
@@ -1381,7 +1474,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-beige-thumb.webp"
+    "thumbnail": "frames/basic-6-offset-beige-thumb.webp",
+    "preview": "frames/basic-6-offset-beige-screen-d39dcdc349.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-offset-khaki",
@@ -1431,7 +1527,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-khaki-thumb.webp"
+    "thumbnail": "frames/basic-6-offset-khaki-thumb.webp",
+    "preview": "frames/basic-6-offset-khaki-screen-e021447f9a.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-offset-lime",
@@ -1481,7 +1580,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-lime-thumb.webp"
+    "thumbnail": "frames/basic-6-offset-lime-thumb.webp",
+    "preview": "frames/basic-6-offset-lime-screen-149185cde1.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-offset-sora",
@@ -1531,7 +1633,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-sora-thumb.webp"
+    "thumbnail": "frames/basic-6-offset-sora-thumb.webp",
+    "preview": "frames/basic-6-offset-sora-screen-42158b20ee.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "basic-6-offset-dusty",
@@ -1581,7 +1686,10 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-dusty-thumb.webp"
+    "thumbnail": "frames/basic-6-offset-dusty-thumb.webp",
+    "preview": "frames/basic-6-offset-dusty-screen-ffb4c9c8c3.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "sheep-farewell-four",
@@ -1616,7 +1724,10 @@
         0.34684684684684686
       ]
     ],
-    "thumbnail": "frames/sheep-farewell-four-thumb.webp"
+    "thumbnail": "frames/sheep-farewell-four-thumb.webp",
+    "preview": "frames/sheep-farewell-four-screen-17480964f0.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "sheep-farewell-six",
@@ -1663,7 +1774,10 @@
         0.22297297297297297
       ]
     ],
-    "thumbnail": "frames/sheep-farewell-six-thumb.webp"
+    "thumbnail": "frames/sheep-farewell-six-thumb.webp",
+    "preview": "frames/sheep-farewell-six-screen-4742706463.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "sheep-farewell-wide",
@@ -1698,7 +1812,10 @@
         0.3591666666666667
       ]
     ],
-    "thumbnail": "frames/sheep-farewell-wide-thumb.webp"
+    "thumbnail": "frames/sheep-farewell-wide-thumb.webp",
+    "preview": "frames/sheep-farewell-wide-screen-418656067d.webp",
+    "sourceWidth": 1776,
+    "sourceHeight": 1200
   },
   {
     "id": "sheep-club-four",
@@ -1733,7 +1850,10 @@
         0.34684684684684686
       ]
     ],
-    "thumbnail": "frames/sheep-club-four-thumb.webp"
+    "thumbnail": "frames/sheep-club-four-thumb.webp",
+    "preview": "frames/sheep-club-four-screen-6e02437a18.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "sheep-club-six",
@@ -1780,7 +1900,10 @@
         0.22297297297297297
       ]
     ],
-    "thumbnail": "frames/sheep-club-six-thumb.webp"
+    "thumbnail": "frames/sheep-club-six-thumb.webp",
+    "preview": "frames/sheep-club-six-screen-ebbd92fefe.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "sheep-club-wide",
@@ -1815,7 +1938,10 @@
         0.3591666666666667
       ]
     ],
-    "thumbnail": "frames/sheep-club-wide-thumb.webp"
+    "thumbnail": "frames/sheep-club-wide-thumb.webp",
+    "preview": "frames/sheep-club-wide-screen-0fe4679b30.webp",
+    "sourceWidth": 1776,
+    "sourceHeight": 1200
   },
   {
     "id": "sheep-friends-four",
@@ -1850,7 +1976,10 @@
         0.34684684684684686
       ]
     ],
-    "thumbnail": "frames/sheep-friends-four-thumb.webp"
+    "thumbnail": "frames/sheep-friends-four-thumb.webp",
+    "preview": "frames/sheep-friends-four-screen-0c69135913.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "sheep-friends-six",
@@ -1897,7 +2026,10 @@
         0.22297297297297297
       ]
     ],
-    "thumbnail": "frames/sheep-friends-six-thumb.webp"
+    "thumbnail": "frames/sheep-friends-six-thumb.webp",
+    "preview": "frames/sheep-friends-six-screen-fb72858f6a.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "sheep-friends-wide",
@@ -1932,7 +2064,10 @@
         0.3591666666666667
       ]
     ],
-    "thumbnail": "frames/sheep-friends-wide-thumb.webp"
+    "thumbnail": "frames/sheep-friends-wide-thumb.webp",
+    "preview": "frames/sheep-friends-wide-screen-98947a0a70.webp",
+    "sourceWidth": 1776,
+    "sourceHeight": 1200
   },
   {
     "id": "sheep-garden-four",
@@ -1967,7 +2102,10 @@
         0.34684684684684686
       ]
     ],
-    "thumbnail": "frames/sheep-garden-four-thumb.webp"
+    "thumbnail": "frames/sheep-garden-four-thumb.webp",
+    "preview": "frames/sheep-garden-four-screen-070c32f55d.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "sheep-garden-six",
@@ -2014,7 +2152,10 @@
         0.22297297297297297
       ]
     ],
-    "thumbnail": "frames/sheep-garden-six-thumb.webp"
+    "thumbnail": "frames/sheep-garden-six-thumb.webp",
+    "preview": "frames/sheep-garden-six-screen-0eef61585d.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "sheep-garden-wide",
@@ -2049,7 +2190,10 @@
         0.3591666666666667
       ]
     ],
-    "thumbnail": "frames/sheep-garden-wide-thumb.webp"
+    "thumbnail": "frames/sheep-garden-wide-thumb.webp",
+    "preview": "frames/sheep-garden-wide-screen-ea283914b9.webp",
+    "sourceWidth": 1776,
+    "sourceHeight": 1200
   },
   {
     "id": "hanmaeum-2026-festival-grid",
@@ -2085,7 +2229,10 @@
       ]
     ],
     "thumbnail": "frames/hanmaeum-2026-festival-grid-ink-20261009-thumb.webp",
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-festival-grid-screen-f91a44eaf1.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "hanmaeum-2026-festival-offset",
@@ -2121,7 +2268,10 @@
       ]
     ],
     "thumbnail": "frames/hanmaeum-2026-festival-offset-ink-20261009-thumb.webp",
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-festival-offset-screen-04e032b3ab.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "hanmaeum-2026-musical-grid",
@@ -2156,7 +2306,10 @@
         0.36486486486486486
       ]
     ],
-    "thumbnail": "frames/hanmaeum-2026-musical-grid-20261006-thumb.webp"
+    "thumbnail": "frames/hanmaeum-2026-musical-grid-20261006-thumb.webp",
+    "preview": "frames/hanmaeum-2026-musical-grid-screen-4ed627a1ed.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "hanmaeum-2026-musical-offset",
@@ -2191,7 +2344,10 @@
         0.36430180180180183
       ]
     ],
-    "thumbnail": "frames/hanmaeum-2026-musical-offset-20261006-thumb.webp"
+    "thumbnail": "frames/hanmaeum-2026-musical-offset-20261006-thumb.webp",
+    "preview": "frames/hanmaeum-2026-musical-offset-screen-b934e5fa37.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "hanmaeum-2026-yugwansun-grid",
@@ -2226,7 +2382,10 @@
         0.36486486486486486
       ]
     ],
-    "thumbnail": "frames/hanmaeum-2026-yugwansun-grid-thumb.webp"
+    "thumbnail": "frames/hanmaeum-2026-yugwansun-grid-thumb.webp",
+    "preview": "frames/hanmaeum-2026-yugwansun-grid-screen-d693f39d6a.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "hanmaeum-2026-yugwansun-offset",
@@ -2261,7 +2420,10 @@
         0.36430180180180183
       ]
     ],
-    "thumbnail": "frames/hanmaeum-2026-yugwansun-offset-thumb.webp"
+    "thumbnail": "frames/hanmaeum-2026-yugwansun-offset-thumb.webp",
+    "preview": "frames/hanmaeum-2026-yugwansun-offset-screen-313cb5fca5.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "hanmaeum-2026-together-four",
@@ -2297,7 +2459,10 @@
       ]
     ],
     "thumbnail": "frames/hanmaeum-2026-together-four-ink-20261009-thumb.webp",
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-together-four-screen-5aa63a0441.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "hanmaeum-2026-together-six",
@@ -2345,7 +2510,10 @@
       ]
     ],
     "thumbnail": "frames/hanmaeum-2026-together-six-ink-20261009-thumb.webp",
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-together-six-screen-6782343332.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "hanmaeum-2026-festival-six-portrait",
@@ -2395,7 +2563,10 @@
         0.22265625
       ]
     ],
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-festival-six-portrait-screen-123f2fa43f.webp",
+    "sourceWidth": 1024,
+    "sourceHeight": 1536
   },
   {
     "id": "hanmaeum-2026-festival-six-landscape",
@@ -2445,7 +2616,10 @@
         0.2724609375
       ]
     ],
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-festival-six-landscape-screen-b62ec5c0a6.webp",
+    "sourceWidth": 1536,
+    "sourceHeight": 1024
   },
   {
     "id": "hanmaeum-2026-musical-six-portrait",
@@ -2495,7 +2669,10 @@
         0.26953125
       ]
     ],
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-musical-six-portrait-screen-04936f25f2.webp",
+    "sourceWidth": 1024,
+    "sourceHeight": 1536
   },
   {
     "id": "hanmaeum-2026-musical-six-landscape",
@@ -2545,7 +2722,10 @@
         0.3564453125
       ]
     ],
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-musical-six-landscape-screen-e63dcbc46f.webp",
+    "sourceWidth": 1536,
+    "sourceHeight": 1024
   },
   {
     "id": "hanmaeum-2026-yugwansun-six-portrait",
@@ -2595,7 +2775,10 @@
         0.24479166666666666
       ]
     ],
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-yugwansun-six-portrait-screen-24bfa83815.webp",
+    "sourceWidth": 1024,
+    "sourceHeight": 1536
   },
   {
     "id": "hanmaeum-2026-yugwansun-six-landscape",
@@ -2645,7 +2828,10 @@
         0.3388671875
       ]
     ],
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-yugwansun-six-landscape-screen-482f3e0c9b.webp",
+    "sourceWidth": 1536,
+    "sourceHeight": 1024
   },
   {
     "id": "hanmaeum-2026-anniversary-four",
@@ -2681,7 +2867,10 @@
         0.40202702702702703
       ]
     ],
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-anniversary-four-screen-6049b6f734.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "hanmaeum-2026-anniversary-six-portrait",
@@ -2729,7 +2918,10 @@
         0.2601572739187418
       ]
     ],
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-anniversary-six-portrait-screen-cded657766.webp",
+    "sourceWidth": 1030,
+    "sourceHeight": 1526
   },
   {
     "id": "hanmaeum-2026-anniversary-six-landscape",
@@ -2777,7 +2969,10 @@
         0.373046875
       ]
     ],
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-anniversary-six-landscape-screen-4eff24dc17.webp",
+    "sourceWidth": 1536,
+    "sourceHeight": 1024
   },
   {
     "id": "hanmaeum-2026-daecheong-green-four",
@@ -2813,7 +3008,10 @@
         0.39414414414414417
       ]
     ],
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-daecheong-green-four-screen-16d43e4ce4.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "hanmaeum-2026-daecheong-green-six-landscape",
@@ -2861,7 +3059,10 @@
         0.3798828125
       ]
     ],
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-daecheong-green-six-landscape-screen-14c2b9783b.webp",
+    "sourceWidth": 1536,
+    "sourceHeight": 1024
   },
   {
     "id": "hanmaeum-2026-daecheong-green-six-portrait",
@@ -2909,7 +3110,10 @@
         0.26277850589777196
       ]
     ],
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-daecheong-green-six-portrait-screen-d2d658927f.webp",
+    "sourceWidth": 1031,
+    "sourceHeight": 1526
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-four",
@@ -2945,7 +3149,10 @@
         0.3490990990990991
       ]
     ],
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-daecheong-paper-four-screen-eac7de145c.webp",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-six-landscape",
@@ -2993,7 +3200,10 @@
         0.31037827352085356
       ]
     ],
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-daecheong-paper-six-landscape-screen-4d3f3b6550.webp",
+    "sourceWidth": 1526,
+    "sourceHeight": 1031
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-six-portrait",
@@ -3041,7 +3251,10 @@
         0.2038007863695937
       ]
     ],
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-daecheong-paper-six-portrait-screen-a2e0731d66.webp",
+    "sourceWidth": 1031,
+    "sourceHeight": 1526
   },
   {
     "id": "hanmaeum-2026-together-six-landscape",
@@ -3089,6 +3302,9 @@
         0.35333333333333333
       ]
     ],
-    "printColourProfile": "saturation-1.12-gamma-1.16"
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-together-six-landscape-screen-4526d03273.webp",
+    "sourceWidth": 1776,
+    "sourceHeight": 1200
   }
 ]

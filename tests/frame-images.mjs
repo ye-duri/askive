@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {loadFrameImages} from '../dist/frame-images.mjs';
+const frame={src:'original.png',preview:'screen.webp'};
+const calls=[];let release;
+const images=await loadFrameImages(frame,async src=>{calls.push(src);if(src===frame.preview)return{width:640};return new Promise(r=>release=r);});
+assert.deepEqual(calls,['screen.webp']);
+const original=images.original();assert.equal(images.original(),original);release({width:1200});assert.equal((await original).width,1200);
+let attempts=0;
+const retry=await loadFrameImages(frame,async src=>{if(src===frame.preview)return{};if(++attempts===1)throw Error('offline');return{width:1200};});
+await assert.rejects(retry.original());assert.equal((await retry.original()).width,1200);
+const fallback=await loadFrameImages(frame,async src=>{if(src===frame.preview)throw Error('missing');return{width:1200};});assert.equal(fallback.displaySrc,frame.src);assert.equal(await fallback.original(),fallback.image);
+const legacy=await loadFrameImages({src:'custom.png'},async()=>({width:800}));assert.equal(await legacy.original(),legacy.image);
+console.log('PASS: preview first, single original request, original retry, missing preview fallback, custom frames.');
