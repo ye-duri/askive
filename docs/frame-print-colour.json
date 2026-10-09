@@ -3,7 +3,7 @@
     "saturation": 1.12,
     "gamma": 1.16
   },
-  "notes": "Baked into PNG assets; no runtime frame filter. Original alpha masks retained. Musical six-shot mesh patches were already graded and excluded.",
+  "notes": "Baked into PNG assets; no runtime frame filter. Original alpha masks retained. Musical six-shot mesh patches were already graded and excluded. Pastor frames use the original natural artwork without print colour boost as of 2026-10-09.",
   "updatedFrames": [
     {
       "id": "hanmaeum-2026-festival-grid",
@@ -593,13 +593,13 @@
     },
     {
       "id": "hanmaeum-2026-together-four",
-      "src": "frames/hanmaeum-2026-together-four-ink-20261009.png",
-      "sha256": "e415fbfd4f2f8a1826ad952eb264bb4a64b40501358a53269d38eaf16ff6b875"
+      "src": "frames/hanmaeum-2026-together-four-natural-20261009.png",
+      "sha256": "a1f78554e2acab3dfff5b8d1ca2da1cceed095245e3a2641ae1dd0b478ccc807"
     },
     {
       "id": "hanmaeum-2026-together-six",
-      "src": "frames/hanmaeum-2026-together-six-ink-20261009.png",
-      "sha256": "fbcdbd103ef0a8c80b6b6d6ce6898c03ffd6d27f46841cdb4ec4ccb9f3302208"
+      "src": "frames/hanmaeum-2026-together-six-natural-20261009.png",
+      "sha256": "9d6fc31771aead9c2004a2c14d3e5c6eaaf2679392590302a0e8fd172e455467"
     },
     {
       "id": "hanmaeum-2026-festival-six-portrait",
@@ -678,8 +678,13 @@
     },
     {
       "id": "hanmaeum-2026-together-six-landscape",
-      "src": "frames/hanmaeum-2026-together-six-landscape-ink-20261009.png",
-      "sha256": "6d22579da2fc19b4aeecb4af83ce9eda5630f2710a03fe267ae1beca4ccb6953"
+      "src": "frames/hanmaeum-2026-together-six-landscape-natural-20261009.png",
+      "sha256": "ea621eabd9b4225d9de393fbc9191103b2d21cb8732f3ef21de1801d06cbd619"
     }
-  ]
+  ],
+  "frameProfileOverrides": {
+    "hanmaeum-2026-together-four": "original-natural-no-print-boost",
+    "hanmaeum-2026-together-six": "original-natural-no-print-boost",
+    "hanmaeum-2026-together-six-landscape": "original-natural-no-print-boost"
+  }
 }

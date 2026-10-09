@@ -2428,7 +2428,7 @@
   {
     "id": "hanmaeum-2026-together-four",
     "name": "연세가족 · 함께 4컷",
-    "src": "frames/hanmaeum-2026-together-four-ink-20261009.png",
+    "src": "frames/hanmaeum-2026-together-four-natural-20261009.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2458,16 +2458,16 @@
         0.36486486486486486
       ]
     ],
-    "thumbnail": "frames/hanmaeum-2026-together-four-ink-20261009-thumb.webp",
-    "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-together-four-screen-5aa63a0441.webp",
+    "thumbnail": "frames/hanmaeum-2026-together-four-natural-20261009-thumb.webp",
+    "printColourProfile": "original-natural-no-print-boost",
+    "preview": "frames/hanmaeum-2026-together-four-screen-48cded25cb.webp",
     "sourceWidth": 1200,
     "sourceHeight": 1776
   },
   {
     "id": "hanmaeum-2026-together-six",
     "name": "연세가족 · 함께 6컷",
-    "src": "frames/hanmaeum-2026-together-six-ink-20261009.png",
+    "src": "frames/hanmaeum-2026-together-six-natural-20261009.png",
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
@@ -2509,9 +2509,9 @@
         0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/hanmaeum-2026-together-six-ink-20261009-thumb.webp",
-    "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-together-six-screen-6782343332.webp",
+    "thumbnail": "frames/hanmaeum-2026-together-six-natural-20261009-thumb.webp",
+    "printColourProfile": "original-natural-no-print-boost",
+    "preview": "frames/hanmaeum-2026-together-six-screen-5028540ad2.webp",
     "sourceWidth": 1200,
     "sourceHeight": 1776
   },
@@ -3262,8 +3262,8 @@
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-together-six-landscape-ink-20261009.png",
-    "thumbnail": "frames/hanmaeum-2026-together-six-landscape-ink-20261009-thumb.webp",
+    "src": "frames/hanmaeum-2026-together-six-landscape-natural-20261009.png",
+    "thumbnail": "frames/hanmaeum-2026-together-six-landscape-natural-20261009-thumb.webp",
     "slots": [
       [
         0.030405405405405407,
@@ -3302,8 +3302,8 @@
         0.35333333333333333
       ]
     ],
-    "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-together-six-landscape-screen-4526d03273.webp",
+    "printColourProfile": "original-natural-no-print-boost",
+    "preview": "frames/hanmaeum-2026-together-six-landscape-screen-991b4e643a.webp",
     "sourceWidth": 1776,
     "sourceHeight": 1200
   }
