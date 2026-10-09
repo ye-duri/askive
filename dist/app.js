@@ -675,7 +675,7 @@ $('kiosk-unlock').onclick=async()=>{
 function addAlbumQR(canvas,url){
  const qr=qrcode(0,'M');qr.addData(url);qr.make();const modules=qr.getModuleCount();
  // Keep the original frame untouched outside a compact QR square, including its logo.
- const unit=Math.max(2,Math.floor(canvas.width*.10/(modules+8))),size=(modules+8)*unit;
+ const unit=Math.max(2,Math.floor(Math.min(canvas.width,canvas.height)*.10/(modules+8))),size=(modules+8)*unit;
  const result=document.createElement('canvas');result.width=canvas.width;result.height=canvas.height;
  const c=result.getContext('2d');c.drawImage(canvas,0,0);
  const inset=Math.round(Math.min(canvas.width,canvas.height)*.04),left=canvas.width-size-inset,y=canvas.height-size-inset;
