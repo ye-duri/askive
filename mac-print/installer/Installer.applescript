@@ -5,7 +5,7 @@ on run
     with timeout of 600 seconds
       do shell script "/bin/zsh " & quoted form of resourceFolder
     end timeout
-    display dialog "설치가 완료되었습니다.\n\n앞으로는 Mac에 로그인할 때 자동으로 실행됩니다. 인쇄관리 페이지에서 0691로 로그인해 주세요." buttons {"인쇄관리 열기"} default button "인쇄관리 열기" with title "연세스튜디오 인쇄 도우미"
+    display dialog "설치가 완료되었습니다.\n\n앞으로는 Mac에 로그인할 때 자동으로 실행됩니다. 인쇄관리 페이지에서 인쇄관리 비밀번호로 로그인해 주세요." buttons {"인쇄관리 열기"} default button "인쇄관리 열기" with title "연세스튜디오 인쇄 도우미"
     open location "https://askive.pages.dev/print/"
   on error messageText number errorNumber
     if errorNumber is not -128 then
