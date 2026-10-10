@@ -93,6 +93,11 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
   if(local&&req.headers.host===expected&&cloud&&path.startsWith('/admin/')){
    res.setHeader('Access-Control-Allow-Origin',cloudOrigin);res.setHeader('Vary','Origin');
    if(req.method==='OPTIONS'){res.setHeader('Access-Control-Allow-Methods','GET, POST, DELETE');res.setHeader('Access-Control-Allow-Headers','Authorization, Content-Type, X-Yonsei-Admin');res.setHeader('Access-Control-Allow-Private-Network','true');res.writeHead(204);return res.end();}
+   if(path==='/admin/session'&&req.method==='POST'){
+    const {ticket}=JSON.parse((await body(req,1024)).toString());if(typeof ticket!=='string'||ticket.length>256)return json(res,401,{error:'로그인을 다시 확인해 주세요.'});
+    try{const verified=await fetch('https://askive.pages.dev/api/gallery/print-ticket/verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ticket}),signal:AbortSignal.timeout(15000)});if(!verified.ok||(await verified.json()).ok!==true)return json(res,401,{error:'인쇄관리 로그인이 필요합니다.'});}catch{return json(res,503,{error:'인쇄 연결 인증을 확인하지 못했습니다. 인터넷을 확인해 주세요.'});}
+    return json(res,200,{token});
+   }
    if(!auth(req))return json(res,401,{error:'Mac 연결 코드를 다시 입력해 주세요.'});
   }
   if(!local||req.headers.host!==expected)return json(res,403,{error:'관리 화면은 Mac에서만 열 수 있습니다.'});
@@ -113,6 +118,12 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
    writeFileSync(cloudPath,JSON.stringify(config),{mode:0o600});cloudConfig=config;void receiveCloud();return json(res,200,{ok:true});
   }
   if(path==='/admin/state'&&req.method==='GET')return json(res,200,{cloud:{configured:!!cloudConfig,status:cloudStatus},connection:`http://${hostName}:${server.address().port}/#${token}`,pairings:[...pairings.values()].filter(p=>p.state==='pending').map(({id,name,code})=>({id,name,code})),jobs:[...jobs.values()].sort((a,b)=>b.createdAt-a.createdAt),printers:await printers()});
+  if(path==='/admin/import'&&req.method==='POST'){
+   if(req.headers['content-type']!=='image/jpeg')return json(res,415,{error:'인쇄용 JPEG 사진이 필요합니다.'});
+   const data=await body(req,8500000);printPDF(data,94);const id=createHash('sha256').update(data).digest('hex');
+   if(!jobs.has(id)){if(jobs.size>=100||[...jobs.values()].reduce((n,j)=>n+j.bytes,0)+data.length>300000000)return json(res,507,{error:'인쇄 대기 목록이 가득 찼습니다.'});const j={id,createdAt:Date.now(),bytes:data.length,state:'waiting',copies:1};writeFileSync(join(directory,id+'.jpg'),data,{mode:0o600});save(j);jobs.set(id,j);}
+   const j=jobs.get(id);return json(res,200,{id,state:j.state,attempt:j.attempt||0});
+  }
   const match=path.match(/^\/admin\/jobs\/([a-f0-9]{64})(?:\/(image|print))?$/);
   if(match){const j=jobs.get(match[1]);if(!j)return json(res,404,{error:'사진이 없거나 만료됐습니다.'});
    if(req.method==='GET'&&match[2]==='image'){res.writeHead(200,{'Content-Type':'image/jpeg'});return res.end(readFileSync(join(directory,j.id+'.jpg')));}
