@@ -20,16 +20,6 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>연세스튜디오에서 사진을 촬영하고 연결된 카메라를 테스트합니다.</string>
-	<key>NSLocalNetworkUsageDescription</key>
-	<string>같은 Wi-Fi의 Mac 인쇄 도우미로 완성 사진을 전송합니다.</string>
-	<key>NSAppTransportSecurity</key>
-	<dict><key>NSAllowsLocalNetworking</key><true/></dict>
-	<key>NSBonjourServices</key>
-	<array>
-		<string>_yonsei-print._tcp</string>
-		<string>_ipp._tcp</string>
-		<string>_ipps._tcp</string>
-	</array>
 	<key>UILaunchScreen</key>
 	<dict/>
 	<key>UISupportedInterfaceOrientations~ipad</key>

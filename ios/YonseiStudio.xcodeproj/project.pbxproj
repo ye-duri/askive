@@ -9,13 +9,11 @@
 /* Begin PBXBuildFile section */
 		0000000000000000000000C8 /* YonseiStudioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000064 /* YonseiStudioApp.swift */; };
 		0000000000000000000000C9 /* StudioWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000065 /* StudioWebView.swift */; };
-		0000000000000000000000CA /* PhotoPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000066 /* PhotoPrinter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		000000000000000000000064 /* YonseiStudioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YonseiStudioApp.swift; sourceTree = "<group>"; };
 		000000000000000000000065 /* StudioWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioWebView.swift; sourceTree = "<group>"; };
-		000000000000000000000066 /* PhotoPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPrinter.swift; sourceTree = "<group>"; };
 		00000000000000000000006E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		000000000000000000000078 /* YonseiStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = YonseiStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -44,7 +42,6 @@
 			children = (
 				000000000000000000000064 /* YonseiStudioApp.swift */,
 				000000000000000000000065 /* StudioWebView.swift */,
-				000000000000000000000066 /* PhotoPrinter.swift */,
 				00000000000000000000006E /* Info.plist */,
 			);
 			path = YonseiStudio;
@@ -122,7 +119,6 @@
 			files = (
 				0000000000000000000000C8 /* YonseiStudioApp.swift in Sources */,
 				0000000000000000000000C9 /* StudioWebView.swift in Sources */,
-				0000000000000000000000CA /* PhotoPrinter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

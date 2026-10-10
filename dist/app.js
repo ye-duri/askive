@@ -1,7 +1,6 @@
 import {loadFrameImages} from './frame-images.mjs';
 import {createShootingMusic} from './shooting-music.js';
 const shootingMusic=createShootingMusic();
-import {prepareNaturalPhoto,naturalPhoto} from './photo-tone.js';
 import {withTimeout, waitForVideo} from './media-ready.mjs';
 import qrcode from './vendor/qrcode.mjs';
 const $ = id => document.getElementById(id);
@@ -71,7 +70,7 @@ function controls() {
  $('result-qr-card').setAttribute('aria-busy',String(uploadBusy));
  $('result-qr-title').textContent=uploadBusy?'QR 준비 중…':qrConsent?'QR 선택 완료':'QR로 사진 받기';
  $('result-qr-hint').textContent=uploadBusy?'잠시만 기다려 주세요':qrConsent?'인쇄 사진에 QR이 함께 나와요':'원하시면 여기를 체크해 주세요';
- if(!qrEnabled)$('result-qr-status').textContent=galleryConfig.configured?'이 기기의 QR 저장 인증이 필요합니다. 운영 설정에서 QR 저장 연결을 해주세요. 클라우드 인쇄에는 운영 코드 연결이 필요합니다.':'QR 저장 서버에 연결하지 못했어요. 인터넷 연결을 확인해 주세요. 클라우드 인쇄에는 운영 코드 연결이 필요합니다.';
+ if(!qrEnabled)$('result-qr-status').textContent='QR 자동 연결에 실패했습니다. 인터넷을 확인한 뒤 새로고침해 주세요.';
  $('retake').disabled=uploadBusy||nativePrintBusy;
  $('save').disabled=uploadBusy;
  $('print-open').disabled=!printReady||uploadBusy||nativePrintBusy;
@@ -263,12 +262,11 @@ function filterPixels(data, name) {
   }
 }
 function photoTile(photo, slot, filter='original') {
-  if(filter==='natural')photo=naturalPhoto(photo);
   const tile=document.createElement('canvas');tile.width=slot.w;tile.height=slot.h;
   const ctx=tile.getContext('2d'),scale=Math.max(tile.width/photo.width,tile.height/photo.height);
   const w=photo.width*scale,h=photo.height*scale;
   ctx.drawImage(photo,(tile.width-w)/2,(tile.height-h)/2,w,h);
-  if(filter!=='original'&&filter!=='natural'){const pixels=ctx.getImageData(0,0,tile.width,tile.height);filterPixels(pixels.data,filter);ctx.putImageData(pixels,0,0);}
+  if(filter!=='original'){const pixels=ctx.getImageData(0,0,tile.width,tile.height);filterPixels(pixels.data,filter);ctx.putImageData(pixels,0,0);}
   return tile;
 }
 function composeSelection(canvas,frame=selected,includeFrame=true) {
@@ -305,7 +303,7 @@ function renderSelection() {
   $('selection-count').textContent=`${selectedCount()} / ${cutCount} 선택`;
   $('finish-selection').disabled=selectedCount()!==cutCount || busy || frameLoading;
   $('finish-selection').textContent=selectedCount()===cutCount?`이 ${cutCount}장으로 완성하기`:`${cutCount-selectedCount()}장을 더 선택해 주세요`;
-  for(const name of ['natural','original','bright','vivid','mono']) { $('filter-'+name).disabled=busy||frameLoading; $('filter-'+name).setAttribute('aria-pressed',String(($('photo-filter').value || 'original')===name)); }
+  for(const name of ['original','bright','vivid','mono']) { $('filter-'+name).disabled=busy||frameLoading; $('filter-'+name).setAttribute('aria-pressed',String(($('photo-filter').value || 'original')===name)); }
   $('photo-filter').disabled=busy||frameLoading;
   // Keep the original frame in an independent DOM layer. Only the photo canvas changes with filters.
   composeSelection($('selection-canvas'),selected,false);
@@ -390,14 +388,6 @@ async function capture() {
   }
   $('flash').classList.remove('active');stopStream();shootingMusic.stop();
   $('camera-state').textContent='촬영 완료';
-  $('transition-loading').hidden=false;$('transition-loading').setAttribute('aria-busy','true');
-  for(let i=0;i<shotSession.photos.length;i++){
-   $('transition-loading-text').textContent=`사진 색감을 정리하고 있어요 · ${i+1} / ${CAPTURE_TOTAL}`;
-   await new Promise(resolve=>setTimeout(resolve,0));
-   if(run!==countdownRun||revision!==sessionRun)return;
-   await prepareNaturalPhoto(shotSession.photos[i]);
-   if(run!==countdownRun||revision!==sessionRun)return;
-  }
   chosen=[];activeSlot=-1;busy=false;automatic=false;
   openSelection();
  }catch(e){status(e.message||'촬영을 이어갈 수 없어요. 연결을 확인해 주세요.',true);}
@@ -412,7 +402,7 @@ function renderAfterFrames(){
  }
 }
 $('frame-next').onclick=()=>{if(!frameLoading&&selected)openSelection();};
-for(const name of ['natural','original','bright','vivid','mono']) $('filter-'+name).onclick=()=>{if(!busy&&!frameLoading){$('photo-filter').value=name;renderSelection();}};
+for(const name of ['original','bright','vivid','mono']) $('filter-'+name).onclick=()=>{if(!busy&&!frameLoading){$('photo-filter').value=name;renderSelection();}};
 $('photo-filter').onchange=()=>{if(!busy&&!frameLoading)renderSelection();};
 $('finish-selection').onclick=async()=>{
   if(busy||frameLoading||selectedCount()!==cutCount||!shotSession||shotSession.photos.length!==CAPTURE_TOTAL)return;
@@ -510,7 +500,7 @@ function resetSession(message='이용이 종료됐어요. 사진을 지웠습니
   if(resultURL)URL.revokeObjectURL(resultURL);resultURL=null;
   for(const url of localURLs)URL.revokeObjectURL(url);localURLs.length=0;
   frames=frames.filter(f=>!f.temporary);selected=null;
-  $('photo-filter').value='natural';$('selection-status').textContent='';
+  $('photo-filter').value='original';$('selection-status').textContent='';
   $('result-admin-tools').open=false;$('result').hidden=true;$('result-actions').hidden=true;$('capture-actions').hidden=false;
   $('countdown').hidden=true;$('welcome').hidden=false;
   for(const id of ['idle-dialog'])if($(id).open)$(id).close();
@@ -666,13 +656,11 @@ await loadGalleryConfig();
 
 if(document.modelContext?.registerTool){try{await document.modelContext.registerTool({name:'select_photo_frame',title:'프레임 선택',description:'촬영 전 프레임을 선택합니다. 카메라를 켜거나 촬영하지 않습니다.',inputSchema:{type:'object',properties:{id:{type:'string'}},required:['id'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:false},execute:async input=>{if(!input||typeof input.id!=='string')throw new Error('프레임 id가 필요합니다.');return chooseFrame(input.id);}});}catch(e){console.warn('Frame tool unavailable',e);}}
 async function loadGalleryConfig(){
- try{const r=await fetch('/api/gallery/config');if(r.headers.get('content-type')?.includes('application/json'))galleryConfig=await r.json();}catch{}
- qrEnabled=galleryConfig.configured&&galleryConfig.authorized;$('kiosk-access').hidden=!galleryConfig.configured||qrEnabled;controls();
+ try{const r=await fetch('/api/gallery/config');if(r.headers.get('content-type')?.includes('application/json'))galleryConfig=await r.json();
+  if(galleryConfig.configured){const start=await fetch('/api/gallery/capture/start',{method:'POST'});if(!start.ok)throw new Error('자동 저장 연결에 실패했습니다.');galleryConfig.captureAuthorized=true;}
+ }catch{galleryConfig.captureAuthorized=false;}
+ qrEnabled=galleryConfig.configured&&galleryConfig.captureAuthorized;controls();
 }
-$('kiosk-unlock').onclick=async()=>{
- $('kiosk-unlock').disabled=true;
- try{const r=await fetch('/api/gallery/unlock',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:$('kiosk-code').value})});$('kiosk-code').value='';const d=await r.json();if(!r.ok)throw new Error(d.error);await loadGalleryConfig();$('kiosk-status').textContent='QR 저장 연결 완료';}catch(e){$('kiosk-status').textContent=e.message;}finally{$('kiosk-unlock').disabled=false;}
-};
 function addAlbumQR(canvas,url){
  const qr=qrcode(0,'M');qr.addData(url);qr.make();const modules=qr.getModuleCount();
  // Keep the original frame untouched outside a compact QR square, including its logo.
@@ -687,7 +675,8 @@ function addAlbumQR(canvas,url){
 async function apiJSON(url,options,timeoutMs=45000){const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),timeoutMs);try{const r=await fetch(url,{...options,signal:controller.signal});const d=await r.json();if(!r.ok){const error=new Error(d.error||'QR 저장 실패');error.status=r.status;throw error;}return d;}catch(e){if(e.name==='AbortError')throw new Error('QR 저장 응답이 늦어지고 있어요. 연결을 확인한 뒤 다시 시도해 주세요.');throw e;}finally{clearTimeout(timeout);}}
 async function ensurePrintAlbum(revision){
  if(album)return;
- if(!qrEnabled)throw new Error('운영 코드로 클라우드 저장을 연결해 주세요.');
+ await loadGalleryConfig();
+ if(!qrEnabled)throw new Error('인터넷 연결을 확인한 뒤 화면을 새로고침해 주세요.');
  const current=await apiJSON('/api/gallery/albums',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({printOnly:true,consent:false})});
  if(revision!==sessionRun){void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'});return;}
  album=current;
