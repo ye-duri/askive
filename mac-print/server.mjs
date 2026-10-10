@@ -24,7 +24,7 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
   if(!response.ok)throw new Error('클라우드 응답 '+response.status);return response;
  };
  async function receiveCloud(){
-  if(!cloudConfig||cloudBusy)return;cloudBusy=true;
+  if(!cloudConfig||existsSync(join(directory,'relay.json'))||cloudBusy)return;cloudBusy=true;
   try{const {jobs:pending}=await (await cloudRequest('')).json();
    for(const remote of pending){if(!/^[a-f0-9]{48}$/.test(remote.id))continue;
     const known=[...jobs.values()].find(j=>j.cloudId===remote.id);
