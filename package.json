@@ -9,7 +9,8 @@
     "test:browser": "node tests/browser.mjs",
     "test:camera": "node tests/camera-recovery.mjs",
     "test:frame-preview": "node tests/frame-preview-browser.mjs",
-    "build:frame-previews": "node scripts/build-frame-previews.mjs"
+    "build:frame-previews": "node scripts/build-frame-previews.mjs",
+    "test:web-print": "node tests/web-print.mjs"
   },
   "engines": {
     "node": ">=24.21.0 <25"
