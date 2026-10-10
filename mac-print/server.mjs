@@ -135,8 +135,8 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
   if(path==='/admin/state'&&req.method==='GET')return json(res,200,{cloud:{configured:!!cloudConfig,status:cloudStatus},connection:`http://${hostName}:${server.address().port}/#${token}`,pairings:[...pairings.values()].filter(p=>p.state==='pending').map(({id,name,code})=>({id,name,code})),jobs:[...jobs.values()].sort((a,b)=>b.createdAt-a.createdAt),printers:await printers()});
   if(path==='/admin/import'&&req.method==='POST'){
    if(req.headers['content-type']!=='image/jpeg')return json(res,415,{error:'인쇄용 JPEG 사진이 필요합니다.'});
-   const data=await body(req,8500000);printPDF(data,94);const id=createHash('sha256').update(data).digest('hex');
-   if(!jobs.has(id)){if(jobs.size>=100||[...jobs.values()].reduce((n,j)=>n+j.bytes,0)+data.length>300000000)return json(res,507,{error:'인쇄 대기 목록이 가득 찼습니다.'});const j={id,createdAt:Date.now(),bytes:data.length,state:'waiting',copies:1};writeFileSync(join(directory,id+'.jpg'),data,{mode:0o600});save(j);jobs.set(id,j);}
+   const expiresAt=req.headers['x-photo-expires']?Number(req.headers['x-photo-expires']):Date.now()+86400000;if(!Number.isFinite(expiresAt)||expiresAt<=Date.now()||expiresAt>Date.now()+86400000)return json(res,400,{error:'사진 보관 기간이 올바르지 않습니다.'});const data=await body(req,8500000);printPDF(data,94);const id=createHash('sha256').update(data).digest('hex');
+   if(!jobs.has(id)){if(jobs.size>=100||[...jobs.values()].reduce((n,j)=>n+j.bytes,0)+data.length>300000000)return json(res,507,{error:'인쇄 대기 목록이 가득 찼습니다.'});const j={id,createdAt:expiresAt-86400000,bytes:data.length,state:'waiting',copies:1};writeFileSync(join(directory,id+'.jpg'),data,{mode:0o600});save(j);jobs.set(id,j);}
    const j=jobs.get(id);return json(res,200,{id,state:j.state,attempt:j.attempt||0});
   }
   const match=path.match(/^\/admin\/jobs\/([a-f0-9]{64})(?:\/(image|print))?$/);
