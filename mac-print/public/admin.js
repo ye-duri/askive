@@ -4,7 +4,7 @@ $('scale').onchange=()=>{if($('scale').checkValidity())localStorage.setItem('yon
 async function api(path,options={}){const r=await fetch(path,{...options,headers:{'Content-Type':'application/json','X-Yonsei-Admin':'1',...options.headers}});const d=await r.json();if(!r.ok)throw Error(d.error);return d;}
 const rotations=new Map();
 const labels={waiting:'인쇄 대기',sending:'프린터로 전송 중',submitted:'인쇄 대기열 전송 완료',uncertain:'인쇄 센터 확인 필요'};
-async function refresh(){try{const d=await api('/admin/state');$('connection').value=d.connection;
+async function refresh(){try{const d=await api('/admin/state');$('connection').value=d.connection;$('cloud-status').textContent=d.cloud?.status||'인쇄 도우미를 최신 버전으로 실행해 주세요.';
  const pairingKey=JSON.stringify(d.pairings||[]);
  if($('pairings').dataset.key!==pairingKey){$('pairings').dataset.key=pairingKey;$('pairings').replaceChildren();
  if(!d.pairings?.length)$('pairings').textContent='연결 요청을 기다리고 있어요.';
@@ -19,3 +19,5 @@ async function refresh(){try{const d=await api('/admin/state');$('connection').v
  const del=document.createElement('button');del.className='delete';del.textContent='이 사진 삭제';del.disabled=j.state==='sending';del.onclick=async()=>{if(!confirm('Mac의 이 사진을 삭제할까요? 이미 보낸 인쇄 작업은 취소되지 않습니다.'))return;try{await api(`/admin/jobs/${j.id}`,{method:'DELETE'});last='';await refresh();}catch(e){$('status').textContent=e.message;}};section.append(del);const picture=document.createElement('div');picture.append(img);if(section._preview)picture.append(section._preview);article.append(picture,section);$('jobs').append(article);}}
  }catch(e){$('status').textContent='Mac 인쇄 도우미 연결을 확인해 주세요. '+e.message;}}
 $('printer').onchange=()=>{selected=$('printer').value;localStorage.setItem('yonsei-printer',selected);};$('refresh').onclick=refresh;$('center').onclick=()=>alert('시스템 설정 → 프린터 및 스캐너 → CP1500 → 프린터 대기열에서 실제 작업 상태를 확인하세요.');$('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('connection').value);$('copy').textContent='복사됨';}catch{$('connection').select();}};refresh();setInterval(refresh,2500);
+
+$('cloud-connect').onclick=async()=>{const button=$('cloud-connect');button.disabled=true;try{await api('/admin/cloud',{method:'POST',body:JSON.stringify({code:$('cloud-code').value.trim()})});$('cloud-code').value='';await refresh();}catch(e){$('cloud-status').textContent=e.message;}finally{button.disabled=false;}};

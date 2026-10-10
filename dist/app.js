@@ -71,7 +71,7 @@ function controls() {
  $('result-qr-card').setAttribute('aria-busy',String(uploadBusy));
  $('result-qr-title').textContent=uploadBusy?'QR 준비 중…':qrConsent?'QR 선택 완료':'QR로 사진 받기';
  $('result-qr-hint').textContent=uploadBusy?'잠시만 기다려 주세요':qrConsent?'인쇄 사진에 QR이 함께 나와요':'원하시면 여기를 체크해 주세요';
- if(!qrEnabled)$('result-qr-status').textContent=galleryConfig.configured?'이 기기의 QR 저장 인증이 필요합니다. 운영 설정에서 QR 저장 연결을 해주세요. 사진 인쇄는 가능합니다.':'QR 저장 서버에 연결하지 못했어요. 인터넷 연결을 확인해 주세요. 사진 인쇄는 가능합니다.';
+ if(!qrEnabled)$('result-qr-status').textContent=galleryConfig.configured?'이 기기의 QR 저장 인증이 필요합니다. 운영 설정에서 QR 저장 연결을 해주세요. 클라우드 인쇄에는 운영 코드 연결이 필요합니다.':'QR 저장 서버에 연결하지 못했어요. 인터넷 연결을 확인해 주세요. 클라우드 인쇄에는 운영 코드 연결이 필요합니다.';
  $('retake').disabled=uploadBusy||nativePrintBusy;
  $('save').disabled=uploadBusy;
  $('print-open').disabled=!printReady||uploadBusy||nativePrintBusy;
@@ -434,6 +434,9 @@ $('finish-selection').onclick=async()=>{
     $('result-admin-tools').open=false;$('result').hidden=false;$('capture-actions').hidden=true;$('result-actions').hidden=false;
     try{await withTimeout(updatePrint(),10000,'인쇄용 사진 준비 시간 초과');}catch{completionNotice='인쇄용 사진 준비에 실패했어요. 사진 저장을 이용해 주세요.';}
     if(revision!==sessionRun)return;
+    albumSource=nextBlob;
+    try{await ensurePrintAlbum(revision);await uploadAlbumPhotos(revision);}catch(e){completionNotice='완성 사진 저장 실패. 사진 인쇄를 누르면 다시 시도합니다. '+e.message;}
+    if(revision!==sessionRun)return;
     $('shot-progress').textContent='소중한 사진이 완성되었습니다.';$('stage-label').textContent='05 / 나의 순간';
     status(completionNotice,!!completionNotice);
   }catch(e){if(revision===sessionRun)$('selection-status').textContent=e.message||'합성하지 못했어요. 다시 시도해 주세요.';}
@@ -621,47 +624,16 @@ $('result-qr-add').onclick=async()=>{
 $('print-open').onclick=async()=>{
  if(uploadBusy||nativePrintBusy)return;
  if(!printReady||!printShareFile){status('인쇄용 사진을 준비 중이에요. 잠시 후 다시 눌러 주세요.',true);return;}
- const revision=sessionRun,file=printShareFile,native=!!window.webkit?.messageHandlers?.yonseiPrint;
- nativePrintBusy=true;printing=true;externalActionStarted=Date.now();controls();
- $('print-receipt').close();
+ const revision=sessionRun;nativePrintBusy=true;printing=true;externalActionStarted=Date.now();controls();
+ $('print-receipt-title').textContent='인쇄 사진을 접수하고 있어요.';
+ $('print-receipt-message').textContent='완성 사진을 저장하고 인쇄 대기열에 넣습니다.';
+ $('print-receipt-close').hidden=true;$('print-receipt').showModal();
  try{
-  if(qrConsent&&!albumUploaded){
-   $('print-receipt-title').textContent='QR 사진을 저장하고 있어요.';
-   $('print-receipt-message').textContent='저장이 끝나면 인쇄 사진을 전송합니다. 잠시만 기다려 주세요.';
-   $('print-receipt-close').hidden=true;$('print-receipt').showModal();
-   await uploadAlbumPhotos(revision);
-   if(revision!==sessionRun)return;
-   $('print-receipt').close();
-   // Web Share requires a fresh user gesture after the network request.
-   if(!native&&navigator.share&&navigator.canShare?.({files:[file]})){
-    status('QR 사진 저장 완료. 사진 인쇄를 한 번 더 누르면 공유 메뉴가 열립니다.');return;
-   }
-  }
-  if(native){
-   $('print-receipt-title').textContent='사진을 전송하고 있어요.';
-   $('print-receipt-message').textContent='전송이 완료되면 처음 화면으로 돌아갑니다.';
-   $('print-receipt-close').hidden=true;$('print-receipt').showModal();
-   const jpeg=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(String(reader.result).split(',')[1]);reader.onerror=()=>reject(new Error('인쇄 파일을 읽지 못했어요.'));reader.readAsDataURL(file);});
-   if(revision!==sessionRun)return;
-   window.webkit.messageHandlers.yonseiPrint.postMessage({type:'print',jpeg});
-   return;
-  }
-  if(navigator.share&&navigator.canShare?.({files:[file]})){
-   await navigator.share({files:[file]});
-   if(revision===sessionRun)await resetSession('사진 공유를 완료했어요. 다음 분은 시작해 주세요.');
-  }else{
-   download(file,file.name);status('인쇄용 JPG를 저장했어요. 사진 앱이나 SELPHY Photo Layout에서 열어 인쇄해 주세요.');
-  }
- }catch(e){
-  if(revision!==sessionRun)return;
-  $('print-receipt').close();
-  if(e.name!=='AbortError')status(`${e.message||'사진 전송에 실패했어요.'} 사진은 유지됩니다. 다시 인쇄를 눌러 주세요.`,true);
- }finally{
-  // Native success/error arrives asynchronously from the Mac print bridge.
-  if(revision===sessionRun&&(!native||!$('print-receipt').open)){
-   nativePrintBusy=false;printing=false;lastActivity=Date.now();controls();
-  }
- }
+  await ensurePrintAlbum(revision);await uploadAlbumPhotos(revision);if(revision!==sessionRun)return;
+  await apiJSON(`/api/gallery/albums/${album.id}/print`,{method:'POST'});if(revision!==sessionRun)return;
+  $('print-receipt').close();await resetSession('인쇄 사진 접수 완료! 매니저에게 사진을 받아 주세요.');
+ }catch(e){if(revision===sessionRun){$('print-receipt').close();status(`${e.message} 사진은 유지됩니다. 사진 인쇄를 눌러 다시 시도해 주세요.`,true);}}
+ finally{if(revision===sessionRun){nativePrintBusy=false;printing=false;lastActivity=Date.now();controls();}}
 };
 $('print-receipt-close').onclick=()=>$('print-receipt').close();
 $('print-receipt').addEventListener('cancel',e=>{if(nativePrintBusy)e.preventDefault();});
@@ -713,6 +685,13 @@ function addAlbumQR(canvas,url){
  return result;
 }
 async function apiJSON(url,options,timeoutMs=45000){const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),timeoutMs);try{const r=await fetch(url,{...options,signal:controller.signal});const d=await r.json();if(!r.ok){const error=new Error(d.error||'QR 저장 실패');error.status=r.status;throw error;}return d;}catch(e){if(e.name==='AbortError')throw new Error('QR 저장 응답이 늦어지고 있어요. 연결을 확인한 뒤 다시 시도해 주세요.');throw e;}finally{clearTimeout(timeout);}}
+async function ensurePrintAlbum(revision){
+ if(album)return;
+ if(!qrEnabled)throw new Error('운영 코드로 클라우드 저장을 연결해 주세요.');
+ const current=await apiJSON('/api/gallery/albums',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({printOnly:true,consent:false})});
+ if(revision!==sessionRun){void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'});return;}
+ album=current;
+}
 async function prepareAlbumQR(canvas,revision){
  if(!qrConsent||!qrEnabled)throw new Error('QR 사진 보관 동의가 필요합니다.');
  let current=album;
@@ -721,6 +700,7 @@ async function prepareAlbumQR(canvas,revision){
   if(revision!==sessionRun){void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'});return canvas;}
   album=current;
  }
+ await apiJSON(`/api/gallery/albums/${current.id}/qr`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({consent:true,policyVersion:'2026-09-26-qr-v1'})});
  const url=new URL('gallery.html',location.href);url.hash=current.id;
  return addAlbumQR(canvas,url.href);
 }
@@ -730,7 +710,7 @@ async function uploadAlbumPhotos(revision){
  const current=album,photos=shotSession.photos,source=albumSource;
  const deadline=Date.now()+45000,remaining=()=>{const ms=deadline-Date.now();if(ms<=0)throw new Error('QR 저장 시간 초과');return ms;};
  const data=new FormData();
- for(let i=0;i<8;i++){
+ if(qrConsent)for(let i=0;i<8;i++){
   data.append(String(i),await withTimeout(toBlob(photos[i],'image/jpeg',.85),remaining(),'QR 사진 처리 시간 초과'),`${i}.jpg`);
   if(revision!==sessionRun)return;
  }
@@ -739,9 +719,10 @@ async function uploadAlbumPhotos(revision){
   const image=await withTimeout(loadImage(sourceURL),remaining(),'완성 사진을 읽지 못했어요.');
   if(revision!==sessionRun)return;
   const canvas=document.createElement('canvas');canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;canvas.getContext('2d').drawImage(image,0,0);
-  data.append('8',await withTimeout(toBlob(canvas,'image/jpeg',.9),remaining(),'QR 사진 처리 시간 초과'),'result.jpg');
+  data.append('8',qrConsent?await withTimeout(toBlob(canvas,'image/jpeg',.9),remaining(),'QR 사진 처리 시간 초과'):printShareFile,'result.jpg');
  }finally{URL.revokeObjectURL(sourceURL);}
  if(revision!==sessionRun)return;
+ if(qrConsent)data.append('9',printShareFile,'print.jpg');
  await apiJSON(`/api/gallery/albums/${current.id}`,{method:'PUT',body:data},remaining());
  if(revision!==sessionRun){void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'});return;}
  albumUploaded=true;

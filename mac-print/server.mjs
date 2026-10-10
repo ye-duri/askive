@@ -15,6 +15,34 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
  const token=existsSync(configPath)?JSON.parse(readFileSync(configPath)).token:randomBytes(24).toString('hex');
  writeFileSync(configPath,JSON.stringify({token}),{mode:0o600});
  const jobs=new Map(),pairings=new Map();
+ const cloudPath=join(directory,'cloud.json');
+ let cloudConfig=existsSync(cloudPath)?JSON.parse(readFileSync(cloudPath)):null,cloudBusy=false;
+ let cloudStatus=cloudConfig?'클라우드 연결 확인 중':'운영 코드로 클라우드 인쇄를 연결해 주세요.';
+ const cloudRequest=async(path,method='GET',config=cloudConfig)=>{
+  const response=await fetch('https://askive.pages.dev/api/gallery/print-jobs'+path,{method,headers:{Authorization:'Bearer '+config.code,'X-Print-Client':config.client},signal:AbortSignal.timeout(20000)});
+  if(!response.ok)throw new Error('클라우드 응답 '+response.status);return response;
+ };
+ async function receiveCloud(){
+  if(!cloudConfig||cloudBusy)return;cloudBusy=true;
+  try{const {jobs:pending}=await (await cloudRequest('')).json();
+   for(const remote of pending){if(!/^[a-f0-9]{48}$/.test(remote.id))continue;
+    const known=[...jobs.values()].find(j=>j.cloudId===remote.id);
+    await cloudRequest('/'+remote.id+'/claim','POST');
+    if(!known){
+     if(jobs.size>=100||[...jobs.values()].reduce((n,j)=>n+j.bytes,0)>290000000)throw new Error('인쇄 대기 목록이 가득 찼습니다.');
+     const response=await cloudRequest('/'+remote.id+'/image');const reader=response.body.getReader();let total=0;const chunks=[];while(true){const {done,value}=await reader.read();if(done)break;total+=value.length;if(total>8500000){await reader.cancel();throw new Error('인쇄 사진이 너무 큽니다.');}chunks.push(Buffer.from(value));}const data=Buffer.concat(chunks);
+     printPDF(data,94); // Validate a complete JPEG before accepting it into the local queue.
+     const id=createHash('sha256').update(data).digest('hex');
+     if(!jobs.has(id)){const j={id,cloudId:remote.id,createdAt:remote.createdAt,bytes:data.length,state:'waiting',copies:1};writeFileSync(join(directory,id+'.jpg'),data,{mode:0o600});save(j);jobs.set(id,j);}
+    }
+    await cloudRequest('/'+remote.id+'/received','POST');
+   }
+   cloudStatus='클라우드 연결됨 · 인쇄 사진 자동 수신 중';
+  }catch{cloudStatus='클라우드 수신 실패 · 인터넷과 운영 코드를 확인해 주세요.';}
+  finally{cloudBusy=false;}
+ }
+ const cloudTimer=setInterval(()=>void receiveCloud(),5000);cloudTimer.unref();void receiveCloud();
+
  const prunePairings=()=>{for(const [id,p] of pairings)if(p.expiresAt<Date.now())pairings.delete(id);};
  const save=j=>{const path=join(directory,j.id+'.json');writeFileSync(path+'.tmp',JSON.stringify(j),{mode:0o600});renameSync(path+'.tmp',path);};
  for(const name of readdirSync(directory).filter(n=>/^[a-f0-9]{64}\.json$/.test(n))){try{const j=JSON.parse(readFileSync(join(directory,name)));if(j.state==='sending'){j.state='uncertain';j.error='재시작 전 인쇄 전송 결과를 확인해 주세요.';save(j);}jobs.set(j.id,j);}catch{}}
@@ -77,7 +105,14 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
    if(typeof approve!=='boolean')return json(res,400,{error:'승인 여부가 필요합니다.'});
    p.state=approve?'approved':'rejected';return json(res,200,{ok:true});
   }
-  if(path==='/admin/state'&&req.method==='GET')return json(res,200,{connection:`http://${hostName}:${server.address().port}/#${token}`,pairings:[...pairings.values()].filter(p=>p.state==='pending').map(({id,name,code})=>({id,name,code})),jobs:[...jobs.values()].sort((a,b)=>b.createdAt-a.createdAt),printers:await printers()});
+  if(path==='/admin/cloud'&&req.method==='POST'){
+   const {code}=JSON.parse((await body(req,1024)).toString());if(typeof code!=='string'||code.length<32||code.length>256)return json(res,400,{error:'행사 운영 코드를 입력해 주세요.'});
+   if(cloudBusy)return json(res,409,{error:'사진 수신 중입니다. 잠시 후 다시 시도해 주세요.'});
+   const config={code,client:cloudConfig?.client||randomBytes(24).toString('hex')};
+   try{await cloudRequest('','GET',config);}catch{return json(res,400,{error:'클라우드 연결 실패. 인터넷과 운영 코드를 확인해 주세요.'});}
+   writeFileSync(cloudPath,JSON.stringify(config),{mode:0o600});cloudConfig=config;void receiveCloud();return json(res,200,{ok:true});
+  }
+  if(path==='/admin/state'&&req.method==='GET')return json(res,200,{cloud:{configured:!!cloudConfig,status:cloudStatus},connection:`http://${hostName}:${server.address().port}/#${token}`,pairings:[...pairings.values()].filter(p=>p.state==='pending').map(({id,name,code})=>({id,name,code})),jobs:[...jobs.values()].sort((a,b)=>b.createdAt-a.createdAt),printers:await printers()});
   const match=path.match(/^\/admin\/jobs\/([a-f0-9]{64})(?:\/(image|print))?$/);
   if(match){const j=jobs.get(match[1]);if(!j)return json(res,404,{error:'사진이 없거나 만료됐습니다.'});
    if(req.method==='GET'&&match[2]==='image'){res.writeHead(200,{'Content-Type':'image/jpeg'});return res.end(readFileSync(join(directory,j.id+'.jpg')));}
@@ -104,7 +139,7 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
   if(req.method==='GET'&&['/','/admin.js','/admin.css'].includes(path)){res.setHeader('Content-Security-Policy',"default-src 'self'; frame-ancestors 'none'; base-uri 'none'");res.setHeader('Content-Type',path.endsWith('.js')?'text/javascript':path.endsWith('.css')?'text/css':'text/html; charset=utf-8');return res.end(readFileSync(join(root,'public',path==='/'?'index.html':path.slice(1))));}
   json(res,404,{error:'없는 경로'});
  }catch(e){json(res,400,{error:e.message||'요청 처리 실패'});}});
- server.on('close',()=>clearInterval(cleanupTimer));return server;
+ server.on('close',()=>{clearInterval(cleanupTimer);clearInterval(cloudTimer);});return server;
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
  const hostName=(await command('/usr/sbin/scutil',['--get','LocalHostName'])).trim()+'.local';
