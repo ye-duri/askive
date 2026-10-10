@@ -26,6 +26,7 @@
 	<dict><key>NSAllowsLocalNetworking</key><true/></dict>
 	<key>NSBonjourServices</key>
 	<array>
+		<string>_yonsei-print._tcp</string>
 		<string>_ipp._tcp</string>
 		<string>_ipps._tcp</string>
 	</array>

@@ -9,6 +9,13 @@ async function api(path,options={}){if(!accessKey)throw Error('위에서 Mac 연
 const rotations=new Map();
 const labels={waiting:'인쇄 대기',sending:'프린터로 전송 중',submitted:'인쇄 대기열 전송 완료',uncertain:'인쇄 센터 확인 필요'};
 async function refresh(){try{const d=await api('/admin/state');$('connection').value=d.connection;
+ const pairingKey=JSON.stringify(d.pairings||[]);
+ if($('pairings').dataset.key!==pairingKey){$('pairings').dataset.key=pairingKey;$('pairings').replaceChildren();
+ if(!d.pairings?.length)$('pairings').textContent='연결 요청을 기다리고 있어요.';
+ for(const p of d.pairings||[]){const row=document.createElement('p'),label=document.createElement('strong');label.textContent=`${p.name} · 확인 숫자 ${p.code} `;row.append(label);
+ for(const approve of [true,false]){const button=document.createElement('button');button.textContent=approve?'연결 승인':'거절';button.onclick=async()=>{button.disabled=true;try{await api(`/admin/pairings/${p.id}`,{method:'POST',body:JSON.stringify({approve})});await refresh();}catch(e){$('status').textContent=e.message;button.disabled=false;}};row.append(button);} $('pairings').append(row);}}
+
+
  const old=$('printer').value||selected;$('printer').replaceChildren(...d.printers.map(p=>new Option(p.name+(p.uri.startsWith('ippusb:')?' · USB':' · 네트워크'),p.name)));if(d.printers.some(p=>p.name===old))$('printer').value=old;
  const key=JSON.stringify(d.jobs);if(key!==last&&!printing&&!$('jobs').contains(document.activeElement)){last=key;$('jobs').replaceChildren();if(!d.jobs.length)$('jobs').textContent='iPad에서 전송한 사진이 여기에 표시됩니다.';
  for(const j of d.jobs){const article=document.createElement('article');article.className='job';const img=new Image();fetch(localBase+`/admin/jobs/${j.id}/image`,{headers:{Authorization:'Bearer '+accessKey}}).then(r=>{if(!r.ok)throw Error();return r.blob();}).then(b=>{const u=URL.createObjectURL(b);img.addEventListener('load',()=>URL.revokeObjectURL(u),{once:true});img.src=u;}).catch(()=>{img.alt='사진을 불러오지 못했습니다.';});img.alt='인쇄할 완성 사진';const section=document.createElement('section');const title=document.createElement('h2');title.textContent=labels[j.state];const date=document.createElement('p');date.textContent=new Date(j.createdAt).toLocaleString('ko-KR')+' · '+j.id.slice(0,8);section.append(title,date);

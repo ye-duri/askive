@@ -5,7 +5,7 @@ import {mkdirSync,readFileSync,writeFileSync,renameSync,existsSync,readdirSync,u
 import {join,dirname} from 'node:path';
 import {homedir} from 'node:os';
 import {fileURLToPath} from 'node:url';
-import {execFile} from 'node:child_process';
+import {execFile,spawn} from 'node:child_process';
 import {promisify} from 'node:util';
 const exec=promisify(execFile),root=dirname(fileURLToPath(import.meta.url));
 const command=async(file,args)=> (await exec(file,args,{timeout:15000,maxBuffer:1024*1024,env:{...process.env,LC_ALL:'C'}})).stdout;
@@ -14,7 +14,8 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
  const configPath=join(directory,'connection.json');
  const token=existsSync(configPath)?JSON.parse(readFileSync(configPath)).token:randomBytes(24).toString('hex');
  writeFileSync(configPath,JSON.stringify({token}),{mode:0o600});
- const jobs=new Map();
+ const jobs=new Map(),pairings=new Map();
+ const prunePairings=()=>{for(const [id,p] of pairings)if(p.expiresAt<Date.now())pairings.delete(id);};
  const save=j=>{const path=join(directory,j.id+'.json');writeFileSync(path+'.tmp',JSON.stringify(j),{mode:0o600});renameSync(path+'.tmp',path);};
  for(const name of readdirSync(directory).filter(n=>/^[a-f0-9]{64}\.json$/.test(n))){try{const j=JSON.parse(readFileSync(join(directory,name)));if(j.state==='sending'){j.state='uncertain';j.error='재시작 전 인쇄 전송 결과를 확인해 주세요.';save(j);}jobs.set(j.id,j);}catch{}}
  function cleanup(){for(const [id,j] of jobs)if(Date.now()-j.createdAt>=86400000&&j.state!=='sending'){for(const suffix of ['.jpg','.json','.pdf'])try{unlinkSync(join(directory,id+suffix));}catch{}jobs.delete(id);}}
@@ -26,6 +27,21 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
  const server=http.createServer(async(req,res)=>{try{
   res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('Cache-Control','no-store');
   const path=new URL(req.url,'http://localhost').pathname;
+  if(path==='/pair'||path.startsWith('/pair/')){
+   if(req.headers.origin)return json(res,403,{error:'앱 연결만 허용합니다.'});
+   prunePairings();
+   if(path==='/pair'&&req.method==='POST'){
+    if(pairings.size>=10)return json(res,429,{error:'연결 요청이 많아요. 잠시 후 다시 시도해 주세요.'});
+    const input=JSON.parse((await body(req,512)).toString());
+    const id=randomBytes(16).toString('hex'),secret=randomBytes(24).toString('hex');
+    const p={id,secret,name:String(input.name||'iPad').replace(/[\x00-\x1f]/g,'').slice(0,60),code:String(randomBytes(4).readUInt32BE()%1000000).padStart(6,'0'),state:'pending',expiresAt:Date.now()+120000};
+    pairings.set(id,p);return json(res,201,{id,secret,code:p.code});
+   }
+   const id=path.slice(6),p=pairings.get(id);
+   if(!p||req.headers.authorization!=='Bearer '+p.secret)return json(res,404,{error:'연결 요청이 만료됐어요. 다시 선택해 주세요.'});
+   if(req.method!=='GET')return json(res,405,{error:'지원하지 않는 요청'});
+   return json(res,200,{state:p.state,...(p.state==='approved'?{token}:{})});
+  }
   if(path==='/health'||path==='/jobs'){
    if(!auth(req))return json(res,401,{error:'Mac 연결 코드를 확인해 주세요.'});
    if(req.headers.origin)return json(res,403,{error:'앱 연결만 허용합니다.'});
@@ -53,7 +69,15 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
   }
   if(!local||req.headers.host!==expected)return json(res,403,{error:'관리 화면은 Mac에서만 열 수 있습니다.'});
   if(req.method!=='GET'&&!cloud&&(req.headers.origin!=='http://'+expected||req.headers['x-yonsei-admin']!=='1'))return json(res,403,{error:'관리 요청을 확인할 수 없습니다.'});
-  if(path==='/admin/state'&&req.method==='GET')return json(res,200,{connection:`http://${hostName}:${server.address().port}/#${token}`,jobs:[...jobs.values()].sort((a,b)=>b.createdAt-a.createdAt),printers:await printers()});
+  prunePairings();
+  const pairingMatch=path.match(/^\/admin\/pairings\/([a-f0-9]{32})$/);
+  if(pairingMatch&&req.method==='POST'){
+   const p=pairings.get(pairingMatch[1]);if(!p||p.state!=='pending')return json(res,404,{error:'연결 요청이 만료됐습니다.'});
+   const {approve}=JSON.parse((await body(req,128)).toString());
+   if(typeof approve!=='boolean')return json(res,400,{error:'승인 여부가 필요합니다.'});
+   p.state=approve?'approved':'rejected';return json(res,200,{ok:true});
+  }
+  if(path==='/admin/state'&&req.method==='GET')return json(res,200,{connection:`http://${hostName}:${server.address().port}/#${token}`,pairings:[...pairings.values()].filter(p=>p.state==='pending').map(({id,name,code})=>({id,name,code})),jobs:[...jobs.values()].sort((a,b)=>b.createdAt-a.createdAt),printers:await printers()});
   const match=path.match(/^\/admin\/jobs\/([a-f0-9]{64})(?:\/(image|print))?$/);
   if(match){const j=jobs.get(match[1]);if(!j)return json(res,404,{error:'사진이 없거나 만료됐습니다.'});
    if(req.method==='GET'&&match[2]==='image'){res.writeHead(200,{'Content-Type':'image/jpeg'});return res.end(readFileSync(join(directory,j.id+'.jpg')));}
@@ -84,6 +108,14 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
  const hostName=(await command('/usr/sbin/scutil',['--get','LocalHostName'])).trim()+'.local';
- const server=createPrintServer({hostName});server.listen(4178,'0.0.0.0',()=>console.log('관리 화면: http://127.0.0.1:4178'));
+ const server=createPrintServer({hostName});let advertisement;
+ server.listen(4178,'0.0.0.0',()=>{
+  console.log('관리 화면: http://127.0.0.1:4178');
+  advertisement=spawn('/usr/bin/dns-sd',['-R','연세스튜디오 '+hostName.replace('.local',''),'_yonsei-print._tcp','local.','4178'],{stdio:'ignore'});
+  advertisement.on('error',()=>console.error('Mac 자동 검색 등록 실패. 기존 연결 코드는 사용할 수 있습니다.'));
+ });
+ const stopAdvertisement=()=>advertisement?.kill();
+ server.on('close',stopAdvertisement);process.on('exit',stopAdvertisement);
+ for(const signal of ['SIGTERM','SIGINT'])process.on(signal,()=>{stopAdvertisement();server.close(()=>process.exit(0));});
  server.on('error',e=>{console.error(e.code==='EADDRINUSE'?'이미 실행 중입니다. http://127.0.0.1:4178 을 여세요.':e.message);process.exitCode=1;});
 }
