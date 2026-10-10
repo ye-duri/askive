@@ -1,5 +1,6 @@
 #!/bin/zsh
 set -e
+set -o pipefail
 RESOURCE_DIR="$(cd "$(dirname "$0")" && pwd)"
 SUPPORT_DIR="$HOME/Library/Application Support/YonseiStudioPrint"
 HELPER_DIR="$SUPPORT_DIR/helper"
@@ -38,7 +39,9 @@ chmod 700 "$SUPPORT_DIR" "$HELPER_DIR" "$LOG_DIR"
 cp "$RESOURCE_DIR/server.mjs" "$RESOURCE_DIR/print-pdf.mjs" "$RESOURCE_DIR/relay.mjs" "$RESOURCE_DIR/enroll.mjs" "$HELPER_DIR/"
 cp -R "$RESOURCE_DIR/public/." "$HELPER_DIR/public/"
 if [[ ! -f "$SUPPORT_DIR/relay.json" ]] || ! "$NODE_BIN" "$HELPER_DIR/enroll.mjs" --check; then
-  if [[ -t 0 ]]; then
+  if [[ "${1:-}" == "--gui" ]]; then
+    /usr/bin/osascript "$RESOURCE_DIR/password.applescript" | "$NODE_BIN" "$HELPER_DIR/enroll.mjs"
+  elif [[ -t 0 ]]; then
     echo '최초 연결을 위해 인쇄관리 비밀번호를 입력해 주세요.'
     read -s PRINT_PASSWORD
     echo
