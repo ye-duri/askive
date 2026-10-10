@@ -1,3 +1,4 @@
+import {startPrinterRelay} from './relay.mjs';
 import http from 'node:http';
 import {printPDF} from './print-pdf.mjs';
 import {randomBytes,createHash,timingSafeEqual} from 'node:crypto';
@@ -106,7 +107,7 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
   if(req.method!=='GET'&&!cloud&&(req.headers.origin!=='http://'+expected||(req.headers['x-yonsei-admin']!=='1'&&!path.startsWith('/api/gallery/'))))return json(res,403,{error:'관리 요청을 확인할 수 없습니다.'});
   if(path==='/admin/session'&&req.method==='POST')return dashboardSession(req,res);
   if(path.startsWith('/api/gallery/')){
-   const allowed=/^\/api\/gallery\/(?:config|print-login|print-logout|print-ticket|web-print(?:\/[a-f0-9]{48}\/(?:image|state))?)$/;
+   const allowed=/^\/api\/gallery\/(?:config|print-login|print-logout|print-ticket|printer-relay\/(?:devices|submit)|web-print(?:\/[a-f0-9]{48}\/(?:image|state))?)$/;
    if(!allowed.test(path)||!['GET','POST'].includes(req.method))return json(res,404,{error:'지원하지 않는 요청입니다.'});
    const cookie=req.headers.cookie?.match(/(?:^|;\s*)ys_print=([^;]+)/)?.[1];
    const upstream=await fetch('https://askive.pages.dev'+path,{method:req.method,headers:{Origin:'https://askive.pages.dev','Content-Type':'application/json',...(cookie?{Cookie:'ys_print='+cookie}:{})},...(req.method==='POST'?{body:await body(req,2048)}:{}),redirect:'error',signal:AbortSignal.timeout(30000)});
@@ -164,7 +165,8 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
   if(req.method==='GET'&&['/','/admin.js','/admin.css'].includes(path)){res.setHeader('Content-Security-Policy',"default-src 'self'; frame-ancestors 'none'; base-uri 'none'");res.setHeader('Content-Type',path.endsWith('.js')?'text/javascript':path.endsWith('.css')?'text/css':'text/html; charset=utf-8');return res.end(readFileSync(join(root,'public',path==='/'?'index.html':path.slice(1))));}
   json(res,404,{error:'없는 경로'});
  }catch(e){json(res,400,{error:e.message||'요청 처리 실패'});}});
- server.on('close',()=>{clearInterval(cleanupTimer);clearInterval(cloudTimer);});return server;
+ let stopRelay=()=>{};server.on('listening',()=>{stopRelay=startPrinterRelay({directory,port:server.address().port,token,printers});});
+ server.on('close',()=>{clearInterval(cleanupTimer);clearInterval(cloudTimer);stopRelay();});return server;
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
  const hostName=(await command('/usr/sbin/scutil',['--get','LocalHostName'])).trim()+'.local';

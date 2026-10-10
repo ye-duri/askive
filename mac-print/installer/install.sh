@@ -35,10 +35,21 @@ if [[ -n "$EXISTING_PID" ]]; then
 fi
 mkdir -p "$HELPER_DIR/public" "$AGENT_DIR" "$LOG_DIR"
 chmod 700 "$SUPPORT_DIR" "$HELPER_DIR" "$LOG_DIR"
+cp "$RESOURCE_DIR/server.mjs" "$RESOURCE_DIR/print-pdf.mjs" "$RESOURCE_DIR/relay.mjs" "$RESOURCE_DIR/enroll.mjs" "$HELPER_DIR/"
+cp -R "$RESOURCE_DIR/public/." "$HELPER_DIR/public/"
+if [[ ! -f "$SUPPORT_DIR/relay.json" ]] || ! "$NODE_BIN" "$HELPER_DIR/enroll.mjs" --check; then
+  if [[ -t 0 ]]; then
+    echo '최초 연결을 위해 인쇄관리 비밀번호를 입력해 주세요.'
+    read -s PRINT_PASSWORD
+    echo
+    printf '%s' "$PRINT_PASSWORD" | "$NODE_BIN" "$HELPER_DIR/enroll.mjs"
+    unset PRINT_PASSWORD
+  else
+    echo 'Start.command를 열어 최초 클라우드 연결을 완료해 주세요.'; exit 1
+  fi
+fi
 /bin/launchctl bootout "gui/$(id -u)/kr.yeduri.YonseiStudioPrint" 2>/dev/null || true
 if [[ -n "$EXISTING_PID" ]]; then kill -TERM "$EXISTING_PID" 2>/dev/null || true; fi
-cp "$RESOURCE_DIR/server.mjs" "$RESOURCE_DIR/print-pdf.mjs" "$HELPER_DIR/"
-cp -R "$RESOURCE_DIR/public/." "$HELPER_DIR/public/"
 xml_escape(){ printf '%s' "$1" | sed 's/\&/\&amp;/g;s/</\&lt;/g;s/>/\&gt;/g'; }
 cat > "$AGENT_FILE" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
