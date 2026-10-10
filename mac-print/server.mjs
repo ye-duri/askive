@@ -52,6 +52,12 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
  function auth(req){const a=Buffer.from(req.headers.authorization||''),b=Buffer.from('Bearer '+token);return a.length===b.length&&timingSafeEqual(a,b);}
  async function body(req,max){let size=0,chunks=[];for await(const chunk of req){size+=chunk.length;if(size>max)throw Error('요청 크기가 너무 큽니다.');chunks.push(chunk);}return Buffer.concat(chunks);}
  async function printers(){const out=await run('/usr/bin/lpstat',['-v']);return out.split('\n').flatMap(l=>{const m=(l.match(/^device for ([^:]+): (.+)$/)||l.match(/^(.+?)에 대한 기기: (.+)$/));return m?[{name:m[1],uri:m[2]}]:[];});}
+
+ async function dashboardSession(req,res){
+    const {ticket}=JSON.parse((await body(req,1024)).toString());if(typeof ticket!=='string'||ticket.length>256)return json(res,401,{error:'로그인을 다시 확인해 주세요.'});
+    try{const verified=await fetch('https://askive.pages.dev/api/gallery/print-ticket/verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ticket}),signal:AbortSignal.timeout(15000)});if(!verified.ok||(await verified.json()).ok!==true)return json(res,401,{error:'인쇄관리 로그인이 필요합니다.'});}catch{return json(res,503,{error:'인쇄 연결 인증을 확인하지 못했습니다. 인터넷을 확인해 주세요.'});}
+    return json(res,200,{token});
+ }
  const server=http.createServer(async(req,res)=>{try{
   res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('Cache-Control','no-store');
   const path=new URL(req.url,'http://localhost').pathname;
@@ -93,15 +99,23 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
   if(local&&req.headers.host===expected&&cloud&&path.startsWith('/admin/')){
    res.setHeader('Access-Control-Allow-Origin',cloudOrigin);res.setHeader('Vary','Origin');
    if(req.method==='OPTIONS'){res.setHeader('Access-Control-Allow-Methods','GET, POST, DELETE');res.setHeader('Access-Control-Allow-Headers','Authorization, Content-Type, X-Yonsei-Admin');res.setHeader('Access-Control-Allow-Private-Network','true');res.writeHead(204);return res.end();}
-   if(path==='/admin/session'&&req.method==='POST'){
-    const {ticket}=JSON.parse((await body(req,1024)).toString());if(typeof ticket!=='string'||ticket.length>256)return json(res,401,{error:'로그인을 다시 확인해 주세요.'});
-    try{const verified=await fetch('https://askive.pages.dev/api/gallery/print-ticket/verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ticket}),signal:AbortSignal.timeout(15000)});if(!verified.ok||(await verified.json()).ok!==true)return json(res,401,{error:'인쇄관리 로그인이 필요합니다.'});}catch{return json(res,503,{error:'인쇄 연결 인증을 확인하지 못했습니다. 인터넷을 확인해 주세요.'});}
-    return json(res,200,{token});
-   }
+   if(path==='/admin/session'&&req.method==='POST')return dashboardSession(req,res);
    if(!auth(req))return json(res,401,{error:'Mac 연결 코드를 다시 입력해 주세요.'});
   }
   if(!local||req.headers.host!==expected)return json(res,403,{error:'관리 화면은 Mac에서만 열 수 있습니다.'});
-  if(req.method!=='GET'&&!cloud&&(req.headers.origin!=='http://'+expected||req.headers['x-yonsei-admin']!=='1'))return json(res,403,{error:'관리 요청을 확인할 수 없습니다.'});
+  if(req.method!=='GET'&&!cloud&&(req.headers.origin!=='http://'+expected||(req.headers['x-yonsei-admin']!=='1'&&!path.startsWith('/api/gallery/'))))return json(res,403,{error:'관리 요청을 확인할 수 없습니다.'});
+  if(path==='/admin/session'&&req.method==='POST')return dashboardSession(req,res);
+  if(path.startsWith('/api/gallery/')){
+   const allowed=/^\/api\/gallery\/(?:config|print-login|print-logout|print-ticket|web-print(?:\/[a-f0-9]{48}\/(?:image|state))?)$/;
+   if(!allowed.test(path)||!['GET','POST'].includes(req.method))return json(res,404,{error:'지원하지 않는 요청입니다.'});
+   const cookie=req.headers.cookie?.match(/(?:^|;\s*)ys_print=([^;]+)/)?.[1];
+   const upstream=await fetch('https://askive.pages.dev'+path,{method:req.method,headers:{Origin:'https://askive.pages.dev','Content-Type':'application/json',...(cookie?{Cookie:'ys_print='+cookie}:{})},...(req.method==='POST'?{body:await body(req,2048)}:{}),redirect:'error',signal:AbortSignal.timeout(30000)});
+   res.statusCode=upstream.status;res.setHeader('Content-Type',upstream.headers.get('content-type')||'application/json');const session=upstream.headers.get('set-cookie');if(session)res.setHeader('Set-Cookie',session.replace(/;\s*Secure/gi,''));
+   const length=Number(upstream.headers.get('content-length')||0);if(length>8500000)return json(res,413,{error:'사진이 너무 큽니다.'});const reader=upstream.body?.getReader();let total=0;if(reader){while(true){const {done,value}=await reader.read();if(done)break;total+=value.length;if(total>8500000){await reader.cancel();res.destroy();return;}res.write(value);}}return res.end();
+  }
+  if(req.method==='GET'&&['/dashboard/','/dashboard/index.html','/dashboard/admin.js','/dashboard/admin.css','/dashboard/ask-mascots-hd.png'].includes(path)){
+   const name=path==='/dashboard/'?'index.html':path.split('/').at(-1);res.setHeader('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; connect-src 'self'; object-src 'none'; frame-ancestors 'none'");res.setHeader('Content-Type',name.endsWith('.js')?'text/javascript':name.endsWith('.css')?'text/css':name.endsWith('.png')?'image/png':'text/html; charset=utf-8');return res.end(readFileSync(join(root,'public/dashboard',name)));
+  }
   prunePairings();
   const pairingMatch=path.match(/^\/admin\/pairings\/([a-f0-9]{32})$/);
   if(pairingMatch&&req.method==='POST'){
