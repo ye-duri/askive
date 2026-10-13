@@ -4,3 +4,5 @@ for(const [w,h] of [[1200,1776],[1776,1200]])for(const rotation of [0,90]){const
 console.log('PASS: shared layout, 4 undistorted images, portrait/landscape/rotation bounds, October 2026 Thu 1 through Sat 31');
 
 const joined=calendarLayout(1200,1776),photos=joined.filter(p=>p.type==='photo');assert.equal(joined.filter(p=>p.type==='extend').length,0);assert.equal(photos[0].y,0);assert.equal(photos[0].x+photos[0].w,photos[1].x);assert.equal(photos[1].y+photos[1].h,photos[2].y);assert.equal(photos[2].x+photos[2].w,photos[3].x);assert.equal(1776-photos[2].y-photos[2].h,444);console.log('PASS: original frame proportions, touching panels, 444px white footer without stretched artwork');
+
+const logo=joined.find(p=>p.type==='brand');assert.ok(logo.runs.length>500);assert.equal(logo.w/logo.h,137/35);assert.equal(logo.color,'#794D32');assert.ok(!joined.some(p=>p.type==='text'&&['Imagination','Hall'].includes(p.value)));console.log('PASS: original logo geometry replaces font-dependent caption');

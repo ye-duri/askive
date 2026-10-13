@@ -23,7 +23,7 @@ export function printPDF(jpeg,scale=94,rotation=0){
   if(p.type==='photo'){
    const matrix=p.rotation===90?`0 ${-p.h} ${p.w} 0 ${p.x} ${y}`:`${p.w} 0 0 ${p.h} ${p.x} ${y-p.h}`;
    lines.push(`q ${matrix} cm /Photo Do Q`);
-  }else if(p.type==='line')lines.push(`${rgb(p.color)} RG 0.8 w ${p.x} ${y} m ${p.x+p.w} ${y-p.h} l S`);
+  }else if(p.type==='brand'){const k=p.w/137;for(const [rx,ry,rw,a] of p.runs){const color=[121,77,50].map(v=>(255+(v-255)*a/255)/255).join(' ');lines.push(`${color} rg ${p.x+rx*k} ${y-(ry+1)*k} ${rw*k} ${k} re f`);}}else if(p.type==='line')lines.push(`${rgb(p.color)} RG 0.8 w ${p.x} ${y} m ${p.x+p.w} ${y-p.h} l S`);
   else{const font=p.font==='sans'?'F2':(p.font==='italic'||p.font==='brand')?'F3':'F1';lines.push(`BT /${font} ${p.size} Tf ${rgb(p.color)} rg 1 0 0 1 ${p.x} ${y} Tm (${p.value}) Tj ET`);}
  }
  lines.push('Q');const content=Buffer.from(lines.join('\n'));
