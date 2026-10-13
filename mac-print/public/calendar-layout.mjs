@@ -1,7 +1,11 @@
 // Shared 100 x 148 mm print composition. Coordinates use a 1200 x 1776 canvas.
 export function calendarLayout(width,height,rotation=0){
  const commands=[],blue='#126ba3',line='#94bed8';
- const photo=(x,y,w,h)=>{const rw=rotation===90?height:width,rh=rotation===90?width:height,r=Math.min(w/rw,h/rh),pw=rw*r,ph=rh*r;commands.push({type:'photo',x:x+(w-pw)/2,y:y+(h-ph)/2,w:pw,h:ph,rotation});};
+ const photo=(x,y,w,h)=>{
+  const rw=rotation===90?height:width,rh=rotation===90?width:height,r=Math.min(w/rw,h/rh),pw=rw*r,ph=rh*r;
+  commands.push({type:'photo',x:x+(w-pw)/2,y,w:pw,h:ph,rotation});
+  if(h>ph)commands.push({type:'extend',x:x+(w-pw)/2,y:y+ph,w:pw,h:h-ph,rotation,sourceHeight:rh});
+ };
  photo(0,0,600,1060);photo(600,0,600,1060);
  photo(600,1060,300,530);photo(900,1060,300,530);
  const text=(value,x,y,size,font='serif')=>commands.push({type:'text',value,x,y,size,font,color:blue});
@@ -21,6 +25,10 @@ export function drawCalendar(canvas,image,scale=94,rotation=0){
  canvas.width=1200;canvas.height=1776;const c=canvas.getContext('2d');c.fillStyle='#fff';c.fillRect(0,0,1200,1776);c.save();c.translate(600*(1-scale/100),888*(1-scale/100));c.scale(scale/100,scale/100);
  for(const p of calendarLayout(image.naturalWidth||image.width,image.naturalHeight||image.height,rotation)){
   if(p.type==='photo'){c.save();if(p.rotation===90){c.translate(p.x+p.w,p.y);c.rotate(Math.PI/2);c.drawImage(image,0,0,p.h,p.w);}else c.drawImage(image,p.x,p.y,p.w,p.h);c.restore();}
+  else if(p.type==='extend'){
+   if(p.rotation===90){c.save();c.translate(p.x+p.w,p.y);c.rotate(Math.PI/2);c.drawImage(image,(image.naturalWidth||image.width)-1,0,1,image.naturalHeight||image.height,0,0,p.h,p.w);c.restore();}
+   else c.drawImage(image,0,(image.naturalHeight||image.height)-1,image.naturalWidth||image.width,1,p.x,p.y,p.w,p.h);
+  }
   else if(p.type==='line'){c.strokeStyle=p.color;c.lineWidth=.8;c.beginPath();c.moveTo(p.x,p.y);c.lineTo(p.x+p.w,p.y+p.h);c.stroke();}
   else{c.fillStyle=p.color;c.font=`${p.font==='italic'?'italic ':''}${p.size}px ${p.font==='sans'?'Helvetica, Arial':'Times New Roman, Times, serif'}`;c.fillText(p.value,p.x,p.y);}
  }c.restore();

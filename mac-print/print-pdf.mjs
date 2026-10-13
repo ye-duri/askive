@@ -23,6 +23,11 @@ export function printPDF(jpeg,scale=94,rotation=0){
   if(p.type==='photo'){
    const matrix=p.rotation===90?`0 ${-p.h} ${p.w} 0 ${p.x} ${y}`:`${p.w} 0 0 ${p.h} ${p.x} ${y-p.h}`;
    lines.push(`q ${matrix} cm /Photo Do Q`);
+  }else if(p.type==='extend'){
+   // Stretch only the outermost background pixel; keep the full photo unchanged.
+   const fullHeight=p.sourceHeight*p.h,top=y+(p.sourceHeight-1)*p.h;
+   const matrix=p.rotation===90?`0 ${-fullHeight} ${p.w} 0 ${p.x} ${top}`:`${p.w} 0 0 ${fullHeight} ${p.x} ${y-p.h}`;
+   lines.push(`q ${p.x} ${y-p.h} ${p.w} ${p.h} re W n ${matrix} cm /Photo Do Q`);
   }else if(p.type==='line')lines.push(`${rgb(p.color)} RG 0.8 w ${p.x} ${y} m ${p.x+p.w} ${y-p.h} l S`);
   else{const font=p.font==='sans'?'F2':p.font==='italic'?'F3':'F1';lines.push(`BT /${font} ${p.size} Tf ${rgb(p.color)} rg 1 0 0 1 ${p.x} ${y} Tm (${p.value}) Tj ET`);}
  }
