@@ -5,41 +5,43 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "black",
-    "src": "frames/basic-4-grid-black-calendar-print.png",
+    "src": "frames/basic-4-grid-black-imagination-png-c7501c8515.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.04,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-black-calendar-thumb.webp",
-    "preview": "frames/basic-4-grid-black-screen-d6dc3a9c59.webp",
+    "thumbnail": "frames/basic-4-grid-black-imagination-thumbnail-c7501c8515.webp",
+    "preview": "frames/basic-4-grid-black-imagination-preview-c7501c8515.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-4-grid-white",
@@ -47,41 +49,43 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "white",
-    "src": "frames/basic-4-grid-white-calendar-print.png",
+    "src": "frames/basic-4-grid-white-imagination-png-b645c2aad9.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.04,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-white-calendar-thumb.webp",
-    "preview": "frames/basic-4-grid-white-screen-13f338c0a7.webp",
+    "thumbnail": "frames/basic-4-grid-white-imagination-thumbnail-b645c2aad9.webp",
+    "preview": "frames/basic-4-grid-white-imagination-preview-b645c2aad9.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-4-grid-cherry",
@@ -89,41 +93,43 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "cherry",
-    "src": "frames/basic-4-grid-cherry-calendar-print.png",
+    "src": "frames/basic-4-grid-cherry-imagination-png-e93b36c479.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.04,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-cherry-calendar-thumb.webp",
-    "preview": "frames/basic-4-grid-cherry-screen-ce2e9b282f.webp",
+    "thumbnail": "frames/basic-4-grid-cherry-imagination-thumbnail-e93b36c479.webp",
+    "preview": "frames/basic-4-grid-cherry-imagination-preview-e93b36c479.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-4-grid-pink",
@@ -131,41 +137,43 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "pink",
-    "src": "frames/basic-4-grid-pink-calendar-print.png",
+    "src": "frames/basic-4-grid-pink-imagination-png-561b2ba55e.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.04,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-pink-calendar-thumb.webp",
-    "preview": "frames/basic-4-grid-pink-screen-c71247be19.webp",
+    "thumbnail": "frames/basic-4-grid-pink-imagination-thumbnail-561b2ba55e.webp",
+    "preview": "frames/basic-4-grid-pink-imagination-preview-561b2ba55e.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-4-grid-beige",
@@ -173,41 +181,43 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "beige",
-    "src": "frames/basic-4-grid-beige-calendar-print.png",
+    "src": "frames/basic-4-grid-beige-imagination-png-c45506c98c.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.04,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-beige-calendar-thumb.webp",
-    "preview": "frames/basic-4-grid-beige-screen-e1686b2980.webp",
+    "thumbnail": "frames/basic-4-grid-beige-imagination-thumbnail-c45506c98c.webp",
+    "preview": "frames/basic-4-grid-beige-imagination-preview-c45506c98c.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-4-grid-khaki",
@@ -215,41 +225,43 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "khaki",
-    "src": "frames/basic-4-grid-khaki-calendar-print.png",
+    "src": "frames/basic-4-grid-khaki-imagination-png-7d1b3e210b.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.04,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-khaki-calendar-thumb.webp",
-    "preview": "frames/basic-4-grid-khaki-screen-ceaeefdbbd.webp",
+    "thumbnail": "frames/basic-4-grid-khaki-imagination-thumbnail-7d1b3e210b.webp",
+    "preview": "frames/basic-4-grid-khaki-imagination-preview-7d1b3e210b.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-4-grid-lime",
@@ -257,41 +269,43 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "lime",
-    "src": "frames/basic-4-grid-lime-calendar-print.png",
+    "src": "frames/basic-4-grid-lime-imagination-png-bfce752bdf.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.04,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-lime-calendar-thumb.webp",
-    "preview": "frames/basic-4-grid-lime-screen-7305ce9325.webp",
+    "thumbnail": "frames/basic-4-grid-lime-imagination-thumbnail-bfce752bdf.webp",
+    "preview": "frames/basic-4-grid-lime-imagination-preview-bfce752bdf.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-4-grid-sora",
@@ -299,41 +313,43 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "sora",
-    "src": "frames/basic-4-grid-sora-calendar-print.png",
+    "src": "frames/basic-4-grid-sora-imagination-png-7145f19509.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.04,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-sora-calendar-thumb.webp",
-    "preview": "frames/basic-4-grid-sora-screen-a353fddf97.webp",
+    "thumbnail": "frames/basic-4-grid-sora-imagination-thumbnail-7145f19509.webp",
+    "preview": "frames/basic-4-grid-sora-imagination-preview-7145f19509.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-4-grid-dusty",
@@ -341,41 +357,43 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "dusty",
-    "src": "frames/basic-4-grid-dusty-calendar-print.png",
+    "src": "frames/basic-4-grid-dusty-imagination-png-3ae4ca674c.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.06000937646507267,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.04,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ],
       [
-        0.51,
-        0.44960150023441164,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4242850445382091,
+        0.43333333333333335,
+        0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-dusty-calendar-thumb.webp",
-    "preview": "frames/basic-4-grid-dusty-screen-f929e87f93.webp",
+    "thumbnail": "frames/basic-4-grid-dusty-imagination-thumbnail-3ae4ca674c.webp",
+    "preview": "frames/basic-4-grid-dusty-imagination-preview-3ae4ca674c.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-4-offset-black",
@@ -383,41 +401,43 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "black",
-    "src": "frames/basic-4-offset-black-calendar-print.png",
+    "src": "frames/basic-4-offset-black-imagination-png-d58b746125.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.09751523675574308,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.04,
-        0.4120956399437412,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4055321143928739,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.487107360525082,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4430379746835443,
+        0.43333333333333335,
+        0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-black-calendar-thumb.webp",
-    "preview": "frames/basic-4-offset-black-screen-adce09f8cd.webp",
+    "thumbnail": "frames/basic-4-offset-black-imagination-thumbnail-d58b746125.webp",
+    "preview": "frames/basic-4-offset-black-imagination-preview-d58b746125.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-4-offset-white",
@@ -425,41 +445,43 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "white",
-    "src": "frames/basic-4-offset-white-calendar-print.png",
+    "src": "frames/basic-4-offset-white-imagination-png-31b16281c1.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.09751523675574308,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.04,
-        0.4120956399437412,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4055321143928739,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.487107360525082,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4430379746835443,
+        0.43333333333333335,
+        0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-white-calendar-thumb.webp",
-    "preview": "frames/basic-4-offset-white-screen-13628a8a69.webp",
+    "thumbnail": "frames/basic-4-offset-white-imagination-thumbnail-31b16281c1.webp",
+    "preview": "frames/basic-4-offset-white-imagination-preview-31b16281c1.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-4-offset-cherry",
@@ -467,41 +489,43 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "cherry",
-    "src": "frames/basic-4-offset-cherry-calendar-print.png",
+    "src": "frames/basic-4-offset-cherry-imagination-png-801b68af3e.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.09751523675574308,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.04,
-        0.4120956399437412,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4055321143928739,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.487107360525082,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4430379746835443,
+        0.43333333333333335,
+        0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-cherry-calendar-thumb.webp",
-    "preview": "frames/basic-4-offset-cherry-screen-619c9ec976.webp",
+    "thumbnail": "frames/basic-4-offset-cherry-imagination-thumbnail-801b68af3e.webp",
+    "preview": "frames/basic-4-offset-cherry-imagination-preview-801b68af3e.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-4-offset-pink",
@@ -509,41 +533,43 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "pink",
-    "src": "frames/basic-4-offset-pink-calendar-print.png",
+    "src": "frames/basic-4-offset-pink-imagination-png-f8bdb1fd19.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.09751523675574308,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.04,
-        0.4120956399437412,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4055321143928739,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.487107360525082,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4430379746835443,
+        0.43333333333333335,
+        0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-pink-calendar-thumb.webp",
-    "preview": "frames/basic-4-offset-pink-screen-23ac24ed33.webp",
+    "thumbnail": "frames/basic-4-offset-pink-imagination-thumbnail-f8bdb1fd19.webp",
+    "preview": "frames/basic-4-offset-pink-imagination-preview-f8bdb1fd19.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-4-offset-beige",
@@ -551,41 +577,43 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "beige",
-    "src": "frames/basic-4-offset-beige-calendar-print.png",
+    "src": "frames/basic-4-offset-beige-imagination-png-a1143fead8.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.09751523675574308,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.04,
-        0.4120956399437412,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4055321143928739,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.487107360525082,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4430379746835443,
+        0.43333333333333335,
+        0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-beige-calendar-thumb.webp",
-    "preview": "frames/basic-4-offset-beige-screen-8888220e1c.webp",
+    "thumbnail": "frames/basic-4-offset-beige-imagination-thumbnail-a1143fead8.webp",
+    "preview": "frames/basic-4-offset-beige-imagination-preview-a1143fead8.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-4-offset-khaki",
@@ -593,41 +621,43 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "khaki",
-    "src": "frames/basic-4-offset-khaki-calendar-print.png",
+    "src": "frames/basic-4-offset-khaki-imagination-png-1fccc3a461.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.09751523675574308,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.04,
-        0.4120956399437412,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4055321143928739,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.487107360525082,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4430379746835443,
+        0.43333333333333335,
+        0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-khaki-calendar-thumb.webp",
-    "preview": "frames/basic-4-offset-khaki-screen-2843672373.webp",
+    "thumbnail": "frames/basic-4-offset-khaki-imagination-thumbnail-1fccc3a461.webp",
+    "preview": "frames/basic-4-offset-khaki-imagination-preview-1fccc3a461.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-4-offset-lime",
@@ -635,41 +665,43 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "lime",
-    "src": "frames/basic-4-offset-lime-calendar-print.png",
+    "src": "frames/basic-4-offset-lime-imagination-png-289cf98d37.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.09751523675574308,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.04,
-        0.4120956399437412,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4055321143928739,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.487107360525082,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4430379746835443,
+        0.43333333333333335,
+        0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-lime-calendar-thumb.webp",
-    "preview": "frames/basic-4-offset-lime-screen-7c71c54618.webp",
+    "thumbnail": "frames/basic-4-offset-lime-imagination-thumbnail-289cf98d37.webp",
+    "preview": "frames/basic-4-offset-lime-imagination-preview-289cf98d37.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-4-offset-sora",
@@ -677,41 +709,43 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "sora",
-    "src": "frames/basic-4-offset-sora-calendar-print.png",
+    "src": "frames/basic-4-offset-sora-imagination-png-0cde90ca25.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.09751523675574308,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.04,
-        0.4120956399437412,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4055321143928739,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.487107360525082,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4430379746835443,
+        0.43333333333333335,
+        0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-sora-calendar-thumb.webp",
-    "preview": "frames/basic-4-offset-sora-screen-3fd994fbe3.webp",
+    "thumbnail": "frames/basic-4-offset-sora-imagination-thumbnail-0cde90ca25.webp",
+    "preview": "frames/basic-4-offset-sora-imagination-preview-0cde90ca25.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-4-offset-dusty",
@@ -719,41 +753,43 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "dusty",
-    "src": "frames/basic-4-offset-dusty-calendar-print.png",
+    "src": "frames/basic-4-offset-dusty-imagination-png-20b966170f.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.37834036568213786
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.09751523675574308,
-        0.45,
-        0.37834036568213786
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.04,
-        0.4120956399437412,
-        0.45,
-        0.37787154242850446
+        0.05583333333333333,
+        0.4055321143928739,
+        0.43333333333333335,
+        0.34458509142053445
       ],
       [
-        0.51,
-        0.487107360525082,
-        0.45,
-        0.37787154242850446
+        0.5158333333333334,
+        0.4430379746835443,
+        0.43333333333333335,
+        0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-dusty-calendar-thumb.webp",
-    "preview": "frames/basic-4-offset-dusty-screen-0ac97cd8df.webp",
+    "thumbnail": "frames/basic-4-offset-dusty-imagination-thumbnail-20b966170f.webp",
+    "preview": "frames/basic-4-offset-dusty-imagination-preview-20b966170f.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-grid-black",
@@ -761,53 +797,55 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "black",
-    "src": "frames/basic-6-grid-black-calendar-print.png",
+    "src": "frames/basic-6-grid-black-imagination-png-bbfee3596f.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-black-calendar-thumb.webp",
-    "preview": "frames/basic-6-grid-black-screen-71b31bda85.webp",
+    "thumbnail": "frames/basic-6-grid-black-imagination-thumbnail-bbfee3596f.webp",
+    "preview": "frames/basic-6-grid-black-imagination-preview-bbfee3596f.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-grid-white",
@@ -815,53 +853,55 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "white",
-    "src": "frames/basic-6-grid-white-calendar-print.png",
+    "src": "frames/basic-6-grid-white-imagination-png-ed2d2e0cc2.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-white-calendar-thumb.webp",
-    "preview": "frames/basic-6-grid-white-screen-1618a9f9f9.webp",
+    "thumbnail": "frames/basic-6-grid-white-imagination-thumbnail-ed2d2e0cc2.webp",
+    "preview": "frames/basic-6-grid-white-imagination-preview-ed2d2e0cc2.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-grid-cherry",
@@ -869,53 +909,55 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "cherry",
-    "src": "frames/basic-6-grid-cherry-calendar-print.png",
+    "src": "frames/basic-6-grid-cherry-imagination-png-0dd6b4658a.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-cherry-calendar-thumb.webp",
-    "preview": "frames/basic-6-grid-cherry-screen-f91062bcba.webp",
+    "thumbnail": "frames/basic-6-grid-cherry-imagination-thumbnail-0dd6b4658a.webp",
+    "preview": "frames/basic-6-grid-cherry-imagination-preview-0dd6b4658a.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-grid-pink",
@@ -923,53 +965,55 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "pink",
-    "src": "frames/basic-6-grid-pink-calendar-print.png",
+    "src": "frames/basic-6-grid-pink-imagination-png-b380d6aaf8.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-pink-calendar-thumb.webp",
-    "preview": "frames/basic-6-grid-pink-screen-ee1c41985e.webp",
+    "thumbnail": "frames/basic-6-grid-pink-imagination-thumbnail-b380d6aaf8.webp",
+    "preview": "frames/basic-6-grid-pink-imagination-preview-b380d6aaf8.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-grid-beige",
@@ -977,53 +1021,55 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "beige",
-    "src": "frames/basic-6-grid-beige-calendar-print.png",
+    "src": "frames/basic-6-grid-beige-imagination-png-c4739df7de.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-beige-calendar-thumb.webp",
-    "preview": "frames/basic-6-grid-beige-screen-7574dd1883.webp",
+    "thumbnail": "frames/basic-6-grid-beige-imagination-thumbnail-c4739df7de.webp",
+    "preview": "frames/basic-6-grid-beige-imagination-preview-c4739df7de.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-grid-khaki",
@@ -1031,53 +1077,55 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "khaki",
-    "src": "frames/basic-6-grid-khaki-calendar-print.png",
+    "src": "frames/basic-6-grid-khaki-imagination-png-dfaca8019e.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-khaki-calendar-thumb.webp",
-    "preview": "frames/basic-6-grid-khaki-screen-c91bb23a82.webp",
+    "thumbnail": "frames/basic-6-grid-khaki-imagination-thumbnail-dfaca8019e.webp",
+    "preview": "frames/basic-6-grid-khaki-imagination-preview-dfaca8019e.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-grid-lime",
@@ -1085,53 +1133,55 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "lime",
-    "src": "frames/basic-6-grid-lime-calendar-print.png",
+    "src": "frames/basic-6-grid-lime-imagination-png-697c43339d.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-lime-calendar-thumb.webp",
-    "preview": "frames/basic-6-grid-lime-screen-d2b88ccf9c.webp",
+    "thumbnail": "frames/basic-6-grid-lime-imagination-thumbnail-697c43339d.webp",
+    "preview": "frames/basic-6-grid-lime-imagination-preview-697c43339d.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-grid-sora",
@@ -1139,53 +1189,55 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "sora",
-    "src": "frames/basic-6-grid-sora-calendar-print.png",
+    "src": "frames/basic-6-grid-sora-imagination-png-9b035337da.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-sora-calendar-thumb.webp",
-    "preview": "frames/basic-6-grid-sora-screen-7a58ca44e9.webp",
+    "thumbnail": "frames/basic-6-grid-sora-imagination-thumbnail-9b035337da.webp",
+    "preview": "frames/basic-6-grid-sora-imagination-preview-9b035337da.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-grid-dusty",
@@ -1193,53 +1245,55 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "dusty",
-    "src": "frames/basic-6-grid-dusty-calendar-print.png",
+    "src": "frames/basic-6-grid-dusty-imagination-png-43ce69f6cc.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.052508204406938576,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.31833098921706515,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.2981715893108298,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.04,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ],
       [
-        0.51,
-        0.5841537740271917,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5503984997655884,
+        0.43333333333333335,
+        0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-dusty-calendar-thumb.webp",
-    "preview": "frames/basic-6-grid-dusty-screen-a72b6bb4fe.webp",
+    "thumbnail": "frames/basic-6-grid-dusty-imagination-thumbnail-43ce69f6cc.webp",
+    "preview": "frames/basic-6-grid-dusty-imagination-preview-43ce69f6cc.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-offset-black",
@@ -1247,53 +1301,55 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "black",
-    "src": "frames/basic-6-offset-black-calendar-print.png",
+    "src": "frames/basic-6-offset-black-imagination-png-ac5d191174.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.08251289263947492,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.2883263009845288,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.28551336146272854,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.3483356774496015,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.323019221753399,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.5541490857946554,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5255508673230193,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.614158462259728,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5630567276136896,
+        0.43333333333333335,
+        0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-black-calendar-thumb.webp",
-    "preview": "frames/basic-6-offset-black-screen-a906f24adb.webp",
+    "thumbnail": "frames/basic-6-offset-black-imagination-thumbnail-ac5d191174.webp",
+    "preview": "frames/basic-6-offset-black-imagination-preview-ac5d191174.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-offset-white",
@@ -1301,53 +1357,55 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "white",
-    "src": "frames/basic-6-offset-white-calendar-print.png",
+    "src": "frames/basic-6-offset-white-imagination-png-0cd2c8387b.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.08251289263947492,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.2883263009845288,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.28551336146272854,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.3483356774496015,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.323019221753399,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.5541490857946554,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5255508673230193,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.614158462259728,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5630567276136896,
+        0.43333333333333335,
+        0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-white-calendar-thumb.webp",
-    "preview": "frames/basic-6-offset-white-screen-b8c7491b32.webp",
+    "thumbnail": "frames/basic-6-offset-white-imagination-thumbnail-0cd2c8387b.webp",
+    "preview": "frames/basic-6-offset-white-imagination-preview-0cd2c8387b.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-offset-cherry",
@@ -1355,53 +1413,55 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "cherry",
-    "src": "frames/basic-6-offset-cherry-calendar-print.png",
+    "src": "frames/basic-6-offset-cherry-imagination-png-87b83d08cf.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.08251289263947492,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.2883263009845288,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.28551336146272854,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.3483356774496015,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.323019221753399,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.5541490857946554,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5255508673230193,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.614158462259728,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5630567276136896,
+        0.43333333333333335,
+        0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-cherry-calendar-thumb.webp",
-    "preview": "frames/basic-6-offset-cherry-screen-0a71501f2d.webp",
+    "thumbnail": "frames/basic-6-offset-cherry-imagination-thumbnail-87b83d08cf.webp",
+    "preview": "frames/basic-6-offset-cherry-imagination-preview-87b83d08cf.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-offset-pink",
@@ -1409,53 +1469,55 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "pink",
-    "src": "frames/basic-6-offset-pink-calendar-print.png",
+    "src": "frames/basic-6-offset-pink-imagination-png-d94e683212.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.08251289263947492,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.2883263009845288,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.28551336146272854,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.3483356774496015,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.323019221753399,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.5541490857946554,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5255508673230193,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.614158462259728,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5630567276136896,
+        0.43333333333333335,
+        0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-pink-calendar-thumb.webp",
-    "preview": "frames/basic-6-offset-pink-screen-0755e8fbe3.webp",
+    "thumbnail": "frames/basic-6-offset-pink-imagination-thumbnail-d94e683212.webp",
+    "preview": "frames/basic-6-offset-pink-imagination-preview-d94e683212.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-offset-beige",
@@ -1463,53 +1525,55 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "beige",
-    "src": "frames/basic-6-offset-beige-calendar-print.png",
+    "src": "frames/basic-6-offset-beige-imagination-png-bb59f8bec9.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.08251289263947492,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.2883263009845288,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.28551336146272854,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.3483356774496015,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.323019221753399,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.5541490857946554,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5255508673230193,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.614158462259728,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5630567276136896,
+        0.43333333333333335,
+        0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-beige-calendar-thumb.webp",
-    "preview": "frames/basic-6-offset-beige-screen-f43c1e602b.webp",
+    "thumbnail": "frames/basic-6-offset-beige-imagination-thumbnail-bb59f8bec9.webp",
+    "preview": "frames/basic-6-offset-beige-imagination-preview-bb59f8bec9.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-offset-khaki",
@@ -1517,53 +1581,55 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "khaki",
-    "src": "frames/basic-6-offset-khaki-calendar-print.png",
+    "src": "frames/basic-6-offset-khaki-imagination-png-1c02596ee4.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.08251289263947492,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.2883263009845288,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.28551336146272854,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.3483356774496015,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.323019221753399,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.5541490857946554,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5255508673230193,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.614158462259728,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5630567276136896,
+        0.43333333333333335,
+        0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-khaki-calendar-thumb.webp",
-    "preview": "frames/basic-6-offset-khaki-screen-7543de9fe6.webp",
+    "thumbnail": "frames/basic-6-offset-khaki-imagination-thumbnail-1c02596ee4.webp",
+    "preview": "frames/basic-6-offset-khaki-imagination-preview-1c02596ee4.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-offset-lime",
@@ -1571,53 +1637,55 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "lime",
-    "src": "frames/basic-6-offset-lime-calendar-print.png",
+    "src": "frames/basic-6-offset-lime-imagination-png-c224183603.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.08251289263947492,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.2883263009845288,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.28551336146272854,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.3483356774496015,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.323019221753399,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.5541490857946554,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5255508673230193,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.614158462259728,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5630567276136896,
+        0.43333333333333335,
+        0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-lime-calendar-thumb.webp",
-    "preview": "frames/basic-6-offset-lime-screen-525bd51247.webp",
+    "thumbnail": "frames/basic-6-offset-lime-imagination-thumbnail-c224183603.webp",
+    "preview": "frames/basic-6-offset-lime-imagination-preview-c224183603.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-offset-sora",
@@ -1625,53 +1693,55 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "sora",
-    "src": "frames/basic-6-offset-sora-calendar-print.png",
+    "src": "frames/basic-6-offset-sora-imagination-png-79658fc006.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.08251289263947492,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.2883263009845288,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.28551336146272854,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.3483356774496015,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.323019221753399,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.5541490857946554,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5255508673230193,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.614158462259728,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5630567276136896,
+        0.43333333333333335,
+        0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-sora-calendar-thumb.webp",
-    "preview": "frames/basic-6-offset-sora-screen-1cbc4de957.webp",
+    "thumbnail": "frames/basic-6-offset-sora-imagination-thumbnail-79658fc006.webp",
+    "preview": "frames/basic-6-offset-sora-imagination-preview-79658fc006.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "basic-6-offset-dusty",
@@ -1679,53 +1749,55 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "dusty",
-    "src": "frames/basic-6-offset-dusty-calendar-print.png",
+    "src": "frames/basic-6-offset-dusty-imagination-png-f34c5c5eb4.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.04,
-        0.02250351617440225,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.04594467885607126,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.08251289263947492,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.08345053914674168,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.2883263009845288,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.28551336146272854,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.3483356774496015,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.323019221753399,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.04,
-        0.5541490857946554,
-        0.45,
-        0.2545710267229255
+        0.05583333333333333,
+        0.5255508673230193,
+        0.43333333333333335,
+        0.22456633849038912
       ],
       [
-        0.51,
-        0.614158462259728,
-        0.45,
-        0.2545710267229255
+        0.5158333333333334,
+        0.5630567276136896,
+        0.43333333333333335,
+        0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-dusty-calendar-thumb.webp",
-    "preview": "frames/basic-6-offset-dusty-screen-c396c13b82.webp",
+    "thumbnail": "frames/basic-6-offset-dusty-imagination-thumbnail-f34c5c5eb4.webp",
+    "preview": "frames/basic-6-offset-dusty-imagination-preview-f34c5c5eb4.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1"
+    "layoutVersion": "imagination-hall-v1",
+    "brand": "Imagination Hall",
+    "eventDate": "2026.10.17"
   },
   {
     "id": "sheep-farewell-four",

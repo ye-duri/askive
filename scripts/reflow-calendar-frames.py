@@ -2,13 +2,13 @@ from pathlib import Path
 from PIL import Image,ImageOps,ImageDraw
 import json,hashlib,shutil
 r=Path(__file__).resolve().parents[1];frames=json.loads((r/'dist/frames.json').read_text());backup=Path('/private/tmp/askive-before-reflow');backup.mkdir(exist_ok=True)
-if all(f.get('layoutVersion')=='calendar-tall-v1' for f in frames):
+if all(f.get('layoutVersion') in ['calendar-tall-v1','imagination-hall-v1'] for f in frames):
  print('All frames already migrated; no changes.');raise SystemExit(0)
 (backup/'frames.json').write_text(json.dumps(frames,ensure_ascii=False,indent=2))
 report=[];thumbs=[]
 for f in frames:
  
- if f.get('layoutVersion')=='calendar-tall-v1':continue
+ if f.get('layoutVersion') in ['calendar-tall-v1','imagination-hall-v1']:continue
  src=r/'dist'/f['src'];im=Image.open(src).convert('RGBA');ow,oh=im.size;wide=ow>oh
  # Work along long axis; only open photo-center bands gain height.
  work=im.transpose(Image.Transpose.TRANSPOSE) if wide else im

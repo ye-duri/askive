@@ -1,6 +1,6 @@
 import {calendarLayout} from './public/calendar-layout.mjs';
 // Fix physical placement before handing the job to macOS's print pipeline.
-export function printPDF(jpeg,scale=100,rotation=0,color='#794D32'){
+export function printPDF(jpeg,scale=100,rotation=0,color='#000000'){
  if(!Number.isInteger(scale)||scale<85||scale>100)throw Error('Invalid print scale');
  if(![0,90].includes(rotation))throw Error('Invalid print rotation');
  let width,height,components;
@@ -24,7 +24,7 @@ export function printPDF(jpeg,scale=100,rotation=0,color='#794D32'){
    const matrix=p.rotation===90?`0 ${-p.h} ${p.w} 0 ${p.x} ${y}`:`${p.w} 0 0 ${p.h} ${p.x} ${y-p.h}`;
    lines.push(`q ${matrix} cm /Photo Do Q`);
   }else if(p.type==='brand'){const k=p.w/1220;for(const [rx,ry,rw,a] of p.runs){const color=[1,3,5].map(i=>parseInt(p.color.slice(i,i+2),16)).map(v=>(255+(v-255)*a/255)/255).join(' ');lines.push(`${color} rg ${p.x+rx*k} ${y-(ry+1)*k} ${rw*k} ${k} re f`);}}else if(p.type==='line')lines.push(`${rgb(p.color)} RG 0.8 w ${p.x} ${y} m ${p.x+p.w} ${y-p.h} l S`);
-  else{const font=p.font==='sans'?'F2':(p.font==='italic'||p.font==='brand')?'F3':'F1';lines.push(`BT /${font} ${p.size} Tf ${rgb(p.color)} rg 1 0 0 1 ${p.x} ${y} Tm (${p.value}) Tj ET`);}
+  else{lines.push(`${rgb(p.color)} rg`);for(const [op,...v] of p.paths){if(op==='Z'){lines.push('h');continue;}const coords=v.map((n,i)=>i%2?1776-n:n);lines.push(`${coords.join(' ')} ${op==='M'?'m':op==='L'?'l':'c'}`);}lines.push('f');}
  }
  lines.push('Q');const content=Buffer.from(lines.join('\n'));
  const stream=(header,data)=>Buffer.concat([Buffer.from(`<< ${header} /Length ${data.length} >>\nstream\n`),data,Buffer.from('\nendstream')]);
