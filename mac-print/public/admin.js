@@ -24,8 +24,8 @@ $('printer').onchange=()=>{selected=$('printer').value;localStorage.setItem('yon
 $('cloud-connect').onclick=async()=>{const button=$('cloud-connect');button.disabled=true;try{await api('/admin/cloud',{method:'POST',body:JSON.stringify({code:$('cloud-code').value.trim()})});$('cloud-code').value='';await refresh();}catch(e){$('cloud-status').textContent=e.message;}finally{button.disabled=false;}};
 
 function calendarPalette(value,onChange){
- const group=document.createElement('fieldset');group.className='calendar-palette';
- const legend=document.createElement('legend');legend.textContent='달력 색상';group.append(legend);
+ const group=document.createElement('div');group.className='calendar-palette';group.setAttribute('role','group');group.setAttribute('aria-label','달력 색상');
+ const labelText=document.createElement('span');labelText.className='calendar-label';labelText.textContent='달력 색상';group.append(labelText);
  const dropdown=document.createElement('details');dropdown.className='calendar-dropdown';group.append(dropdown);
  const summary=document.createElement('summary');summary.setAttribute('aria-label','달력 색상 선택');
  const current=document.createElement('span');current.className='color-swatch';current.setAttribute('aria-hidden','true');

@@ -34,8 +34,8 @@ $('refresh').onclick=()=>{lastKey='';void refresh();};
 $('helper-reconnect').onclick=()=>void connectHelper();$('printer').onchange=()=>{localStorage.setItem('yonsei-relay-printer',$('printer').value);localStorage.setItem('yonsei-preferred-device',$('printer').value.split('::')[0]);lastKey='';void refresh();};$('scale').onchange=()=>{const value=Number($('scale').value);if(Number.isInteger(value)&&value>=85&&value<=100){for(const option of settings.values())option.scale=value;lastKey='';void refresh();}};
 
 function calendarPalette(value,onChange){
- const group=document.createElement('fieldset');group.className='calendar-palette';
- const legend=document.createElement('legend');legend.textContent='달력 색상';group.append(legend);
+ const group=document.createElement('div');group.className='calendar-palette';group.setAttribute('role','group');group.setAttribute('aria-label','달력 색상');
+ const labelText=document.createElement('span');labelText.className='calendar-label';labelText.textContent='달력 색상';group.append(labelText);
  const dropdown=document.createElement('details');dropdown.className='calendar-dropdown';group.append(dropdown);
  const summary=document.createElement('summary');summary.setAttribute('aria-label','달력 색상 선택');
  const current=document.createElement('span');current.className='color-swatch';current.setAttribute('aria-hidden','true');
