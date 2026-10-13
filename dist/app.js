@@ -414,12 +414,12 @@ $('finish-selection').onclick=async()=>{
     const frame=selected;
     const original=frame.originalImage?await withTimeout(frame.originalImage(),12000,'프레임 원본을 불러오지 못했어요. 완성하기를 다시 눌러 주세요.'):frame.img;
     if(revision!==sessionRun)return;
-    let canvas=document.createElement('canvas');composeSelection(canvas,{...frame,img:original});canvas=fitPostcard(canvas);
+    const canvas=document.createElement('canvas');composeSelection(canvas,{...frame,img:original});
     const nextBlob=await withTimeout(toBlob(canvas),15000,'사진 처리 시간이 초과됐어요. 완성하기를 다시 눌러 주세요.');if(revision!==sessionRun)return;
     const nextURL=URL.createObjectURL(nextBlob);$('result').src=nextURL;
     try{await withTimeout($('result').decode(),10000,'완성 사진을 열지 못했어요. 다시 시도해 주세요.');}catch(e){URL.revokeObjectURL(nextURL);throw e;}
     if(revision!==sessionRun){URL.revokeObjectURL(nextURL);return;}if(resultURL)URL.revokeObjectURL(resultURL);blob=nextBlob;resultURL=nextURL;selecting=false;
-    $('size-label').textContent=`${canvas.width} × ${canvas.height} · SELPHY P · 100 × 148mm`;
+    $('size-label').textContent=`${canvas.width} × ${canvas.height} · 프레임 원본 비율`;
     $('viewfinder').style.aspectRatio=`${canvas.width}/${canvas.height}`;$('viewfinder').style.setProperty('--preview-ratio',String(canvas.width/canvas.height));
     $('result-admin-tools').open=false;$('result').hidden=false;$('capture-actions').hidden=true;$('result-actions').hidden=false;
     try{await withTimeout(updatePrint(),10000,'인쇄용 사진 준비 시간 초과');}catch{completionNotice='인쇄용 사진 준비에 실패했어요. 사진 저장을 이용해 주세요.';}
@@ -554,22 +554,7 @@ function removeCustomFrame(id){
   if(selected?.id===id){selected=null;const fallback=matchingFrames()[0];if(fallback)void chooseFrame(fallback.id).catch(()=>status('프레임을 다시 선택해 주세요.',true));}
   renderFrames();
 }
-// P paper: 100 × 177 mm before tearing; design for 100 × 148 mm AFTER tearing.
-// Exact 100:148 ratio, 304.8 dpi. Never stretch faces or crop the frame.
-function fitPostcard(source){
- const result=document.createElement('canvas');
- const landscape=source.width>source.height;
- result.width=landscape?1776:1200;result.height=landscape?1200:1776;
- const c=result.getContext('2d');
- const scale=Math.min(result.width/source.width,result.height/source.height);
- const w=Math.round(source.width*scale),h=Math.round(source.height*scale);
- const x=Math.floor((result.width-w)/2),y=Math.floor((result.height-h)/2);
- // Extend only the outermost artwork pixels into the extra paper area.
- // The image, photo apertures and logo remain proportionally identical.
- if(y){c.drawImage(source,0,0,source.width,1,0,0,result.width,y);c.drawImage(source,0,source.height-1,source.width,1,0,y+h,result.width,result.height-y-h);}
- if(x){c.drawImage(source,0,0,1,source.height,0,0,x,result.height);c.drawImage(source,source.width-1,0,1,source.height,x+w,0,result.width-x-w,result.height);}
- c.drawImage(source,x,y,w,h);return result;
-}
+// Preserve the frame aspect ratio. Physical paper layout is composed by the print manager.
 // Prepare the JPEG before clicking so iPad keeps the user gesture for file sharing.
 let printReady=false,printRevision=0,printShareFile=null,nativePrintBusy=false;
 async function updatePrint(){
@@ -579,7 +564,7 @@ async function updatePrint(){
  canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;
  const c=canvas.getContext('2d');c.fillStyle='#fff';c.fillRect(0,0,canvas.width,canvas.height);c.drawImage(img,0,0);
  const jpg=await toBlob(canvas,'image/jpeg',.96);if(revision!==printRevision)return;
- printShareFile=new File([jpg],'yonsei-studio-P-100x148mm.jpg',{type:'image/jpeg'});
+ printShareFile=new File([jpg],'yonsei-studio-frame.jpg',{type:'image/jpeg'});
  printReady=true;$('print-open').disabled=false;
 }
 $('result-qr-add').onclick=async()=>{
