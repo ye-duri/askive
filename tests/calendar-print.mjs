@@ -1,0 +1,4 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import {calendarLayout} from '../mac-print/public/calendar-layout.mjs';
+assert.equal(fs.readFileSync('dist/print/calendar-layout.mjs','utf8'),fs.readFileSync('mac-print/public/calendar-layout.mjs','utf8'));
+for(const [w,h] of [[1200,1776],[1776,1200]])for(const rotation of [0,90]){const layout=calendarLayout(w,h,rotation);const photos=layout.filter(p=>p.type==='photo');assert.equal(photos.length,4);for(const p of photos){assert.ok(p.x>=0&&p.y>=0&&p.x+p.w<=1200&&p.y+p.h<=1776);assert.ok(Math.abs(p.w/p.h-(rotation===90?h/w:w/h))<.0001);}const dates=layout.filter(p=>p.type==='text'&&p.size===28);assert.equal(dates.length,31);assert.equal(dates[0].x,44+4*73+29);assert.equal(dates[30].x,44+6*73+20);assert.equal(dates[30].y,1400+4*60+38);}
+console.log('PASS: shared layout, 4 undistorted images, portrait/landscape/rotation bounds, October 2026 Thu 1 through Sat 31');
