@@ -2,3 +2,5 @@
 
 #scale{width:80px;margin:0 6px}
 .rotated-preview{display:block;width:100%;height:290px;object-fit:contain;background:#e4e8ef;border-radius:10px}.rotated-preview[hidden],.job img[hidden]{display:none}.rotate{display:block;margin-top:14px}
+
+.calendar-palette{border:0;padding:0;margin:8px 0;min-width:0;flex-basis:100%}.calendar-palette legend{font-size:14px;font-weight:700;margin-bottom:10px;color:#49355b}.calendar-colors{display:flex;flex-wrap:wrap;gap:8px}.calendar-color{display:flex;align-items:center;gap:8px;min-height:48px;padding:7px 11px;background:#fff;color:#49355b;border:2px solid #e4dde8;border-radius:12px;font-size:13px;cursor:pointer}.calendar-color:hover{background:#f8f5fb;border-color:#b7a4c8}.calendar-color[aria-pressed=true]{border-color:#49355b;background:#f1ebf7;font-weight:700}.calendar-color:focus-visible{outline:3px solid #9678b4;outline-offset:3px}.color-swatch{display:grid;place-items:center;width:28px;height:28px;flex:none;border-radius:50%;color:transparent;font-size:18px;font-weight:bold;box-shadow:inset 0 0 0 1px #0001}.calendar-color[aria-pressed=true] .color-swatch{color:#fff}
