@@ -893,3 +893,25 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline-color:#8963ae}
 
 /* Frame samples must retain their native portrait / landscape proportions. */
 .edition-sample img{aspect-ratio:auto;object-fit:contain}
+
+/* Bound tall frame previews to the actual iPad viewport, including WebView chrome. */
+@media(min-width:800px){
+ body.is-special-frames.is-setup .topbar{height:64px}
+ body.is-special-frames.is-setup main{padding:10px 16px 8px;max-width:none;width:100%}
+ .is-special-frames.is-setup .controls{height:calc(100dvh - 106px);min-height:0!important;max-height:none;grid-template-columns:clamp(230px,26vw,340px) minmax(0,1fr)!important;grid-template-rows:36px minmax(0,1fr) 72px auto;gap:10px 18px!important;padding:14px!important;overflow:hidden}
+ .is-special-frames.is-setup .setup-left{grid-row:1/4;align-self:stretch;height:100%;min-height:0;gap:10px!important;padding:0!important}
+ .is-special-frames.is-setup #edition-back{flex:none;margin:0;min-height:42px}
+ .is-special-frames.is-setup #selected-frame-preview{display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:8px;min-height:0;overflow:hidden}
+ .is-special-frames.is-setup #selected-frame-preview h3,.is-special-frames.is-setup #selected-frame-name{margin:0;line-height:1.4}
+ .is-special-frames.is-setup #selected-frame-preview .selected-frame-mat{position:relative;width:100%;height:100%;min-height:0;max-height:none;padding:10px;overflow:hidden}
+ .is-special-frames.is-setup #selected-frame-image{position:absolute;inset:10px;width:calc(100% - 20px);height:calc(100% - 20px);max-width:none;max-height:none;object-fit:contain;background:transparent;box-shadow:none}
+ .is-special-frames.is-setup #setup-frame-heading{margin:0;min-width:0;align-self:center}
+ .is-special-frames.is-setup #frames{height:100%;min-height:0;max-height:none;overflow:auto;overscroll-behavior:contain;align-self:stretch;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:2px}
+ .is-special-frames.is-setup .frame-thumb{height:clamp(140px,25dvh,240px)!important;aspect-ratio:auto;object-fit:contain;margin-bottom:6px}
+ .is-special-frames.is-setup .frame-card span{font-size:12px;line-height:1.4;min-height:34px}
+ .is-special-frames.is-setup #setup-actions{height:72px;min-height:0;margin:0!important}
+ .is-special-frames.is-setup #setup-done{height:68px;min-height:0;margin:0;font-size:23px}
+ .is-special-frames.is-setup .privacy{min-height:0;margin:0;padding-top:6px}
+ .is-special-frames.is-setup footer{display:none}
+}
+@media(min-width:800px) and (max-width:1100px){.is-special-frames.is-setup #frames{grid-template-columns:repeat(3,minmax(0,1fr))}}
