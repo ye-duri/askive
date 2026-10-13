@@ -36,12 +36,20 @@ $('helper-reconnect').onclick=()=>void connectHelper();$('printer').onchange=()=
 function calendarPalette(value,onChange){
  const group=document.createElement('fieldset');group.className='calendar-palette';
  const legend=document.createElement('legend');legend.textContent='달력 색상';group.append(legend);
- const choices=document.createElement('div');choices.className='calendar-colors';group.append(choices);
+ const dropdown=document.createElement('details');dropdown.className='calendar-dropdown';group.append(dropdown);
+ const summary=document.createElement('summary');summary.setAttribute('aria-label','달력 색상 선택');
+ const current=document.createElement('span');current.className='color-swatch';current.setAttribute('aria-hidden','true');
+ const currentName=document.createElement('span');summary.append(current,currentName);dropdown.append(summary);
+ const choices=document.createElement('div');choices.className='calendar-colors';dropdown.append(choices);
  for(const [color,name] of [['#794D32','가을 갈색'],['#166B9A','파랑'],['#38664B','초록'],['#765383','보라'],['#A44F66','로즈'],['#000000','검정']]){
   const button=document.createElement('button');button.type='button';button.className='calendar-color';button.dataset.color=color;button.setAttribute('aria-label',name);button.setAttribute('aria-pressed',String(color===value));
   const swatch=document.createElement('span');swatch.className='color-swatch';swatch.style.backgroundColor=color;swatch.setAttribute('aria-hidden','true');swatch.textContent='✓';
   const label=document.createElement('span');label.textContent=name;button.append(swatch,label);
-  button.onclick=()=>{for(const item of choices.children)item.setAttribute('aria-pressed',String(item===button));onChange(color);};choices.append(button);
+  if(color===value){current.style.backgroundColor=color;currentName.textContent=name;}
+  button.onclick=()=>{for(const item of choices.children)item.setAttribute('aria-pressed',String(item===button));current.style.backgroundColor=color;currentName.textContent=name;dropdown.open=false;summary.focus();onChange(color);};choices.append(button);
  }
+ dropdown.onkeydown=event=>{if(event.key==='Escape'){dropdown.open=false;summary.focus();event.preventDefault();}};
+ dropdown.ontoggle=()=>{if(dropdown.open)for(const other of document.querySelectorAll('.calendar-dropdown[open]'))if(other!==dropdown)other.open=false;};
  return group;
 }
+document.addEventListener('click',event=>{for(const dropdown of document.querySelectorAll('.calendar-dropdown[open]'))if(!dropdown.contains(event.target))dropdown.open=false;});
