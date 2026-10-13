@@ -1,6 +1,6 @@
 // Shared 100 x 148 mm print composition. Coordinates use a 1200 x 1776 canvas.
 export function calendarLayout(width,height,rotation=0){
- const commands=[],blue='#126ba3',line='#94bed8';
+ const commands=[],brown='#794D32',line='#C9AA8E';
  const photo=(x,y,w,h)=>{
   const rw=rotation===90?height:width,rh=rotation===90?width:height,r=Math.min(w/rw,h/rh),pw=rw*r,ph=rh*r;
   commands.push({type:'photo',x:x+(w-pw)/2,y,w:pw,h:ph,rotation});
@@ -8,7 +8,7 @@ export function calendarLayout(width,height,rotation=0){
  };
  photo(0,0,600,1060);photo(600,0,600,1060);
  photo(600,1060,300,530);photo(900,1060,300,530);
- const text=(value,x,y,size,font='serif')=>commands.push({type:'text',value,x,y,size,font,color:blue});
+ const text=(value,x,y,size,font='serif')=>commands.push({type:'text',value,x,y,size,font,color:brown});
  const rule=(x,y,w,h)=>commands.push({type:'line',x,y,w,h,color:line});
  text('OCT.',32,1310,238);
  const x=44,y=1400,cw=73,rh=60;
@@ -18,7 +18,8 @@ export function calendarLayout(width,height,rotation=0){
  const first=new Date(Date.UTC(2026,9,1)).getUTCDay();
  for(let day=1;day<=31;day++){const n=first+day-1;text(String(day),x+(n%7)*cw+(day<10?29:20),y+Math.floor(n/7)*rh+38,28);}
  text('Hello, October!',44,1730,15);text('2026',516,1730,15);
- text('Yonsei Studio',735,1685,45,'italic');
+ text('Imagination',735,1668,52,'brand');
+ text('Hall',984,1708,40,'brand');
  return commands;
 }
 export function drawCalendar(canvas,image,scale=94,rotation=0){
@@ -30,6 +31,6 @@ export function drawCalendar(canvas,image,scale=94,rotation=0){
    else c.drawImage(image,0,(image.naturalHeight||image.height)-1,image.naturalWidth||image.width,1,p.x,p.y,p.w,p.h);
   }
   else if(p.type==='line'){c.strokeStyle=p.color;c.lineWidth=.8;c.beginPath();c.moveTo(p.x,p.y);c.lineTo(p.x+p.w,p.y+p.h);c.stroke();}
-  else{c.fillStyle=p.color;c.font=`${p.font==='italic'?'italic ':''}${p.size}px ${p.font==='sans'?'Helvetica, Arial':'Times New Roman, Times, serif'}`;c.fillText(p.value,p.x,p.y);}
+  else{c.fillStyle=p.color;c.font=`${p.font==='brand'?'bold italic ':p.font==='italic'?'italic ':''}${p.size}px ${(p.font==='sans'||p.font==='brand')?'Helvetica, Arial':'Times New Roman, Times, serif'}`;c.fillText(p.value,p.x,p.y);}
  }c.restore();
 }
