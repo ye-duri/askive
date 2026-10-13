@@ -143,7 +143,8 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
   if(match){const j=jobs.get(match[1]);if(!j)return json(res,404,{error:'사진이 없거나 만료됐습니다.'});
    if(req.method==='GET'&&match[2]==='image'){res.writeHead(200,{'Content-Type':'image/jpeg'});return res.end(readFileSync(join(directory,j.id+'.jpg')));}
    if(req.method==='POST'&&match[2]==='print'){
-    const {printer,copies,scale=94,rotation=0,reprint=false,expectedAttempt=0}=JSON.parse((await body(req,2048)).toString());
+    const {printer,copies,scale=100,rotation=0,calendarColor='#794D32',reprint=false,expectedAttempt=0}=JSON.parse((await body(req,2048)).toString());
+    if(!/^#[0-9a-f]{6}$/i.test(calendarColor))return json(res,400,{error:'달력 색상을 확인해 주세요.'});
     if(![0,90].includes(rotation))return json(res,400,{error:'회전은 원본 또는 90도만 가능합니다.'});
     if(!Number.isInteger(scale)||scale<85||scale>100)return json(res,400,{error:'인쇄 배율은 85~100%입니다.'});
     if(!Number.isInteger(copies)||copies<1||copies>10)return json(res,400,{error:'매수는 1~10장입니다.'});
@@ -152,12 +153,12 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
     if(!options.includes('Postcard.Fullbleed'))return json(res,400,{error:'엽서 무테 용지를 지원하는 CP1500을 선택해 주세요.'});
     if(jobs.get(j.id)!==j||j.state==='sending'||expectedAttempt!==(j.attempt||0)||!Number.isInteger(expectedAttempt))return json(res,409,{error:'작업 상태가 변경됐어요. 새로고침 후 다시 확인해 주세요.'});
     if(j.state!=='waiting'&&(!['submitted','uncertain'].includes(j.state)||reprint!==true))return json(res,409,{error:'다시 인쇄 버튼으로 요청해 주세요.'});
-    const pdfPath=join(directory,j.id+'.pdf');writeFileSync(pdfPath,printPDF(readFileSync(join(directory,j.id+'.jpg')),scale,rotation),{mode:0o600});
+    const pdfPath=join(directory,j.id+'.pdf');writeFileSync(pdfPath,printPDF(readFileSync(join(directory,j.id+'.jpg')),scale,rotation,calendarColor),{mode:0o600});
     j.attempt=(j.attempt||0)+1;delete j.error;delete j.cupsJob;
-    j.state='sending';j.copies=copies;j.scale=scale;j.rotation=rotation;j.printer=printer;save(j);
+    j.state='sending';j.copies=copies;j.scale=scale;j.rotation=rotation;j.calendarColor=calendarColor;j.printer=printer;save(j);
     try{const out=await run('/usr/bin/lp',['-d',printer,'-n',String(copies),'-t','Yonsei '+j.id.slice(0,8),'-o','media=Postcard.Fullbleed','-o','print-scaling=none','-o','job-sheets=none',pdfPath]);j.state='submitted';j.cupsJob=out.trim();}
     catch{j.state='uncertain';j.error='전송 결과를 확인하지 못했어요. 중복 인쇄를 막기 위해 Mac 인쇄 센터에서 먼저 확인해 주세요.';}
-    j.history=[...(j.history||[]),{attempt:j.attempt,copies,scale,rotation,printer,state:j.state,at:Date.now(),cupsJob:j.cupsJob}];
+    j.history=[...(j.history||[]),{attempt:j.attempt,copies,scale,rotation,calendarColor,printer,state:j.state,at:Date.now(),cupsJob:j.cupsJob}];
     save(j);return json(res,200,j);
    }
    if(req.method==='DELETE'&&!match[2]){if(j.state==='sending')return json(res,409,{error:'전송 중에는 지울 수 없습니다.'});for(const suffix of ['.jpg','.json','.pdf'])try{unlinkSync(join(directory,j.id+suffix));}catch{}jobs.delete(j.id);return json(res,200,{deleted:true});}

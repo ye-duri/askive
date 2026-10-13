@@ -1,8 +1,12 @@
 import assert from 'node:assert/strict';import fs from 'node:fs';import {calendarLayout} from '../mac-print/public/calendar-layout.mjs';
 assert.equal(fs.readFileSync('dist/print/calendar-layout.mjs','utf8'),fs.readFileSync('mac-print/public/calendar-layout.mjs','utf8'));
-for(const [w,h] of [[1200,1776],[1776,1200]])for(const rotation of [0,90]){const layout=calendarLayout(w,h,rotation);const photos=layout.filter(p=>p.type==='photo');assert.equal(photos.length,4);for(const p of photos){assert.ok(p.x>=0&&p.y>=0&&p.x+p.w<=1200&&p.y+p.h<=1776);assert.ok(Math.abs(p.w/p.h-(rotation===90?h/w:w/h))<.0001);}const dates=layout.filter(p=>p.type==='text'&&p.size===28);assert.equal(dates.length,31);assert.equal(dates[0].x,44+4*73+29);assert.equal(dates[30].x,44+6*73+20);assert.equal(dates[30].y,1400+4*60+38);}
+for(const [w,h] of [[1200,1776],[1776,1200]])for(const rotation of [0,90]){const layout=calendarLayout(w,h,rotation);const photos=layout.filter(p=>p.type==='photo');assert.equal(photos.length,4);for(const p of photos){assert.ok(p.x>=0&&p.y>=0&&p.x+p.w<=1200&&p.y+p.h<=1776);assert.ok(Math.abs(p.w/p.h-(rotation===90?h/w:w/h))<.0001);}const dates=layout.filter(p=>p.type==='text'&&p.size===31);assert.equal(dates.length,31);assert.ok(dates[0].x>300);assert.ok(dates[30].x>dates[0].x);assert.ok(dates[30].y>dates[0].y);}
 console.log('PASS: shared layout, 4 undistorted images, portrait/landscape/rotation bounds, October 2026 Thu 1 through Sat 31');
 
 const joined=calendarLayout(1200,1776),photos=joined.filter(p=>p.type==='photo');assert.equal(joined.filter(p=>p.type==='extend').length,0);assert.equal(photos[0].y,0);assert.equal(photos[0].x+photos[0].w,photos[1].x);assert.equal(photos[1].y+photos[1].h,photos[2].y);assert.equal(photos[2].x+photos[2].w,photos[3].x);assert.equal(1776-photos[2].y-photos[2].h,444);console.log('PASS: original frame proportions, touching panels, 444px white footer without stretched artwork');
 
 const logo=joined.find(p=>p.type==='brand');assert.ok(logo.runs.length>500);assert.equal(logo.w/logo.h,137/35);assert.equal(logo.color,'#794D32');assert.ok(!joined.some(p=>p.type==='text'&&['Imagination','Hall'].includes(p.value)));console.log('PASS: original logo geometry replaces font-dependent caption');
+
+for(const color of ['#166B9A','#38664B','#765383']){const commands=calendarLayout(1200,2133,0,color);assert.ok(commands.filter(c=>c.type==='text'||c.type==='brand').every(c=>c.color===color));}assert.throws(()=>calendarLayout(1200,2133,0,'bad'));
+
+const full=calendarLayout(1200,2133);assert.equal(full[0].x,0);assert.equal(full[0].w,600);assert.equal(full[1].x+full[1].w,1200);

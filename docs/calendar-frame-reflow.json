@@ -1,0 +1,1212 @@
+[
+  {
+    "id": "basic-4-grid-black",
+    "oldSrc": "frames/basic-4-grid-black-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-4-grid-white",
+    "oldSrc": "frames/basic-4-grid-white-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-4-grid-cherry",
+    "oldSrc": "frames/basic-4-grid-cherry-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-4-grid-pink",
+    "oldSrc": "frames/basic-4-grid-pink-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-4-grid-beige",
+    "oldSrc": "frames/basic-4-grid-beige-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-4-grid-khaki",
+    "oldSrc": "frames/basic-4-grid-khaki-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-4-grid-lime",
+    "oldSrc": "frames/basic-4-grid-lime-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-4-grid-sora",
+    "oldSrc": "frames/basic-4-grid-sora-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-4-grid-dusty",
+    "oldSrc": "frames/basic-4-grid-dusty-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-4-offset-black",
+    "oldSrc": "frames/basic-4-offset-black-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-4-offset-white",
+    "oldSrc": "frames/basic-4-offset-white-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-4-offset-cherry",
+    "oldSrc": "frames/basic-4-offset-cherry-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-4-offset-pink",
+    "oldSrc": "frames/basic-4-offset-pink-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-4-offset-beige",
+    "oldSrc": "frames/basic-4-offset-beige-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-4-offset-khaki",
+    "oldSrc": "frames/basic-4-offset-khaki-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-4-offset-lime",
+    "oldSrc": "frames/basic-4-offset-lime-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-4-offset-sora",
+    "oldSrc": "frames/basic-4-offset-sora-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-4-offset-dusty",
+    "oldSrc": "frames/basic-4-offset-dusty-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        442,
+        16,
+        179
+      ],
+      [
+        1094,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-grid-black",
+    "oldSrc": "frames/basic-6-grid-black-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-grid-white",
+    "oldSrc": "frames/basic-6-grid-white-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-grid-cherry",
+    "oldSrc": "frames/basic-6-grid-cherry-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-grid-pink",
+    "oldSrc": "frames/basic-6-grid-pink-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-grid-beige",
+    "oldSrc": "frames/basic-6-grid-beige-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-grid-khaki",
+    "oldSrc": "frames/basic-6-grid-khaki-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-grid-lime",
+    "oldSrc": "frames/basic-6-grid-lime-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-grid-sora",
+    "oldSrc": "frames/basic-6-grid-sora-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-grid-dusty",
+    "oldSrc": "frames/basic-6-grid-dusty-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-offset-black",
+    "oldSrc": "frames/basic-6-offset-black-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-offset-white",
+    "oldSrc": "frames/basic-6-offset-white-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-offset-cherry",
+    "oldSrc": "frames/basic-6-offset-cherry-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-offset-pink",
+    "oldSrc": "frames/basic-6-offset-pink-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-offset-beige",
+    "oldSrc": "frames/basic-6-offset-beige-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-offset-khaki",
+    "oldSrc": "frames/basic-6-offset-khaki-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-offset-lime",
+    "oldSrc": "frames/basic-6-offset-lime-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-offset-sora",
+    "oldSrc": "frames/basic-6-offset-sora-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "basic-6-offset-dusty",
+    "oldSrc": "frames/basic-6-offset-dusty-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        324,
+        16,
+        119
+      ],
+      [
+        772,
+        16,
+        119
+      ],
+      [
+        1220,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "sheep-farewell-four",
+    "oldSrc": "frames/sheep-farewell-four-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        533,
+        16,
+        179
+      ],
+      [
+        1193,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "sheep-farewell-six",
+    "oldSrc": "frames/sheep-farewell-six-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        423,
+        16,
+        119
+      ],
+      [
+        863,
+        16,
+        119
+      ],
+      [
+        1303,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "sheep-farewell-wide",
+    "oldSrc": "frames/sheep-farewell-wide-print.png",
+    "size": [
+      2133,
+      1200
+    ],
+    "bands": [
+      [
+        505,
+        16,
+        179
+      ],
+      [
+        1271,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "sheep-club-four",
+    "oldSrc": "frames/sheep-club-four-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        533,
+        16,
+        179
+      ],
+      [
+        1193,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "sheep-club-six",
+    "oldSrc": "frames/sheep-club-six-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        423,
+        16,
+        119
+      ],
+      [
+        863,
+        16,
+        119
+      ],
+      [
+        1303,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "sheep-club-wide",
+    "oldSrc": "frames/sheep-club-wide-print.png",
+    "size": [
+      2133,
+      1200
+    ],
+    "bands": [
+      [
+        505,
+        16,
+        179
+      ],
+      [
+        1271,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "sheep-friends-four",
+    "oldSrc": "frames/sheep-friends-four-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        493,
+        16,
+        179
+      ],
+      [
+        1153,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "sheep-friends-six",
+    "oldSrc": "frames/sheep-friends-six-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        385,
+        16,
+        119
+      ],
+      [
+        825,
+        16,
+        119
+      ],
+      [
+        1265,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "sheep-friends-wide",
+    "oldSrc": "frames/sheep-friends-wide-print.png",
+    "size": [
+      2133,
+      1200
+    ],
+    "bands": [
+      [
+        499,
+        16,
+        179
+      ],
+      [
+        1271,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "sheep-garden-four",
+    "oldSrc": "frames/sheep-garden-four-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        606,
+        16,
+        179
+      ],
+      [
+        1266,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "sheep-garden-six",
+    "oldSrc": "frames/sheep-garden-six-print.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        470,
+        16,
+        119
+      ],
+      [
+        910,
+        16,
+        119
+      ],
+      [
+        1350,
+        16,
+        119
+      ]
+    ]
+  },
+  {
+    "id": "sheep-garden-wide",
+    "oldSrc": "frames/sheep-garden-wide-print.png",
+    "size": [
+      2133,
+      1200
+    ],
+    "bands": [
+      [
+        500,
+        16,
+        179
+      ],
+      [
+        1264,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "hanmaeum-2026-daecheong-green-four",
+    "oldSrc": "frames/hanmaeum-2026-daecheong-green-four-ink-20261009.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        336,
+        16,
+        179
+      ],
+      [
+        1200,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "hanmaeum-2026-daecheong-green-six-landscape",
+    "oldSrc": "frames/hanmaeum-2026-daecheong-green-six-landscape-ink-20261009.png",
+    "size": [
+      1820,
+      1024
+    ],
+    "bands": [
+      [
+        304,
+        16,
+        95
+      ],
+      [
+        695,
+        16,
+        95
+      ],
+      [
+        1307,
+        16,
+        94
+      ]
+    ]
+  },
+  {
+    "id": "hanmaeum-2026-daecheong-green-six-portrait",
+    "oldSrc": "frames/hanmaeum-2026-daecheong-green-six-portrait-ink-20261009.png",
+    "size": [
+      1031,
+      1833
+    ],
+    "bands": [
+      [
+        231,
+        16,
+        103
+      ],
+      [
+        756,
+        16,
+        102
+      ],
+      [
+        1087,
+        16,
+        102
+      ]
+    ]
+  },
+  {
+    "id": "hanmaeum-2026-daecheong-paper-four",
+    "oldSrc": "frames/hanmaeum-2026-daecheong-paper-four-ink-20261009.png",
+    "size": [
+      1200,
+      2133
+    ],
+    "bands": [
+      [
+        430,
+        16,
+        179
+      ],
+      [
+        1202,
+        16,
+        178
+      ]
+    ]
+  },
+  {
+    "id": "hanmaeum-2026-daecheong-paper-six-landscape",
+    "oldSrc": "frames/hanmaeum-2026-daecheong-paper-six-landscape-ink-20261009.png",
+    "size": [
+      1833,
+      1031
+    ],
+    "bands": [
+      [
+        274,
+        16,
+        103
+      ],
+      [
+        764,
+        16,
+        102
+      ],
+      [
+        1252,
+        16,
+        102
+      ]
+    ]
+  },
+  {
+    "id": "hanmaeum-2026-daecheong-paper-six-portrait",
+    "oldSrc": "frames/hanmaeum-2026-daecheong-paper-six-portrait-ink-20261009.png",
+    "size": [
+      1031,
+      1833
+    ],
+    "bands": [
+      [
+        259,
+        16,
+        103
+      ],
+      [
+        729,
+        16,
+        102
+      ],
+      [
+        1147,
+        16,
+        102
+      ]
+    ]
+  }
+]

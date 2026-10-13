@@ -5,40 +5,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "black",
-    "src": "frames/basic-4-grid-black-print.png",
+    "src": "frames/basic-4-grid-black-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-black-thumb.webp",
-    "preview": "frames/basic-4-grid-black-screen-32d4e0a97f.webp",
+    "thumbnail": "frames/basic-4-grid-black-calendar-thumb.webp",
+    "preview": "frames/basic-4-grid-black-screen-d6dc3a9c59.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-4-grid-white",
@@ -46,40 +47,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "white",
-    "src": "frames/basic-4-grid-white-print.png",
+    "src": "frames/basic-4-grid-white-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-white-thumb.webp",
-    "preview": "frames/basic-4-grid-white-screen-4f237a3770.webp",
+    "thumbnail": "frames/basic-4-grid-white-calendar-thumb.webp",
+    "preview": "frames/basic-4-grid-white-screen-13f338c0a7.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-4-grid-cherry",
@@ -87,40 +89,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "cherry",
-    "src": "frames/basic-4-grid-cherry-print.png",
+    "src": "frames/basic-4-grid-cherry-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-cherry-thumb.webp",
-    "preview": "frames/basic-4-grid-cherry-screen-0e8affc7bb.webp",
+    "thumbnail": "frames/basic-4-grid-cherry-calendar-thumb.webp",
+    "preview": "frames/basic-4-grid-cherry-screen-ce2e9b282f.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-4-grid-pink",
@@ -128,40 +131,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "pink",
-    "src": "frames/basic-4-grid-pink-print.png",
+    "src": "frames/basic-4-grid-pink-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-pink-thumb.webp",
-    "preview": "frames/basic-4-grid-pink-screen-9b32a57a69.webp",
+    "thumbnail": "frames/basic-4-grid-pink-calendar-thumb.webp",
+    "preview": "frames/basic-4-grid-pink-screen-c71247be19.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-4-grid-beige",
@@ -169,40 +173,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "beige",
-    "src": "frames/basic-4-grid-beige-print.png",
+    "src": "frames/basic-4-grid-beige-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-beige-thumb.webp",
-    "preview": "frames/basic-4-grid-beige-screen-00b2f5427a.webp",
+    "thumbnail": "frames/basic-4-grid-beige-calendar-thumb.webp",
+    "preview": "frames/basic-4-grid-beige-screen-e1686b2980.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-4-grid-khaki",
@@ -210,40 +215,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "khaki",
-    "src": "frames/basic-4-grid-khaki-print.png",
+    "src": "frames/basic-4-grid-khaki-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-khaki-thumb.webp",
-    "preview": "frames/basic-4-grid-khaki-screen-186bfa9873.webp",
+    "thumbnail": "frames/basic-4-grid-khaki-calendar-thumb.webp",
+    "preview": "frames/basic-4-grid-khaki-screen-ceaeefdbbd.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-4-grid-lime",
@@ -251,40 +257,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "lime",
-    "src": "frames/basic-4-grid-lime-print.png",
+    "src": "frames/basic-4-grid-lime-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-lime-thumb.webp",
-    "preview": "frames/basic-4-grid-lime-screen-0571aa94ed.webp",
+    "thumbnail": "frames/basic-4-grid-lime-calendar-thumb.webp",
+    "preview": "frames/basic-4-grid-lime-screen-7305ce9325.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-4-grid-sora",
@@ -292,40 +299,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "sora",
-    "src": "frames/basic-4-grid-sora-print.png",
+    "src": "frames/basic-4-grid-sora-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-sora-thumb.webp",
-    "preview": "frames/basic-4-grid-sora-screen-13b08161dc.webp",
+    "thumbnail": "frames/basic-4-grid-sora-calendar-thumb.webp",
+    "preview": "frames/basic-4-grid-sora-screen-a353fddf97.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-4-grid-dusty",
@@ -333,40 +341,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "dusty",
-    "src": "frames/basic-4-grid-dusty-print.png",
+    "src": "frames/basic-4-grid-dusty-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.07207207207207207,
+        0.06000937646507267,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.4391891891891892,
+        0.44960150023441164,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-dusty-thumb.webp",
-    "preview": "frames/basic-4-grid-dusty-screen-404ee5a628.webp",
+    "thumbnail": "frames/basic-4-grid-dusty-calendar-thumb.webp",
+    "preview": "frames/basic-4-grid-dusty-screen-f929e87f93.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-4-offset-black",
@@ -374,40 +383,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "black",
-    "src": "frames/basic-4-offset-black-print.png",
+    "src": "frames/basic-4-offset-black-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.11711711711711711,
+        0.09751523675574308,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.39414414414414417,
+        0.4120956399437412,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.48423423423423423,
+        0.487107360525082,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-black-thumb.webp",
-    "preview": "frames/basic-4-offset-black-screen-f661c8eccb.webp",
+    "thumbnail": "frames/basic-4-offset-black-calendar-thumb.webp",
+    "preview": "frames/basic-4-offset-black-screen-adce09f8cd.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-4-offset-white",
@@ -415,40 +425,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "white",
-    "src": "frames/basic-4-offset-white-print.png",
+    "src": "frames/basic-4-offset-white-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.11711711711711711,
+        0.09751523675574308,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.39414414414414417,
+        0.4120956399437412,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.48423423423423423,
+        0.487107360525082,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-white-thumb.webp",
-    "preview": "frames/basic-4-offset-white-screen-7549488862.webp",
+    "thumbnail": "frames/basic-4-offset-white-calendar-thumb.webp",
+    "preview": "frames/basic-4-offset-white-screen-13628a8a69.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-4-offset-cherry",
@@ -456,40 +467,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "cherry",
-    "src": "frames/basic-4-offset-cherry-print.png",
+    "src": "frames/basic-4-offset-cherry-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.11711711711711711,
+        0.09751523675574308,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.39414414414414417,
+        0.4120956399437412,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.48423423423423423,
+        0.487107360525082,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-cherry-thumb.webp",
-    "preview": "frames/basic-4-offset-cherry-screen-c618d135ee.webp",
+    "thumbnail": "frames/basic-4-offset-cherry-calendar-thumb.webp",
+    "preview": "frames/basic-4-offset-cherry-screen-619c9ec976.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-4-offset-pink",
@@ -497,40 +509,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "pink",
-    "src": "frames/basic-4-offset-pink-print.png",
+    "src": "frames/basic-4-offset-pink-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.11711711711711711,
+        0.09751523675574308,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.39414414414414417,
+        0.4120956399437412,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.48423423423423423,
+        0.487107360525082,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-pink-thumb.webp",
-    "preview": "frames/basic-4-offset-pink-screen-ded9108352.webp",
+    "thumbnail": "frames/basic-4-offset-pink-calendar-thumb.webp",
+    "preview": "frames/basic-4-offset-pink-screen-23ac24ed33.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-4-offset-beige",
@@ -538,40 +551,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "beige",
-    "src": "frames/basic-4-offset-beige-print.png",
+    "src": "frames/basic-4-offset-beige-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.11711711711711711,
+        0.09751523675574308,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.39414414414414417,
+        0.4120956399437412,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.48423423423423423,
+        0.487107360525082,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-beige-thumb.webp",
-    "preview": "frames/basic-4-offset-beige-screen-c6fad3377a.webp",
+    "thumbnail": "frames/basic-4-offset-beige-calendar-thumb.webp",
+    "preview": "frames/basic-4-offset-beige-screen-8888220e1c.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-4-offset-khaki",
@@ -579,40 +593,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "khaki",
-    "src": "frames/basic-4-offset-khaki-print.png",
+    "src": "frames/basic-4-offset-khaki-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.11711711711711711,
+        0.09751523675574308,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.39414414414414417,
+        0.4120956399437412,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.48423423423423423,
+        0.487107360525082,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-khaki-thumb.webp",
-    "preview": "frames/basic-4-offset-khaki-screen-c674dc0b9a.webp",
+    "thumbnail": "frames/basic-4-offset-khaki-calendar-thumb.webp",
+    "preview": "frames/basic-4-offset-khaki-screen-2843672373.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-4-offset-lime",
@@ -620,40 +635,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "lime",
-    "src": "frames/basic-4-offset-lime-print.png",
+    "src": "frames/basic-4-offset-lime-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.11711711711711711,
+        0.09751523675574308,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.39414414414414417,
+        0.4120956399437412,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.48423423423423423,
+        0.487107360525082,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-lime-thumb.webp",
-    "preview": "frames/basic-4-offset-lime-screen-67e94b9b18.webp",
+    "thumbnail": "frames/basic-4-offset-lime-calendar-thumb.webp",
+    "preview": "frames/basic-4-offset-lime-screen-7c71c54618.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-4-offset-sora",
@@ -661,40 +677,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "sora",
-    "src": "frames/basic-4-offset-sora-print.png",
+    "src": "frames/basic-4-offset-sora-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.11711711711711711,
+        0.09751523675574308,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.39414414414414417,
+        0.4120956399437412,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.48423423423423423,
+        0.487107360525082,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-sora-thumb.webp",
-    "preview": "frames/basic-4-offset-sora-screen-378f51ea4c.webp",
+    "thumbnail": "frames/basic-4-offset-sora-calendar-thumb.webp",
+    "preview": "frames/basic-4-offset-sora-screen-3fd994fbe3.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-4-offset-dusty",
@@ -702,40 +719,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "dusty",
-    "src": "frames/basic-4-offset-dusty-print.png",
+    "src": "frames/basic-4-offset-dusty-calendar-print.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.51,
-        0.11711711711711711,
+        0.09751523675574308,
         0.45,
-        0.3536036036036036
+        0.37834036568213786
       ],
       [
         0.04,
-        0.39414414414414417,
+        0.4120956399437412,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ],
       [
         0.51,
-        0.48423423423423423,
+        0.487107360525082,
         0.45,
-        0.3536036036036036
+        0.37787154242850446
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-dusty-thumb.webp",
-    "preview": "frames/basic-4-offset-dusty-screen-fc4507423b.webp",
+    "thumbnail": "frames/basic-4-offset-dusty-calendar-thumb.webp",
+    "preview": "frames/basic-4-offset-dusty-screen-0ac97cd8df.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-grid-black",
@@ -743,52 +761,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "black",
-    "src": "frames/basic-6-grid-black-print.png",
+    "src": "frames/basic-6-grid-black-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-black-thumb.webp",
-    "preview": "frames/basic-6-grid-black-screen-5483954860.webp",
+    "thumbnail": "frames/basic-6-grid-black-calendar-thumb.webp",
+    "preview": "frames/basic-6-grid-black-screen-71b31bda85.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-grid-white",
@@ -796,52 +815,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "white",
-    "src": "frames/basic-6-grid-white-print.png",
+    "src": "frames/basic-6-grid-white-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-white-thumb.webp",
-    "preview": "frames/basic-6-grid-white-screen-2c60833b67.webp",
+    "thumbnail": "frames/basic-6-grid-white-calendar-thumb.webp",
+    "preview": "frames/basic-6-grid-white-screen-1618a9f9f9.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-grid-cherry",
@@ -849,52 +869,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "cherry",
-    "src": "frames/basic-6-grid-cherry-print.png",
+    "src": "frames/basic-6-grid-cherry-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-cherry-thumb.webp",
-    "preview": "frames/basic-6-grid-cherry-screen-0cde75c344.webp",
+    "thumbnail": "frames/basic-6-grid-cherry-calendar-thumb.webp",
+    "preview": "frames/basic-6-grid-cherry-screen-f91062bcba.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-grid-pink",
@@ -902,52 +923,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "pink",
-    "src": "frames/basic-6-grid-pink-print.png",
+    "src": "frames/basic-6-grid-pink-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-pink-thumb.webp",
-    "preview": "frames/basic-6-grid-pink-screen-e317637f5b.webp",
+    "thumbnail": "frames/basic-6-grid-pink-calendar-thumb.webp",
+    "preview": "frames/basic-6-grid-pink-screen-ee1c41985e.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-grid-beige",
@@ -955,52 +977,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "beige",
-    "src": "frames/basic-6-grid-beige-print.png",
+    "src": "frames/basic-6-grid-beige-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-beige-thumb.webp",
-    "preview": "frames/basic-6-grid-beige-screen-5afbe4045d.webp",
+    "thumbnail": "frames/basic-6-grid-beige-calendar-thumb.webp",
+    "preview": "frames/basic-6-grid-beige-screen-7574dd1883.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-grid-khaki",
@@ -1008,52 +1031,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "khaki",
-    "src": "frames/basic-6-grid-khaki-print.png",
+    "src": "frames/basic-6-grid-khaki-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-khaki-thumb.webp",
-    "preview": "frames/basic-6-grid-khaki-screen-24166ceb66.webp",
+    "thumbnail": "frames/basic-6-grid-khaki-calendar-thumb.webp",
+    "preview": "frames/basic-6-grid-khaki-screen-c91bb23a82.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-grid-lime",
@@ -1061,52 +1085,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "lime",
-    "src": "frames/basic-6-grid-lime-print.png",
+    "src": "frames/basic-6-grid-lime-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-lime-thumb.webp",
-    "preview": "frames/basic-6-grid-lime-screen-0d40956455.webp",
+    "thumbnail": "frames/basic-6-grid-lime-calendar-thumb.webp",
+    "preview": "frames/basic-6-grid-lime-screen-d2b88ccf9c.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-grid-sora",
@@ -1114,52 +1139,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "sora",
-    "src": "frames/basic-6-grid-sora-print.png",
+    "src": "frames/basic-6-grid-sora-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-sora-thumb.webp",
-    "preview": "frames/basic-6-grid-sora-screen-fe8fcba39e.webp",
+    "thumbnail": "frames/basic-6-grid-sora-calendar-thumb.webp",
+    "preview": "frames/basic-6-grid-sora-screen-7a58ca44e9.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-grid-dusty",
@@ -1167,52 +1193,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "dusty",
-    "src": "frames/basic-6-grid-dusty-print.png",
+    "src": "frames/basic-6-grid-dusty-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.06306306306306306,
+        0.052508204406938576,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.3153153153153153,
+        0.31833098921706515,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.5675675675675675,
+        0.5841537740271917,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-dusty-thumb.webp",
-    "preview": "frames/basic-6-grid-dusty-screen-d3f8329bc7.webp",
+    "thumbnail": "frames/basic-6-grid-dusty-calendar-thumb.webp",
+    "preview": "frames/basic-6-grid-dusty-screen-a72b6bb4fe.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-offset-black",
@@ -1220,52 +1247,53 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "black",
-    "src": "frames/basic-6-offset-black-print.png",
+    "src": "frames/basic-6-offset-black-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.0990990990990991,
+        0.08251289263947492,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.27927927927927926,
+        0.2883263009845288,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.35135135135135137,
+        0.3483356774496015,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5315315315315315,
+        0.5541490857946554,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.6036036036036037,
+        0.614158462259728,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-black-thumb.webp",
-    "preview": "frames/basic-6-offset-black-screen-39d51739a2.webp",
+    "thumbnail": "frames/basic-6-offset-black-calendar-thumb.webp",
+    "preview": "frames/basic-6-offset-black-screen-a906f24adb.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-offset-white",
@@ -1273,52 +1301,53 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "white",
-    "src": "frames/basic-6-offset-white-print.png",
+    "src": "frames/basic-6-offset-white-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.0990990990990991,
+        0.08251289263947492,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.27927927927927926,
+        0.2883263009845288,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.35135135135135137,
+        0.3483356774496015,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5315315315315315,
+        0.5541490857946554,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.6036036036036037,
+        0.614158462259728,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-white-thumb.webp",
-    "preview": "frames/basic-6-offset-white-screen-14fd158e5f.webp",
+    "thumbnail": "frames/basic-6-offset-white-calendar-thumb.webp",
+    "preview": "frames/basic-6-offset-white-screen-b8c7491b32.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-offset-cherry",
@@ -1326,52 +1355,53 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "cherry",
-    "src": "frames/basic-6-offset-cherry-print.png",
+    "src": "frames/basic-6-offset-cherry-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.0990990990990991,
+        0.08251289263947492,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.27927927927927926,
+        0.2883263009845288,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.35135135135135137,
+        0.3483356774496015,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5315315315315315,
+        0.5541490857946554,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.6036036036036037,
+        0.614158462259728,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-cherry-thumb.webp",
-    "preview": "frames/basic-6-offset-cherry-screen-b811d08143.webp",
+    "thumbnail": "frames/basic-6-offset-cherry-calendar-thumb.webp",
+    "preview": "frames/basic-6-offset-cherry-screen-0a71501f2d.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-offset-pink",
@@ -1379,52 +1409,53 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "pink",
-    "src": "frames/basic-6-offset-pink-print.png",
+    "src": "frames/basic-6-offset-pink-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.0990990990990991,
+        0.08251289263947492,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.27927927927927926,
+        0.2883263009845288,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.35135135135135137,
+        0.3483356774496015,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5315315315315315,
+        0.5541490857946554,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.6036036036036037,
+        0.614158462259728,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-pink-thumb.webp",
-    "preview": "frames/basic-6-offset-pink-screen-3c213f290f.webp",
+    "thumbnail": "frames/basic-6-offset-pink-calendar-thumb.webp",
+    "preview": "frames/basic-6-offset-pink-screen-0755e8fbe3.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-offset-beige",
@@ -1432,52 +1463,53 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "beige",
-    "src": "frames/basic-6-offset-beige-print.png",
+    "src": "frames/basic-6-offset-beige-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.0990990990990991,
+        0.08251289263947492,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.27927927927927926,
+        0.2883263009845288,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.35135135135135137,
+        0.3483356774496015,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5315315315315315,
+        0.5541490857946554,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.6036036036036037,
+        0.614158462259728,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-beige-thumb.webp",
-    "preview": "frames/basic-6-offset-beige-screen-d39dcdc349.webp",
+    "thumbnail": "frames/basic-6-offset-beige-calendar-thumb.webp",
+    "preview": "frames/basic-6-offset-beige-screen-f43c1e602b.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-offset-khaki",
@@ -1485,52 +1517,53 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "khaki",
-    "src": "frames/basic-6-offset-khaki-print.png",
+    "src": "frames/basic-6-offset-khaki-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.0990990990990991,
+        0.08251289263947492,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.27927927927927926,
+        0.2883263009845288,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.35135135135135137,
+        0.3483356774496015,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5315315315315315,
+        0.5541490857946554,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.6036036036036037,
+        0.614158462259728,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-khaki-thumb.webp",
-    "preview": "frames/basic-6-offset-khaki-screen-e021447f9a.webp",
+    "thumbnail": "frames/basic-6-offset-khaki-calendar-thumb.webp",
+    "preview": "frames/basic-6-offset-khaki-screen-7543de9fe6.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-offset-lime",
@@ -1538,52 +1571,53 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "lime",
-    "src": "frames/basic-6-offset-lime-print.png",
+    "src": "frames/basic-6-offset-lime-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.0990990990990991,
+        0.08251289263947492,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.27927927927927926,
+        0.2883263009845288,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.35135135135135137,
+        0.3483356774496015,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5315315315315315,
+        0.5541490857946554,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.6036036036036037,
+        0.614158462259728,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-lime-thumb.webp",
-    "preview": "frames/basic-6-offset-lime-screen-149185cde1.webp",
+    "thumbnail": "frames/basic-6-offset-lime-calendar-thumb.webp",
+    "preview": "frames/basic-6-offset-lime-screen-525bd51247.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-offset-sora",
@@ -1591,52 +1625,53 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "sora",
-    "src": "frames/basic-6-offset-sora-print.png",
+    "src": "frames/basic-6-offset-sora-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.0990990990990991,
+        0.08251289263947492,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.27927927927927926,
+        0.2883263009845288,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.35135135135135137,
+        0.3483356774496015,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5315315315315315,
+        0.5541490857946554,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.6036036036036037,
+        0.614158462259728,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-sora-thumb.webp",
-    "preview": "frames/basic-6-offset-sora-screen-42158b20ee.webp",
+    "thumbnail": "frames/basic-6-offset-sora-calendar-thumb.webp",
+    "preview": "frames/basic-6-offset-sora-screen-1cbc4de957.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "basic-6-offset-dusty",
@@ -1644,556 +1679,569 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "dusty",
-    "src": "frames/basic-6-offset-dusty-print.png",
+    "src": "frames/basic-6-offset-dusty-calendar-print.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
         0.04,
-        0.02702702702702703,
+        0.02250351617440225,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.0990990990990991,
+        0.08251289263947492,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.27927927927927926,
+        0.2883263009845288,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.35135135135135137,
+        0.3483356774496015,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.04,
-        0.5315315315315315,
+        0.5541490857946554,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ],
       [
         0.51,
-        0.6036036036036037,
+        0.614158462259728,
         0.45,
-        0.23873873873873874
+        0.2545710267229255
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-dusty-thumb.webp",
-    "preview": "frames/basic-6-offset-dusty-screen-ffb4c9c8c3.webp",
+    "thumbnail": "frames/basic-6-offset-dusty-calendar-thumb.webp",
+    "preview": "frames/basic-6-offset-dusty-screen-c396c13b82.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "sheep-farewell-four",
     "name": "잘 다녀와 · 4컷",
-    "src": "frames/sheep-farewell-four-print.png",
+    "src": "frames/sheep-farewell-four-calendar-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
     "slots": [
       [
         0.06,
-        0.10698198198198199,
+        0.08907641819034225,
         0.4216666666666667,
-        0.34684684684684686
+        0.3727144866385373
       ],
       [
         0.5183333333333333,
-        0.1463963963963964,
+        0.12189404594467886,
         0.4216666666666667,
-        0.34684684684684686
+        0.3727144866385373
       ],
       [
         0.06,
-        0.4786036036036036,
+        0.48241912798874825,
         0.4216666666666667,
-        0.34684684684684686
+        0.3722456633849039
       ],
       [
         0.5183333333333333,
-        0.5180180180180181,
+        0.5152367557430848,
         0.4216666666666667,
-        0.34684684684684686
+        0.3722456633849039
       ]
     ],
-    "thumbnail": "frames/sheep-farewell-four-thumb.webp",
-    "preview": "frames/sheep-farewell-four-screen-17480964f0.webp",
+    "thumbnail": "frames/sheep-farewell-four-calendar-thumb.webp",
+    "preview": "frames/sheep-farewell-four-screen-90e331d24d.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "sheep-farewell-six",
     "name": "잘 다녀와 · 6컷",
-    "src": "frames/sheep-farewell-six-print.png",
+    "src": "frames/sheep-farewell-six-calendar-print.png",
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
     "slots": [
       [
         0.06,
-        0.10698198198198199,
+        0.08907641819034225,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.5183333333333333,
-        0.1463963963963964,
+        0.12189404594467886,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.06,
-        0.3547297297297297,
+        0.35114861697140176,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.5183333333333333,
-        0.39414414414414417,
+        0.38396624472573837,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.06,
-        0.6024774774774775,
+        0.6132208157524613,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.5183333333333333,
-        0.6418918918918919,
+        0.646038443506798,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ]
     ],
-    "thumbnail": "frames/sheep-farewell-six-thumb.webp",
-    "preview": "frames/sheep-farewell-six-screen-4742706463.webp",
+    "thumbnail": "frames/sheep-farewell-six-calendar-thumb.webp",
+    "preview": "frames/sheep-farewell-six-screen-5448b7aa3d.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "sheep-farewell-wide",
     "name": "잘 다녀와 · 가로 4컷",
-    "src": "frames/sheep-farewell-wide-print.png",
+    "src": "frames/sheep-farewell-wide-calendar-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
     "slots": [
       [
-        0.07657657657657657,
+        0.0637599624941397,
         0.075,
-        0.4155405405405405,
+        0.42991092358180966,
         0.3591666666666667
       ],
       [
-        0.5078828828828829,
+        0.5067979371776841,
         0.09833333333333333,
-        0.4155405405405405,
+        0.42944210032817626,
         0.3591666666666667
       ],
       [
-        0.07657657657657657,
+        0.0637599624941397,
         0.4575,
-        0.4155405405405405,
+        0.42991092358180966,
         0.3591666666666667
       ],
       [
-        0.5078828828828829,
+        0.5067979371776841,
         0.48083333333333333,
-        0.4155405405405405,
+        0.42944210032817626,
         0.3591666666666667
       ]
     ],
-    "thumbnail": "frames/sheep-farewell-wide-thumb.webp",
-    "preview": "frames/sheep-farewell-wide-screen-418656067d.webp",
-    "sourceWidth": 1776,
-    "sourceHeight": 1200
+    "thumbnail": "frames/sheep-farewell-wide-calendar-thumb.webp",
+    "preview": "frames/sheep-farewell-wide-screen-2cfed48814.webp",
+    "sourceWidth": 2133,
+    "sourceHeight": 1200,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "sheep-club-four",
     "name": "우리의 모임 · 4컷",
-    "src": "frames/sheep-club-four-print.png",
+    "src": "frames/sheep-club-four-calendar-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
     "slots": [
       [
         0.06,
-        0.10698198198198199,
+        0.08907641819034225,
         0.4216666666666667,
-        0.34684684684684686
+        0.3727144866385373
       ],
       [
         0.5183333333333333,
-        0.1463963963963964,
+        0.12189404594467886,
         0.4216666666666667,
-        0.34684684684684686
+        0.3727144866385373
       ],
       [
         0.06,
-        0.4786036036036036,
+        0.48241912798874825,
         0.4216666666666667,
-        0.34684684684684686
+        0.3722456633849039
       ],
       [
         0.5183333333333333,
-        0.5180180180180181,
+        0.5152367557430848,
         0.4216666666666667,
-        0.34684684684684686
+        0.3722456633849039
       ]
     ],
-    "thumbnail": "frames/sheep-club-four-thumb.webp",
-    "preview": "frames/sheep-club-four-screen-6e02437a18.webp",
+    "thumbnail": "frames/sheep-club-four-calendar-thumb.webp",
+    "preview": "frames/sheep-club-four-screen-ef40ea4d6d.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "sheep-club-six",
     "name": "우리의 모임 · 6컷",
-    "src": "frames/sheep-club-six-print.png",
+    "src": "frames/sheep-club-six-calendar-print.png",
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
     "slots": [
       [
         0.06,
-        0.10698198198198199,
+        0.08907641819034225,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.5183333333333333,
-        0.1463963963963964,
+        0.12189404594467886,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.06,
-        0.3547297297297297,
+        0.35114861697140176,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.5183333333333333,
-        0.39414414414414417,
+        0.38396624472573837,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.06,
-        0.6024774774774775,
+        0.6132208157524613,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.5183333333333333,
-        0.6418918918918919,
+        0.646038443506798,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ]
     ],
-    "thumbnail": "frames/sheep-club-six-thumb.webp",
-    "preview": "frames/sheep-club-six-screen-ebbd92fefe.webp",
+    "thumbnail": "frames/sheep-club-six-calendar-thumb.webp",
+    "preview": "frames/sheep-club-six-screen-45385fe7ff.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "sheep-club-wide",
     "name": "우리의 모임 · 가로 4컷",
-    "src": "frames/sheep-club-wide-print.png",
+    "src": "frames/sheep-club-wide-calendar-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
     "slots": [
       [
-        0.07657657657657657,
+        0.0637599624941397,
         0.075,
-        0.4155405405405405,
+        0.42991092358180966,
         0.3591666666666667
       ],
       [
-        0.5078828828828829,
+        0.5067979371776841,
         0.09833333333333333,
-        0.4155405405405405,
+        0.42944210032817626,
         0.3591666666666667
       ],
       [
-        0.07657657657657657,
+        0.0637599624941397,
         0.4575,
-        0.4155405405405405,
+        0.42991092358180966,
         0.3591666666666667
       ],
       [
-        0.5078828828828829,
+        0.5067979371776841,
         0.48083333333333333,
-        0.4155405405405405,
+        0.42944210032817626,
         0.3591666666666667
       ]
     ],
-    "thumbnail": "frames/sheep-club-wide-thumb.webp",
-    "preview": "frames/sheep-club-wide-screen-0fe4679b30.webp",
-    "sourceWidth": 1776,
-    "sourceHeight": 1200
+    "thumbnail": "frames/sheep-club-wide-calendar-thumb.webp",
+    "preview": "frames/sheep-club-wide-screen-532699d011.webp",
+    "sourceWidth": 2133,
+    "sourceHeight": 1200,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "sheep-friends-four",
     "name": "베스트 프렌드 · 4컷",
-    "src": "frames/sheep-friends-four-print.png",
+    "src": "frames/sheep-friends-four-calendar-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
     "slots": [
       [
         0.06,
-        0.10698198198198199,
+        0.08907641819034225,
         0.4216666666666667,
-        0.34684684684684686
+        0.3727144866385373
       ],
       [
         0.5183333333333333,
-        0.1463963963963964,
+        0.12189404594467886,
         0.4216666666666667,
-        0.34684684684684686
+        0.3727144866385373
       ],
       [
         0.06,
-        0.4786036036036036,
+        0.48241912798874825,
         0.4216666666666667,
-        0.34684684684684686
+        0.3722456633849039
       ],
       [
         0.5183333333333333,
-        0.5180180180180181,
+        0.5152367557430848,
         0.4216666666666667,
-        0.34684684684684686
+        0.3722456633849039
       ]
     ],
-    "thumbnail": "frames/sheep-friends-four-thumb.webp",
-    "preview": "frames/sheep-friends-four-screen-0c69135913.webp",
+    "thumbnail": "frames/sheep-friends-four-calendar-thumb.webp",
+    "preview": "frames/sheep-friends-four-screen-b88d8aeb2f.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "sheep-friends-six",
     "name": "베스트 프렌드 · 6컷",
-    "src": "frames/sheep-friends-six-print.png",
+    "src": "frames/sheep-friends-six-calendar-print.png",
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
     "slots": [
       [
         0.06,
-        0.10698198198198199,
+        0.08907641819034225,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.5183333333333333,
-        0.1463963963963964,
+        0.12189404594467886,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.06,
-        0.3547297297297297,
+        0.35114861697140176,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.5183333333333333,
-        0.39414414414414417,
+        0.38396624472573837,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.06,
-        0.6024774774774775,
+        0.6132208157524613,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.5183333333333333,
-        0.6418918918918919,
+        0.646038443506798,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ]
     ],
-    "thumbnail": "frames/sheep-friends-six-thumb.webp",
-    "preview": "frames/sheep-friends-six-screen-fb72858f6a.webp",
+    "thumbnail": "frames/sheep-friends-six-calendar-thumb.webp",
+    "preview": "frames/sheep-friends-six-screen-b7742d91c1.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "sheep-friends-wide",
     "name": "베스트 프렌드 · 가로 4컷",
-    "src": "frames/sheep-friends-wide-print.png",
+    "src": "frames/sheep-friends-wide-calendar-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
     "slots": [
       [
-        0.07657657657657657,
+        0.0637599624941397,
         0.075,
-        0.4155405405405405,
+        0.42991092358180966,
         0.3591666666666667
       ],
       [
-        0.5078828828828829,
+        0.5067979371776841,
         0.09833333333333333,
-        0.4155405405405405,
+        0.42944210032817626,
         0.3591666666666667
       ],
       [
-        0.07657657657657657,
+        0.0637599624941397,
         0.4575,
-        0.4155405405405405,
+        0.42991092358180966,
         0.3591666666666667
       ],
       [
-        0.5078828828828829,
+        0.5067979371776841,
         0.48083333333333333,
-        0.4155405405405405,
+        0.42944210032817626,
         0.3591666666666667
       ]
     ],
-    "thumbnail": "frames/sheep-friends-wide-thumb.webp",
-    "preview": "frames/sheep-friends-wide-screen-98947a0a70.webp",
-    "sourceWidth": 1776,
-    "sourceHeight": 1200
+    "thumbnail": "frames/sheep-friends-wide-calendar-thumb.webp",
+    "preview": "frames/sheep-friends-wide-screen-7362cb3859.webp",
+    "sourceWidth": 2133,
+    "sourceHeight": 1200,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "sheep-garden-four",
     "name": "클로버 가든 · 4컷",
-    "src": "frames/sheep-garden-four-print.png",
+    "src": "frames/sheep-garden-four-calendar-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
     "slots": [
       [
         0.06,
-        0.10698198198198199,
+        0.08907641819034225,
         0.4216666666666667,
-        0.34684684684684686
+        0.3727144866385373
       ],
       [
         0.5183333333333333,
-        0.1463963963963964,
+        0.12189404594467886,
         0.4216666666666667,
-        0.34684684684684686
+        0.3727144866385373
       ],
       [
         0.06,
-        0.4786036036036036,
+        0.48241912798874825,
         0.4216666666666667,
-        0.34684684684684686
+        0.3722456633849039
       ],
       [
         0.5183333333333333,
-        0.5180180180180181,
+        0.5152367557430848,
         0.4216666666666667,
-        0.34684684684684686
+        0.3722456633849039
       ]
     ],
-    "thumbnail": "frames/sheep-garden-four-thumb.webp",
-    "preview": "frames/sheep-garden-four-screen-070c32f55d.webp",
+    "thumbnail": "frames/sheep-garden-four-calendar-thumb.webp",
+    "preview": "frames/sheep-garden-four-screen-ce6c99d2a3.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "sheep-garden-six",
     "name": "클로버 가든 · 6컷",
-    "src": "frames/sheep-garden-six-print.png",
+    "src": "frames/sheep-garden-six-calendar-print.png",
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
     "slots": [
       [
         0.06,
-        0.10698198198198199,
+        0.08907641819034225,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.5183333333333333,
-        0.1463963963963964,
+        0.12189404594467886,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.06,
-        0.3547297297297297,
+        0.35114861697140176,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.5183333333333333,
-        0.39414414414414417,
+        0.38396624472573837,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.06,
-        0.6024774774774775,
+        0.6132208157524613,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ],
       [
         0.5183333333333333,
-        0.6418918918918919,
+        0.646038443506798,
         0.4216666666666667,
-        0.22297297297297297
+        0.2414439756211908
       ]
     ],
-    "thumbnail": "frames/sheep-garden-six-thumb.webp",
-    "preview": "frames/sheep-garden-six-screen-0eef61585d.webp",
+    "thumbnail": "frames/sheep-garden-six-calendar-thumb.webp",
+    "preview": "frames/sheep-garden-six-screen-e2a08b5d6c.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "sheep-garden-wide",
     "name": "클로버 가든 · 가로 4컷",
-    "src": "frames/sheep-garden-wide-print.png",
+    "src": "frames/sheep-garden-wide-calendar-print.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
     "slots": [
       [
-        0.07657657657657657,
+        0.0637599624941397,
         0.075,
-        0.4155405405405405,
+        0.42991092358180966,
         0.3591666666666667
       ],
       [
-        0.5078828828828829,
+        0.5067979371776841,
         0.09833333333333333,
-        0.4155405405405405,
+        0.42944210032817626,
         0.3591666666666667
       ],
       [
-        0.07657657657657657,
+        0.0637599624941397,
         0.4575,
-        0.4155405405405405,
+        0.42991092358180966,
         0.3591666666666667
       ],
       [
-        0.5078828828828829,
+        0.5067979371776841,
         0.48083333333333333,
-        0.4155405405405405,
+        0.42944210032817626,
         0.3591666666666667
       ]
     ],
-    "thumbnail": "frames/sheep-garden-wide-thumb.webp",
-    "preview": "frames/sheep-garden-wide-screen-ea283914b9.webp",
-    "sourceWidth": 1776,
-    "sourceHeight": 1200
+    "thumbnail": "frames/sheep-garden-wide-calendar-thumb.webp",
+    "preview": "frames/sheep-garden-wide-screen-fc11879674.webp",
+    "sourceWidth": 2133,
+    "sourceHeight": 1200,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "hanmaeum-2026-daecheong-green-four",
@@ -2201,38 +2249,39 @@
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-green-four-ink-20261009.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-green-four-ink-20261009-thumb.webp",
+    "src": "frames/hanmaeum-2026-daecheong-green-four-calendar-print.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-green-four-calendar-thumb.webp",
     "slots": [
       [
         0.04833333333333333,
-        0.04560810810810811,
+        0.0379746835443038,
         0.45166666666666666,
-        0.38457207207207206
+        0.40412564463197376
       ],
       [
         0.5133333333333333,
-        0.041666666666666664,
+        0.034692920768870136,
         0.43833333333333335,
-        0.38344594594594594
+        0.40318799812470696
       ],
       [
         0.04833333333333333,
-        0.44144144144144143,
+        0.45147679324894513,
         0.43833333333333335,
-        0.38344594594594594
+        0.4027191748710736
       ],
       [
         0.5,
-        0.42961711711711714,
+        0.44163150492264414,
         0.45166666666666666,
-        0.3952702702702703
+        0.4125644631973746
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-green-four-screen-16d43e4ce4.webp",
+    "preview": "frames/hanmaeum-2026-daecheong-green-four-screen-810afc820a.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "hanmaeum-2026-daecheong-green-six-landscape",
@@ -2240,50 +2289,51 @@
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-green-six-landscape-ink-20261009.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-landscape-ink-20261009-thumb.webp",
+    "src": "frames/hanmaeum-2026-daecheong-green-six-landscape-calendar-print.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-landscape-calendar-thumb.webp",
     "slots": [
       [
-        0.02734375,
+        0.023076923076923078,
         0.0380859375,
-        0.291015625,
+        0.2978021978021978,
         0.3896484375
       ],
       [
-        0.3313802083333333,
+        0.33186813186813185,
         0.029296875,
-        0.3079427083333333,
+        0.3120879120879121,
         0.40234375
       ],
       [
-        0.6588541666666666,
+        0.6604395604395604,
         0.0322265625,
-        0.3177083333333333,
+        0.31978021978021975,
         0.390625
       ],
       [
-        0.029947916666666668,
+        0.025274725274725275,
         0.439453125,
-        0.2884114583333333,
+        0.2956043956043956,
         0.37890625
       ],
       [
-        0.3326822916666667,
+        0.33296703296703295,
         0.44921875,
-        0.3111979166666667,
+        0.3148351648351648,
         0.3642578125
       ],
       [
-        0.66015625,
+        0.6615384615384615,
         0.4345703125,
-        0.3131510416666667,
+        0.3159340659340659,
         0.3798828125
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-green-six-landscape-screen-14c2b9783b.webp",
-    "sourceWidth": 1536,
-    "sourceHeight": 1024
+    "preview": "frames/hanmaeum-2026-daecheong-green-six-landscape-screen-a3a1a3463c.webp",
+    "sourceWidth": 1820,
+    "sourceHeight": 1024,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "hanmaeum-2026-daecheong-green-six-portrait",
@@ -2291,50 +2341,51 @@
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-green-six-portrait-ink-20261009.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-portrait-ink-20261009-thumb.webp",
+    "src": "frames/hanmaeum-2026-daecheong-green-six-portrait-calendar-print.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-portrait-calendar-thumb.webp",
     "slots": [
       [
         0.05140640155189137,
-        0.04128440366972477,
+        0.03436988543371522,
         0.43452958292919497,
-        0.2817824377457405
+        0.2907801418439716
       ],
       [
         0.5033947623666344,
-        0.0327653997378768,
+        0.027277686852154936,
         0.44422890397672166,
-        0.2961992136304063
+        0.3027823240589198
       ],
       [
         0.05140640155189137,
-        0.3315858453473132,
+        0.3322422258592471,
         0.4354995150339476,
-        0.26933158584534733
+        0.27986906710310966
       ],
       [
         0.5111542192046556,
-        0.33355176933158587,
+        0.33387888707037644,
         0.44034917555771097,
-        0.26474442988204455
+        0.27605019094380795
       ],
       [
         0.05140640155189137,
-        0.6199213630406291,
+        0.6279323513366066,
         0.4364694471387003,
-        0.2490170380078637
+        0.2629569012547736
       ],
       [
         0.5053346265761397,
-        0.6094364351245085,
+        0.6192034915439171,
         0.44325897187196894,
-        0.26277850589777196
+        0.2744135297326787
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-green-six-portrait-screen-d2d658927f.webp",
+    "preview": "frames/hanmaeum-2026-daecheong-green-six-portrait-screen-a024bcee0e.webp",
     "sourceWidth": 1031,
-    "sourceHeight": 1526
+    "sourceHeight": 1833,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-four",
@@ -2342,38 +2393,39 @@
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-paper-four-ink-20261009.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-four-ink-20261009-thumb.webp",
+    "src": "frames/hanmaeum-2026-daecheong-paper-four-calendar-print.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-four-calendar-thumb.webp",
     "slots": [
       [
         0.056666666666666664,
-        0.06756756756756757,
+        0.05625879043600562,
         0.3975,
-        0.34966216216216217
+        0.3750586029067042
       ],
       [
         0.5458333333333333,
-        0.06756756756756757,
+        0.05625879043600562,
         0.3975,
-        0.34966216216216217
+        0.3750586029067042
       ],
       [
         0.056666666666666664,
-        0.5022522522522522,
+        0.5021097046413502,
         0.3975,
-        0.3490990990990991
+        0.37412095639943743
       ],
       [
         0.5458333333333333,
-        0.5022522522522522,
+        0.5021097046413502,
         0.3975,
-        0.3490990990990991
+        0.37412095639943743
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-paper-four-screen-eac7de145c.webp",
+    "preview": "frames/hanmaeum-2026-daecheong-paper-four-screen-1ef2bfc906.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 1776
+    "sourceHeight": 2133,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-six-landscape",
@@ -2381,50 +2433,51 @@
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-paper-six-landscape-ink-20261009.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-six-landscape-ink-20261009-thumb.webp",
+    "src": "frames/hanmaeum-2026-daecheong-paper-six-landscape-calendar-print.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-six-landscape-calendar-thumb.webp",
     "slots": [
       [
-        0.0399737876802097,
+        0.033278777959629025,
         0.07856450048496605,
-        0.27850589777195284,
+        0.28805237315875615,
         0.3113482056256062
       ],
       [
-        0.3676277850589777,
+        0.36224768139661756,
         0.07856450048496605,
-        0.2653997378768021,
+        0.2765957446808511,
         0.3113482056256062
       ],
       [
-        0.6808650065530799,
+        0.6786688488816148,
         0.07856450048496605,
-        0.27916120576671033,
+        0.28805237315875615,
         0.3113482056256062
       ],
       [
-        0.039318479685452164,
+        0.03273322422258593,
         0.478176527643065,
-        0.2798165137614679,
+        0.28914348063284234,
         0.31037827352085356
       ],
       [
-        0.3676277850589777,
+        0.36224768139661756,
         0.478176527643065,
-        0.26605504587155965,
+        0.27714129841789414,
         0.31037827352085356
       ],
       [
-        0.6808650065530799,
+        0.6786688488816148,
         0.478176527643065,
-        0.2798165137614679,
+        0.2885979268957992,
         0.31037827352085356
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-paper-six-landscape-screen-4d3f3b6550.webp",
-    "sourceWidth": 1526,
-    "sourceHeight": 1031
+    "preview": "frames/hanmaeum-2026-daecheong-paper-six-landscape-screen-d1e600a4b8.webp",
+    "sourceWidth": 1833,
+    "sourceHeight": 1031,
+    "layoutVersion": "calendar-tall-v1"
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-six-portrait",
@@ -2432,49 +2485,50 @@
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-paper-six-portrait-ink-20261009.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-six-portrait-ink-20261009-thumb.webp",
+    "src": "frames/hanmaeum-2026-daecheong-paper-six-portrait-calendar-print.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-six-portrait-calendar-thumb.webp",
     "slots": [
       [
         0.06207565470417071,
-        0.062254259501965926,
+        0.05182760501909438,
         0.39670223084384093,
-        0.21494102228047182
+        0.23513366066557556
       ],
       [
         0.5412221144519883,
-        0.062254259501965926,
+        0.05182760501909438,
         0.39670223084384093,
-        0.21494102228047182
+        0.23513366066557556
       ],
       [
         0.06013579049466537,
-        0.3584534731323722,
+        0.3546099290780142,
         0.39961202715809896,
-        0.20052424639580602
+        0.2225859247135843
       ],
       [
         0.5402521823472357,
-        0.3584534731323722,
+        0.3546099290780142,
         0.3976721629485936,
-        0.19921363040629095
+        0.2214948172394981
       ],
       [
         0.06207565470417071,
-        0.6369593709043251,
+        0.6421167484997272,
         0.3976721629485936,
-        0.2038007863695937
+        0.22531369339879978
       ],
       [
         0.539282250242483,
-        0.6369593709043251,
+        0.6421167484997272,
         0.39864209505334625,
-        0.2038007863695937
+        0.22531369339879978
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-paper-six-portrait-screen-a2e0731d66.webp",
+    "preview": "frames/hanmaeum-2026-daecheong-paper-six-portrait-screen-22d97c4554.webp",
     "sourceWidth": 1031,
-    "sourceHeight": 1526
+    "sourceHeight": 1833,
+    "layoutVersion": "calendar-tall-v1"
   }
 ]
