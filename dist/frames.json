@@ -1838,7 +1838,8 @@
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "sheep-farewell-six",
@@ -1891,7 +1892,8 @@
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "sheep-farewell-wide",
@@ -1932,7 +1934,8 @@
     "sourceHeight": 1200,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "sheep-club-four",
@@ -1973,7 +1976,8 @@
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "sheep-club-six",
@@ -2026,7 +2030,8 @@
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "sheep-club-wide",
@@ -2067,7 +2072,8 @@
     "sourceHeight": 1200,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "sheep-friends-four",
@@ -2108,7 +2114,8 @@
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "sheep-friends-six",
@@ -2161,7 +2168,8 @@
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "sheep-friends-wide",
@@ -2202,7 +2210,8 @@
     "sourceHeight": 1200,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "sheep-garden-four",
@@ -2243,7 +2252,8 @@
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "sheep-garden-six",
@@ -2296,7 +2306,8 @@
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "sheep-garden-wide",
@@ -2337,7 +2348,8 @@
     "sourceHeight": 1200,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "hanmaeum-2026-daecheong-green-four",
@@ -2379,7 +2391,8 @@
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "hanmaeum-2026-daecheong-green-six-landscape",
@@ -2433,7 +2446,8 @@
     "sourceHeight": 1024,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "hanmaeum-2026-daecheong-green-six-portrait",
@@ -2487,7 +2501,8 @@
     "sourceHeight": 1833,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-four",
@@ -2529,7 +2544,8 @@
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-six-landscape",
@@ -2583,7 +2599,8 @@
     "sourceHeight": 1031,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-six-portrait",
@@ -2637,7 +2654,8 @@
     "sourceHeight": 1833,
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
-    "artworkRestoration": "original-scale-v1"
+    "artworkRestoration": "original-scale-v1",
+    "hidden": true
   },
   {
     "id": "siwol-market-four",
@@ -2678,6 +2696,7 @@
     ],
     "src": "frames/siwol-market-four-png-a757923029.png",
     "preview": "frames/siwol-market-four-preview-a757923029.webp",
-    "thumbnail": "frames/siwol-market-four-thumbnail-a757923029.webp"
+    "thumbnail": "frames/siwol-market-four-thumbnail-a757923029.webp",
+    "hidden": false
   }
 ]
