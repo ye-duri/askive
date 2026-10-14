@@ -1,6 +1,6 @@
 import {drawCalendar} from './calendar-layout.mjs';
 const $=s=>document.getElementById(s);let printing=false,last='',selected=localStorage.getItem('yonsei-printer')||'';
-const savedScale=Number(localStorage.getItem('yonsei-print-scale-fullbleed')||100);$('scale').value=Number.isInteger(savedScale)&&savedScale>=85&&savedScale<=100?savedScale:100;
+const savedScale=Number(localStorage.getItem('yonsei-print-scale-fullbleed')||94);$('scale').value=Number.isInteger(savedScale)&&savedScale>=85&&savedScale<=100?savedScale:94;
 $('scale').onchange=()=>{if($('scale').checkValidity()){localStorage.setItem('yonsei-print-scale-fullbleed',$('scale').value);last='';void refresh();}};
 async function api(path,options={}){const r=await fetch(path,{...options,headers:{'Content-Type':'application/json','X-Yonsei-Admin':'1',...options.headers}});const d=await r.json();if(!r.ok)throw Error(d.error);return d;}
 const rotations=new Map(),colors=new Map();

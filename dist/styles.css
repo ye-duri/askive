@@ -915,3 +915,7 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline-color:#8963ae}
  .is-special-frames.is-setup footer{display:none}
 }
 @media(min-width:800px) and (max-width:1100px){.is-special-frames.is-setup #frames{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Center the two seasonal samples while retaining the basic sample scale. */
+#edition-special .edition-gallery{grid-template-columns:repeat(2,minmax(0,1fr));justify-content:center}
+#edition-special .edition-sample img{width:auto;max-width:100%}
