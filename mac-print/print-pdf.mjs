@@ -1,6 +1,6 @@
 import {calendarLayout} from './public/calendar-layout.mjs';
 // Fix physical placement before handing the job to macOS's print pipeline.
-export function printPDF(jpeg,scale=100,rotation=0,color='#000000'){
+export function printPDF(jpeg,scale=100,rotation=0,color='#000000',theme='default'){
  if(!Number.isInteger(scale)||scale<85||scale>100)throw Error('Invalid print scale');
  if(![0,90].includes(rotation))throw Error('Invalid print rotation');
  let width,height,components;
@@ -18,7 +18,7 @@ export function printPDF(jpeg,scale=100,rotation=0,color='#000000'){
  const factor=pageWidth/1200*scale/100,offsetX=pageWidth*(1-scale/100)/2,offsetY=pageHeight*(1-scale/100)/2;
  const rgb=hex=>[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255).join(' ');
  const lines=[`q ${factor} 0 0 ${factor} ${offsetX} ${offsetY} cm`];
- for(const p of calendarLayout(width,height,rotation,color)){
+ for(const p of calendarLayout(width,height,rotation,color,theme)){
   const y=1776-p.y;
   if(p.type==='photo'){
    const matrix=p.rotation===90?`0 ${-p.h} ${p.w} 0 ${p.x} ${y}`:`${p.w} 0 0 ${p.h} ${p.x} ${y-p.h}`;

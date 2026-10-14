@@ -662,7 +662,7 @@ async function ensurePrintAlbum(revision){
  if(album)return;
  await loadGalleryConfig();
  if(!qrEnabled)throw new Error('인터넷 연결을 확인한 뒤 화면을 새로고침해 주세요.');
- const current=await apiJSON('/api/gallery/albums',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({printOnly:true,consent:false})});
+ const current=await apiJSON('/api/gallery/albums',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({printOnly:true,consent:false,printTheme:selected?.printTheme})});
  if(revision!==sessionRun){void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'});return;}
  album=current;
 }
@@ -670,11 +670,11 @@ async function prepareAlbumQR(canvas,revision){
  if(!qrConsent||!qrEnabled)throw new Error('QR 사진 보관 동의가 필요합니다.');
  let current=album;
  if(!current){
-  current=await apiJSON('/api/gallery/albums',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({consent:true,policyVersion:'2026-09-26-qr-v1'})});
+  current=await apiJSON('/api/gallery/albums',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({consent:true,policyVersion:'2026-09-26-qr-v1',printTheme:selected?.printTheme})});
   if(revision!==sessionRun){void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'});return canvas;}
   album=current;
  }
- await apiJSON(`/api/gallery/albums/${current.id}/qr`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({consent:true,policyVersion:'2026-09-26-qr-v1'})});
+ await apiJSON(`/api/gallery/albums/${current.id}/qr`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({consent:true,policyVersion:'2026-09-26-qr-v1',printTheme:selected?.printTheme})});
  const url=new URL('gallery.html',location.href);url.hash=current.id;
  return addAlbumQR(canvas,url.href);
 }

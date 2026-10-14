@@ -1802,7 +1802,7 @@
   {
     "id": "sheep-farewell-four",
     "name": "잘 다녀와 · 4컷",
-    "src": "frames/sheep-farewell-four-imagination-png-cb88fc6ef0.png",
+    "src": "frames/sheep-farewell-four-restored-26ed13cad9-png.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -1832,17 +1832,18 @@
         0.3722456633849039
       ]
     ],
-    "thumbnail": "frames/sheep-farewell-four-imagination-thumbnail-cb88fc6ef0.webp",
-    "preview": "frames/sheep-farewell-four-imagination-preview-cb88fc6ef0.webp",
+    "thumbnail": "frames/sheep-farewell-four-restored-26ed13cad9-thumbnail.webp",
+    "preview": "frames/sheep-farewell-four-restored-26ed13cad9-preview.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
   },
   {
     "id": "sheep-farewell-six",
     "name": "잘 다녀와 · 6컷",
-    "src": "frames/sheep-farewell-six-imagination-png-c53f038526.png",
+    "src": "frames/sheep-farewell-six-restored-27b6af4044-png.png",
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
@@ -1863,7 +1864,7 @@
         0.06,
         0.35114861697140176,
         0.4216666666666667,
-        0.2414439756211908
+        0.24144397562119072
       ],
       [
         0.5183333333333333,
@@ -1884,17 +1885,18 @@
         0.2414439756211908
       ]
     ],
-    "thumbnail": "frames/sheep-farewell-six-imagination-thumbnail-c53f038526.webp",
-    "preview": "frames/sheep-farewell-six-imagination-preview-c53f038526.webp",
+    "thumbnail": "frames/sheep-farewell-six-restored-27b6af4044-thumbnail.webp",
+    "preview": "frames/sheep-farewell-six-restored-27b6af4044-preview.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
   },
   {
     "id": "sheep-farewell-wide",
     "name": "잘 다녀와 · 가로 4컷",
-    "src": "frames/sheep-farewell-wide-imagination-png-ea2ad5a725.png",
+    "src": "frames/sheep-farewell-wide-restored-07304d9873-png.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -1908,7 +1910,7 @@
       [
         0.5067979371776841,
         0.09833333333333333,
-        0.42944210032817626,
+        0.42944210032817615,
         0.3591666666666667
       ],
       [
@@ -1920,21 +1922,22 @@
       [
         0.5067979371776841,
         0.48083333333333333,
-        0.42944210032817626,
+        0.42944210032817615,
         0.3591666666666667
       ]
     ],
-    "thumbnail": "frames/sheep-farewell-wide-imagination-thumbnail-ea2ad5a725.webp",
-    "preview": "frames/sheep-farewell-wide-imagination-preview-ea2ad5a725.webp",
+    "thumbnail": "frames/sheep-farewell-wide-restored-07304d9873-thumbnail.webp",
+    "preview": "frames/sheep-farewell-wide-restored-07304d9873-preview.webp",
     "sourceWidth": 2133,
     "sourceHeight": 1200,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
   },
   {
     "id": "sheep-club-four",
     "name": "우리의 모임 · 4컷",
-    "src": "frames/sheep-club-four-imagination-png-a6d2711c37.png",
+    "src": "frames/sheep-club-four-restored-645c1a9465-png.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -1964,17 +1967,18 @@
         0.3722456633849039
       ]
     ],
-    "thumbnail": "frames/sheep-club-four-imagination-thumbnail-a6d2711c37.webp",
-    "preview": "frames/sheep-club-four-imagination-preview-a6d2711c37.webp",
+    "thumbnail": "frames/sheep-club-four-restored-645c1a9465-thumbnail.webp",
+    "preview": "frames/sheep-club-four-restored-645c1a9465-preview.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
   },
   {
     "id": "sheep-club-six",
     "name": "우리의 모임 · 6컷",
-    "src": "frames/sheep-club-six-imagination-png-7c2ddbc0ec.png",
+    "src": "frames/sheep-club-six-restored-58804309cb-png.png",
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
@@ -1995,7 +1999,7 @@
         0.06,
         0.35114861697140176,
         0.4216666666666667,
-        0.2414439756211908
+        0.24144397562119072
       ],
       [
         0.5183333333333333,
@@ -2016,17 +2020,18 @@
         0.2414439756211908
       ]
     ],
-    "thumbnail": "frames/sheep-club-six-imagination-thumbnail-7c2ddbc0ec.webp",
-    "preview": "frames/sheep-club-six-imagination-preview-7c2ddbc0ec.webp",
+    "thumbnail": "frames/sheep-club-six-restored-58804309cb-thumbnail.webp",
+    "preview": "frames/sheep-club-six-restored-58804309cb-preview.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
   },
   {
     "id": "sheep-club-wide",
     "name": "우리의 모임 · 가로 4컷",
-    "src": "frames/sheep-club-wide-imagination-png-4ddd4daffe.png",
+    "src": "frames/sheep-club-wide-restored-d1d5c0d447-png.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2040,7 +2045,7 @@
       [
         0.5067979371776841,
         0.09833333333333333,
-        0.42944210032817626,
+        0.42944210032817615,
         0.3591666666666667
       ],
       [
@@ -2052,21 +2057,22 @@
       [
         0.5067979371776841,
         0.48083333333333333,
-        0.42944210032817626,
+        0.42944210032817615,
         0.3591666666666667
       ]
     ],
-    "thumbnail": "frames/sheep-club-wide-imagination-thumbnail-4ddd4daffe.webp",
-    "preview": "frames/sheep-club-wide-imagination-preview-4ddd4daffe.webp",
+    "thumbnail": "frames/sheep-club-wide-restored-d1d5c0d447-thumbnail.webp",
+    "preview": "frames/sheep-club-wide-restored-d1d5c0d447-preview.webp",
     "sourceWidth": 2133,
     "sourceHeight": 1200,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
   },
   {
     "id": "sheep-friends-four",
     "name": "베스트 프렌드 · 4컷",
-    "src": "frames/sheep-friends-four-imagination-png-ddbd087b73.png",
+    "src": "frames/sheep-friends-four-restored-127908d125-png.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2096,17 +2102,18 @@
         0.3722456633849039
       ]
     ],
-    "thumbnail": "frames/sheep-friends-four-imagination-thumbnail-ddbd087b73.webp",
-    "preview": "frames/sheep-friends-four-imagination-preview-ddbd087b73.webp",
+    "thumbnail": "frames/sheep-friends-four-restored-127908d125-thumbnail.webp",
+    "preview": "frames/sheep-friends-four-restored-127908d125-preview.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
   },
   {
     "id": "sheep-friends-six",
     "name": "베스트 프렌드 · 6컷",
-    "src": "frames/sheep-friends-six-imagination-png-1257bc966d.png",
+    "src": "frames/sheep-friends-six-restored-116d97e331-png.png",
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
@@ -2127,7 +2134,7 @@
         0.06,
         0.35114861697140176,
         0.4216666666666667,
-        0.2414439756211908
+        0.24144397562119072
       ],
       [
         0.5183333333333333,
@@ -2148,17 +2155,18 @@
         0.2414439756211908
       ]
     ],
-    "thumbnail": "frames/sheep-friends-six-imagination-thumbnail-1257bc966d.webp",
-    "preview": "frames/sheep-friends-six-imagination-preview-1257bc966d.webp",
+    "thumbnail": "frames/sheep-friends-six-restored-116d97e331-thumbnail.webp",
+    "preview": "frames/sheep-friends-six-restored-116d97e331-preview.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
   },
   {
     "id": "sheep-friends-wide",
     "name": "베스트 프렌드 · 가로 4컷",
-    "src": "frames/sheep-friends-wide-imagination-png-e9f3fbb9ab.png",
+    "src": "frames/sheep-friends-wide-restored-819616d6b5-png.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2172,7 +2180,7 @@
       [
         0.5067979371776841,
         0.09833333333333333,
-        0.42944210032817626,
+        0.42944210032817615,
         0.3591666666666667
       ],
       [
@@ -2184,21 +2192,22 @@
       [
         0.5067979371776841,
         0.48083333333333333,
-        0.42944210032817626,
+        0.42944210032817615,
         0.3591666666666667
       ]
     ],
-    "thumbnail": "frames/sheep-friends-wide-imagination-thumbnail-e9f3fbb9ab.webp",
-    "preview": "frames/sheep-friends-wide-imagination-preview-e9f3fbb9ab.webp",
+    "thumbnail": "frames/sheep-friends-wide-restored-819616d6b5-thumbnail.webp",
+    "preview": "frames/sheep-friends-wide-restored-819616d6b5-preview.webp",
     "sourceWidth": 2133,
     "sourceHeight": 1200,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
   },
   {
     "id": "sheep-garden-four",
     "name": "클로버 가든 · 4컷",
-    "src": "frames/sheep-garden-four-imagination-png-6d0e4a9820.png",
+    "src": "frames/sheep-garden-four-restored-5a1a76c653-png.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2228,17 +2237,18 @@
         0.3722456633849039
       ]
     ],
-    "thumbnail": "frames/sheep-garden-four-imagination-thumbnail-6d0e4a9820.webp",
-    "preview": "frames/sheep-garden-four-imagination-preview-6d0e4a9820.webp",
+    "thumbnail": "frames/sheep-garden-four-restored-5a1a76c653-thumbnail.webp",
+    "preview": "frames/sheep-garden-four-restored-5a1a76c653-preview.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
   },
   {
     "id": "sheep-garden-six",
     "name": "클로버 가든 · 6컷",
-    "src": "frames/sheep-garden-six-imagination-png-50975a6369.png",
+    "src": "frames/sheep-garden-six-restored-5807ed8477-png.png",
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
@@ -2259,7 +2269,7 @@
         0.06,
         0.35114861697140176,
         0.4216666666666667,
-        0.2414439756211908
+        0.24144397562119072
       ],
       [
         0.5183333333333333,
@@ -2280,17 +2290,18 @@
         0.2414439756211908
       ]
     ],
-    "thumbnail": "frames/sheep-garden-six-imagination-thumbnail-50975a6369.webp",
-    "preview": "frames/sheep-garden-six-imagination-preview-50975a6369.webp",
+    "thumbnail": "frames/sheep-garden-six-restored-5807ed8477-thumbnail.webp",
+    "preview": "frames/sheep-garden-six-restored-5807ed8477-preview.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
   },
   {
     "id": "sheep-garden-wide",
     "name": "클로버 가든 · 가로 4컷",
-    "src": "frames/sheep-garden-wide-imagination-png-b036093d5a.png",
+    "src": "frames/sheep-garden-wide-restored-afc3c72d82-png.png",
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
@@ -2304,7 +2315,7 @@
       [
         0.5067979371776841,
         0.09833333333333333,
-        0.42944210032817626,
+        0.42944210032817615,
         0.3591666666666667
       ],
       [
@@ -2316,16 +2327,17 @@
       [
         0.5067979371776841,
         0.48083333333333333,
-        0.42944210032817626,
+        0.42944210032817615,
         0.3591666666666667
       ]
     ],
-    "thumbnail": "frames/sheep-garden-wide-imagination-thumbnail-b036093d5a.webp",
-    "preview": "frames/sheep-garden-wide-imagination-preview-b036093d5a.webp",
+    "thumbnail": "frames/sheep-garden-wide-restored-afc3c72d82-thumbnail.webp",
+    "preview": "frames/sheep-garden-wide-restored-afc3c72d82-preview.webp",
     "sourceWidth": 2133,
     "sourceHeight": 1200,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
   },
   {
     "id": "hanmaeum-2026-daecheong-green-four",
@@ -2333,8 +2345,8 @@
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-green-four-imagination-png-286d4fde0d.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-green-four-imagination-thumbnail-286d4fde0d.webp",
+    "src": "frames/hanmaeum-2026-daecheong-green-four-restored-9ffe82f1ce-png.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-green-four-restored-9ffe82f1ce-thumbnail.webp",
     "slots": [
       [
         0.04833333333333333,
@@ -2362,11 +2374,12 @@
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-green-four-imagination-preview-286d4fde0d.webp",
+    "preview": "frames/hanmaeum-2026-daecheong-green-four-restored-9ffe82f1ce-preview.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
   },
   {
     "id": "hanmaeum-2026-daecheong-green-six-landscape",
@@ -2374,8 +2387,8 @@
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-green-six-landscape-imagination-png-c441d15ff3.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-landscape-imagination-thumbnail-c441d15ff3.webp",
+    "src": "frames/hanmaeum-2026-daecheong-green-six-landscape-restored-aa2ec02621-png.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-landscape-restored-aa2ec02621-thumbnail.webp",
     "slots": [
       [
         0.023076923076923078,
@@ -2415,11 +2428,12 @@
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-green-six-landscape-imagination-preview-c441d15ff3.webp",
+    "preview": "frames/hanmaeum-2026-daecheong-green-six-landscape-restored-aa2ec02621-preview.webp",
     "sourceWidth": 1820,
     "sourceHeight": 1024,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
   },
   {
     "id": "hanmaeum-2026-daecheong-green-six-portrait",
@@ -2427,8 +2441,8 @@
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-green-six-portrait-imagination-png-d825056224.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-portrait-imagination-thumbnail-d825056224.webp",
+    "src": "frames/hanmaeum-2026-daecheong-green-six-portrait-restored-59e1e3e432-png.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-portrait-restored-59e1e3e432-thumbnail.webp",
     "slots": [
       [
         0.05140640155189137,
@@ -2468,11 +2482,12 @@
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-green-six-portrait-imagination-preview-d825056224.webp",
+    "preview": "frames/hanmaeum-2026-daecheong-green-six-portrait-restored-59e1e3e432-preview.webp",
     "sourceWidth": 1031,
     "sourceHeight": 1833,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-four",
@@ -2480,8 +2495,8 @@
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-paper-four-imagination-png-0982ecc3d0.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-four-imagination-thumbnail-0982ecc3d0.webp",
+    "src": "frames/hanmaeum-2026-daecheong-paper-four-restored-401287ac7d-png.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-four-restored-401287ac7d-thumbnail.webp",
     "slots": [
       [
         0.056666666666666664,
@@ -2509,11 +2524,12 @@
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-paper-four-imagination-preview-0982ecc3d0.webp",
+    "preview": "frames/hanmaeum-2026-daecheong-paper-four-restored-401287ac7d-preview.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-six-landscape",
@@ -2521,8 +2537,8 @@
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-paper-six-landscape-imagination-png-7ef98dd6d0.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-six-landscape-imagination-thumbnail-7ef98dd6d0.webp",
+    "src": "frames/hanmaeum-2026-daecheong-paper-six-landscape-restored-6fa13de8bd-png.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-six-landscape-restored-6fa13de8bd-thumbnail.webp",
     "slots": [
       [
         0.033278777959629025,
@@ -2562,11 +2578,12 @@
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-paper-six-landscape-imagination-preview-7ef98dd6d0.webp",
+    "preview": "frames/hanmaeum-2026-daecheong-paper-six-landscape-restored-6fa13de8bd-preview.webp",
     "sourceWidth": 1833,
     "sourceHeight": 1031,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-six-portrait",
@@ -2574,8 +2591,8 @@
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-paper-six-portrait-imagination-png-c3d30cb8e2.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-six-portrait-imagination-thumbnail-c3d30cb8e2.webp",
+    "src": "frames/hanmaeum-2026-daecheong-paper-six-portrait-restored-9d31839582-png.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-six-portrait-restored-9d31839582-thumbnail.webp",
     "slots": [
       [
         0.06207565470417071,
@@ -2615,10 +2632,52 @@
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-paper-six-portrait-imagination-preview-c3d30cb8e2.webp",
+    "preview": "frames/hanmaeum-2026-daecheong-paper-six-portrait-restored-9d31839582-preview.webp",
     "sourceWidth": 1031,
     "sourceHeight": 1833,
     "layoutVersion": "calendar-tall-v1",
-    "brand": "Imagination Hall"
+    "brand": "Imagination Hall",
+    "artworkRestoration": "original-scale-v1"
+  },
+  {
+    "id": "siwol-market-four",
+    "name": "시월장 · 4컷",
+    "edition": "special",
+    "count": 4,
+    "paper": "selphy-p",
+    "sourceWidth": 600,
+    "sourceHeight": 1057,
+    "layoutVersion": "siwol-v1",
+    "brand": "Imagination Hall",
+    "printTheme": "siwol",
+    "slots": [
+      [
+        0.055,
+        0.043519394512771994,
+        0.43166666666666664,
+        0.36423841059602646
+      ],
+      [
+        0.5116666666666667,
+        0.043519394512771994,
+        0.43166666666666664,
+        0.36423841059602646
+      ],
+      [
+        0.055,
+        0.423841059602649,
+        0.43166666666666664,
+        0.3632923368022706
+      ],
+      [
+        0.5116666666666667,
+        0.423841059602649,
+        0.43166666666666664,
+        0.3632923368022706
+      ]
+    ],
+    "src": "frames/siwol-market-four-png-a757923029.png",
+    "preview": "frames/siwol-market-four-preview-a757923029.webp",
+    "thumbnail": "frames/siwol-market-four-thumbnail-a757923029.webp"
   }
 ]

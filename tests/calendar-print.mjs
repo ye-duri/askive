@@ -10,3 +10,5 @@ const full=calendarLayout(1200,2133),photos=full.filter(p=>p.type==='photo');ass
 const logo=full.find(p=>p.type==='brand');assert.ok(logo.runs.length>500);assert.equal(logo.w/logo.h,1220/300);assert.equal(logo.color,'#000000');
 for(const color of ['#794D32','#166B9A','#38664B','#765383'])assert.ok(calendarLayout(1200,2133,0,color).filter(c=>c.type==='text'||c.type==='brand').every(c=>c.color===color));assert.throws(()=>calendarLayout(1200,2133,0,'bad'));
 console.log('PASS: shared vector lettering, October date positions, 4 touching undistorted photos, black default, palette colors and original logo');
+
+const siwol=calendarLayout(600,1057,0,'#BF4022','siwol');assert.equal(siwol.find(p=>p.value==='OCT.').font,'siwol');assert.ok(siwol.find(p=>p.value==='OCT.').paths.length>1000);assert.equal(siwol.find(p=>p.type==='brand').color,'#BF4022');
