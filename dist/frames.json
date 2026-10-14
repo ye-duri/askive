@@ -2698,5 +2698,47 @@
     "preview": "frames/siwol-market-four-preview-a757923029.webp",
     "thumbnail": "frames/siwol-market-four-thumbnail-a757923029.webp",
     "hidden": false
+  },
+  {
+    "id": "siwol-market-peach-four",
+    "name": "시월장 살구 · 4컷",
+    "hidden": false,
+    "edition": "special",
+    "count": 4,
+    "paper": "selphy-p",
+    "sourceWidth": 600,
+    "sourceHeight": 1057,
+    "layoutVersion": "siwol-v1",
+    "brand": "Imagination Hall",
+    "printTheme": "siwol",
+    "slots": [
+      [
+        0.05333333333333334,
+        0.043519394512771994,
+        0.43166666666666664,
+        0.36423841059602646
+      ],
+      [
+        0.5116666666666667,
+        0.043519394512771994,
+        0.43,
+        0.36423841059602646
+      ],
+      [
+        0.05333333333333334,
+        0.423841059602649,
+        0.43166666666666664,
+        0.3632923368022706
+      ],
+      [
+        0.5116666666666667,
+        0.423841059602649,
+        0.43,
+        0.3632923368022706
+      ]
+    ],
+    "src": "frames/siwol-market-peach-four-png-4ba8e0501e.png",
+    "preview": "frames/siwol-market-peach-four-preview-4ba8e0501e.webp",
+    "thumbnail": "frames/siwol-market-peach-four-thumbnail-4ba8e0501e.webp"
   }
 ]
