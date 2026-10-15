@@ -2740,5 +2740,113 @@
     "src": "frames/siwol-market-peach-four-png-4ba8e0501e.png",
     "preview": "frames/siwol-market-peach-four-preview-4ba8e0501e.webp",
     "thumbnail": "frames/siwol-market-peach-four-thumbnail-4ba8e0501e.webp"
+  },
+  {
+    "id": "siwol-market-six",
+    "name": "시월장 · 6컷",
+    "edition": "special",
+    "count": 6,
+    "paper": "selphy-p",
+    "sourceWidth": 600,
+    "sourceHeight": 1057,
+    "layoutVersion": "siwol-six-v1",
+    "brand": "Imagination Hall",
+    "printTheme": "siwol",
+    "slots": [
+      [
+        0.055,
+        0.043519394512771994,
+        0.43166666666666664,
+        0.23746452223273415
+      ],
+      [
+        0.5116666666666667,
+        0.043519394512771994,
+        0.43166666666666664,
+        0.23746452223273415
+      ],
+      [
+        0.055,
+        0.29706717123935666,
+        0.43166666666666664,
+        0.23746452223273415
+      ],
+      [
+        0.5116666666666667,
+        0.29706717123935666,
+        0.43166666666666664,
+        0.23746452223273415
+      ],
+      [
+        0.055,
+        0.5496688741721855,
+        0.43166666666666664,
+        0.23746452223273415
+      ],
+      [
+        0.5116666666666667,
+        0.5496688741721855,
+        0.43166666666666664,
+        0.23746452223273415
+      ]
+    ],
+    "src": "frames/siwol-market-six-png-11dcd41116.png",
+    "preview": "frames/siwol-market-six-preview-11dcd41116.webp",
+    "thumbnail": "frames/siwol-market-six-thumbnail-11dcd41116.webp",
+    "hidden": false
+  },
+  {
+    "id": "siwol-market-peach-six",
+    "name": "시월장 살구 · 6컷",
+    "hidden": false,
+    "edition": "special",
+    "count": 6,
+    "paper": "selphy-p",
+    "sourceWidth": 600,
+    "sourceHeight": 1057,
+    "layoutVersion": "siwol-six-v1",
+    "brand": "Imagination Hall",
+    "printTheme": "siwol",
+    "slots": [
+      [
+        0.05333333333333334,
+        0.043519394512771994,
+        0.43166666666666664,
+        0.23746452223273415
+      ],
+      [
+        0.5116666666666667,
+        0.043519394512771994,
+        0.43,
+        0.23746452223273415
+      ],
+      [
+        0.05333333333333334,
+        0.29706717123935666,
+        0.43166666666666664,
+        0.23746452223273415
+      ],
+      [
+        0.5116666666666667,
+        0.29706717123935666,
+        0.43,
+        0.23746452223273415
+      ],
+      [
+        0.05333333333333334,
+        0.5496688741721855,
+        0.43166666666666664,
+        0.23746452223273415
+      ],
+      [
+        0.5116666666666667,
+        0.5496688741721855,
+        0.43,
+        0.23746452223273415
+      ]
+    ],
+    "src": "frames/siwol-market-peach-six-png-aa539cf343.png",
+    "preview": "frames/siwol-market-peach-six-preview-aa539cf343.webp",
+    "thumbnail": "frames/siwol-market-peach-six-thumbnail-aa539cf343.webp"
   }
 ]

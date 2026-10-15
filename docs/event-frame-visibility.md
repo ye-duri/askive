@@ -1,6 +1,6 @@
 # 행사 프레임 노출 설정
 
-2026년 10월 시월장 행사에서는 `dist/frames.json`의 스페셜 에디션 중 `siwol-market-four`(기존)와 `siwol-market-peach-four`(살구색)를 표시합니다. 두 프레임 모두 시월장 달력 테마를 사용합니다. 다른 스페셜 항목에는 `hidden: true`를 설정했습니다. 기본 프레임과 기존 이미지 파일은 유지합니다.
+2026년 10월 시월장 행사에서는 `dist/frames.json`의 스페셜 에디션 중 `siwol-market-four`(기존)와 `siwol-market-peach-four`(살구색)를 표시합니다. 각 디자인은 4컷과 6컷을 제공하며, 6컷 ID는 `siwol-market-six`, `siwol-market-peach-six`입니다. 모두 시월장 달력 테마를 사용합니다. 다른 스페셜 항목에는 `hidden: true`를 설정했습니다. 기본 프레임과 기존 이미지 파일은 유지합니다.
 
 다음 행사에서 다시 표시하려면 해당 항목의 `hidden`을 삭제하거나 `false`로 바꾸고, 모드 선택 화면의 예시 이미지도 맞춰 변경합니다. 프레임 생성 스크립트로 목록을 재생성한 경우 행사 노출 설정을 확인합니다.
 
