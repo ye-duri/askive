@@ -11,6 +11,12 @@ export function calendarLayout(width,height,rotation=0,color='#000000',theme='de
  const photo=(x,y,w,h)=>{const scale=Math.min(w/rotatedWidth,h/rotatedHeight),pw=rotatedWidth*scale;commands.push({type:'photo',x:x+(w-pw)/2,y,w:pw,h:rotatedHeight*scale,rotation});};
  photo(0,0,600,topHeight);photo(600,0,600,topHeight);
  photo(600,topHeight,300,smallHeight);photo(900,topHeight,300,smallHeight);
+ // Subtle cut boundaries over touching frames, without adding any spacing.
+ const [left,right,miniLeft,miniRight]=commands;
+ const divider=(x,y,w,h)=>commands.push({type:'line',role:'frame-divider',x,y,w,h,color:'#B6AFA6'});
+ if(Math.abs(left.x+left.w-right.x)<.01)divider(right.x,0,0,topHeight);
+ if(Math.abs(miniLeft.x+miniLeft.w-miniRight.x)<.01)divider(miniRight.x,topHeight,0,smallHeight);
+ divider(right.x,topHeight,right.w,0);
  const space=1776-topHeight,x=40,cw=524/7,y=topHeight+space*.36,rh=space*.54/6;
  const text=(value,x,y,size,font='condensed',align='left',maxWidth=Infinity)=>{
   const face=calendarFonts[font],width=[...value].reduce((n,c)=>n+face.glyphs[c].advance,0),scale=Math.min(size/face.units,maxWidth/width);
