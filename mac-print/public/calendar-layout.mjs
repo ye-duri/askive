@@ -7,7 +7,7 @@ export function calendarLayout(width,height,rotation=0,color='#000000',theme='de
  if(!/^#[0-9a-f]{6}$/i.test(color))throw Error('Invalid calendar color');
  const commands=[],line='#'+[1,3,5].map(i=>Math.round(parseInt(color.slice(i,i+2),16)*.65+255*.35).toString(16).padStart(2,'0')).join('');
  const rotatedWidth=rotation===90?height:width,rotatedHeight=rotation===90?width:height;
- const topHeight=Math.min(qrUrl?1080:1160,600*rotatedHeight/rotatedWidth),smallHeight=topHeight/2;
+ const topHeight=Math.min(qrUrl?1040:1160,600*rotatedHeight/rotatedWidth),smallHeight=topHeight/2;
  const photo=(x,y,w,h)=>{const scale=Math.min(w/rotatedWidth,h/rotatedHeight),pw=rotatedWidth*scale;commands.push({type:'photo',x:x+(w-pw)/2,y,w:pw,h:rotatedHeight*scale,rotation});};
  photo(0,0,600,topHeight);photo(600,0,600,topHeight);
  photo(600,topHeight,300,smallHeight);photo(900,topHeight,300,smallHeight);
@@ -28,11 +28,11 @@ export function calendarLayout(width,height,rotation=0,color='#000000',theme='de
  for(let day=1;day<=31;day++){const n=first+day-1;text(String(day),x+(n%7+.5)*cw,y+(Math.floor(n/7)+.5)*rh+12,36,'condensed','center');}
  text('HELLO, OCTOBER!',40,topHeight+space*.943,25);text('2026',564,topHeight+space*.943,25,'condensed','right');
  const brandWidth=qrUrl?260:285,brandHeight=brandWidth*300/1220,captionY=(topHeight+smallHeight+1776)/2;
- commands.push({type:'brand',x:(qrUrl?825:900)-brandWidth/2,y:captionY-brandHeight/2,w:brandWidth,h:brandHeight,color,runs:brandRuns});
+ commands.push({type:'brand',x:(qrUrl?800:900)-brandWidth/2,y:captionY-brandHeight/2,w:brandWidth,h:brandHeight,color,runs:brandRuns});
  if(qrUrl){
   const url=new URL(qrUrl);
   if(!['https:','http:'].includes(url.protocol)||url.pathname!=='/gallery.html'||!/^#[a-f0-9]{48}$/.test(url.hash))throw Error('Invalid photo QR URL');
-  const qr=qrcode(0,'M');qr.addData(url.href);qr.make();const count=qr.getModuleCount(),unit=Math.max(1,Math.min(3,Math.floor(148/(count+8)))),size=(count+8)*unit;
+  const qr=qrcode(0,'M');qr.addData(url.href);qr.make();const count=qr.getModuleCount(),unit=Math.max(1,Math.min(4,Math.floor(196/(count+8)))),size=(count+8)*unit;
   const left=1168-size,top=captionY-size/2,rects=[];
   for(let row=0;row<count;row++)for(let col=0;col<count;col++)if(qr.isDark(row,col))rects.push([left+(col+4)*unit,top+(row+4)*unit,unit,unit]);
   commands.push({type:'qr',x:left,y:top,w:size,h:size,rects});
