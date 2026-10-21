@@ -2694,10 +2694,11 @@
         0.3632923368022706
       ]
     ],
-    "src": "frames/siwol-market-four-png-a757923029.png",
-    "preview": "frames/siwol-market-four-preview-a757923029.webp",
-    "thumbnail": "frames/siwol-market-four-thumbnail-a757923029.webp",
-    "hidden": false
+    "src": "frames/siwol-market-four-png-78355ae77e.png",
+    "preview": "frames/siwol-market-four-preview-78355ae77e.webp",
+    "thumbnail": "frames/siwol-market-four-thumbnail-78355ae77e.webp",
+    "hidden": false,
+    "eventDate": "2026-10-24"
   },
   {
     "id": "siwol-market-peach-four",
@@ -2737,9 +2738,10 @@
         0.3632923368022706
       ]
     ],
-    "src": "frames/siwol-market-peach-four-png-4ba8e0501e.png",
-    "preview": "frames/siwol-market-peach-four-preview-4ba8e0501e.webp",
-    "thumbnail": "frames/siwol-market-peach-four-thumbnail-4ba8e0501e.webp"
+    "src": "frames/siwol-market-peach-four-png-e804a3e605.png",
+    "preview": "frames/siwol-market-peach-four-preview-e804a3e605.webp",
+    "thumbnail": "frames/siwol-market-peach-four-thumbnail-e804a3e605.webp",
+    "eventDate": "2026-10-24"
   },
   {
     "id": "siwol-market-six",
@@ -2790,10 +2792,11 @@
         0.23746452223273415
       ]
     ],
-    "src": "frames/siwol-market-six-png-11dcd41116.png",
-    "preview": "frames/siwol-market-six-preview-11dcd41116.webp",
-    "thumbnail": "frames/siwol-market-six-thumbnail-11dcd41116.webp",
-    "hidden": false
+    "src": "frames/siwol-market-six-png-73eef935d6.png",
+    "preview": "frames/siwol-market-six-preview-73eef935d6.webp",
+    "thumbnail": "frames/siwol-market-six-thumbnail-73eef935d6.webp",
+    "hidden": false,
+    "eventDate": "2026-10-24"
   },
   {
     "id": "siwol-market-peach-six",
@@ -2845,8 +2848,9 @@
         0.23746452223273415
       ]
     ],
-    "src": "frames/siwol-market-peach-six-png-aa539cf343.png",
-    "preview": "frames/siwol-market-peach-six-preview-aa539cf343.webp",
-    "thumbnail": "frames/siwol-market-peach-six-thumbnail-aa539cf343.webp"
+    "src": "frames/siwol-market-peach-six-png-e6bb441fe2.png",
+    "preview": "frames/siwol-market-peach-six-preview-e6bb441fe2.webp",
+    "thumbnail": "frames/siwol-market-peach-six-thumbnail-e6bb441fe2.webp",
+    "eventDate": "2026-10-24"
   }
 ]
