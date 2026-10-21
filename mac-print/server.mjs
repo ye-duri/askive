@@ -144,7 +144,7 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
    if(req.method==='GET'&&match[2]==='image'){res.writeHead(200,{'Content-Type':'image/jpeg'});return res.end(readFileSync(join(directory,j.id+'.jpg')));}
    if(req.method==='POST'&&match[2]==='print'){
     const {printer,copies,scale=100,rotation=0,calendarColor='#000000',printTheme=j.printTheme||'default',qrUrl=j.qrUrl||'',reprint=false,expectedAttempt=0}=JSON.parse((await body(req,2048)).toString());
-    if(!['default','siwol'].includes(printTheme)||!/^#[0-9a-f]{6}$/i.test(calendarColor))return json(res,400,{error:'달력 색상을 확인해 주세요.'});
+    if(!['default','siwol','want'].includes(printTheme)||!/^#[0-9a-f]{6}$/i.test(calendarColor))return json(res,400,{error:'달력 색상을 확인해 주세요.'});
     if(![0,90].includes(rotation))return json(res,400,{error:'회전은 원본 또는 90도만 가능합니다.'});
     if(!Number.isInteger(scale)||scale<85||scale>100)return json(res,400,{error:'인쇄 배율은 85~100%입니다.'});
     if(!Number.isInteger(copies)||copies<1||copies>10)return json(res,400,{error:'매수는 1~10장입니다.'});
@@ -163,7 +163,7 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
    }
    if(req.method==='DELETE'&&!match[2]){if(j.state==='sending')return json(res,409,{error:'전송 중에는 지울 수 없습니다.'});for(const suffix of ['.jpg','.json','.pdf'])try{unlinkSync(join(directory,j.id+suffix));}catch{}jobs.delete(j.id);return json(res,200,{deleted:true});}
   }
-  if(req.method==='GET'&&['/','/admin.js','/admin.css','/vendor/qrcode.mjs','/calendar-layout.mjs','/calendar-fonts.mjs'].includes(path)){res.setHeader('Content-Security-Policy',"default-src 'self'; frame-ancestors 'none'; base-uri 'none'");res.setHeader('Content-Type',(path.endsWith('.js')||path.endsWith('.mjs'))?'text/javascript':path.endsWith('.css')?'text/css':'text/html; charset=utf-8');return res.end(readFileSync(join(root,'public',path==='/'?'index.html':path.slice(1))));}
+  if(req.method==='GET'&&['/','/admin.js','/admin.css','/vendor/qrcode.mjs','/calendar-layout.mjs','/calendar-fonts.mjs','/want-art.mjs'].includes(path)){res.setHeader('Content-Security-Policy',"default-src 'self'; frame-ancestors 'none'; base-uri 'none'");res.setHeader('Content-Type',(path.endsWith('.js')||path.endsWith('.mjs'))?'text/javascript':path.endsWith('.css')?'text/css':'text/html; charset=utf-8');return res.end(readFileSync(join(root,'public',path==='/'?'index.html':path.slice(1))));}
   json(res,404,{error:'없는 경로'});
  }catch(e){json(res,400,{error:e.message||'요청 처리 실패'});}});
  let stopRelay=()=>{};server.on('listening',()=>{stopRelay=startPrinterRelay({directory,port:server.address().port,token,printers});});

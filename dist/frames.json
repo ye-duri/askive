@@ -2694,9 +2694,9 @@
         0.3632923368022706
       ]
     ],
-    "src": "frames/siwol-market-four-png-78355ae77e.png",
-    "preview": "frames/siwol-market-four-preview-78355ae77e.webp",
-    "thumbnail": "frames/siwol-market-four-thumbnail-78355ae77e.webp",
+    "src": "frames/siwol-market-four-png-001fc40eca.png",
+    "preview": "frames/siwol-market-four-preview-001fc40eca.webp",
+    "thumbnail": "frames/siwol-market-four-thumbnail-001fc40eca.webp",
     "hidden": false,
     "eventDate": "2026-10-24"
   },
@@ -2738,9 +2738,9 @@
         0.3632923368022706
       ]
     ],
-    "src": "frames/siwol-market-peach-four-png-e804a3e605.png",
-    "preview": "frames/siwol-market-peach-four-preview-e804a3e605.webp",
-    "thumbnail": "frames/siwol-market-peach-four-thumbnail-e804a3e605.webp",
+    "src": "frames/siwol-market-peach-four-png-14528b03ec.png",
+    "preview": "frames/siwol-market-peach-four-preview-14528b03ec.webp",
+    "thumbnail": "frames/siwol-market-peach-four-thumbnail-14528b03ec.webp",
     "eventDate": "2026-10-24"
   },
   {
@@ -2792,9 +2792,9 @@
         0.23746452223273415
       ]
     ],
-    "src": "frames/siwol-market-six-png-73eef935d6.png",
-    "preview": "frames/siwol-market-six-preview-73eef935d6.webp",
-    "thumbnail": "frames/siwol-market-six-thumbnail-73eef935d6.webp",
+    "src": "frames/siwol-market-six-png-2dd9a4f85c.png",
+    "preview": "frames/siwol-market-six-preview-2dd9a4f85c.webp",
+    "thumbnail": "frames/siwol-market-six-thumbnail-2dd9a4f85c.webp",
     "hidden": false,
     "eventDate": "2026-10-24"
   },
@@ -2848,9 +2848,51 @@
         0.23746452223273415
       ]
     ],
-    "src": "frames/siwol-market-peach-six-png-e6bb441fe2.png",
-    "preview": "frames/siwol-market-peach-six-preview-e6bb441fe2.webp",
-    "thumbnail": "frames/siwol-market-peach-six-thumbnail-e6bb441fe2.webp",
+    "src": "frames/siwol-market-peach-six-png-0ac405925a.png",
+    "preview": "frames/siwol-market-peach-six-preview-0ac405925a.webp",
+    "thumbnail": "frames/siwol-market-peach-six-thumbnail-0ac405925a.webp",
     "eventDate": "2026-10-24"
+  },
+  {
+    "id": "want-four",
+    "name": "WANT · 4컷",
+    "hidden": false,
+    "edition": "special",
+    "count": 4,
+    "paper": "selphy-p",
+    "sourceWidth": 600,
+    "sourceHeight": 1057,
+    "layoutVersion": "want-v1",
+    "brand": "WANT",
+    "printTheme": "want",
+    "slots": [
+      [
+        0.055,
+        0.043519394512771994,
+        0.43333333333333335,
+        0.36423841059602646
+      ],
+      [
+        0.515,
+        0.043519394512771994,
+        0.43,
+        0.36423841059602646
+      ],
+      [
+        0.055,
+        0.423841059602649,
+        0.43333333333333335,
+        0.3632923368022706
+      ],
+      [
+        0.515,
+        0.423841059602649,
+        0.43,
+        0.3632923368022706
+      ]
+    ],
+    "src": "frames/want-four-png-ae0f9fac9b.png",
+    "preview": "frames/want-four-preview-ae0f9fac9b.webp",
+    "thumbnail": "frames/want-four-thumbnail-ae0f9fac9b.webp"
   }
 ]

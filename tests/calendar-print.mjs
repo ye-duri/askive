@@ -24,8 +24,10 @@ for(const [w,h] of [[1200,2133],[2133,1200],[600,1057],[1200,4000]])for(const ro
 assert.equal(calendarLayout(1200,2133).filter(p=>p.type==='qr').length,0);
 assert.throws(()=>calendarLayout(1200,2133,0,'#000000','default','javascript:bad'));
 const catalog=JSON.parse(fs.readFileSync('dist/frames.json'));
-assert.deepEqual(catalog.filter(f=>f.edition==='special'&&!f.hidden).map(f=>f.id),['siwol-market-four','siwol-market-peach-four','siwol-market-six','siwol-market-peach-six']);
+assert.deepEqual(catalog.filter(f=>f.edition==='special'&&!f.hidden).map(f=>f.id),['siwol-market-four','siwol-market-peach-four','siwol-market-six','siwol-market-peach-six','want-four']);
 for(const f of catalog)for(const key of ['src','preview','thumbnail'])if(f[key]&&!f[key].startsWith('data:'))assert.ok(fs.existsSync('dist/'+f[key]));
 console.log('PASS: single footer QR, no overlap in either orientation, no QR without consent, Siwol-only visibility and all assets preserved');
 
 const withQR=calendarLayout(600,1057,0,'#BF4022','siwol',qrUrl),withoutQR=calendarLayout(600,1057,0,'#BF4022','siwol');assert.deepEqual(withQR.filter(p=>p.type==='photo'),withoutQR.filter(p=>p.type==='photo'));assert.ok(withQR.find(p=>p.type==='qr').w>147);
+
+const want=calendarLayout(600,1057,0,'#74151B','want',qrUrl);assert.equal(want.find(c=>c.value==='OCT.').font,'want');assert.equal(want.find(c=>c.type==='brand').colored,true);assert.ok(want.find(c=>c.type==='brand').runs.length>1000);assert.equal(catalog.find(f=>f.id==='want-four').slots.length,4);
