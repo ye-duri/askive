@@ -2856,7 +2856,7 @@
   {
     "id": "want-four",
     "name": "WANT · 4컷",
-    "hidden": true,
+    "hidden": false,
     "edition": "special",
     "count": 4,
     "paper": "selphy-p",
@@ -2898,7 +2898,7 @@
   {
     "id": "want-six",
     "name": "WANT · 6컷",
-    "hidden": true,
+    "hidden": false,
     "edition": "special",
     "count": 6,
     "paper": "selphy-p",
