@@ -2894,5 +2894,59 @@
     "src": "frames/want-four-png-ae0f9fac9b.png",
     "preview": "frames/want-four-preview-ae0f9fac9b.webp",
     "thumbnail": "frames/want-four-thumbnail-ae0f9fac9b.webp"
+  },
+  {
+    "id": "want-six",
+    "name": "WANT · 6컷",
+    "hidden": false,
+    "edition": "special",
+    "count": 6,
+    "paper": "selphy-p",
+    "sourceWidth": 600,
+    "sourceHeight": 1057,
+    "layoutVersion": "want-six-v1",
+    "brand": "WANT",
+    "printTheme": "want",
+    "slots": [
+      [
+        0.055,
+        0.04257332071901608,
+        0.43666666666666665,
+        0.23935666982024598
+      ],
+      [
+        0.5116666666666667,
+        0.04257332071901608,
+        0.43666666666666665,
+        0.23935666982024598
+      ],
+      [
+        0.055,
+        0.2961210974456008,
+        0.43666666666666665,
+        0.23841059602649006
+      ],
+      [
+        0.5116666666666667,
+        0.2961210974456008,
+        0.43666666666666665,
+        0.23841059602649006
+      ],
+      [
+        0.055,
+        0.5487228003784295,
+        0.43666666666666665,
+        0.2403027436140019
+      ],
+      [
+        0.5116666666666667,
+        0.5487228003784295,
+        0.43666666666666665,
+        0.2403027436140019
+      ]
+    ],
+    "src": "frames/want-six-png-768dafcb58.png",
+    "preview": "frames/want-six-preview-768dafcb58.webp",
+    "thumbnail": "frames/want-six-thumbnail-768dafcb58.webp"
   }
 ]
