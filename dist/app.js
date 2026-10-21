@@ -62,7 +62,7 @@ function controls() {
  $('start').disabled=cameraBusy;
  for(const suffix of ['camera','camera-refresh'])$('permission-'+suffix).disabled=phase!=='permission'||busy||cameraBusy;
  $('frame-next').disabled=frameLoading||!selected;
- $('result-qr-add').disabled=!qrEnabled||!blob||uploadBusy||nativePrintBusy||qrConsent;
+ $('result-qr-add').disabled=busy||!qrEnabled||!blob||uploadBusy||nativePrintBusy||qrConsent;
  $('result-qr-add').checked=qrConsent;
  $('result-qr-card').classList.toggle('is-checked',qrConsent);
  $('result-qr-card').classList.toggle('is-unavailable',!qrEnabled);
@@ -72,7 +72,7 @@ function controls() {
  if(!qrEnabled)$('result-qr-status').textContent='QR 자동 연결에 실패했습니다. 인터넷을 확인한 뒤 새로고침해 주세요.';
  $('retake').disabled=uploadBusy||nativePrintBusy;
  $('save').disabled=uploadBusy;
- $('print-open').disabled=!printReady||uploadBusy||nativePrintBusy;
+ $('print-open').disabled=busy||!printReady||uploadBusy||nativePrintBusy;
 
 }
 function renderFrames() {
@@ -564,10 +564,10 @@ async function updatePrint(){
  const c=canvas.getContext('2d');c.fillStyle='#fff';c.fillRect(0,0,canvas.width,canvas.height);c.drawImage(img,0,0);
  const jpg=await toBlob(canvas,'image/jpeg',.96);if(revision!==printRevision)return;
  printShareFile=new File([jpg],'yonsei-studio-frame.jpg',{type:'image/jpeg'});
- printReady=true;$('print-open').disabled=false;
+ printReady=true;$('print-open').disabled=busy||uploadBusy||nativePrintBusy;
 }
 $('result-qr-add').onclick=async()=>{
- if(!blob||!qrEnabled||uploadBusy||nativePrintBusy||qrConsent)return;
+ if(busy||!blob||!qrEnabled||uploadBusy||nativePrintBusy||qrConsent)return;
  const revision=sessionRun,previous={blob,url:resultURL,file:printShareFile,ready:printReady};
  uploadBusy=true;qrConsent=true;controls();$('result-qr-status').textContent='QR 사진을 준비하고 있어요…';
  let nextURL=null;
@@ -596,7 +596,7 @@ $('result-qr-add').onclick=async()=>{
  }
 };
 $('print-open').onclick=async()=>{
- if(uploadBusy||nativePrintBusy)return;
+ if(busy||uploadBusy||nativePrintBusy)return;
  if(!printReady||!printShareFile){status('인쇄용 사진을 준비 중이에요. 잠시 후 다시 눌러 주세요.',true);return;}
  const revision=sessionRun;nativePrintBusy=true;printing=true;externalActionStarted=Date.now();controls();
  $('print-receipt-title').textContent='인쇄 사진을 접수하고 있어요.';
