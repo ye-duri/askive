@@ -31,3 +31,5 @@ console.log('PASS: single footer QR, no overlap in either orientation, no QR wit
 const withQR=calendarLayout(600,1057,0,'#BF4022','siwol',qrUrl),withoutQR=calendarLayout(600,1057,0,'#BF4022','siwol');assert.deepEqual(withQR.filter(p=>p.type==='photo'),withoutQR.filter(p=>p.type==='photo'));assert.ok(withQR.find(p=>p.type==='qr').w>147);
 
 const want=calendarLayout(600,1057,0,'#74151B','want',qrUrl);assert.equal(want.find(c=>c.value==='OCT.').font,'want');assert.equal(want.find(c=>c.type==='brand').colored,true);assert.ok(want.find(c=>c.type==='brand').runs.length>1000);assert.equal(catalog.find(f=>f.id==='want-four').slots.length,4);
+
+const {wantFont}=await import('../dist/print/want-art.mjs');assert.equal(wantFont.glyphs.O.path.filter(p=>p[0]==='M').length,5);assert.ok(wantFont.glyphs.O.path.some(p=>p[0]==='C'));assert.ok(wantFont.glyphs.O.path.length<200);

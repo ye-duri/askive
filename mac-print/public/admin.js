@@ -1,4 +1,4 @@
-import {drawCalendar} from './calendar-layout.mjs?v=20261021-want';
+import {drawCalendar} from './calendar-layout.mjs?v=20261025-smooth';
 const $=s=>document.getElementById(s);let printing=false,last='',selected=localStorage.getItem('yonsei-printer')||'';
 const savedScale=Number(localStorage.getItem('yonsei-print-scale-fullbleed')||94);$('scale').value=Number.isInteger(savedScale)&&savedScale>=85&&savedScale<=100?savedScale:94;
 $('scale').onchange=()=>{if($('scale').checkValidity()){localStorage.setItem('yonsei-print-scale-fullbleed',$('scale').value);last='';void refresh();}};
