@@ -2697,13 +2697,13 @@
     "src": "frames/siwol-market-four-png-001fc40eca.png",
     "preview": "frames/siwol-market-four-preview-001fc40eca.webp",
     "thumbnail": "frames/siwol-market-four-thumbnail-001fc40eca.webp",
-    "hidden": false,
+    "hidden": true,
     "eventDate": "2026-10-24"
   },
   {
     "id": "siwol-market-peach-four",
     "name": "시월장 살구 · 4컷",
-    "hidden": false,
+    "hidden": true,
     "edition": "special",
     "count": 4,
     "paper": "selphy-p",
@@ -2795,13 +2795,13 @@
     "src": "frames/siwol-market-six-png-2dd9a4f85c.png",
     "preview": "frames/siwol-market-six-preview-2dd9a4f85c.webp",
     "thumbnail": "frames/siwol-market-six-thumbnail-2dd9a4f85c.webp",
-    "hidden": false,
+    "hidden": true,
     "eventDate": "2026-10-24"
   },
   {
     "id": "siwol-market-peach-six",
     "name": "시월장 살구 · 6컷",
-    "hidden": false,
+    "hidden": true,
     "edition": "special",
     "count": 6,
     "paper": "selphy-p",
@@ -2856,7 +2856,7 @@
   {
     "id": "want-four",
     "name": "WANT · 4컷",
-    "hidden": true,
+    "hidden": false,
     "edition": "special",
     "count": 4,
     "paper": "selphy-p",
@@ -2898,7 +2898,7 @@
   {
     "id": "want-six",
     "name": "WANT · 6컷",
-    "hidden": true,
+    "hidden": false,
     "edition": "special",
     "count": 6,
     "paper": "selphy-p",
