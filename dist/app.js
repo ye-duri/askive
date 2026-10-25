@@ -462,7 +462,7 @@ function filename(ext) { return `moment-${new Date().toISOString().replace(/[:.]
 function download(data, name) { const url=URL.createObjectURL(data); const a=document.createElement('a'); a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000); }
 $('start').onclick = () => startCamera();
 $('permission-start').onclick=()=>startCamera();
-$('intro-start').onclick=()=>{phase=cameraConfirmed?'edition':'permission';controls();window.scrollTo(0,0);(cameraConfirmed?$('edition-basic'):$('permission-start')).focus({preventScroll:true});};
+$('intro-start').onclick=async()=>{if(initializing||busy)return;initializing=true;await init();phase=cameraConfirmed?'edition':'permission';controls();window.scrollTo(0,0);(cameraConfirmed?$('edition-basic'):$('permission-start')).focus({preventScroll:true});};
 $('permission-video').addEventListener('loadeddata',controls);
 $('permission-next').onclick=()=>{
  if($('permission-next').disabled)return;
@@ -628,7 +628,7 @@ window.addEventListener('focus',()=>{printing=false;checkIdle();});
 window.addEventListener('pagehide',()=>{resetSession();});
 window.addEventListener('pageshow',()=>{if(!stream){$('welcome').hidden=false;$('camera-state').textContent='카메라 꺼짐';controls();}});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkIdle();if(document.hidden && busy){cancelCountdown();status('화면이 전환되어 촬영을 취소했어요.');}});
-async function init(){controls();try{const response=await fetch('frames.json',{signal:AbortSignal.timeout(15000)});if(!response.ok)throw new Error('프레임 목록을 읽지 못했어요.');frames=(await response.json()).filter(f=>!f.hidden);renderFrames();if(matchingFrames().length)await chooseFrame(matchingFrames()[0].id);}catch(e){status(e.message,true);}finally{initializing=false;controls();}}
+async function init(){controls();try{const response=await fetch('frames.json',{cache:'no-store',signal:AbortSignal.timeout(15000)});if(!response.ok)throw new Error('프레임 목록을 읽지 못했어요.');frames=(await response.json()).filter(f=>!f.hidden);renderFrames();if(matchingFrames().length)await chooseFrame(matchingFrames()[0].id);}catch(e){status(e.message,true);}finally{initializing=false;controls();}}
 await init();
 try{if(new URLSearchParams(location.search).get('setup')!=='1'&&sessionStorage.getItem('yonsei-camera-confirmed')==='1'){let permission;try{permission=await navigator.permissions?.query({name:'camera'});}catch{}if(permission?.state!=='denied'){cameraConfirmed=true;cameraDeviceId=sessionStorage.getItem('yonsei-camera-id')||'';controls();window.scrollTo(0,0);}}}catch{}
 for(const name of ['basic','special'])$('edition-'+name).onclick=async()=>{

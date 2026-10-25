@@ -1,0 +1,6 @@
+import {chromium} from 'playwright';
+import {createApp} from '../server.mjs';
+import {readFile} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const catalog=JSON.parse(await readFile('dist/frames.json','utf8')),app=createApp({});await new Promise(r=>app.listen(0,'127.0.0.1',r));const b=await chromium.launch({channel:'chrome',headless:true});
+try{const p=await b.newPage();let requests=0;await p.route('**/frames.json',r=>{const fs=structuredClone(catalog);requests++;if(requests===1)for(const f of fs)f.eventDate='2026.10.17';return r.fulfill({contentType:'application/json',body:JSON.stringify(fs)});});await p.route('**/app.js',async r=>r.fulfill({contentType:'text/javascript',body:await readFile('dist/app.js','utf8')+';window.frameState=()=>({initializing,date:selected?.eventDate,phase});'}));await p.goto(`http://127.0.0.1:${app.address().port}`);await p.waitForFunction(()=>window.frameState&&!frameState().initializing);assert.equal(await p.evaluate(()=>frameState().date),'2026.10.17');await p.locator('#intro-start').click();await p.waitForFunction(()=>frameState().phase==='permission');assert.equal(requests,2);assert.equal(await p.evaluate(()=>frameState().date),'2026.10.25');console.log('PASS: starting new session replaces old frame date with current catalog');}finally{await b.close();await new Promise(r=>app.close(r));}
