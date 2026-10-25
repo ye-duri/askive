@@ -5,7 +5,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "black",
-    "src": "frames/basic-4-grid-black-imagination-png-63d31228cb.png",
+    "src": "frames/basic-4-grid-black-yonsei-png-6a79afac0a.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -35,12 +35,12 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-black-imagination-thumbnail-63d31228cb.webp",
-    "preview": "frames/basic-4-grid-black-imagination-preview-63d31228cb.webp",
+    "thumbnail": "frames/basic-4-grid-black-yonsei-thumbnail-6a79afac0a.webp",
+    "preview": "frames/basic-4-grid-black-yonsei-preview-6a79afac0a.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -49,7 +49,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "white",
-    "src": "frames/basic-4-grid-white-imagination-png-5651f15426.png",
+    "src": "frames/basic-4-grid-white-yonsei-png-0193f830be.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -79,12 +79,12 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-white-imagination-thumbnail-5651f15426.webp",
-    "preview": "frames/basic-4-grid-white-imagination-preview-5651f15426.webp",
+    "thumbnail": "frames/basic-4-grid-white-yonsei-thumbnail-0193f830be.webp",
+    "preview": "frames/basic-4-grid-white-yonsei-preview-0193f830be.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -93,7 +93,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "cherry",
-    "src": "frames/basic-4-grid-cherry-imagination-png-783d57757c.png",
+    "src": "frames/basic-4-grid-cherry-yonsei-png-2785a8dd54.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -123,12 +123,12 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-cherry-imagination-thumbnail-783d57757c.webp",
-    "preview": "frames/basic-4-grid-cherry-imagination-preview-783d57757c.webp",
+    "thumbnail": "frames/basic-4-grid-cherry-yonsei-thumbnail-2785a8dd54.webp",
+    "preview": "frames/basic-4-grid-cherry-yonsei-preview-2785a8dd54.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -137,7 +137,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "pink",
-    "src": "frames/basic-4-grid-pink-imagination-png-5121669a9a.png",
+    "src": "frames/basic-4-grid-pink-yonsei-png-c03b94f953.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -167,12 +167,12 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-pink-imagination-thumbnail-5121669a9a.webp",
-    "preview": "frames/basic-4-grid-pink-imagination-preview-5121669a9a.webp",
+    "thumbnail": "frames/basic-4-grid-pink-yonsei-thumbnail-c03b94f953.webp",
+    "preview": "frames/basic-4-grid-pink-yonsei-preview-c03b94f953.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -181,7 +181,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "beige",
-    "src": "frames/basic-4-grid-beige-imagination-png-198439d16d.png",
+    "src": "frames/basic-4-grid-beige-yonsei-png-91338b2eed.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -211,12 +211,12 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-beige-imagination-thumbnail-198439d16d.webp",
-    "preview": "frames/basic-4-grid-beige-imagination-preview-198439d16d.webp",
+    "thumbnail": "frames/basic-4-grid-beige-yonsei-thumbnail-91338b2eed.webp",
+    "preview": "frames/basic-4-grid-beige-yonsei-preview-91338b2eed.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -225,7 +225,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "khaki",
-    "src": "frames/basic-4-grid-khaki-imagination-png-207721afe5.png",
+    "src": "frames/basic-4-grid-khaki-yonsei-png-335eb25400.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -255,12 +255,12 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-khaki-imagination-thumbnail-207721afe5.webp",
-    "preview": "frames/basic-4-grid-khaki-imagination-preview-207721afe5.webp",
+    "thumbnail": "frames/basic-4-grid-khaki-yonsei-thumbnail-335eb25400.webp",
+    "preview": "frames/basic-4-grid-khaki-yonsei-preview-335eb25400.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -269,7 +269,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "lime",
-    "src": "frames/basic-4-grid-lime-imagination-png-d62e05c7ff.png",
+    "src": "frames/basic-4-grid-lime-yonsei-png-413ce0a8fa.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -299,12 +299,12 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-lime-imagination-thumbnail-d62e05c7ff.webp",
-    "preview": "frames/basic-4-grid-lime-imagination-preview-d62e05c7ff.webp",
+    "thumbnail": "frames/basic-4-grid-lime-yonsei-thumbnail-413ce0a8fa.webp",
+    "preview": "frames/basic-4-grid-lime-yonsei-preview-413ce0a8fa.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -313,7 +313,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "sora",
-    "src": "frames/basic-4-grid-sora-imagination-png-9cbda58191.png",
+    "src": "frames/basic-4-grid-sora-yonsei-png-6d8982ecbc.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -343,12 +343,12 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-sora-imagination-thumbnail-9cbda58191.webp",
-    "preview": "frames/basic-4-grid-sora-imagination-preview-9cbda58191.webp",
+    "thumbnail": "frames/basic-4-grid-sora-yonsei-thumbnail-6d8982ecbc.webp",
+    "preview": "frames/basic-4-grid-sora-yonsei-preview-6d8982ecbc.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -357,7 +357,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "dusty",
-    "src": "frames/basic-4-grid-dusty-imagination-png-a70d79e201.png",
+    "src": "frames/basic-4-grid-dusty-yonsei-png-cd176022c6.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -387,12 +387,12 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-dusty-imagination-thumbnail-a70d79e201.webp",
-    "preview": "frames/basic-4-grid-dusty-imagination-preview-a70d79e201.webp",
+    "thumbnail": "frames/basic-4-grid-dusty-yonsei-thumbnail-cd176022c6.webp",
+    "preview": "frames/basic-4-grid-dusty-yonsei-preview-cd176022c6.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -401,7 +401,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "black",
-    "src": "frames/basic-4-offset-black-imagination-png-c86b15eb4f.png",
+    "src": "frames/basic-4-offset-black-yonsei-png-88a101611b.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -431,12 +431,12 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-black-imagination-thumbnail-c86b15eb4f.webp",
-    "preview": "frames/basic-4-offset-black-imagination-preview-c86b15eb4f.webp",
+    "thumbnail": "frames/basic-4-offset-black-yonsei-thumbnail-88a101611b.webp",
+    "preview": "frames/basic-4-offset-black-yonsei-preview-88a101611b.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -445,7 +445,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "white",
-    "src": "frames/basic-4-offset-white-imagination-png-1f14934cb7.png",
+    "src": "frames/basic-4-offset-white-yonsei-png-8b6682afe3.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -475,12 +475,12 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-white-imagination-thumbnail-1f14934cb7.webp",
-    "preview": "frames/basic-4-offset-white-imagination-preview-1f14934cb7.webp",
+    "thumbnail": "frames/basic-4-offset-white-yonsei-thumbnail-8b6682afe3.webp",
+    "preview": "frames/basic-4-offset-white-yonsei-preview-8b6682afe3.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -489,7 +489,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "cherry",
-    "src": "frames/basic-4-offset-cherry-imagination-png-e634a45d2b.png",
+    "src": "frames/basic-4-offset-cherry-yonsei-png-a689917856.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -519,12 +519,12 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-cherry-imagination-thumbnail-e634a45d2b.webp",
-    "preview": "frames/basic-4-offset-cherry-imagination-preview-e634a45d2b.webp",
+    "thumbnail": "frames/basic-4-offset-cherry-yonsei-thumbnail-a689917856.webp",
+    "preview": "frames/basic-4-offset-cherry-yonsei-preview-a689917856.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -533,7 +533,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "pink",
-    "src": "frames/basic-4-offset-pink-imagination-png-3a62536ff6.png",
+    "src": "frames/basic-4-offset-pink-yonsei-png-ad2f81fa4f.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -563,12 +563,12 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-pink-imagination-thumbnail-3a62536ff6.webp",
-    "preview": "frames/basic-4-offset-pink-imagination-preview-3a62536ff6.webp",
+    "thumbnail": "frames/basic-4-offset-pink-yonsei-thumbnail-ad2f81fa4f.webp",
+    "preview": "frames/basic-4-offset-pink-yonsei-preview-ad2f81fa4f.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -577,7 +577,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "beige",
-    "src": "frames/basic-4-offset-beige-imagination-png-04bafe5116.png",
+    "src": "frames/basic-4-offset-beige-yonsei-png-deb71f8517.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -607,12 +607,12 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-beige-imagination-thumbnail-04bafe5116.webp",
-    "preview": "frames/basic-4-offset-beige-imagination-preview-04bafe5116.webp",
+    "thumbnail": "frames/basic-4-offset-beige-yonsei-thumbnail-deb71f8517.webp",
+    "preview": "frames/basic-4-offset-beige-yonsei-preview-deb71f8517.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -621,7 +621,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "khaki",
-    "src": "frames/basic-4-offset-khaki-imagination-png-f24f92eb3d.png",
+    "src": "frames/basic-4-offset-khaki-yonsei-png-25a30eb31f.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -651,12 +651,12 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-khaki-imagination-thumbnail-f24f92eb3d.webp",
-    "preview": "frames/basic-4-offset-khaki-imagination-preview-f24f92eb3d.webp",
+    "thumbnail": "frames/basic-4-offset-khaki-yonsei-thumbnail-25a30eb31f.webp",
+    "preview": "frames/basic-4-offset-khaki-yonsei-preview-25a30eb31f.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -665,7 +665,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "lime",
-    "src": "frames/basic-4-offset-lime-imagination-png-ea6c298be2.png",
+    "src": "frames/basic-4-offset-lime-yonsei-png-8757bf3503.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -695,12 +695,12 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-lime-imagination-thumbnail-ea6c298be2.webp",
-    "preview": "frames/basic-4-offset-lime-imagination-preview-ea6c298be2.webp",
+    "thumbnail": "frames/basic-4-offset-lime-yonsei-thumbnail-8757bf3503.webp",
+    "preview": "frames/basic-4-offset-lime-yonsei-preview-8757bf3503.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -709,7 +709,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "sora",
-    "src": "frames/basic-4-offset-sora-imagination-png-6efe2a7d83.png",
+    "src": "frames/basic-4-offset-sora-yonsei-png-ea60e1f633.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -739,12 +739,12 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-sora-imagination-thumbnail-6efe2a7d83.webp",
-    "preview": "frames/basic-4-offset-sora-imagination-preview-6efe2a7d83.webp",
+    "thumbnail": "frames/basic-4-offset-sora-yonsei-thumbnail-ea60e1f633.webp",
+    "preview": "frames/basic-4-offset-sora-yonsei-preview-ea60e1f633.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -753,7 +753,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "dusty",
-    "src": "frames/basic-4-offset-dusty-imagination-png-280308a049.png",
+    "src": "frames/basic-4-offset-dusty-yonsei-png-f1fd0ba973.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -783,12 +783,12 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-dusty-imagination-thumbnail-280308a049.webp",
-    "preview": "frames/basic-4-offset-dusty-imagination-preview-280308a049.webp",
+    "thumbnail": "frames/basic-4-offset-dusty-yonsei-thumbnail-f1fd0ba973.webp",
+    "preview": "frames/basic-4-offset-dusty-yonsei-preview-f1fd0ba973.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -797,7 +797,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "black",
-    "src": "frames/basic-6-grid-black-imagination-png-d892bf87f1.png",
+    "src": "frames/basic-6-grid-black-yonsei-png-21ffa28c3f.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -839,12 +839,12 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-black-imagination-thumbnail-d892bf87f1.webp",
-    "preview": "frames/basic-6-grid-black-imagination-preview-d892bf87f1.webp",
+    "thumbnail": "frames/basic-6-grid-black-yonsei-thumbnail-21ffa28c3f.webp",
+    "preview": "frames/basic-6-grid-black-yonsei-preview-21ffa28c3f.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -853,7 +853,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "white",
-    "src": "frames/basic-6-grid-white-imagination-png-9ec0185309.png",
+    "src": "frames/basic-6-grid-white-yonsei-png-a2c23b97b7.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -895,12 +895,12 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-white-imagination-thumbnail-9ec0185309.webp",
-    "preview": "frames/basic-6-grid-white-imagination-preview-9ec0185309.webp",
+    "thumbnail": "frames/basic-6-grid-white-yonsei-thumbnail-a2c23b97b7.webp",
+    "preview": "frames/basic-6-grid-white-yonsei-preview-a2c23b97b7.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -909,7 +909,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "cherry",
-    "src": "frames/basic-6-grid-cherry-imagination-png-fa5b521ffa.png",
+    "src": "frames/basic-6-grid-cherry-yonsei-png-7cb2f23a24.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -951,12 +951,12 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-cherry-imagination-thumbnail-fa5b521ffa.webp",
-    "preview": "frames/basic-6-grid-cherry-imagination-preview-fa5b521ffa.webp",
+    "thumbnail": "frames/basic-6-grid-cherry-yonsei-thumbnail-7cb2f23a24.webp",
+    "preview": "frames/basic-6-grid-cherry-yonsei-preview-7cb2f23a24.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -965,7 +965,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "pink",
-    "src": "frames/basic-6-grid-pink-imagination-png-beecec9eac.png",
+    "src": "frames/basic-6-grid-pink-yonsei-png-9312a7307f.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1007,12 +1007,12 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-pink-imagination-thumbnail-beecec9eac.webp",
-    "preview": "frames/basic-6-grid-pink-imagination-preview-beecec9eac.webp",
+    "thumbnail": "frames/basic-6-grid-pink-yonsei-thumbnail-9312a7307f.webp",
+    "preview": "frames/basic-6-grid-pink-yonsei-preview-9312a7307f.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -1021,7 +1021,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "beige",
-    "src": "frames/basic-6-grid-beige-imagination-png-d7b4e24739.png",
+    "src": "frames/basic-6-grid-beige-yonsei-png-426f9f00c0.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1063,12 +1063,12 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-beige-imagination-thumbnail-d7b4e24739.webp",
-    "preview": "frames/basic-6-grid-beige-imagination-preview-d7b4e24739.webp",
+    "thumbnail": "frames/basic-6-grid-beige-yonsei-thumbnail-426f9f00c0.webp",
+    "preview": "frames/basic-6-grid-beige-yonsei-preview-426f9f00c0.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -1077,7 +1077,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "khaki",
-    "src": "frames/basic-6-grid-khaki-imagination-png-417b16aa9c.png",
+    "src": "frames/basic-6-grid-khaki-yonsei-png-c5f0b0801f.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1119,12 +1119,12 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-khaki-imagination-thumbnail-417b16aa9c.webp",
-    "preview": "frames/basic-6-grid-khaki-imagination-preview-417b16aa9c.webp",
+    "thumbnail": "frames/basic-6-grid-khaki-yonsei-thumbnail-c5f0b0801f.webp",
+    "preview": "frames/basic-6-grid-khaki-yonsei-preview-c5f0b0801f.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -1133,7 +1133,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "lime",
-    "src": "frames/basic-6-grid-lime-imagination-png-04809b5b8c.png",
+    "src": "frames/basic-6-grid-lime-yonsei-png-c7efea8123.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1175,12 +1175,12 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-lime-imagination-thumbnail-04809b5b8c.webp",
-    "preview": "frames/basic-6-grid-lime-imagination-preview-04809b5b8c.webp",
+    "thumbnail": "frames/basic-6-grid-lime-yonsei-thumbnail-c7efea8123.webp",
+    "preview": "frames/basic-6-grid-lime-yonsei-preview-c7efea8123.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -1189,7 +1189,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "sora",
-    "src": "frames/basic-6-grid-sora-imagination-png-69da53dec0.png",
+    "src": "frames/basic-6-grid-sora-yonsei-png-018f47bc1b.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1231,12 +1231,12 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-sora-imagination-thumbnail-69da53dec0.webp",
-    "preview": "frames/basic-6-grid-sora-imagination-preview-69da53dec0.webp",
+    "thumbnail": "frames/basic-6-grid-sora-yonsei-thumbnail-018f47bc1b.webp",
+    "preview": "frames/basic-6-grid-sora-yonsei-preview-018f47bc1b.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -1245,7 +1245,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "dusty",
-    "src": "frames/basic-6-grid-dusty-imagination-png-cc2ae2aae9.png",
+    "src": "frames/basic-6-grid-dusty-yonsei-png-a959d1431c.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1287,12 +1287,12 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-dusty-imagination-thumbnail-cc2ae2aae9.webp",
-    "preview": "frames/basic-6-grid-dusty-imagination-preview-cc2ae2aae9.webp",
+    "thumbnail": "frames/basic-6-grid-dusty-yonsei-thumbnail-a959d1431c.webp",
+    "preview": "frames/basic-6-grid-dusty-yonsei-preview-a959d1431c.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -1301,7 +1301,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "black",
-    "src": "frames/basic-6-offset-black-imagination-png-fcf129a3f2.png",
+    "src": "frames/basic-6-offset-black-yonsei-png-183d10a29b.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1343,12 +1343,12 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-black-imagination-thumbnail-fcf129a3f2.webp",
-    "preview": "frames/basic-6-offset-black-imagination-preview-fcf129a3f2.webp",
+    "thumbnail": "frames/basic-6-offset-black-yonsei-thumbnail-183d10a29b.webp",
+    "preview": "frames/basic-6-offset-black-yonsei-preview-183d10a29b.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -1357,7 +1357,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "white",
-    "src": "frames/basic-6-offset-white-imagination-png-76b00351e4.png",
+    "src": "frames/basic-6-offset-white-yonsei-png-a91799e4e6.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1399,12 +1399,12 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-white-imagination-thumbnail-76b00351e4.webp",
-    "preview": "frames/basic-6-offset-white-imagination-preview-76b00351e4.webp",
+    "thumbnail": "frames/basic-6-offset-white-yonsei-thumbnail-a91799e4e6.webp",
+    "preview": "frames/basic-6-offset-white-yonsei-preview-a91799e4e6.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -1413,7 +1413,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "cherry",
-    "src": "frames/basic-6-offset-cherry-imagination-png-46bd073740.png",
+    "src": "frames/basic-6-offset-cherry-yonsei-png-d02a06069f.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1455,12 +1455,12 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-cherry-imagination-thumbnail-46bd073740.webp",
-    "preview": "frames/basic-6-offset-cherry-imagination-preview-46bd073740.webp",
+    "thumbnail": "frames/basic-6-offset-cherry-yonsei-thumbnail-d02a06069f.webp",
+    "preview": "frames/basic-6-offset-cherry-yonsei-preview-d02a06069f.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -1469,7 +1469,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "pink",
-    "src": "frames/basic-6-offset-pink-imagination-png-2fa3656c41.png",
+    "src": "frames/basic-6-offset-pink-yonsei-png-d8540b60a5.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1511,12 +1511,12 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-pink-imagination-thumbnail-2fa3656c41.webp",
-    "preview": "frames/basic-6-offset-pink-imagination-preview-2fa3656c41.webp",
+    "thumbnail": "frames/basic-6-offset-pink-yonsei-thumbnail-d8540b60a5.webp",
+    "preview": "frames/basic-6-offset-pink-yonsei-preview-d8540b60a5.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -1525,7 +1525,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "beige",
-    "src": "frames/basic-6-offset-beige-imagination-png-360a1f5878.png",
+    "src": "frames/basic-6-offset-beige-yonsei-png-0ef65b0f6e.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1567,12 +1567,12 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-beige-imagination-thumbnail-360a1f5878.webp",
-    "preview": "frames/basic-6-offset-beige-imagination-preview-360a1f5878.webp",
+    "thumbnail": "frames/basic-6-offset-beige-yonsei-thumbnail-0ef65b0f6e.webp",
+    "preview": "frames/basic-6-offset-beige-yonsei-preview-0ef65b0f6e.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -1581,7 +1581,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "khaki",
-    "src": "frames/basic-6-offset-khaki-imagination-png-99e751cc54.png",
+    "src": "frames/basic-6-offset-khaki-yonsei-png-77e29a60f3.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1623,12 +1623,12 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-khaki-imagination-thumbnail-99e751cc54.webp",
-    "preview": "frames/basic-6-offset-khaki-imagination-preview-99e751cc54.webp",
+    "thumbnail": "frames/basic-6-offset-khaki-yonsei-thumbnail-77e29a60f3.webp",
+    "preview": "frames/basic-6-offset-khaki-yonsei-preview-77e29a60f3.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -1637,7 +1637,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "lime",
-    "src": "frames/basic-6-offset-lime-imagination-png-4b623185b4.png",
+    "src": "frames/basic-6-offset-lime-yonsei-png-4bb3ab627d.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1679,12 +1679,12 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-lime-imagination-thumbnail-4b623185b4.webp",
-    "preview": "frames/basic-6-offset-lime-imagination-preview-4b623185b4.webp",
+    "thumbnail": "frames/basic-6-offset-lime-yonsei-thumbnail-4bb3ab627d.webp",
+    "preview": "frames/basic-6-offset-lime-yonsei-preview-4bb3ab627d.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -1693,7 +1693,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "sora",
-    "src": "frames/basic-6-offset-sora-imagination-png-827b8c3246.png",
+    "src": "frames/basic-6-offset-sora-yonsei-png-6c95d1cbcb.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1735,12 +1735,12 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-sora-imagination-thumbnail-827b8c3246.webp",
-    "preview": "frames/basic-6-offset-sora-imagination-preview-827b8c3246.webp",
+    "thumbnail": "frames/basic-6-offset-sora-yonsei-thumbnail-6c95d1cbcb.webp",
+    "preview": "frames/basic-6-offset-sora-yonsei-preview-6c95d1cbcb.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -1749,7 +1749,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "dusty",
-    "src": "frames/basic-6-offset-dusty-imagination-png-7daaf25eda.png",
+    "src": "frames/basic-6-offset-dusty-yonsei-png-517f5c49ef.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1791,12 +1791,12 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-dusty-imagination-thumbnail-7daaf25eda.webp",
-    "preview": "frames/basic-6-offset-dusty-imagination-preview-7daaf25eda.webp",
+    "thumbnail": "frames/basic-6-offset-dusty-yonsei-thumbnail-517f5c49ef.webp",
+    "preview": "frames/basic-6-offset-dusty-yonsei-preview-517f5c49ef.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "eventDate": "2026.10.25"
   },
   {
@@ -2392,7 +2392,7 @@
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
     "artworkRestoration": "original-scale-v1",
-    "hidden": true
+    "hidden": false
   },
   {
     "id": "hanmaeum-2026-daecheong-green-six-landscape",
@@ -2447,7 +2447,7 @@
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
     "artworkRestoration": "original-scale-v1",
-    "hidden": true
+    "hidden": false
   },
   {
     "id": "hanmaeum-2026-daecheong-green-six-portrait",
@@ -2502,7 +2502,7 @@
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
     "artworkRestoration": "original-scale-v1",
-    "hidden": true
+    "hidden": false
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-four",
@@ -2545,7 +2545,7 @@
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
     "artworkRestoration": "original-scale-v1",
-    "hidden": true
+    "hidden": false
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-six-landscape",
@@ -2600,7 +2600,7 @@
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
     "artworkRestoration": "original-scale-v1",
-    "hidden": true
+    "hidden": false
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-six-portrait",
@@ -2655,7 +2655,7 @@
     "layoutVersion": "calendar-tall-v1",
     "brand": "Imagination Hall",
     "artworkRestoration": "original-scale-v1",
-    "hidden": true
+    "hidden": false
   },
   {
     "id": "siwol-market-four",
@@ -2856,7 +2856,7 @@
   {
     "id": "want-four",
     "name": "WANT · 4컷",
-    "hidden": false,
+    "hidden": true,
     "edition": "special",
     "count": 4,
     "paper": "selphy-p",
@@ -2898,7 +2898,7 @@
   {
     "id": "want-six",
     "name": "WANT · 6컷",
-    "hidden": false,
+    "hidden": true,
     "edition": "special",
     "count": 6,
     "paper": "selphy-p",
