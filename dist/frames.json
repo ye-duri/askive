@@ -5,7 +5,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "black",
-    "src": "frames/basic-4-grid-black-imagination-png-c7501c8515.png",
+    "src": "frames/basic-4-grid-black-imagination-png-63d31228cb.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -35,13 +35,13 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-black-imagination-thumbnail-c7501c8515.webp",
-    "preview": "frames/basic-4-grid-black-imagination-preview-c7501c8515.webp",
+    "thumbnail": "frames/basic-4-grid-black-imagination-thumbnail-63d31228cb.webp",
+    "preview": "frames/basic-4-grid-black-imagination-preview-63d31228cb.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-4-grid-white",
@@ -49,7 +49,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "white",
-    "src": "frames/basic-4-grid-white-imagination-png-b645c2aad9.png",
+    "src": "frames/basic-4-grid-white-imagination-png-5651f15426.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -79,13 +79,13 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-white-imagination-thumbnail-b645c2aad9.webp",
-    "preview": "frames/basic-4-grid-white-imagination-preview-b645c2aad9.webp",
+    "thumbnail": "frames/basic-4-grid-white-imagination-thumbnail-5651f15426.webp",
+    "preview": "frames/basic-4-grid-white-imagination-preview-5651f15426.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-4-grid-cherry",
@@ -93,7 +93,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "cherry",
-    "src": "frames/basic-4-grid-cherry-imagination-png-e93b36c479.png",
+    "src": "frames/basic-4-grid-cherry-imagination-png-783d57757c.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -123,13 +123,13 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-cherry-imagination-thumbnail-e93b36c479.webp",
-    "preview": "frames/basic-4-grid-cherry-imagination-preview-e93b36c479.webp",
+    "thumbnail": "frames/basic-4-grid-cherry-imagination-thumbnail-783d57757c.webp",
+    "preview": "frames/basic-4-grid-cherry-imagination-preview-783d57757c.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-4-grid-pink",
@@ -137,7 +137,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "pink",
-    "src": "frames/basic-4-grid-pink-imagination-png-561b2ba55e.png",
+    "src": "frames/basic-4-grid-pink-imagination-png-5121669a9a.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -167,13 +167,13 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-pink-imagination-thumbnail-561b2ba55e.webp",
-    "preview": "frames/basic-4-grid-pink-imagination-preview-561b2ba55e.webp",
+    "thumbnail": "frames/basic-4-grid-pink-imagination-thumbnail-5121669a9a.webp",
+    "preview": "frames/basic-4-grid-pink-imagination-preview-5121669a9a.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-4-grid-beige",
@@ -181,7 +181,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "beige",
-    "src": "frames/basic-4-grid-beige-imagination-png-c45506c98c.png",
+    "src": "frames/basic-4-grid-beige-imagination-png-198439d16d.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -211,13 +211,13 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-beige-imagination-thumbnail-c45506c98c.webp",
-    "preview": "frames/basic-4-grid-beige-imagination-preview-c45506c98c.webp",
+    "thumbnail": "frames/basic-4-grid-beige-imagination-thumbnail-198439d16d.webp",
+    "preview": "frames/basic-4-grid-beige-imagination-preview-198439d16d.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-4-grid-khaki",
@@ -225,7 +225,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "khaki",
-    "src": "frames/basic-4-grid-khaki-imagination-png-7d1b3e210b.png",
+    "src": "frames/basic-4-grid-khaki-imagination-png-207721afe5.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -255,13 +255,13 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-khaki-imagination-thumbnail-7d1b3e210b.webp",
-    "preview": "frames/basic-4-grid-khaki-imagination-preview-7d1b3e210b.webp",
+    "thumbnail": "frames/basic-4-grid-khaki-imagination-thumbnail-207721afe5.webp",
+    "preview": "frames/basic-4-grid-khaki-imagination-preview-207721afe5.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-4-grid-lime",
@@ -269,7 +269,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "lime",
-    "src": "frames/basic-4-grid-lime-imagination-png-bfce752bdf.png",
+    "src": "frames/basic-4-grid-lime-imagination-png-d62e05c7ff.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -299,13 +299,13 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-lime-imagination-thumbnail-bfce752bdf.webp",
-    "preview": "frames/basic-4-grid-lime-imagination-preview-bfce752bdf.webp",
+    "thumbnail": "frames/basic-4-grid-lime-imagination-thumbnail-d62e05c7ff.webp",
+    "preview": "frames/basic-4-grid-lime-imagination-preview-d62e05c7ff.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-4-grid-sora",
@@ -313,7 +313,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "sora",
-    "src": "frames/basic-4-grid-sora-imagination-png-7145f19509.png",
+    "src": "frames/basic-4-grid-sora-imagination-png-9cbda58191.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -343,13 +343,13 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-sora-imagination-thumbnail-7145f19509.webp",
-    "preview": "frames/basic-4-grid-sora-imagination-preview-7145f19509.webp",
+    "thumbnail": "frames/basic-4-grid-sora-imagination-thumbnail-9cbda58191.webp",
+    "preview": "frames/basic-4-grid-sora-imagination-preview-9cbda58191.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-4-grid-dusty",
@@ -357,7 +357,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "dusty",
-    "src": "frames/basic-4-grid-dusty-imagination-png-3ae4ca674c.png",
+    "src": "frames/basic-4-grid-dusty-imagination-png-a70d79e201.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -387,13 +387,13 @@
         0.36333802156586964
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-dusty-imagination-thumbnail-3ae4ca674c.webp",
-    "preview": "frames/basic-4-grid-dusty-imagination-preview-3ae4ca674c.webp",
+    "thumbnail": "frames/basic-4-grid-dusty-imagination-thumbnail-a70d79e201.webp",
+    "preview": "frames/basic-4-grid-dusty-imagination-preview-a70d79e201.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-4-offset-black",
@@ -401,7 +401,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "black",
-    "src": "frames/basic-4-offset-black-imagination-png-d58b746125.png",
+    "src": "frames/basic-4-offset-black-imagination-png-c86b15eb4f.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -431,13 +431,13 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-black-imagination-thumbnail-d58b746125.webp",
-    "preview": "frames/basic-4-offset-black-imagination-preview-d58b746125.webp",
+    "thumbnail": "frames/basic-4-offset-black-imagination-thumbnail-c86b15eb4f.webp",
+    "preview": "frames/basic-4-offset-black-imagination-preview-c86b15eb4f.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-4-offset-white",
@@ -445,7 +445,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "white",
-    "src": "frames/basic-4-offset-white-imagination-png-31b16281c1.png",
+    "src": "frames/basic-4-offset-white-imagination-png-1f14934cb7.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -475,13 +475,13 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-white-imagination-thumbnail-31b16281c1.webp",
-    "preview": "frames/basic-4-offset-white-imagination-preview-31b16281c1.webp",
+    "thumbnail": "frames/basic-4-offset-white-imagination-thumbnail-1f14934cb7.webp",
+    "preview": "frames/basic-4-offset-white-imagination-preview-1f14934cb7.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-4-offset-cherry",
@@ -489,7 +489,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "cherry",
-    "src": "frames/basic-4-offset-cherry-imagination-png-801b68af3e.png",
+    "src": "frames/basic-4-offset-cherry-imagination-png-e634a45d2b.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -519,13 +519,13 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-cherry-imagination-thumbnail-801b68af3e.webp",
-    "preview": "frames/basic-4-offset-cherry-imagination-preview-801b68af3e.webp",
+    "thumbnail": "frames/basic-4-offset-cherry-imagination-thumbnail-e634a45d2b.webp",
+    "preview": "frames/basic-4-offset-cherry-imagination-preview-e634a45d2b.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-4-offset-pink",
@@ -533,7 +533,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "pink",
-    "src": "frames/basic-4-offset-pink-imagination-png-f8bdb1fd19.png",
+    "src": "frames/basic-4-offset-pink-imagination-png-3a62536ff6.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -563,13 +563,13 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-pink-imagination-thumbnail-f8bdb1fd19.webp",
-    "preview": "frames/basic-4-offset-pink-imagination-preview-f8bdb1fd19.webp",
+    "thumbnail": "frames/basic-4-offset-pink-imagination-thumbnail-3a62536ff6.webp",
+    "preview": "frames/basic-4-offset-pink-imagination-preview-3a62536ff6.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-4-offset-beige",
@@ -577,7 +577,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "beige",
-    "src": "frames/basic-4-offset-beige-imagination-png-a1143fead8.png",
+    "src": "frames/basic-4-offset-beige-imagination-png-04bafe5116.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -607,13 +607,13 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-beige-imagination-thumbnail-a1143fead8.webp",
-    "preview": "frames/basic-4-offset-beige-imagination-preview-a1143fead8.webp",
+    "thumbnail": "frames/basic-4-offset-beige-imagination-thumbnail-04bafe5116.webp",
+    "preview": "frames/basic-4-offset-beige-imagination-preview-04bafe5116.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-4-offset-khaki",
@@ -621,7 +621,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "khaki",
-    "src": "frames/basic-4-offset-khaki-imagination-png-1fccc3a461.png",
+    "src": "frames/basic-4-offset-khaki-imagination-png-f24f92eb3d.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -651,13 +651,13 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-khaki-imagination-thumbnail-1fccc3a461.webp",
-    "preview": "frames/basic-4-offset-khaki-imagination-preview-1fccc3a461.webp",
+    "thumbnail": "frames/basic-4-offset-khaki-imagination-thumbnail-f24f92eb3d.webp",
+    "preview": "frames/basic-4-offset-khaki-imagination-preview-f24f92eb3d.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-4-offset-lime",
@@ -665,7 +665,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "lime",
-    "src": "frames/basic-4-offset-lime-imagination-png-289cf98d37.png",
+    "src": "frames/basic-4-offset-lime-imagination-png-ea6c298be2.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -695,13 +695,13 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-lime-imagination-thumbnail-289cf98d37.webp",
-    "preview": "frames/basic-4-offset-lime-imagination-preview-289cf98d37.webp",
+    "thumbnail": "frames/basic-4-offset-lime-imagination-thumbnail-ea6c298be2.webp",
+    "preview": "frames/basic-4-offset-lime-imagination-preview-ea6c298be2.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-4-offset-sora",
@@ -709,7 +709,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "sora",
-    "src": "frames/basic-4-offset-sora-imagination-png-0cde90ca25.png",
+    "src": "frames/basic-4-offset-sora-imagination-png-6efe2a7d83.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -739,13 +739,13 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-sora-imagination-thumbnail-0cde90ca25.webp",
-    "preview": "frames/basic-4-offset-sora-imagination-preview-0cde90ca25.webp",
+    "thumbnail": "frames/basic-4-offset-sora-imagination-thumbnail-6efe2a7d83.webp",
+    "preview": "frames/basic-4-offset-sora-imagination-preview-6efe2a7d83.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-4-offset-dusty",
@@ -753,7 +753,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "dusty",
-    "src": "frames/basic-4-offset-dusty-imagination-png-20b966170f.png",
+    "src": "frames/basic-4-offset-dusty-imagination-png-280308a049.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
@@ -783,13 +783,13 @@
         0.34458509142053445
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-dusty-imagination-thumbnail-20b966170f.webp",
-    "preview": "frames/basic-4-offset-dusty-imagination-preview-20b966170f.webp",
+    "thumbnail": "frames/basic-4-offset-dusty-imagination-thumbnail-280308a049.webp",
+    "preview": "frames/basic-4-offset-dusty-imagination-preview-280308a049.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-grid-black",
@@ -797,7 +797,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "black",
-    "src": "frames/basic-6-grid-black-imagination-png-bbfee3596f.png",
+    "src": "frames/basic-6-grid-black-imagination-png-d892bf87f1.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -839,13 +839,13 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-black-imagination-thumbnail-bbfee3596f.webp",
-    "preview": "frames/basic-6-grid-black-imagination-preview-bbfee3596f.webp",
+    "thumbnail": "frames/basic-6-grid-black-imagination-thumbnail-d892bf87f1.webp",
+    "preview": "frames/basic-6-grid-black-imagination-preview-d892bf87f1.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-grid-white",
@@ -853,7 +853,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "white",
-    "src": "frames/basic-6-grid-white-imagination-png-ed2d2e0cc2.png",
+    "src": "frames/basic-6-grid-white-imagination-png-9ec0185309.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -895,13 +895,13 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-white-imagination-thumbnail-ed2d2e0cc2.webp",
-    "preview": "frames/basic-6-grid-white-imagination-preview-ed2d2e0cc2.webp",
+    "thumbnail": "frames/basic-6-grid-white-imagination-thumbnail-9ec0185309.webp",
+    "preview": "frames/basic-6-grid-white-imagination-preview-9ec0185309.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-grid-cherry",
@@ -909,7 +909,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "cherry",
-    "src": "frames/basic-6-grid-cherry-imagination-png-0dd6b4658a.png",
+    "src": "frames/basic-6-grid-cherry-imagination-png-fa5b521ffa.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -951,13 +951,13 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-cherry-imagination-thumbnail-0dd6b4658a.webp",
-    "preview": "frames/basic-6-grid-cherry-imagination-preview-0dd6b4658a.webp",
+    "thumbnail": "frames/basic-6-grid-cherry-imagination-thumbnail-fa5b521ffa.webp",
+    "preview": "frames/basic-6-grid-cherry-imagination-preview-fa5b521ffa.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-grid-pink",
@@ -965,7 +965,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "pink",
-    "src": "frames/basic-6-grid-pink-imagination-png-b380d6aaf8.png",
+    "src": "frames/basic-6-grid-pink-imagination-png-beecec9eac.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1007,13 +1007,13 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-pink-imagination-thumbnail-b380d6aaf8.webp",
-    "preview": "frames/basic-6-grid-pink-imagination-preview-b380d6aaf8.webp",
+    "thumbnail": "frames/basic-6-grid-pink-imagination-thumbnail-beecec9eac.webp",
+    "preview": "frames/basic-6-grid-pink-imagination-preview-beecec9eac.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-grid-beige",
@@ -1021,7 +1021,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "beige",
-    "src": "frames/basic-6-grid-beige-imagination-png-c4739df7de.png",
+    "src": "frames/basic-6-grid-beige-imagination-png-d7b4e24739.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1063,13 +1063,13 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-beige-imagination-thumbnail-c4739df7de.webp",
-    "preview": "frames/basic-6-grid-beige-imagination-preview-c4739df7de.webp",
+    "thumbnail": "frames/basic-6-grid-beige-imagination-thumbnail-d7b4e24739.webp",
+    "preview": "frames/basic-6-grid-beige-imagination-preview-d7b4e24739.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-grid-khaki",
@@ -1077,7 +1077,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "khaki",
-    "src": "frames/basic-6-grid-khaki-imagination-png-dfaca8019e.png",
+    "src": "frames/basic-6-grid-khaki-imagination-png-417b16aa9c.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1119,13 +1119,13 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-khaki-imagination-thumbnail-dfaca8019e.webp",
-    "preview": "frames/basic-6-grid-khaki-imagination-preview-dfaca8019e.webp",
+    "thumbnail": "frames/basic-6-grid-khaki-imagination-thumbnail-417b16aa9c.webp",
+    "preview": "frames/basic-6-grid-khaki-imagination-preview-417b16aa9c.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-grid-lime",
@@ -1133,7 +1133,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "lime",
-    "src": "frames/basic-6-grid-lime-imagination-png-697c43339d.png",
+    "src": "frames/basic-6-grid-lime-imagination-png-04809b5b8c.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1175,13 +1175,13 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-lime-imagination-thumbnail-697c43339d.webp",
-    "preview": "frames/basic-6-grid-lime-imagination-preview-697c43339d.webp",
+    "thumbnail": "frames/basic-6-grid-lime-imagination-thumbnail-04809b5b8c.webp",
+    "preview": "frames/basic-6-grid-lime-imagination-preview-04809b5b8c.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-grid-sora",
@@ -1189,7 +1189,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "sora",
-    "src": "frames/basic-6-grid-sora-imagination-png-9b035337da.png",
+    "src": "frames/basic-6-grid-sora-imagination-png-69da53dec0.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1231,13 +1231,13 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-sora-imagination-thumbnail-9b035337da.webp",
-    "preview": "frames/basic-6-grid-sora-imagination-preview-9b035337da.webp",
+    "thumbnail": "frames/basic-6-grid-sora-imagination-thumbnail-69da53dec0.webp",
+    "preview": "frames/basic-6-grid-sora-imagination-preview-69da53dec0.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-grid-dusty",
@@ -1245,7 +1245,7 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "dusty",
-    "src": "frames/basic-6-grid-dusty-imagination-png-43ce69f6cc.png",
+    "src": "frames/basic-6-grid-dusty-imagination-png-cc2ae2aae9.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1287,13 +1287,13 @@
         0.2372245663384904
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-dusty-imagination-thumbnail-43ce69f6cc.webp",
-    "preview": "frames/basic-6-grid-dusty-imagination-preview-43ce69f6cc.webp",
+    "thumbnail": "frames/basic-6-grid-dusty-imagination-thumbnail-cc2ae2aae9.webp",
+    "preview": "frames/basic-6-grid-dusty-imagination-preview-cc2ae2aae9.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-offset-black",
@@ -1301,7 +1301,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "black",
-    "src": "frames/basic-6-offset-black-imagination-png-ac5d191174.png",
+    "src": "frames/basic-6-offset-black-imagination-png-fcf129a3f2.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1343,13 +1343,13 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-black-imagination-thumbnail-ac5d191174.webp",
-    "preview": "frames/basic-6-offset-black-imagination-preview-ac5d191174.webp",
+    "thumbnail": "frames/basic-6-offset-black-imagination-thumbnail-fcf129a3f2.webp",
+    "preview": "frames/basic-6-offset-black-imagination-preview-fcf129a3f2.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-offset-white",
@@ -1357,7 +1357,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "white",
-    "src": "frames/basic-6-offset-white-imagination-png-0cd2c8387b.png",
+    "src": "frames/basic-6-offset-white-imagination-png-76b00351e4.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1399,13 +1399,13 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-white-imagination-thumbnail-0cd2c8387b.webp",
-    "preview": "frames/basic-6-offset-white-imagination-preview-0cd2c8387b.webp",
+    "thumbnail": "frames/basic-6-offset-white-imagination-thumbnail-76b00351e4.webp",
+    "preview": "frames/basic-6-offset-white-imagination-preview-76b00351e4.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-offset-cherry",
@@ -1413,7 +1413,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "cherry",
-    "src": "frames/basic-6-offset-cherry-imagination-png-87b83d08cf.png",
+    "src": "frames/basic-6-offset-cherry-imagination-png-46bd073740.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1455,13 +1455,13 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-cherry-imagination-thumbnail-87b83d08cf.webp",
-    "preview": "frames/basic-6-offset-cherry-imagination-preview-87b83d08cf.webp",
+    "thumbnail": "frames/basic-6-offset-cherry-imagination-thumbnail-46bd073740.webp",
+    "preview": "frames/basic-6-offset-cherry-imagination-preview-46bd073740.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-offset-pink",
@@ -1469,7 +1469,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "pink",
-    "src": "frames/basic-6-offset-pink-imagination-png-d94e683212.png",
+    "src": "frames/basic-6-offset-pink-imagination-png-2fa3656c41.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1511,13 +1511,13 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-pink-imagination-thumbnail-d94e683212.webp",
-    "preview": "frames/basic-6-offset-pink-imagination-preview-d94e683212.webp",
+    "thumbnail": "frames/basic-6-offset-pink-imagination-thumbnail-2fa3656c41.webp",
+    "preview": "frames/basic-6-offset-pink-imagination-preview-2fa3656c41.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-offset-beige",
@@ -1525,7 +1525,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "beige",
-    "src": "frames/basic-6-offset-beige-imagination-png-bb59f8bec9.png",
+    "src": "frames/basic-6-offset-beige-imagination-png-360a1f5878.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1567,13 +1567,13 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-beige-imagination-thumbnail-bb59f8bec9.webp",
-    "preview": "frames/basic-6-offset-beige-imagination-preview-bb59f8bec9.webp",
+    "thumbnail": "frames/basic-6-offset-beige-imagination-thumbnail-360a1f5878.webp",
+    "preview": "frames/basic-6-offset-beige-imagination-preview-360a1f5878.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-offset-khaki",
@@ -1581,7 +1581,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "khaki",
-    "src": "frames/basic-6-offset-khaki-imagination-png-1c02596ee4.png",
+    "src": "frames/basic-6-offset-khaki-imagination-png-99e751cc54.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1623,13 +1623,13 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-khaki-imagination-thumbnail-1c02596ee4.webp",
-    "preview": "frames/basic-6-offset-khaki-imagination-preview-1c02596ee4.webp",
+    "thumbnail": "frames/basic-6-offset-khaki-imagination-thumbnail-99e751cc54.webp",
+    "preview": "frames/basic-6-offset-khaki-imagination-preview-99e751cc54.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-offset-lime",
@@ -1637,7 +1637,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "lime",
-    "src": "frames/basic-6-offset-lime-imagination-png-c224183603.png",
+    "src": "frames/basic-6-offset-lime-imagination-png-4b623185b4.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1679,13 +1679,13 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-lime-imagination-thumbnail-c224183603.webp",
-    "preview": "frames/basic-6-offset-lime-imagination-preview-c224183603.webp",
+    "thumbnail": "frames/basic-6-offset-lime-imagination-thumbnail-4b623185b4.webp",
+    "preview": "frames/basic-6-offset-lime-imagination-preview-4b623185b4.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-offset-sora",
@@ -1693,7 +1693,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "sora",
-    "src": "frames/basic-6-offset-sora-imagination-png-79658fc006.png",
+    "src": "frames/basic-6-offset-sora-imagination-png-827b8c3246.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1735,13 +1735,13 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-sora-imagination-thumbnail-79658fc006.webp",
-    "preview": "frames/basic-6-offset-sora-imagination-preview-79658fc006.webp",
+    "thumbnail": "frames/basic-6-offset-sora-imagination-thumbnail-827b8c3246.webp",
+    "preview": "frames/basic-6-offset-sora-imagination-preview-827b8c3246.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "basic-6-offset-dusty",
@@ -1749,7 +1749,7 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "dusty",
-    "src": "frames/basic-6-offset-dusty-imagination-png-f34c5c5eb4.png",
+    "src": "frames/basic-6-offset-dusty-imagination-png-7daaf25eda.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
@@ -1791,13 +1791,13 @@
         0.22456633849038912
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-dusty-imagination-thumbnail-f34c5c5eb4.webp",
-    "preview": "frames/basic-6-offset-dusty-imagination-preview-f34c5c5eb4.webp",
+    "thumbnail": "frames/basic-6-offset-dusty-imagination-thumbnail-7daaf25eda.webp",
+    "preview": "frames/basic-6-offset-dusty-imagination-preview-7daaf25eda.webp",
     "sourceWidth": 1200,
     "sourceHeight": 2133,
     "layoutVersion": "imagination-hall-v1",
     "brand": "Imagination Hall",
-    "eventDate": "2026.10.17"
+    "eventDate": "2026.10.25"
   },
   {
     "id": "sheep-farewell-four",
