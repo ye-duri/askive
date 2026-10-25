@@ -595,6 +595,19 @@ $('result-qr-add').onclick=async()=>{
   if(revision===sessionRun){uploadBusy=false;controls();}
  }
 };
+let printCompletion=null;
+function showPrintCompletion(revision){
+ if(revision!==sessionRun)return Promise.resolve();
+ if(printCompletion?.revision===revision)return printCompletion.promise;
+ $('print-receipt-title').textContent='사진 전송이 완료되었습니다.';
+ $('print-receipt-message').textContent='담당자를 통해 확인해주세요.';
+ $('print-receipt-close').hidden=true;
+ if(!$('print-receipt').open)$('print-receipt').showModal();
+ const promise=new Promise(resolve=>setTimeout(resolve,5000)).then(()=>{
+  if(revision===sessionRun)return resetSession();
+ });
+ printCompletion={revision,promise};return promise;
+}
 $('print-open').onclick=async()=>{
  if(busy||uploadBusy||nativePrintBusy)return;
  if(!printReady||!printShareFile){status('인쇄용 사진을 준비 중이에요. 잠시 후 다시 눌러 주세요.',true);return;}
@@ -605,17 +618,17 @@ $('print-open').onclick=async()=>{
  try{
   await ensurePrintAlbum(revision);await uploadAlbumPhotos(revision);if(revision!==sessionRun)return;
   await apiJSON(`/api/gallery/albums/${album.id}/print`,{method:'POST'});if(revision!==sessionRun)return;
-  $('print-receipt').close();await resetSession('인쇄 사진 접수 완료! 매니저에게 사진을 받아 주세요.');
+  await showPrintCompletion(revision);
  }catch(e){if(revision===sessionRun){$('print-receipt').close();status(`${e.message} 사진은 유지됩니다. 사진 인쇄를 눌러 다시 시도해 주세요.`,true);}}
  finally{if(revision===sessionRun){nativePrintBusy=false;printing=false;lastActivity=Date.now();controls();}}
 };
 $('print-receipt-close').onclick=()=>$('print-receipt').close();
 $('print-receipt').addEventListener('cancel',e=>{if(nativePrintBusy)e.preventDefault();});
 window.addEventListener('yonsei-print-state',e=>{
- if(!nativePrintBusy)return;
+ if(!nativePrintBusy||printCompletion?.revision===sessionRun)return;
  const d=e.detail||{};
  if(d.state==='sent'){
-  void resetSession('인쇄 사진 전송 완료! 매니저에게 사진을 받아 주세요. 다음 분은 시작해 주세요.');
+  void showPrintCompletion(sessionRun);
   return;
  }
  if(d.state!=='busy'){
