@@ -1,4 +1,4 @@
-import {drawCalendar} from './calendar-layout.mjs?v=20261025-smooth';
+import {drawCalendar} from './calendar-layout.mjs?v=20261027-single';
 const $=id=>document.getElementById(id);let loggedIn=false,refreshing=false,printing=false,jobs=[],lastKey='';const settings=new Map();const hiddenKey='yonsei-hidden-print-jobs';let savedHidden=[];try{savedHidden=[...JSON.parse(localStorage.getItem(hiddenKey)||'[]'),...JSON.parse(sessionStorage.getItem(hiddenKey)||'[]')];}catch{}const hiddenJobs=new Set(savedHidden.filter(id=>typeof id==='string'&&/^[a-f0-9]{48}$/.test(id)));localStorage.setItem(hiddenKey,JSON.stringify([...hiddenJobs]));sessionStorage.removeItem(hiddenKey);let localToken='',helperBusy=false;const preferred=new URLSearchParams(location.hash.slice(1)).get('printerDevice');if(/^[a-f0-9]{48}$/.test(preferred||''))localStorage.setItem('yonsei-preferred-device',preferred);
 const labels={waiting:'인쇄 대기',queued:'노트북으로 전달 중',uncertain:'인쇄 센터 확인 필요',printing:'출력 확인 필요',submitted:'인쇄 대기열 전송 완료',printed:'출력 완료'};
 async function api(path,options={}){const response=await fetch('/api/gallery/'+path,{...options,headers:{'Content-Type':'application/json',...options.headers}});const data=await response.json();if(!response.ok){const error=new Error(data.error||'요청 실패');error.status=response.status;throw error;}return data;}
@@ -34,7 +34,7 @@ $('refresh').onclick=()=>{lastKey='';void refresh();};
 $('helper-reconnect').onclick=()=>void connectHelper();$('printer').onchange=()=>{localStorage.setItem('yonsei-relay-printer',$('printer').value);localStorage.setItem('yonsei-preferred-device',$('printer').value.split('::')[0]);lastKey='';void refresh();};$('scale').onchange=()=>{const value=Number($('scale').value);if(Number.isInteger(value)&&value>=85&&value<=100){for(const option of settings.values())option.scale=value;lastKey='';void refresh();}};
 
 function calendarPalette(value,onChange){
- const group=document.createElement('div');group.className='calendar-palette';group.setAttribute('role','group');group.setAttribute('aria-label','달력 색상');
+ const group=document.createElement('div');group.className='calendar-palette';group.hidden=true;group.setAttribute('role','group');group.setAttribute('aria-label','달력 색상');
  const labelText=document.createElement('span');labelText.className='calendar-label';labelText.textContent='달력 색상';group.append(labelText);
  const dropdown=document.createElement('details');dropdown.className='calendar-dropdown';group.append(dropdown);
  const summary=document.createElement('summary');summary.setAttribute('aria-label','달력 색상 선택');

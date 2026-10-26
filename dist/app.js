@@ -27,7 +27,7 @@ const selectedCount=()=>chosen.filter(Number.isInteger).length;
 let cutCount=4;
 const frameCount=f=>f.count||f.slots?.length||4;
 const matchingFrames=()=>frames.filter(f=>frameCount(f)===cutCount && (f.edition||'basic')===edition);
-const CAPTURE_TOTAL = 8;
+const CAPTURE_TOTAL = 6;
 const status = (message, error = false) => { $('status').textContent = message; $('status').classList.toggle('error', error);if(phase==='permission')$('permission-status').textContent=message;if(phase==='setup')$('setup-status').textContent=message;if(phase==='frame')$('frame-status').textContent=message; };
 const loadImage = src => new Promise((resolve, reject) => { const img = new Image(); img.onload = () => resolve(img); img.onerror = () => reject(new Error('프레임 이미지를 열 수 없어요.')); img.src = src; });
 const toBlob = (canvas, type = 'image/png', quality = .96) => new Promise((resolve, reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error('이미지를 만들지 못했어요.')), type, quality));
@@ -50,7 +50,7 @@ function controls() {
  const pickingCuts=edition==='special'&&specialCutStep;
  document.querySelector('.basic-color-note').textContent=edition==='special'?'다음 단계에서 원하는 프레임을 선택할 수 있어요.':'프레임 색상은 촬영 후 자유롭게 변경할 수 있어요.';
  $('setup-done').querySelector('span').textContent=pickingCuts?'프레임 선택하기':'촬영시작';
- $('setup-done').querySelector('small').textContent=pickingCuts?'선택한 컷 수에 맞는 프레임을 골라요':'누르면 8초 타이머가 시작돼요';
+ $('setup-done').querySelector('small').textContent=pickingCuts?'선택한 컷 수에 맞는 프레임을 골라요':'누르면 5초 타이머가 시작돼요';
  $('edition-back').textContent=edition==='special'&&!specialCutStep?'← 컷 수 선택':'← 종류 선택';
  for(const id of ['frames','setup-frame-heading'])$(id).hidden=edition!=='special'||specialCutStep;
  $('selection-panel').hidden=!selecting;
@@ -239,9 +239,9 @@ function showShotPreview() {
 }
 function updateShotMode() {
   const count = shotCount();
-  $('shoot-instruction').textContent=`총 8장 촬영 후 원하는 ${cutCount}장을 선택해요.`;
+  $('shoot-instruction').textContent=`총 6장 촬영 후 원하는 ${cutCount}장을 선택해요.`;
   $('capture').textContent = '촬영시작';
-  $('shot-progress').textContent = '0 / 8장 · 8초마다 자동 촬영';
+  $('shot-progress').textContent = '0 / 6장 · 5초마다 자동 촬영';
   $('shot-thumbs').replaceChildren();
   if (selected) { const size = outputSize(selected, count); $('size-label').textContent = `${size.width} × ${size.height} · PNG`; showShotPreview(); }
   controls();
@@ -377,7 +377,7 @@ async function capture() {
  try {
   while(shotSession.taken<CAPTURE_TOTAL){
    $('shot-progress').textContent=`${shotSession.taken+1} / ${CAPTURE_TOTAL}장 · 포즈를 준비해 주세요`;
-   for(let n=8;n>0;n--){$('countdown').textContent=n;$('countdown').hidden=false;const manual=await waitCaptureTick();if(run!==countdownRun||revision!==sessionRun)return;if(manual)break;}
+   for(let n=5;n>0;n--){$('countdown').textContent=n;$('countdown').hidden=false;const manual=await waitCaptureTick();if(run!==countdownRun||revision!==sessionRun)return;if(manual)break;}
    if(!stream||video.readyState<2||!video.videoWidth)throw new Error('카메라 연결을 확인한 뒤 남은 촬영을 이어가 주세요.');
    const photo=document.createElement('canvas');const scale=Math.min(1,1440/Math.max(video.videoWidth,video.videoHeight));photo.width=Math.round(video.videoWidth*scale);photo.height=Math.round(video.videoHeight*scale);
    const ctx=photo.getContext('2d');ctx.save();ctx.translate(photo.width,0);ctx.scale(-1,1);ctx.drawImage(video,0,0,photo.width,photo.height);ctx.restore();
@@ -479,7 +479,7 @@ $('setup-done').onclick=async()=>{
  status('카메라 영상을 준비하고 있어요…');
  if(!stream)await startCamera();
  if(revision!==sessionRun||!stream||video.readyState<2||!video.videoWidth){shootingMusic.stop();return;}
- status('8초마다 자동으로 촬영합니다.');await capture();
+ status('5초마다 자동으로 촬영합니다.');await capture();
 };
 video.addEventListener('loadeddata',controls);
 $('capture').onclick = capture;
@@ -663,7 +663,7 @@ async function ensurePrintAlbum(revision){
  if(album)return;
  await loadGalleryConfig();
  if(!qrEnabled)throw new Error('인터넷 연결을 확인한 뒤 화면을 새로고침해 주세요.');
- const current=await apiJSON('/api/gallery/albums',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({printOnly:true,consent:false,printTheme:selected?.printTheme})});
+ const current=await apiJSON('/api/gallery/albums',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({printOnly:true,consent:false,captureCount:CAPTURE_TOTAL,printTheme:selected?.printTheme})});
  if(revision!==sessionRun){void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'});return;}
  album=current;
 }
@@ -671,11 +671,11 @@ async function prepareAlbumQR(canvas,revision){
  if(!qrConsent||!qrEnabled)throw new Error('QR 사진 보관 동의가 필요합니다.');
  let current=album;
  if(!current){
-  current=await apiJSON('/api/gallery/albums',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({consent:true,policyVersion:'2026-09-26-qr-v1',printTheme:selected?.printTheme})});
+  current=await apiJSON('/api/gallery/albums',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({consent:true,policyVersion:'2026-09-26-qr-v1',captureCount:CAPTURE_TOTAL,printTheme:selected?.printTheme})});
   if(revision!==sessionRun){void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'});return canvas;}
   album=current;
  }
- await apiJSON(`/api/gallery/albums/${current.id}/qr`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({consent:true,policyVersion:'2026-09-26-qr-v1',printTheme:selected?.printTheme})});
+ await apiJSON(`/api/gallery/albums/${current.id}/qr`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({consent:true,policyVersion:'2026-09-26-qr-v1',captureCount:CAPTURE_TOTAL,printTheme:selected?.printTheme})});
  return canvas;
 }
 async function uploadAlbumPhotos(revision){
@@ -684,7 +684,7 @@ async function uploadAlbumPhotos(revision){
  const current=album,photos=shotSession.photos,source=albumSource;
  const deadline=Date.now()+45000,remaining=()=>{const ms=deadline-Date.now();if(ms<=0)throw new Error('QR 저장 시간 초과');return ms;};
  const data=new FormData();
- if(qrConsent)for(let i=0;i<8;i++){
+ if(qrConsent)for(let i=0;i<CAPTURE_TOTAL;i++){
   data.append(String(i),await withTimeout(toBlob(photos[i],'image/jpeg',.85),remaining(),'QR 사진 처리 시간 초과'),`${i}.jpg`);
   if(revision!==sessionRun)return;
  }

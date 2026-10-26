@@ -1,4 +1,4 @@
-import {drawCalendar} from './calendar-layout.mjs?v=20261025-smooth';
+import {drawCalendar} from './calendar-layout.mjs?v=20261027-single';
 const $=s=>document.getElementById(s);let printing=false,last='',selected=localStorage.getItem('yonsei-printer')||'';
 const savedScale=Number(localStorage.getItem('yonsei-print-scale-fullbleed')||94);$('scale').value=Number.isInteger(savedScale)&&savedScale>=85&&savedScale<=100?savedScale:94;
 $('scale').onchange=()=>{if($('scale').checkValidity()){localStorage.setItem('yonsei-print-scale-fullbleed',$('scale').value);last='';void refresh();}};
@@ -24,7 +24,7 @@ $('printer').onchange=()=>{selected=$('printer').value;localStorage.setItem('yon
 $('cloud-connect').onclick=async()=>{const button=$('cloud-connect');button.disabled=true;try{await api('/admin/cloud',{method:'POST',body:JSON.stringify({code:$('cloud-code').value.trim()})});$('cloud-code').value='';await refresh();}catch(e){$('cloud-status').textContent=e.message;}finally{button.disabled=false;}};
 
 function calendarPalette(value,onChange){
- const group=document.createElement('div');group.className='calendar-palette';group.setAttribute('role','group');group.setAttribute('aria-label','달력 색상');
+ const group=document.createElement('div');group.className='calendar-palette';group.hidden=true;group.setAttribute('role','group');group.setAttribute('aria-label','달력 색상');
  const labelText=document.createElement('span');labelText.className='calendar-label';labelText.textContent='달력 색상';group.append(labelText);
  const dropdown=document.createElement('details');dropdown.className='calendar-dropdown';group.append(dropdown);
  const summary=document.createElement('summary');summary.setAttribute('aria-label','달력 색상 선택');

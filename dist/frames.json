@@ -5,41 +5,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "black",
-    "src": "frames/basic-4-grid-black-undated-png-1fc194aded.png",
+    "src": "frames/basic-4-grid-black-single-c9f4291603-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-black-undated-thumbnail-1fc194aded.webp",
-    "preview": "frames/basic-4-grid-black-undated-preview-1fc194aded.webp",
+    "thumbnail": "frames/basic-4-grid-black-single-c9f4291603-thumbnail.webp",
+    "preview": "frames/basic-4-grid-black-single-c9f4291603-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -49,41 +49,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "white",
-    "src": "frames/basic-4-grid-white-undated-png-827a147278.png",
+    "src": "frames/basic-4-grid-white-single-51a1161b53-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-white-undated-thumbnail-827a147278.webp",
-    "preview": "frames/basic-4-grid-white-undated-preview-827a147278.webp",
+    "thumbnail": "frames/basic-4-grid-white-single-51a1161b53-thumbnail.webp",
+    "preview": "frames/basic-4-grid-white-single-51a1161b53-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -93,41 +93,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "cherry",
-    "src": "frames/basic-4-grid-cherry-undated-png-3913df86ae.png",
+    "src": "frames/basic-4-grid-cherry-single-dede071338-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-cherry-undated-thumbnail-3913df86ae.webp",
-    "preview": "frames/basic-4-grid-cherry-undated-preview-3913df86ae.webp",
+    "thumbnail": "frames/basic-4-grid-cherry-single-dede071338-thumbnail.webp",
+    "preview": "frames/basic-4-grid-cherry-single-dede071338-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -137,41 +137,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "pink",
-    "src": "frames/basic-4-grid-pink-undated-png-e9b66b9e0b.png",
+    "src": "frames/basic-4-grid-pink-single-1ff1822fd0-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-pink-undated-thumbnail-e9b66b9e0b.webp",
-    "preview": "frames/basic-4-grid-pink-undated-preview-e9b66b9e0b.webp",
+    "thumbnail": "frames/basic-4-grid-pink-single-1ff1822fd0-thumbnail.webp",
+    "preview": "frames/basic-4-grid-pink-single-1ff1822fd0-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -181,41 +181,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "beige",
-    "src": "frames/basic-4-grid-beige-undated-png-aaaf5b004a.png",
+    "src": "frames/basic-4-grid-beige-single-232b65c99c-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-beige-undated-thumbnail-aaaf5b004a.webp",
-    "preview": "frames/basic-4-grid-beige-undated-preview-aaaf5b004a.webp",
+    "thumbnail": "frames/basic-4-grid-beige-single-232b65c99c-thumbnail.webp",
+    "preview": "frames/basic-4-grid-beige-single-232b65c99c-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -225,41 +225,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "khaki",
-    "src": "frames/basic-4-grid-khaki-undated-png-416cb81d0c.png",
+    "src": "frames/basic-4-grid-khaki-single-179b693a0b-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-khaki-undated-thumbnail-416cb81d0c.webp",
-    "preview": "frames/basic-4-grid-khaki-undated-preview-416cb81d0c.webp",
+    "thumbnail": "frames/basic-4-grid-khaki-single-179b693a0b-thumbnail.webp",
+    "preview": "frames/basic-4-grid-khaki-single-179b693a0b-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -269,41 +269,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "lime",
-    "src": "frames/basic-4-grid-lime-undated-png-8bdeeb4901.png",
+    "src": "frames/basic-4-grid-lime-single-d9fe7295b6-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-lime-undated-thumbnail-8bdeeb4901.webp",
-    "preview": "frames/basic-4-grid-lime-undated-preview-8bdeeb4901.webp",
+    "thumbnail": "frames/basic-4-grid-lime-single-d9fe7295b6-thumbnail.webp",
+    "preview": "frames/basic-4-grid-lime-single-d9fe7295b6-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -313,41 +313,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "sora",
-    "src": "frames/basic-4-grid-sora-undated-png-08ea6712a4.png",
+    "src": "frames/basic-4-grid-sora-single-c911626180-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-sora-undated-thumbnail-08ea6712a4.webp",
-    "preview": "frames/basic-4-grid-sora-undated-preview-08ea6712a4.webp",
+    "thumbnail": "frames/basic-4-grid-sora-single-c911626180-thumbnail.webp",
+    "preview": "frames/basic-4-grid-sora-single-c911626180-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -357,41 +357,41 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "dusty",
-    "src": "frames/basic-4-grid-dusty-undated-png-e0ef38b732.png",
+    "src": "frames/basic-4-grid-dusty-single-bdd445fb1c-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.07207207207207207,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.04,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4242850445382091,
-        0.43333333333333335,
-        0.36333802156586964
+        0.51,
+        0.4391891891891892,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-grid-dusty-undated-thumbnail-e0ef38b732.webp",
-    "preview": "frames/basic-4-grid-dusty-undated-preview-e0ef38b732.webp",
+    "thumbnail": "frames/basic-4-grid-dusty-single-bdd445fb1c-thumbnail.webp",
+    "preview": "frames/basic-4-grid-dusty-single-bdd445fb1c-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -401,41 +401,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "black",
-    "src": "frames/basic-4-offset-black-undated-png-ad9d11e6f7.png",
+    "src": "frames/basic-4-offset-black-single-23b547c03e-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.11711711711711711,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4055321143928739,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.39414414414414417,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4430379746835443,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.48423423423423423,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-black-undated-thumbnail-ad9d11e6f7.webp",
-    "preview": "frames/basic-4-offset-black-undated-preview-ad9d11e6f7.webp",
+    "thumbnail": "frames/basic-4-offset-black-single-23b547c03e-thumbnail.webp",
+    "preview": "frames/basic-4-offset-black-single-23b547c03e-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -445,41 +445,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "white",
-    "src": "frames/basic-4-offset-white-undated-png-c9df6a497f.png",
+    "src": "frames/basic-4-offset-white-single-fc338d5b0f-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.11711711711711711,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4055321143928739,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.39414414414414417,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4430379746835443,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.48423423423423423,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-white-undated-thumbnail-c9df6a497f.webp",
-    "preview": "frames/basic-4-offset-white-undated-preview-c9df6a497f.webp",
+    "thumbnail": "frames/basic-4-offset-white-single-fc338d5b0f-thumbnail.webp",
+    "preview": "frames/basic-4-offset-white-single-fc338d5b0f-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -489,41 +489,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "cherry",
-    "src": "frames/basic-4-offset-cherry-undated-png-736c06b93d.png",
+    "src": "frames/basic-4-offset-cherry-single-551a2ded6c-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.11711711711711711,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4055321143928739,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.39414414414414417,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4430379746835443,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.48423423423423423,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-cherry-undated-thumbnail-736c06b93d.webp",
-    "preview": "frames/basic-4-offset-cherry-undated-preview-736c06b93d.webp",
+    "thumbnail": "frames/basic-4-offset-cherry-single-551a2ded6c-thumbnail.webp",
+    "preview": "frames/basic-4-offset-cherry-single-551a2ded6c-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -533,41 +533,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "pink",
-    "src": "frames/basic-4-offset-pink-undated-png-2a24627eba.png",
+    "src": "frames/basic-4-offset-pink-single-fa8589fe9f-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.11711711711711711,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4055321143928739,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.39414414414414417,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4430379746835443,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.48423423423423423,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-pink-undated-thumbnail-2a24627eba.webp",
-    "preview": "frames/basic-4-offset-pink-undated-preview-2a24627eba.webp",
+    "thumbnail": "frames/basic-4-offset-pink-single-fa8589fe9f-thumbnail.webp",
+    "preview": "frames/basic-4-offset-pink-single-fa8589fe9f-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -577,41 +577,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "beige",
-    "src": "frames/basic-4-offset-beige-undated-png-702421425e.png",
+    "src": "frames/basic-4-offset-beige-single-424f71c328-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.11711711711711711,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4055321143928739,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.39414414414414417,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4430379746835443,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.48423423423423423,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-beige-undated-thumbnail-702421425e.webp",
-    "preview": "frames/basic-4-offset-beige-undated-preview-702421425e.webp",
+    "thumbnail": "frames/basic-4-offset-beige-single-424f71c328-thumbnail.webp",
+    "preview": "frames/basic-4-offset-beige-single-424f71c328-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -621,41 +621,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "khaki",
-    "src": "frames/basic-4-offset-khaki-undated-png-2208aed918.png",
+    "src": "frames/basic-4-offset-khaki-single-1b01f7d7f6-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.11711711711711711,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4055321143928739,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.39414414414414417,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4430379746835443,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.48423423423423423,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-khaki-undated-thumbnail-2208aed918.webp",
-    "preview": "frames/basic-4-offset-khaki-undated-preview-2208aed918.webp",
+    "thumbnail": "frames/basic-4-offset-khaki-single-1b01f7d7f6-thumbnail.webp",
+    "preview": "frames/basic-4-offset-khaki-single-1b01f7d7f6-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -665,41 +665,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "lime",
-    "src": "frames/basic-4-offset-lime-undated-png-72c86f7805.png",
+    "src": "frames/basic-4-offset-lime-single-525d4503dc-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.11711711711711711,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4055321143928739,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.39414414414414417,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4430379746835443,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.48423423423423423,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-lime-undated-thumbnail-72c86f7805.webp",
-    "preview": "frames/basic-4-offset-lime-undated-preview-72c86f7805.webp",
+    "thumbnail": "frames/basic-4-offset-lime-single-525d4503dc-thumbnail.webp",
+    "preview": "frames/basic-4-offset-lime-single-525d4503dc-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -709,41 +709,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "sora",
-    "src": "frames/basic-4-offset-sora-undated-png-beea200e44.png",
+    "src": "frames/basic-4-offset-sora-single-bbee9851bf-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.11711711711711711,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4055321143928739,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.39414414414414417,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4430379746835443,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.48423423423423423,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-sora-undated-thumbnail-beea200e44.webp",
-    "preview": "frames/basic-4-offset-sora-undated-preview-beea200e44.webp",
+    "thumbnail": "frames/basic-4-offset-sora-single-bbee9851bf-thumbnail.webp",
+    "preview": "frames/basic-4-offset-sora-single-bbee9851bf-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -753,41 +753,41 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "dusty",
-    "src": "frames/basic-4-offset-dusty-undated-png-ecf697b8f0.png",
+    "src": "frames/basic-4-offset-dusty-single-cfb7822746-src.png",
     "count": 4,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.11711711711711711,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.05583333333333333,
-        0.4055321143928739,
-        0.43333333333333335,
-        0.34458509142053445
+        0.04,
+        0.39414414414414417,
+        0.45,
+        0.3536036036036036
       ],
       [
-        0.5158333333333334,
-        0.4430379746835443,
-        0.43333333333333335,
-        0.34458509142053445
+        0.51,
+        0.48423423423423423,
+        0.45,
+        0.3536036036036036
       ]
     ],
-    "thumbnail": "frames/basic-4-offset-dusty-undated-thumbnail-ecf697b8f0.webp",
-    "preview": "frames/basic-4-offset-dusty-undated-preview-ecf697b8f0.webp",
+    "thumbnail": "frames/basic-4-offset-dusty-single-cfb7822746-thumbnail.webp",
+    "preview": "frames/basic-4-offset-dusty-single-cfb7822746-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -797,53 +797,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "black",
-    "src": "frames/basic-6-grid-black-undated-png-0fff4f06d6.png",
+    "src": "frames/basic-6-grid-black-single-6c638195ae-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-black-undated-thumbnail-0fff4f06d6.webp",
-    "preview": "frames/basic-6-grid-black-undated-preview-0fff4f06d6.webp",
+    "thumbnail": "frames/basic-6-grid-black-single-6c638195ae-thumbnail.webp",
+    "preview": "frames/basic-6-grid-black-single-6c638195ae-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -853,53 +853,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "white",
-    "src": "frames/basic-6-grid-white-undated-png-4a491eff57.png",
+    "src": "frames/basic-6-grid-white-single-ac7e4906a8-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-white-undated-thumbnail-4a491eff57.webp",
-    "preview": "frames/basic-6-grid-white-undated-preview-4a491eff57.webp",
+    "thumbnail": "frames/basic-6-grid-white-single-ac7e4906a8-thumbnail.webp",
+    "preview": "frames/basic-6-grid-white-single-ac7e4906a8-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -909,53 +909,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "cherry",
-    "src": "frames/basic-6-grid-cherry-undated-png-3e138cd604.png",
+    "src": "frames/basic-6-grid-cherry-single-e7135ca0b8-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-cherry-undated-thumbnail-3e138cd604.webp",
-    "preview": "frames/basic-6-grid-cherry-undated-preview-3e138cd604.webp",
+    "thumbnail": "frames/basic-6-grid-cherry-single-e7135ca0b8-thumbnail.webp",
+    "preview": "frames/basic-6-grid-cherry-single-e7135ca0b8-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -965,53 +965,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "pink",
-    "src": "frames/basic-6-grid-pink-undated-png-f3c30100e0.png",
+    "src": "frames/basic-6-grid-pink-single-0f3c8ed1d4-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-pink-undated-thumbnail-f3c30100e0.webp",
-    "preview": "frames/basic-6-grid-pink-undated-preview-f3c30100e0.webp",
+    "thumbnail": "frames/basic-6-grid-pink-single-0f3c8ed1d4-thumbnail.webp",
+    "preview": "frames/basic-6-grid-pink-single-0f3c8ed1d4-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -1021,53 +1021,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "beige",
-    "src": "frames/basic-6-grid-beige-undated-png-98dbce909b.png",
+    "src": "frames/basic-6-grid-beige-single-52ad30953d-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-beige-undated-thumbnail-98dbce909b.webp",
-    "preview": "frames/basic-6-grid-beige-undated-preview-98dbce909b.webp",
+    "thumbnail": "frames/basic-6-grid-beige-single-52ad30953d-thumbnail.webp",
+    "preview": "frames/basic-6-grid-beige-single-52ad30953d-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -1077,53 +1077,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "khaki",
-    "src": "frames/basic-6-grid-khaki-undated-png-1d4533e913.png",
+    "src": "frames/basic-6-grid-khaki-single-0917ca8a3a-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-khaki-undated-thumbnail-1d4533e913.webp",
-    "preview": "frames/basic-6-grid-khaki-undated-preview-1d4533e913.webp",
+    "thumbnail": "frames/basic-6-grid-khaki-single-0917ca8a3a-thumbnail.webp",
+    "preview": "frames/basic-6-grid-khaki-single-0917ca8a3a-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -1133,53 +1133,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "lime",
-    "src": "frames/basic-6-grid-lime-undated-png-eecedca258.png",
+    "src": "frames/basic-6-grid-lime-single-70cf30aeda-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-lime-undated-thumbnail-eecedca258.webp",
-    "preview": "frames/basic-6-grid-lime-undated-preview-eecedca258.webp",
+    "thumbnail": "frames/basic-6-grid-lime-single-70cf30aeda-thumbnail.webp",
+    "preview": "frames/basic-6-grid-lime-single-70cf30aeda-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -1189,53 +1189,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "sora",
-    "src": "frames/basic-6-grid-sora-undated-png-f3d99e61c4.png",
+    "src": "frames/basic-6-grid-sora-single-663e4fa742-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-sora-undated-thumbnail-f3d99e61c4.webp",
-    "preview": "frames/basic-6-grid-sora-undated-preview-f3d99e61c4.webp",
+    "thumbnail": "frames/basic-6-grid-sora-single-663e4fa742-thumbnail.webp",
+    "preview": "frames/basic-6-grid-sora-single-663e4fa742-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -1245,53 +1245,53 @@
     "layout": "grid",
     "layoutName": "기본",
     "color": "dusty",
-    "src": "frames/basic-6-grid-dusty-undated-png-330f62b74e.png",
+    "src": "frames/basic-6-grid-dusty-single-2440bb47f1-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.06306306306306306,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.2981715893108298,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.3153153153153153,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.04,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5503984997655884,
-        0.43333333333333335,
-        0.2372245663384904
+        0.51,
+        0.5675675675675675,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-grid-dusty-undated-thumbnail-330f62b74e.webp",
-    "preview": "frames/basic-6-grid-dusty-undated-preview-330f62b74e.webp",
+    "thumbnail": "frames/basic-6-grid-dusty-single-2440bb47f1-thumbnail.webp",
+    "preview": "frames/basic-6-grid-dusty-single-2440bb47f1-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -1301,53 +1301,53 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "black",
-    "src": "frames/basic-6-offset-black-undated-png-2543f24bdb.png",
+    "src": "frames/basic-6-offset-black-single-cd73530b61-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.0990990990990991,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.28551336146272854,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.27927927927927926,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.323019221753399,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.35135135135135137,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5255508673230193,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.5315315315315315,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5630567276136896,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.6036036036036037,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-black-undated-thumbnail-2543f24bdb.webp",
-    "preview": "frames/basic-6-offset-black-undated-preview-2543f24bdb.webp",
+    "thumbnail": "frames/basic-6-offset-black-single-cd73530b61-thumbnail.webp",
+    "preview": "frames/basic-6-offset-black-single-cd73530b61-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -1357,53 +1357,53 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "white",
-    "src": "frames/basic-6-offset-white-undated-png-2042d9a3d1.png",
+    "src": "frames/basic-6-offset-white-single-e88eaacf9f-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.0990990990990991,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.28551336146272854,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.27927927927927926,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.323019221753399,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.35135135135135137,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5255508673230193,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.5315315315315315,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5630567276136896,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.6036036036036037,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-white-undated-thumbnail-2042d9a3d1.webp",
-    "preview": "frames/basic-6-offset-white-undated-preview-2042d9a3d1.webp",
+    "thumbnail": "frames/basic-6-offset-white-single-e88eaacf9f-thumbnail.webp",
+    "preview": "frames/basic-6-offset-white-single-e88eaacf9f-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -1413,53 +1413,53 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "cherry",
-    "src": "frames/basic-6-offset-cherry-undated-png-26ea94398f.png",
+    "src": "frames/basic-6-offset-cherry-single-369c3d8d50-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.0990990990990991,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.28551336146272854,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.27927927927927926,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.323019221753399,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.35135135135135137,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5255508673230193,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.5315315315315315,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5630567276136896,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.6036036036036037,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-cherry-undated-thumbnail-26ea94398f.webp",
-    "preview": "frames/basic-6-offset-cherry-undated-preview-26ea94398f.webp",
+    "thumbnail": "frames/basic-6-offset-cherry-single-369c3d8d50-thumbnail.webp",
+    "preview": "frames/basic-6-offset-cherry-single-369c3d8d50-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -1469,53 +1469,53 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "pink",
-    "src": "frames/basic-6-offset-pink-undated-png-3e1570e2cf.png",
+    "src": "frames/basic-6-offset-pink-single-e4f3ff8f4b-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.0990990990990991,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.28551336146272854,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.27927927927927926,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.323019221753399,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.35135135135135137,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5255508673230193,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.5315315315315315,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5630567276136896,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.6036036036036037,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-pink-undated-thumbnail-3e1570e2cf.webp",
-    "preview": "frames/basic-6-offset-pink-undated-preview-3e1570e2cf.webp",
+    "thumbnail": "frames/basic-6-offset-pink-single-e4f3ff8f4b-thumbnail.webp",
+    "preview": "frames/basic-6-offset-pink-single-e4f3ff8f4b-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -1525,53 +1525,53 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "beige",
-    "src": "frames/basic-6-offset-beige-undated-png-1c023d52b5.png",
+    "src": "frames/basic-6-offset-beige-single-0a95ca3d6b-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.0990990990990991,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.28551336146272854,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.27927927927927926,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.323019221753399,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.35135135135135137,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5255508673230193,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.5315315315315315,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5630567276136896,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.6036036036036037,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-beige-undated-thumbnail-1c023d52b5.webp",
-    "preview": "frames/basic-6-offset-beige-undated-preview-1c023d52b5.webp",
+    "thumbnail": "frames/basic-6-offset-beige-single-0a95ca3d6b-thumbnail.webp",
+    "preview": "frames/basic-6-offset-beige-single-0a95ca3d6b-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -1581,53 +1581,53 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "khaki",
-    "src": "frames/basic-6-offset-khaki-undated-png-4ad0532c76.png",
+    "src": "frames/basic-6-offset-khaki-single-7edef4ebdc-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.0990990990990991,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.28551336146272854,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.27927927927927926,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.323019221753399,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.35135135135135137,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5255508673230193,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.5315315315315315,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5630567276136896,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.6036036036036037,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-khaki-undated-thumbnail-4ad0532c76.webp",
-    "preview": "frames/basic-6-offset-khaki-undated-preview-4ad0532c76.webp",
+    "thumbnail": "frames/basic-6-offset-khaki-single-7edef4ebdc-thumbnail.webp",
+    "preview": "frames/basic-6-offset-khaki-single-7edef4ebdc-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -1637,53 +1637,53 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "lime",
-    "src": "frames/basic-6-offset-lime-undated-png-b7a6787c38.png",
+    "src": "frames/basic-6-offset-lime-single-9d497143b1-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.0990990990990991,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.28551336146272854,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.27927927927927926,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.323019221753399,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.35135135135135137,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5255508673230193,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.5315315315315315,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5630567276136896,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.6036036036036037,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-lime-undated-thumbnail-b7a6787c38.webp",
-    "preview": "frames/basic-6-offset-lime-undated-preview-b7a6787c38.webp",
+    "thumbnail": "frames/basic-6-offset-lime-single-9d497143b1-thumbnail.webp",
+    "preview": "frames/basic-6-offset-lime-single-9d497143b1-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -1693,53 +1693,53 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "sora",
-    "src": "frames/basic-6-offset-sora-undated-png-e666f2ee8a.png",
+    "src": "frames/basic-6-offset-sora-single-58d087ae92-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.0990990990990991,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.28551336146272854,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.27927927927927926,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.323019221753399,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.35135135135135137,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5255508673230193,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.5315315315315315,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5630567276136896,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.6036036036036037,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-sora-undated-thumbnail-e666f2ee8a.webp",
-    "preview": "frames/basic-6-offset-sora-undated-preview-e666f2ee8a.webp",
+    "thumbnail": "frames/basic-6-offset-sora-single-58d087ae92-thumbnail.webp",
+    "preview": "frames/basic-6-offset-sora-single-58d087ae92-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -1749,53 +1749,53 @@
     "layout": "offset",
     "layoutName": "엇갈림",
     "color": "dusty",
-    "src": "frames/basic-6-offset-dusty-undated-png-7075708acf.png",
+    "src": "frames/basic-6-offset-dusty-single-30f3c15d25-src.png",
     "count": 6,
     "edition": "basic",
     "paper": "selphy-p",
     "slots": [
       [
-        0.05583333333333333,
-        0.04594467885607126,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.02702702702702703,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.08345053914674168,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.0990990990990991,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.28551336146272854,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.27927927927927926,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.323019221753399,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.35135135135135137,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.05583333333333333,
-        0.5255508673230193,
-        0.43333333333333335,
-        0.22456633849038912
+        0.04,
+        0.5315315315315315,
+        0.45,
+        0.23873873873873874
       ],
       [
-        0.5158333333333334,
-        0.5630567276136896,
-        0.43333333333333335,
-        0.22456633849038912
+        0.51,
+        0.6036036036036037,
+        0.45,
+        0.23873873873873874
       ]
     ],
-    "thumbnail": "frames/basic-6-offset-dusty-undated-thumbnail-7075708acf.webp",
-    "preview": "frames/basic-6-offset-dusty-undated-preview-7075708acf.webp",
+    "thumbnail": "frames/basic-6-offset-dusty-single-30f3c15d25-thumbnail.webp",
+    "preview": "frames/basic-6-offset-dusty-single-30f3c15d25-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "imagination-hall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false
   },
@@ -2357,42 +2357,43 @@
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-green-four-restored-9ffe82f1ce-png.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-green-four-restored-9ffe82f1ce-thumbnail.webp",
+    "src": "frames/hanmaeum-2026-daecheong-green-four-single-880a4fff94-src.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-green-four-single-880a4fff94-thumbnail.webp",
     "slots": [
       [
         0.04833333333333333,
-        0.0379746835443038,
+        0.04560810810810811,
         0.45166666666666666,
-        0.40412564463197376
+        0.38457207207207206
       ],
       [
         0.5133333333333333,
-        0.034692920768870136,
+        0.041666666666666664,
         0.43833333333333335,
-        0.40318799812470696
+        0.38344594594594594
       ],
       [
         0.04833333333333333,
-        0.45147679324894513,
+        0.44144144144144143,
         0.43833333333333335,
-        0.4027191748710736
+        0.38344594594594594
       ],
       [
         0.5,
-        0.44163150492264414,
+        0.42961711711711714,
         0.45166666666666666,
-        0.4125644631973746
+        0.3952702702702703
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-green-four-restored-9ffe82f1ce-preview.webp",
+    "preview": "frames/hanmaeum-2026-daecheong-green-four-single-880a4fff94-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Imagination Hall",
     "artworkRestoration": "original-scale-v1",
-    "hidden": false
+    "hidden": false,
+    "dateVisible": false
   },
   {
     "id": "hanmaeum-2026-daecheong-green-six-landscape",
@@ -2400,54 +2401,55 @@
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-green-six-landscape-restored-aa2ec02621-png.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-landscape-restored-aa2ec02621-thumbnail.webp",
+    "src": "frames/hanmaeum-2026-daecheong-green-six-landscape-single-94d8f8ca60-src.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-landscape-single-94d8f8ca60-thumbnail.webp",
     "slots": [
       [
-        0.023076923076923078,
+        0.02734375,
         0.0380859375,
-        0.2978021978021978,
+        0.291015625,
         0.3896484375
       ],
       [
-        0.33186813186813185,
+        0.3313802083333333,
         0.029296875,
-        0.3120879120879121,
+        0.3079427083333333,
         0.40234375
       ],
       [
-        0.6604395604395604,
+        0.6588541666666666,
         0.0322265625,
-        0.31978021978021975,
+        0.3177083333333333,
         0.390625
       ],
       [
-        0.025274725274725275,
+        0.029947916666666668,
         0.439453125,
-        0.2956043956043956,
+        0.2884114583333333,
         0.37890625
       ],
       [
-        0.33296703296703295,
+        0.3326822916666667,
         0.44921875,
-        0.3148351648351648,
+        0.3111979166666667,
         0.3642578125
       ],
       [
-        0.6615384615384615,
+        0.66015625,
         0.4345703125,
-        0.3159340659340659,
+        0.3131510416666667,
         0.3798828125
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-green-six-landscape-restored-aa2ec02621-preview.webp",
-    "sourceWidth": 1820,
+    "preview": "frames/hanmaeum-2026-daecheong-green-six-landscape-single-94d8f8ca60-preview.webp",
+    "sourceWidth": 1536,
     "sourceHeight": 1024,
-    "layoutVersion": "calendar-tall-v1",
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Imagination Hall",
     "artworkRestoration": "original-scale-v1",
-    "hidden": false
+    "hidden": false,
+    "dateVisible": false
   },
   {
     "id": "hanmaeum-2026-daecheong-green-six-portrait",
@@ -2455,54 +2457,55 @@
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-green-six-portrait-restored-59e1e3e432-png.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-portrait-restored-59e1e3e432-thumbnail.webp",
+    "src": "frames/hanmaeum-2026-daecheong-green-six-portrait-single-e9d6a044aa-src.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-portrait-single-e9d6a044aa-thumbnail.webp",
     "slots": [
       [
         0.05140640155189137,
-        0.03436988543371522,
+        0.04128440366972477,
         0.43452958292919497,
-        0.2907801418439716
+        0.2817824377457405
       ],
       [
         0.5033947623666344,
-        0.027277686852154936,
+        0.0327653997378768,
         0.44422890397672166,
-        0.3027823240589198
+        0.2961992136304063
       ],
       [
         0.05140640155189137,
-        0.3322422258592471,
+        0.3315858453473132,
         0.4354995150339476,
-        0.27986906710310966
+        0.26933158584534733
       ],
       [
         0.5111542192046556,
-        0.33387888707037644,
+        0.33355176933158587,
         0.44034917555771097,
-        0.27605019094380795
+        0.26474442988204455
       ],
       [
         0.05140640155189137,
-        0.6279323513366066,
+        0.6199213630406291,
         0.4364694471387003,
-        0.2629569012547736
+        0.2490170380078637
       ],
       [
         0.5053346265761397,
-        0.6192034915439171,
+        0.6094364351245085,
         0.44325897187196894,
-        0.2744135297326787
+        0.26277850589777196
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-green-six-portrait-restored-59e1e3e432-preview.webp",
+    "preview": "frames/hanmaeum-2026-daecheong-green-six-portrait-single-e9d6a044aa-preview.webp",
     "sourceWidth": 1031,
-    "sourceHeight": 1833,
-    "layoutVersion": "calendar-tall-v1",
+    "sourceHeight": 1526,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Imagination Hall",
     "artworkRestoration": "original-scale-v1",
-    "hidden": false
+    "hidden": false,
+    "dateVisible": false
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-four",
@@ -2510,42 +2513,43 @@
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-paper-four-restored-401287ac7d-png.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-four-restored-401287ac7d-thumbnail.webp",
+    "src": "frames/hanmaeum-2026-daecheong-paper-four-single-02ba4b6428-src.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-four-single-02ba4b6428-thumbnail.webp",
     "slots": [
       [
         0.056666666666666664,
-        0.05625879043600562,
+        0.06756756756756757,
         0.3975,
-        0.3750586029067042
+        0.34966216216216217
       ],
       [
         0.5458333333333333,
-        0.05625879043600562,
+        0.06756756756756757,
         0.3975,
-        0.3750586029067042
+        0.34966216216216217
       ],
       [
         0.056666666666666664,
-        0.5021097046413502,
+        0.5022522522522522,
         0.3975,
-        0.37412095639943743
+        0.3490990990990991
       ],
       [
         0.5458333333333333,
-        0.5021097046413502,
+        0.5022522522522522,
         0.3975,
-        0.37412095639943743
+        0.3490990990990991
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-paper-four-restored-401287ac7d-preview.webp",
+    "preview": "frames/hanmaeum-2026-daecheong-paper-four-single-02ba4b6428-preview.webp",
     "sourceWidth": 1200,
-    "sourceHeight": 2133,
-    "layoutVersion": "calendar-tall-v1",
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Imagination Hall",
     "artworkRestoration": "original-scale-v1",
-    "hidden": false
+    "hidden": false,
+    "dateVisible": false
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-six-landscape",
@@ -2553,54 +2557,55 @@
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-paper-six-landscape-restored-6fa13de8bd-png.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-six-landscape-restored-6fa13de8bd-thumbnail.webp",
+    "src": "frames/hanmaeum-2026-daecheong-paper-six-landscape-single-d56c0fe97b-src.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-six-landscape-single-d56c0fe97b-thumbnail.webp",
     "slots": [
       [
-        0.033278777959629025,
+        0.0399737876802097,
         0.07856450048496605,
-        0.28805237315875615,
+        0.27850589777195284,
         0.3113482056256062
       ],
       [
-        0.36224768139661756,
+        0.3676277850589777,
         0.07856450048496605,
-        0.2765957446808511,
+        0.2653997378768021,
         0.3113482056256062
       ],
       [
-        0.6786688488816148,
+        0.6808650065530799,
         0.07856450048496605,
-        0.28805237315875615,
+        0.27916120576671033,
         0.3113482056256062
       ],
       [
-        0.03273322422258593,
+        0.039318479685452164,
         0.478176527643065,
-        0.28914348063284234,
+        0.2798165137614679,
         0.31037827352085356
       ],
       [
-        0.36224768139661756,
+        0.3676277850589777,
         0.478176527643065,
-        0.27714129841789414,
+        0.26605504587155965,
         0.31037827352085356
       ],
       [
-        0.6786688488816148,
+        0.6808650065530799,
         0.478176527643065,
-        0.2885979268957992,
+        0.2798165137614679,
         0.31037827352085356
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-paper-six-landscape-restored-6fa13de8bd-preview.webp",
-    "sourceWidth": 1833,
+    "preview": "frames/hanmaeum-2026-daecheong-paper-six-landscape-single-d56c0fe97b-preview.webp",
+    "sourceWidth": 1526,
     "sourceHeight": 1031,
-    "layoutVersion": "calendar-tall-v1",
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Imagination Hall",
     "artworkRestoration": "original-scale-v1",
-    "hidden": false
+    "hidden": false,
+    "dateVisible": false
   },
   {
     "id": "hanmaeum-2026-daecheong-paper-six-portrait",
@@ -2608,54 +2613,55 @@
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-paper-six-portrait-restored-9d31839582-png.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-six-portrait-restored-9d31839582-thumbnail.webp",
+    "src": "frames/hanmaeum-2026-daecheong-paper-six-portrait-single-379e405c4a-src.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-six-portrait-single-379e405c4a-thumbnail.webp",
     "slots": [
       [
         0.06207565470417071,
-        0.05182760501909438,
+        0.062254259501965926,
         0.39670223084384093,
-        0.23513366066557556
+        0.21494102228047182
       ],
       [
         0.5412221144519883,
-        0.05182760501909438,
+        0.062254259501965926,
         0.39670223084384093,
-        0.23513366066557556
+        0.21494102228047182
       ],
       [
         0.06013579049466537,
-        0.3546099290780142,
+        0.3584534731323722,
         0.39961202715809896,
-        0.2225859247135843
+        0.20052424639580602
       ],
       [
         0.5402521823472357,
-        0.3546099290780142,
+        0.3584534731323722,
         0.3976721629485936,
-        0.2214948172394981
+        0.19921363040629095
       ],
       [
         0.06207565470417071,
-        0.6421167484997272,
+        0.6369593709043251,
         0.3976721629485936,
-        0.22531369339879978
+        0.2038007863695937
       ],
       [
         0.539282250242483,
-        0.6421167484997272,
+        0.6369593709043251,
         0.39864209505334625,
-        0.22531369339879978
+        0.2038007863695937
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-paper-six-portrait-restored-9d31839582-preview.webp",
+    "preview": "frames/hanmaeum-2026-daecheong-paper-six-portrait-single-379e405c4a-preview.webp",
     "sourceWidth": 1031,
-    "sourceHeight": 1833,
-    "layoutVersion": "calendar-tall-v1",
+    "sourceHeight": 1526,
+    "layoutVersion": "single-frame-original-v1",
     "brand": "Imagination Hall",
     "artworkRestoration": "original-scale-v1",
-    "hidden": false
+    "hidden": false,
+    "dateVisible": false
   },
   {
     "id": "siwol-market-four",
