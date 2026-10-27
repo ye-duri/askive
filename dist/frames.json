@@ -2396,6 +2396,50 @@
     "dateVisible": false
   },
   {
+    "id": "hanmaeum-2026-daecheong-green-four-landscape",
+    "name": "대청이 초록 · 4컷 · 가로",
+    "count": 4,
+    "edition": "special",
+    "paper": "selphy-p",
+    "src": "frames/hanmaeum-2026-daecheong-green-four-landscape-1c077e3dcb-src.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-green-four-landscape-1c077e3dcb-thumbnail.webp",
+    "slots": [
+      [
+        0.02734375,
+        0.0380859375,
+        0.4576822916666667,
+        0.3896484375
+      ],
+      [
+        0.4921875,
+        0.0322265625,
+        0.484375,
+        0.390625
+      ],
+      [
+        0.029947916666666668,
+        0.439453125,
+        0.455078125,
+        0.37890625
+      ],
+      [
+        0.4934895833333333,
+        0.4345703125,
+        0.4798177083333333,
+        0.3798828125
+      ]
+    ],
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-daecheong-green-four-landscape-1c077e3dcb-preview.webp",
+    "sourceWidth": 1536,
+    "sourceHeight": 1024,
+    "layoutVersion": "single-frame-original-v1",
+    "brand": "Yonsei Studio",
+    "artworkRestoration": "original-scale-v1",
+    "hidden": false,
+    "dateVisible": false
+  },
+  {
     "id": "hanmaeum-2026-daecheong-green-six-landscape",
     "name": "대청이 초록 · 6컷 · 가로",
     "count": 6,
@@ -2545,6 +2589,50 @@
     "preview": "frames/hanmaeum-2026-daecheong-paper-four-yonsei-a3f59325ed-preview.webp",
     "sourceWidth": 1200,
     "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
+    "brand": "Yonsei Studio",
+    "artworkRestoration": "original-scale-v1",
+    "hidden": false,
+    "dateVisible": false
+  },
+  {
+    "id": "hanmaeum-2026-daecheong-paper-four-landscape",
+    "name": "대청이 종이 · 4컷 · 가로",
+    "count": 4,
+    "edition": "special",
+    "paper": "selphy-p",
+    "src": "frames/hanmaeum-2026-daecheong-paper-four-landscape-605fdfa1c3-src.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-paper-four-landscape-605fdfa1c3-thumbnail.webp",
+    "slots": [
+      [
+        0.0399737876802097,
+        0.07856450048496605,
+        0.44495412844036697,
+        0.3113482056256062
+      ],
+      [
+        0.5144167758846658,
+        0.07856450048496605,
+        0.4456094364351245,
+        0.3113482056256062
+      ],
+      [
+        0.039318479685452164,
+        0.478176527643065,
+        0.44626474442988207,
+        0.31037827352085356
+      ],
+      [
+        0.5144167758846658,
+        0.478176527643065,
+        0.44626474442988207,
+        0.31037827352085356
+      ]
+    ],
+    "printColourProfile": "saturation-1.12-gamma-1.16",
+    "preview": "frames/hanmaeum-2026-daecheong-paper-four-landscape-605fdfa1c3-preview.webp",
+    "sourceWidth": 1526,
+    "sourceHeight": 1031,
     "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "artworkRestoration": "original-scale-v1",
