@@ -205,7 +205,15 @@ renderCameras();
 function shotCount() { return cutCount; }
 function outputSize(frame, count) {
   const width = frame.width, height = frame.height;
-  if (frame.slots) return {width,height,slots:frame.slots.map(([x,y,w,h])=>({x:Math.round(x*width),y:Math.round(y*height),w:Math.round(w*width),h:Math.round(h*height)}))};
+  // Cover the resampled alpha fringe of the 960px preview as well as the original mask.
+  // The same padded photo bounds drive the camera and composition; frame dimensions stay unchanged.
+  if (frame.slots) {
+    const bleed=Math.ceil(Math.max(width,height)/960)+1;
+    return {width,height,slots:frame.slots.map(([x,y,w,h])=>{
+      const left=Math.max(0,Math.floor(x*width)-bleed),top=Math.max(0,Math.floor(y*height)-bleed);
+      return {x:left,y:top,w:Math.min(width,Math.ceil((x+w)*width)+bleed)-left,h:Math.min(height,Math.ceil((y+h)*height)+bleed)-top};
+    })};
+  }
   if(Math.abs(width/height-100/148)<.002){
     const cols=count>=4?2:1,rows=Math.ceil(count/cols),w=(1104-(cols-1)*24)/cols,h=(1320-(rows-1)*24)/rows;
     return {width,height,slots:Array.from({length:count},(_,i)=>({x:Math.round((48+i%cols*(w+24))*width/1200),y:Math.round((48+Math.floor(i/cols)*(h+24))*height/1776),w:Math.round(w*width/1200),h:Math.round(h*height/1776)}))};
