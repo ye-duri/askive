@@ -927,3 +927,11 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline-color:#8963ae}
 
 /* Readable five-second transmission confirmation on kiosk tablets. */
 #print-receipt{width:min(820px,calc(100vw - 40px));padding:clamp(28px,5vw,64px) clamp(20px,4vw,56px);border-radius:32px}#print-receipt::backdrop{background:#24133899}#print-receipt h2{font-size:clamp(28px,3.6vw,44px);line-height:1.35;word-break:keep-all;margin:18px 0 22px}#print-receipt-message{font-size:clamp(22px,2.6vw,32px);font-weight:700;line-height:1.5}#print-receipt .print-receipt-thanks{font-size:clamp(14px,1.6vw,18px);margin-top:28px}
+
+/* Make the handoff instruction the primary message after successful transfer. */
+#print-receipt.is-complete{width:min(1200px,92vw);min-height:min(78vh,780px);max-height:92vh;padding:clamp(24px,4vh,48px) clamp(22px,4vw,64px);border:2px solid #d6c7e8;outline:none}
+#print-receipt.is-complete .sheep{margin-bottom:8px}
+#print-receipt.is-complete h2{font-size:clamp(24px,3vw,40px);margin:12px 0 28px}
+#print-receipt.is-complete #print-receipt-message{font-size:clamp(30px,4.5vw,62px);font-weight:900;line-height:1.4;color:#fff;background:#43215f;border-radius:24px;padding:clamp(22px,4vh,44px) 20px;margin:0;word-break:keep-all}
+#print-receipt.is-complete .print-receipt-thanks{font-size:clamp(14px,1.8vw,22px);margin:24px 0 0}
+@media(max-height:600px){#print-receipt.is-complete .sheep{display:none}#print-receipt.is-complete{min-height:0}}

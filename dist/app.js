@@ -601,6 +601,7 @@ let printCompletion=null;
 function showPrintCompletion(revision){
  if(revision!==sessionRun)return Promise.resolve();
  if(printCompletion?.revision===revision)return printCompletion.promise;
+ $('print-receipt').classList.add('is-complete');
  $('print-receipt-title').textContent='사진 전송이 완료되었습니다.';
  $('print-receipt-message').textContent='담당자를 통해 확인해주세요.';
  $('print-receipt-close').hidden=true;
@@ -614,6 +615,7 @@ $('print-open').onclick=async()=>{
  if(busy||uploadBusy||nativePrintBusy)return;
  if(!printReady||!printShareFile){status('인쇄용 사진을 준비 중이에요. 잠시 후 다시 눌러 주세요.',true);return;}
  const revision=sessionRun;nativePrintBusy=true;printing=true;externalActionStarted=Date.now();controls();
+ $('print-receipt').classList.remove('is-complete');
  $('print-receipt-title').textContent='인쇄 사진을 접수하고 있어요.';
  $('print-receipt-message').textContent='완성 사진을 저장하고 인쇄 대기열에 넣습니다.';
  $('print-receipt-close').hidden=true;$('print-receipt').showModal();
