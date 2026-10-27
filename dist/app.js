@@ -1,3 +1,4 @@
+import qrcode from './print/vendor/qrcode.mjs';
 import {loadFrameImages} from './frame-images.mjs';
 import {createShootingMusic} from './shooting-music.js';
 const shootingMusic=createShootingMusic();
@@ -580,7 +581,8 @@ $('result-qr-add').onclick=async()=>{
   nextURL=URL.createObjectURL(nextBlob);$('result').src=nextURL;
   await withTimeout($('result').decode(),10000,'QR 사진을 열지 못했어요.');if(revision!==sessionRun)return;
   blob=nextBlob;
-  await withTimeout(updatePrint(),10000,'인쇄 준비 시간 초과');if(revision!==sessionRun)return;
+  // Keep the QR-free print file: the print manager adds its one QR separately.
+  printShareFile=previous.file;printReady=previous.ready;
   albumSource=previous.blob;albumUploaded=false;resultURL=nextURL;nextURL=null;URL.revokeObjectURL(previous.url);
   $('result-qr-status').textContent='QR 선택 완료! 인쇄를 누르면 사진을 저장하고 전송합니다.';
  }catch(e){
@@ -676,6 +678,12 @@ async function prepareAlbumQR(canvas,revision){
   album=current;
  }
  await apiJSON(`/api/gallery/albums/${current.id}/qr`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({consent:true,policyVersion:'2026-09-26-qr-v1',captureCount:CAPTURE_TOTAL,printTheme:selected?.printTheme})});
+ const url=new URL('/gallery.html#'+current.id,location.href).href;
+ const qr=qrcode(0,'M');qr.addData(url);qr.make();
+ const count=qr.getModuleCount(),size=Math.round(Math.min(canvas.width,canvas.height)*.13),unit=size/(count+8),margin=Math.round(Math.min(canvas.width,canvas.height)*.01);
+ const left=canvas.width-size-margin,top=canvas.height-size-margin,c=canvas.getContext('2d');
+ c.fillStyle='#fff';c.fillRect(left,top,size,size);c.fillStyle='#000';
+ for(let row=0;row<count;row++)for(let col=0;col<count;col++)if(qr.isDark(row,col))c.fillRect(left+(col+4)*unit,top+(row+4)*unit,unit,unit);
  return canvas;
 }
 async function uploadAlbumPhotos(revision){
