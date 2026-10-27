@@ -9,3 +9,5 @@ select{font:inherit;padding:10px;border:1px solid #d7cadd;border-radius:10px;col
 .receipt-number{display:table;margin:14px 0 8px;padding:7px 14px;border-radius:10px;background:#ede4f8;color:#563879;font-size:22px;font-weight:800;line-height:1.3}
 
 .receipt-heading{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;margin:16px 0 10px}.receipt-heading .receipt-number{margin:0;flex-shrink:0}.receipt-heading h2,.receipt-heading>p:not(.receipt-number){margin:0;font-size:clamp(16px,2vw,22px);line-height:1.5}
+
+.receipt-number.receipt-odd{background:#ede4f8;color:#563879}.receipt-number.receipt-even{background:#d7f1eb;color:#176352}
