@@ -919,3 +919,8 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline-color:#8963ae}
 /* Center the two seasonal samples while retaining the basic sample scale. */
 #edition-special .edition-gallery{grid-template-columns:repeat(2,minmax(0,1fr));justify-content:center}
 #edition-special .edition-sample img{width:auto;max-width:100%}
+
+/* Use the same three-sample scale in both edition cards; center fewer samples. */
+.edition-gallery,#edition-special .edition-gallery{display:flex;justify-content:center;align-items:center;gap:12px}
+.edition-gallery .edition-sample{flex:0 0 calc((100% - 24px)/3);width:calc((100% - 24px)/3)}
+.edition-sample img,#edition-special .edition-sample img,.is-edition .edition-sample img{width:100%;height:auto;max-width:100%;aspect-ratio:100/148;object-fit:contain}
