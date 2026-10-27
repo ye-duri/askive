@@ -10,3 +10,5 @@
 .receipt-heading{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;margin:16px 0 10px}.receipt-heading .receipt-number{margin:0;flex-shrink:0}.receipt-heading h2,.receipt-heading>p:not(.receipt-number){margin:0;font-size:clamp(16px,2vw,22px);line-height:1.5}
 
 .receipt-number.receipt-odd{background:#ede4f8;color:#563879}.receipt-number.receipt-even{background:#d7f1eb;color:#176352}
+
+.job.job-odd{background:#e9dcf7;border:2px solid #b49ace}.job.job-even{background:#d3eee5;border:2px solid #81bbaa}.job.job-odd .picture,.job.job-even .picture{background:rgba(255,255,255,.55)}.job.job-odd .receipt-number{background:#654188;color:#fff}.job.job-even .receipt-number{background:#216d59;color:#fff}
