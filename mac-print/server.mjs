@@ -163,7 +163,7 @@ export function createPrintServer({directory=join(homedir(),'Library/Application
    }
    if(req.method==='DELETE'&&!match[2]){if(j.state==='sending')return json(res,409,{error:'전송 중에는 지울 수 없습니다.'});for(const suffix of ['.jpg','.json','.pdf'])try{unlinkSync(join(directory,j.id+suffix));}catch{}jobs.delete(j.id);return json(res,200,{deleted:true});}
   }
-  if(req.method==='GET'&&['/','/admin.js','/admin.css','/vendor/qrcode.mjs','/calendar-layout.mjs','/calendar-fonts.mjs','/want-art.mjs'].includes(path)){res.setHeader('Content-Security-Policy',"default-src 'self'; frame-ancestors 'none'; base-uri 'none'");res.setHeader('Content-Type',(path.endsWith('.js')||path.endsWith('.mjs'))?'text/javascript':path.endsWith('.css')?'text/css':'text/html; charset=utf-8');return res.end(readFileSync(join(root,'public',path==='/'?'index.html':path.slice(1))));}
+  if(req.method==='GET'&&['/','/admin.js','/receipt-numbers.mjs','/admin.css','/vendor/qrcode.mjs','/calendar-layout.mjs','/calendar-fonts.mjs','/want-art.mjs'].includes(path)){res.setHeader('Content-Security-Policy',"default-src 'self'; frame-ancestors 'none'; base-uri 'none'");res.setHeader('Content-Type',(path.endsWith('.js')||path.endsWith('.mjs'))?'text/javascript':path.endsWith('.css')?'text/css':'text/html; charset=utf-8');return res.end(readFileSync(join(root,'public',path==='/'?'index.html':path.slice(1))));}
   json(res,404,{error:'없는 경로'});
  }catch(e){json(res,400,{error:e.message||'요청 처리 실패'});}});
  let stopRelay=()=>{};server.on('listening',()=>{stopRelay=startPrinterRelay({directory,port:server.address().port,token,printers});});

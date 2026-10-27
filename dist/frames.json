@@ -2357,8 +2357,8 @@
     "count": 4,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-green-four-single-880a4fff94-src.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-green-four-single-880a4fff94-thumbnail.webp",
+    "src": "frames/hanmaeum-2026-daecheong-green-four-yonsei-clean-6ef460a791-src.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-green-four-yonsei-clean-6ef460a791-thumbnail.webp",
     "slots": [
       [
         0.04833333333333333,
@@ -2386,11 +2386,11 @@
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-green-four-single-880a4fff94-preview.webp",
+    "preview": "frames/hanmaeum-2026-daecheong-green-four-yonsei-clean-6ef460a791-preview.webp",
     "sourceWidth": 1200,
     "sourceHeight": 1776,
     "layoutVersion": "single-frame-original-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "artworkRestoration": "original-scale-v1",
     "hidden": false,
     "dateVisible": false
@@ -2401,8 +2401,8 @@
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-green-six-landscape-single-94d8f8ca60-src.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-landscape-single-94d8f8ca60-thumbnail.webp",
+    "src": "frames/hanmaeum-2026-daecheong-green-six-landscape-yonsei-clean-e475ed656a-src.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-landscape-yonsei-clean-e475ed656a-thumbnail.webp",
     "slots": [
       [
         0.02734375,
@@ -2442,11 +2442,11 @@
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-green-six-landscape-single-94d8f8ca60-preview.webp",
+    "preview": "frames/hanmaeum-2026-daecheong-green-six-landscape-yonsei-clean-e475ed656a-preview.webp",
     "sourceWidth": 1536,
     "sourceHeight": 1024,
     "layoutVersion": "single-frame-original-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "artworkRestoration": "original-scale-v1",
     "hidden": false,
     "dateVisible": false
@@ -2457,8 +2457,8 @@
     "count": 6,
     "edition": "special",
     "paper": "selphy-p",
-    "src": "frames/hanmaeum-2026-daecheong-green-six-portrait-single-e9d6a044aa-src.png",
-    "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-portrait-single-e9d6a044aa-thumbnail.webp",
+    "src": "frames/hanmaeum-2026-daecheong-green-six-portrait-yonsei-clean-5869f204da-src.png",
+    "thumbnail": "frames/hanmaeum-2026-daecheong-green-six-portrait-yonsei-clean-5869f204da-thumbnail.webp",
     "slots": [
       [
         0.05140640155189137,
@@ -2498,11 +2498,11 @@
       ]
     ],
     "printColourProfile": "saturation-1.12-gamma-1.16",
-    "preview": "frames/hanmaeum-2026-daecheong-green-six-portrait-single-e9d6a044aa-preview.webp",
+    "preview": "frames/hanmaeum-2026-daecheong-green-six-portrait-yonsei-clean-5869f204da-preview.webp",
     "sourceWidth": 1031,
     "sourceHeight": 1526,
     "layoutVersion": "single-frame-original-v1",
-    "brand": "Imagination Hall",
+    "brand": "Yonsei Studio",
     "artworkRestoration": "original-scale-v1",
     "hidden": false,
     "dateVisible": false
