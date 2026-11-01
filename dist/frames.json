@@ -1800,6 +1800,46 @@
     "dateVisible": false
   },
   {
+    "id": "ask-pink-heart-four",
+    "name": "핑크 하트 · 4컷",
+    "edition": "special",
+    "count": 4,
+    "paper": "selphy-p",
+    "sourceWidth": 1011,
+    "sourceHeight": 1776,
+    "brand": "Ask Seek Knock",
+    "dateVisible": true,
+    "slots": [
+      [
+        0.057368941641938676,
+        0.04504504504504504,
+        0.43026706231454004,
+        0.36317567567567566
+      ],
+      [
+        0.5123639960435212,
+        0.04504504504504504,
+        0.43026706231454004,
+        0.36317567567567566
+      ],
+      [
+        0.057368941641938676,
+        0.4239864864864865,
+        0.43026706231454004,
+        0.36317567567567566
+      ],
+      [
+        0.5123639960435212,
+        0.4239864864864865,
+        0.43026706231454004,
+        0.36317567567567566
+      ]
+    ],
+    "src": "frames/ask-pink-heart-four-43819ebd0a-src.png",
+    "preview": "frames/ask-pink-heart-four-43819ebd0a-preview.webp",
+    "thumbnail": "frames/ask-pink-heart-four-43819ebd0a-thumbnail.webp"
+  },
+  {
     "id": "sheep-farewell-four",
     "name": "잘 다녀와 · 4컷",
     "src": "frames/sheep-farewell-four-restored-26ed13cad9-png.png",
