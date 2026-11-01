@@ -1840,6 +1840,58 @@
     "thumbnail": "frames/ask-pink-heart-four-43819ebd0a-thumbnail.webp"
   },
   {
+    "id": "ask-pink-heart-six",
+    "name": "핑크 하트 · 6컷",
+    "edition": "special",
+    "count": 6,
+    "paper": "selphy-p",
+    "sourceWidth": 1011,
+    "sourceHeight": 1776,
+    "brand": "Ask Seek Knock",
+    "dateVisible": true,
+    "slots": [
+      [
+        0.057368941641938676,
+        0.04504504504504504,
+        0.43026706231454004,
+        0.23704954954954954
+      ],
+      [
+        0.5123639960435212,
+        0.04504504504504504,
+        0.43026706231454004,
+        0.23704954954954954
+      ],
+      [
+        0.057368941641938676,
+        0.29786036036036034,
+        0.43026706231454004,
+        0.23648648648648649
+      ],
+      [
+        0.5123639960435212,
+        0.29786036036036034,
+        0.43026706231454004,
+        0.23648648648648649
+      ],
+      [
+        0.057368941641938676,
+        0.5501126126126126,
+        0.43026706231454004,
+        0.23704954954954954
+      ],
+      [
+        0.5123639960435212,
+        0.5501126126126126,
+        0.43026706231454004,
+        0.23704954954954954
+      ]
+    ],
+    "src": "frames/ask-pink-heart-six-c54cf7a31e-src.png",
+    "preview": "frames/ask-pink-heart-six-c54cf7a31e-preview.webp",
+    "thumbnail": "frames/ask-pink-heart-six-c54cf7a31e-thumbnail.webp"
+  },
+  {
     "id": "sheep-farewell-four",
     "name": "잘 다녀와 · 4컷",
     "src": "frames/sheep-farewell-four-restored-26ed13cad9-png.png",
