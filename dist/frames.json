@@ -1805,39 +1805,40 @@
     "edition": "special",
     "count": 4,
     "paper": "selphy-p",
-    "sourceWidth": 1011,
+    "sourceWidth": 1200,
     "sourceHeight": 1776,
     "brand": "Ask Seek Knock",
     "dateVisible": true,
     "slots": [
       [
         0.057368941641938676,
-        0.04504504504504504,
+        0.05349099099099099,
         0.43026706231454004,
-        0.36317567567567566
+        0.3394783250625436
       ],
       [
         0.5123639960435212,
-        0.04504504504504504,
+        0.05349099099099099,
         0.43026706231454004,
-        0.36317567567567566
+        0.3394783250625436
       ],
       [
         0.057368941641938676,
-        0.4239864864864865,
+        0.4077063596221411,
         0.43026706231454004,
-        0.36317567567567566
+        0.3394783250625436
       ],
       [
         0.5123639960435212,
-        0.4239864864864865,
+        0.4077063596221411,
         0.43026706231454004,
-        0.36317567567567566
+        0.3394783250625436
       ]
     ],
-    "src": "frames/ask-pink-heart-four-43819ebd0a-src.png",
-    "preview": "frames/ask-pink-heart-four-43819ebd0a-preview.webp",
-    "thumbnail": "frames/ask-pink-heart-four-43819ebd0a-thumbnail.webp"
+    "src": "frames/ask-pink-heart-four-print-dcc00be531-src.png",
+    "preview": "frames/ask-pink-heart-four-print-dcc00be531-preview.webp",
+    "thumbnail": "frames/ask-pink-heart-four-print-dcc00be531-thumbnail.webp",
+    "layoutVersion": "single-frame-original-v1"
   },
   {
     "id": "ask-pink-heart-six",
@@ -1845,51 +1846,52 @@
     "edition": "special",
     "count": 6,
     "paper": "selphy-p",
-    "sourceWidth": 1011,
+    "sourceWidth": 1200,
     "sourceHeight": 1776,
     "brand": "Ask Seek Knock",
     "dateVisible": true,
     "slots": [
       [
         0.057368941641938676,
-        0.04504504504504504,
+        0.05349099099099099,
         0.43026706231454004,
-        0.23704954954954954
+        0.22158197651369121
       ],
       [
         0.5123639960435212,
-        0.04504504504504504,
+        0.05349099099099099,
         0.43026706231454004,
-        0.23704954954954954
+        0.22158197651369121
       ],
       [
         0.057368941641938676,
-        0.29786036036036034,
+        0.28981001107328874,
         0.43026706231454004,
-        0.23648648648648649
+        0.22105565352909817
       ],
       [
         0.5123639960435212,
-        0.29786036036036034,
+        0.28981001107328874,
         0.43026706231454004,
-        0.23648648648648649
+        0.22105565352909817
       ],
       [
         0.057368941641938676,
-        0.5501126126126126,
+        0.5256027081709934,
         0.43026706231454004,
-        0.23704954954954954
+        0.22158197651369121
       ],
       [
         0.5123639960435212,
-        0.5501126126126126,
+        0.5256027081709934,
         0.43026706231454004,
-        0.23704954954954954
+        0.22158197651369121
       ]
     ],
-    "src": "frames/ask-pink-heart-six-c54cf7a31e-src.png",
-    "preview": "frames/ask-pink-heart-six-c54cf7a31e-preview.webp",
-    "thumbnail": "frames/ask-pink-heart-six-c54cf7a31e-thumbnail.webp"
+    "src": "frames/ask-pink-heart-six-print-47d9972f01-src.png",
+    "preview": "frames/ask-pink-heart-six-print-47d9972f01-preview.webp",
+    "thumbnail": "frames/ask-pink-heart-six-print-47d9972f01-thumbnail.webp",
+    "layoutVersion": "single-frame-original-v1"
   },
   {
     "id": "sheep-farewell-four",
