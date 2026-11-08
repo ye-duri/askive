@@ -1,6 +1,6 @@
 // Operator-requested archive: preserve stored photos; hide receipts existing at this time.
 const archivedThrough=Date.parse('2026-11-08T01:07:40Z');
-import {receiptBook} from './receipt-numbers.mjs?v=20261108-reset';
+import {receiptBook} from './receipt-numbers.mjs?v=20261108-daily';
 const receipts=receiptBook(localStorage);
 import {drawCalendar} from './calendar-layout.mjs?v=20261027-single';
 const $=s=>document.getElementById(s);let printing=false,last='',selected=localStorage.getItem('yonsei-printer')||'';
