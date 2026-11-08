@@ -1838,7 +1838,8 @@
     "src": "frames/ask-pink-heart-four-print-dcc00be531-src.png",
     "preview": "frames/ask-pink-heart-four-print-dcc00be531-preview.webp",
     "thumbnail": "frames/ask-pink-heart-four-print-dcc00be531-thumbnail.webp",
-    "layoutVersion": "single-frame-original-v1"
+    "layoutVersion": "single-frame-original-v1",
+    "hidden": true
   },
   {
     "id": "ask-pink-heart-six",
@@ -1891,7 +1892,8 @@
     "src": "frames/ask-pink-heart-six-print-47d9972f01-src.png",
     "preview": "frames/ask-pink-heart-six-print-47d9972f01-preview.webp",
     "thumbnail": "frames/ask-pink-heart-six-print-47d9972f01-thumbnail.webp",
-    "layoutVersion": "single-frame-original-v1"
+    "layoutVersion": "single-frame-original-v1",
+    "hidden": true
   },
   {
     "id": "sheep-farewell-four",
