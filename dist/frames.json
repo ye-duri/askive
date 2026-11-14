@@ -1800,6 +1800,47 @@
     "dateVisible": false
   },
   {
+    "id": "who-am-i-four",
+    "name": "WHO AM I 성극 · 4컷",
+    "edition": "special",
+    "count": 4,
+    "paper": "selphy-p",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
+    "brand": "WHO AM I",
+    "dateVisible": true,
+    "slots": [
+      [
+        0.04726890756302521,
+        0.04842342342342342,
+        0.43907563025210083,
+        0.2904217816336225
+      ],
+      [
+        0.5136554621848739,
+        0.04842342342342342,
+        0.43907563025210083,
+        0.2904217816336225
+      ],
+      [
+        0.04726890756302521,
+        0.3525962363843955,
+        0.43907563025210083,
+        0.2904217816336225
+      ],
+      [
+        0.5136554621848739,
+        0.3525962363843955,
+        0.43907563025210083,
+        0.2904217816336225
+      ]
+    ],
+    "src": "frames/who-am-i-four-afa6abd66b-src.png",
+    "preview": "frames/who-am-i-four-afa6abd66b-preview.webp",
+    "thumbnail": "frames/who-am-i-four-afa6abd66b-thumbnail.webp"
+  },
+  {
     "id": "ask-pink-heart-four",
     "name": "핑크 하트 · 4컷",
     "edition": "special",
