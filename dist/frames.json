@@ -1805,8 +1805,8 @@
     "edition": "special",
     "count": 4,
     "paper": "selphy-p",
-    "sourceWidth": 1031,
-    "sourceHeight": 1526,
+    "sourceWidth": 1200,
+    "sourceHeight": 1776,
     "layoutVersion": "single-frame-original-v1",
     "brand": "Yonsei Studio",
     "dateVisible": false,
@@ -1836,9 +1836,9 @@
         0.3256880733944954
       ]
     ],
-    "src": "frames/csat-cheer-ticket-four-4e9fbb6cca-src.png",
-    "preview": "frames/csat-cheer-ticket-four-bb61d670db-preview.webp",
-    "thumbnail": "frames/csat-cheer-ticket-four-fb5fddae5d-thumbnail.webp"
+    "src": "frames/csat-cheer-ticket-four-a32db5c169-src.png",
+    "preview": "frames/csat-cheer-ticket-four-a32db5c169-preview.webp",
+    "thumbnail": "frames/csat-cheer-ticket-four-a32db5c169-thumbnail.webp"
   },
   {
     "id": "who-am-i-four",
