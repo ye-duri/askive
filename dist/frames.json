@@ -1800,6 +1800,47 @@
     "dateVisible": false
   },
   {
+    "id": "csat-cheer-ticket-four",
+    "name": "고삼이 수능 응원 · 4컷",
+    "edition": "special",
+    "count": 4,
+    "paper": "selphy-p",
+    "sourceWidth": 1031,
+    "sourceHeight": 1526,
+    "layoutVersion": "single-frame-original-v1",
+    "brand": "Yonsei Studio",
+    "dateVisible": false,
+    "slots": [
+      [
+        0.06789524733268672,
+        0.1363040629095675,
+        0.4180407371483996,
+        0.3145478374836173
+      ],
+      [
+        0.5150339476236664,
+        0.1363040629095675,
+        0.4151309408341416,
+        0.31520314547837486
+      ],
+      [
+        0.06983511154219205,
+        0.46985583224115335,
+        0.41610087293889425,
+        0.32437745740498036
+      ],
+      [
+        0.516003879728419,
+        0.46854521625163825,
+        0.4151309408341416,
+        0.3256880733944954
+      ]
+    ],
+    "src": "frames/csat-cheer-ticket-four-4e9fbb6cca-src.png",
+    "preview": "frames/csat-cheer-ticket-four-4e9fbb6cca-preview.webp",
+    "thumbnail": "frames/csat-cheer-ticket-four-4e9fbb6cca-thumbnail.webp"
+  },
+  {
     "id": "who-am-i-four",
     "name": "WHO AM I 성극 · 4컷",
     "edition": "special",
