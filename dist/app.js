@@ -17,7 +17,6 @@ let phase = new URLSearchParams(location.search).get('setup')==='1'?'permission'
 let automatic=false, qrEnabled=false, qrConsent=false, album=null, albumUploaded=false, albumSource=null;
 let galleryConfig={configured:false,authorized:false};
 
-let cameraConfirmed = false;
 let cameraAccessGranted = false;
 let selecting = false, chosen = [], activeSlot=-1;
 const selectedCount=()=>chosen.filter(Number.isInteger).length;
@@ -29,6 +28,9 @@ const qrUnavailableNotice='QR 자동 연결에 실패했습니다. 인터넷을 
 const status = (message, error = false) => { $('status').textContent = message; $('status').classList.toggle('error', error);if(phase==='permission')$('permission-status').textContent=message;if(phase==='intro'){$('intro-status').hidden=!error;$('intro-status').textContent=error?message:'';} };
 const loadImage = src => new Promise((resolve, reject) => { const img = new Image(); img.onload = () => resolve(img); img.onerror = () => reject(new Error('프레임 이미지를 열 수 없어요.')); img.src = src; });
 const toBlob = (canvas, type = 'image/png', quality = .96) => new Promise((resolve, reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error('이미지를 만들지 못했어요.')), type, quality));
+function canCapture() {
+ return phase==='shoot' && !!stream && video.readyState>=2 && video.videoWidth>0 && !busy && !cameraBusy && !blob && !selecting;
+}
 function controls() {
  const loading=initializing||cameraBusy||(busy&&!automatic&&selecting);
  $('transition-loading').hidden=!loading;
@@ -42,11 +44,11 @@ function controls() {
  $('permission-next').disabled=initializing||cameraBusy||!stream||!$('permission-video').videoWidth;
  const test=phase==='permission'&&cameraAccessGranted;
  $('permission-title').textContent=test?'카메라 화면을 확인해 주세요.':'먼저, 카메라를 허용해 주세요.';
+ if(test)$('permission-next').textContent=new URLSearchParams(location.search).get('setup')==='1'?'카메라 설정 완료':'이 카메라로 촬영하기';
  for(const id of ['permission-camera-controls','camera-test','permission-next'])$(id).hidden=!test;
  $('permission-start').textContent=cameraBusy?'카메라 연결 중…':cameraAccessGranted?'다시 테스트':'카메라 허용';
  $('selection-panel').hidden=!selecting;
- $('capture').disabled=phase!=='shoot'||!stream||!video.videoWidth||busy||cameraBusy||!!blob||selecting;
- $('capture').hidden=automatic;
+ $('capture-resume').hidden=!shotSession||!canCapture();
  $('capture-now').disabled=!automatic||phase!=='shoot'||!stream||cameraBusy;
  $('start').disabled=cameraBusy;
  for(const suffix of ['camera','camera-refresh'])$('permission-'+suffix).disabled=phase!=='permission'||busy||cameraBusy;
@@ -135,7 +137,7 @@ async function startCamera() {
     $('permission-video').style.transform=video.style.transform;
     $('mirror-label').textContent = '좌우 반전';
     $('welcome').hidden = true; $('camera-state').textContent = track.label || '카메라 켜짐'; $('stage-label').textContent = '02 / 촬영';
-    status(phase==='permission'?'카메라가 연결됐어요. 테스트 영상을 확인한 뒤 다음으로 넘어가 주세요.':'준비되면 촬영 시작을 눌러 주세요.');
+    status(phase==='permission'?'카메라가 연결됐어요. 테스트 영상을 확인한 뒤 다음으로 넘어가 주세요.':'');
     void refreshCameras();
   } catch(e) {
     if(run!==cameraRun)return;
@@ -186,7 +188,6 @@ function showShotPreview() {
 }
 function updateShotMode() {
   $('shoot-instruction').textContent=`총 6장 촬영 후 원하는 ${cutCount}장을 선택해요.`;
-  $('capture').textContent = '촬영 시작';
   $('shot-progress').textContent = '0 / 6장 · 촬영 준비';
   $('shot-thumbs').replaceChildren();
   if (selected) { const size = outputSize(selected); $('size-label').textContent = `${size.width} × ${size.height} · PNG`; showShotPreview(); }
@@ -316,7 +317,8 @@ function waitCaptureTick(){
 }
 $('capture-now').onclick=()=>{if(automatic&&phase==='shoot'&&stream&&!cameraBusy)advanceCapture?.();};
 async function capture() {
- if($('capture').disabled||automatic)return;
+ if(!canCapture()||automatic)return;
+ status('');
  shootingMusic.start(selected);
  $('capture-admin').open=false;automatic=true;busy=true;const run=++countdownRun;const revision=sessionRun;
  if(!shotSession)shotSession={photos:[],taken:0};controls();
@@ -336,7 +338,7 @@ async function capture() {
   chosen=[];activeSlot=-1;busy=false;automatic=false;
   openSelection();
  }catch(e){status(e.message||'촬영을 이어갈 수 없어요. 연결을 확인해 주세요.',true);}
- finally{if(run===countdownRun){shootingMusic.stop();busy=false;automatic=false;$('countdown').hidden=true;$('capture').textContent='남은 사진 이어 찍기';controls();}}
+ finally{if(run===countdownRun){shootingMusic.stop();busy=false;automatic=false;$('countdown').hidden=true;controls();}}
 }
 for(const name of ['original','bright','vivid','mono']) $('filter-'+name).onclick=()=>{if(!busy){$('photo-filter').value=name;renderSelection();}};
 $('photo-filter').onchange=()=>{if(!busy)renderSelection();};
@@ -357,7 +359,7 @@ $('finish-selection').onclick=async()=>{
     if(revision!==sessionRun){URL.revokeObjectURL(nextURL);return;}if(resultURL)URL.revokeObjectURL(resultURL);blob=nextBlob;resultURL=nextURL;selecting=false;
     $('size-label').textContent=`${canvas.width} × ${canvas.height} · 프레임 원본 비율`;
     $('viewfinder').style.aspectRatio=`${canvas.width}/${canvas.height}`;$('viewfinder').style.setProperty('--preview-ratio',String(canvas.width/canvas.height));
-    $('result-admin-tools').open=false;$('result').hidden=false;$('capture-actions').hidden=true;$('result-actions').hidden=false;
+    $('result-admin-tools').open=false;$('result').hidden=false;$('result-actions').hidden=false;
     try{await withTimeout(updatePrint(),10000,'인쇄용 사진 준비 시간 초과');}catch{completionNotice='인쇄용 사진 준비에 실패했어요. 사진 저장을 이용해 주세요.';}
     if(revision!==sessionRun)return;
     albumSource=nextBlob;
@@ -370,33 +372,52 @@ $('finish-selection').onclick=async()=>{
 };
 function filename(ext) { return `moment-${new Date().toISOString().replace(/[:.]/g,'-')}.${ext}`; }
 function download(data, name) { const url=URL.createObjectURL(data); const a=document.createElement('a'); a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000); }
-$('start').onclick = () => startCamera();
+$('start').onclick = openShooting;
 $('permission-start').onclick=()=>startCamera();
 $('intro-start').onclick=async()=>{
- if(initializing||busy)return;
+ if(initializing||busy||phase!=='intro')return;
  if(!selected)await init();
- if(!selected)return;
- if(cameraConfirmed){await openShooting();return;}
- phase='permission';controls();window.scrollTo(0,0);$('permission-start').focus({preventScroll:true});
+ if(selected&&phase==='intro'&&!$('capture-prompt').open)$('capture-prompt').showModal();
+};
+$('capture-confirm').onclick=()=>{
+ if(!$('capture-prompt').open||phase!=='intro')return;
+ $('capture-prompt').close();
+ void openShooting();
 };
 $('permission-video').addEventListener('loadeddata',controls);
 $('permission-next').onclick=async()=>{
  if($('permission-next').disabled)return;
  if(!selected)await init();
  if(!selected)return;
- cameraConfirmed=true;stopStream();
- if(new URLSearchParams(location.search).has('setup'))history.replaceState(null,'',location.pathname);
- try{sessionStorage.setItem('yonsei-camera-confirmed','1');sessionStorage.setItem('yonsei-camera-id',cameraDeviceId);}catch{}
+ const fromSettings=new URLSearchParams(location.search).get('setup')==='1';
+ stopStream();
+ try{sessionStorage.setItem('yonsei-camera-id',cameraDeviceId);}catch{}
+ if(fromSettings){
+   history.replaceState(null,'',location.pathname);
+   resetSession();
+   return;
+ }
  await openShooting();
 };
 async function openShooting(){
+ if(cameraBusy||busy||selecting||blob)return;
+ const revision=sessionRun;
  phase='shoot';
  updateShotMode();window.scrollTo(0,0);
  await startCamera();
- if(!$('capture').disabled)$('capture').focus({preventScroll:true});
+ if(revision!==sessionRun||phase!=='shoot')return;
+ if(!stream){
+   phase='permission';cameraAccessGranted=false;cameraDeviceId='';
+   renderCameras();controls();
+   $('permission-status').textContent=$('status').textContent;
+   $('permission-start').focus({preventScroll:true});
+   return;
+ }
+ if(!document.hidden)void capture();
+ else if(!shotSession)resetSession();
 }
 video.addEventListener('loadeddata',controls);
-$('capture').onclick = capture;
+$('capture-resume').onclick = capture;
 
 $('save').onclick = () => {if(blob) {download(blob,filename('png'));status('사진 저장을 요청했어요. 다운로드 또는 사진 앱을 확인해 주세요.');}};
 function resetSession(message='이용이 종료됐어요. 사진을 지웠습니다.') {
@@ -406,13 +427,14 @@ function resetSession(message='이용이 종료됐어요. 사진을 지웠습니
   stopStream();busy=false;cameraBusy=false;uploadBusy=false;
   for(const photo of shotSession?.photos||[]){photo.width=1;photo.height=1;}
   $('print-receipt').close();
+  if($('capture-prompt').open)$('capture-prompt').close();
   shotSession=null;chosen=[];activeSlot=-1;blob=null;selecting=false;printReady=false;printShareFile=null;nativePrintBusy=false;
   for(const id of ['selection-canvas','print-canvas']){$(id).width=1;$(id).height=1;}
   for(const id of ['result','selection-frame-overlay'])$(id).removeAttribute('src');
   for(const id of ['photo-grid','preview-slot-controls','shot-thumbs','map-slots'])$(id).replaceChildren();
   if(resultURL)URL.revokeObjectURL(resultURL);resultURL=null;
   $('photo-filter').value='original';$('selection-status').textContent='';
-  $('result-admin-tools').open=false;$('result').hidden=true;$('result-actions').hidden=true;$('capture-actions').hidden=false;
+  $('result-admin-tools').open=false;$('result').hidden=true;$('result-actions').hidden=true;
   $('countdown').hidden=true;$('welcome').hidden=false;
   for(const id of ['idle-dialog'])if($(id).open)$(id).close();
   $('result-qr-status').textContent='';qrConsent=false;album=null;albumUploaded=false;albumSource=null;automatic=false;idleWarning=false;printing=false;externalActionStarted=0;lastActivity=Date.now();
@@ -543,8 +565,8 @@ async function init(){
  }catch(error){status(error.message,true);}
  finally{initializing=false;controls();}
 }
+try{if(phase==='intro')cameraDeviceId=sessionStorage.getItem('yonsei-camera-id')||'';}catch{}
 await init();
-try{if(new URLSearchParams(location.search).get('setup')!=='1'&&sessionStorage.getItem('yonsei-camera-confirmed')==='1'){let permission;try{permission=await navigator.permissions?.query({name:'camera'});}catch{}if(permission?.state!=='denied'){cameraConfirmed=true;cameraDeviceId=sessionStorage.getItem('yonsei-camera-id')||'';controls();window.scrollTo(0,0);}}}catch{}
 await loadGalleryConfig();
 
 async function loadGalleryConfig(){
