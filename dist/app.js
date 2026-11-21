@@ -25,6 +25,7 @@ const cutCount=4;
 const FRAME_ID='time-capsule-four';
 const frameCount=f=>f.count||f.slots?.length||4;
 const CAPTURE_TOTAL = 6;
+const qrUnavailableNotice='QR 자동 연결에 실패했습니다. 인터넷을 확인한 뒤 새로고침해 주세요.';
 const status = (message, error = false) => { $('status').textContent = message; $('status').classList.toggle('error', error);if(phase==='permission')$('permission-status').textContent=message;if(phase==='intro'){$('intro-status').hidden=!error;$('intro-status').textContent=error?message:'';} };
 const loadImage = src => new Promise((resolve, reject) => { const img = new Image(); img.onload = () => resolve(img); img.onerror = () => reject(new Error('프레임 이미지를 열 수 없어요.')); img.src = src; });
 const toBlob = (canvas, type = 'image/png', quality = .96) => new Promise((resolve, reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error('이미지를 만들지 못했어요.')), type, quality));
@@ -40,6 +41,7 @@ function controls() {
  $('permission-start').disabled=cameraBusy;
  $('permission-next').disabled=initializing||cameraBusy||!stream||!$('permission-video').videoWidth;
  const test=phase==='permission'&&cameraAccessGranted;
+ $('permission-title').textContent=test?'카메라 화면을 확인해 주세요.':'먼저, 카메라를 허용해 주세요.';
  for(const id of ['permission-camera-controls','camera-test','permission-next'])$(id).hidden=!test;
  $('permission-start').textContent=cameraBusy?'카메라 연결 중…':cameraAccessGranted?'다시 테스트':'카메라 허용';
  $('selection-panel').hidden=!selecting;
@@ -55,7 +57,8 @@ function controls() {
  $('result-qr-card').setAttribute('aria-busy',String(uploadBusy));
  $('result-qr-title').textContent=uploadBusy?'QR 준비 중…':qrConsent?'QR 선택 완료':'QR로 사진 받기';
  $('result-qr-hint').textContent=uploadBusy?'잠시만 기다려 주세요':qrConsent?'인쇄 용지의 로고 옆에 QR이 한 번 나와요':'원하시면 여기를 체크해 주세요';
- if(!qrEnabled)$('result-qr-status').textContent='QR 자동 연결에 실패했습니다. 인터넷을 확인한 뒤 새로고침해 주세요.';
+ if(!qrEnabled && blob && !$('result-qr-status').textContent)$('result-qr-status').textContent=qrUnavailableNotice;
+ if(qrEnabled && $('result-qr-status').textContent===qrUnavailableNotice)$('result-qr-status').textContent='';
  $('retake').disabled=uploadBusy||nativePrintBusy;
  $('save').disabled=uploadBusy;
  $('print-open').disabled=busy||!printReady||uploadBusy||nativePrintBusy;
@@ -184,7 +187,7 @@ function showShotPreview() {
 function updateShotMode() {
   $('shoot-instruction').textContent=`총 6장 촬영 후 원하는 ${cutCount}장을 선택해요.`;
   $('capture').textContent = '촬영 시작';
-  $('shot-progress').textContent = '0 / 6장 · 5초마다 자동 촬영';
+  $('shot-progress').textContent = '0 / 6장 · 촬영 준비';
   $('shot-thumbs').replaceChildren();
   if (selected) { const size = outputSize(selected); $('size-label').textContent = `${size.width} × ${size.height} · PNG`; showShotPreview(); }
   controls();
@@ -235,7 +238,7 @@ function renderSelection() {
       else if(chosen.includes(null))chosen[chosen.indexOf(null)]=index;
       else if(chosen.length<cutCount)chosen.push(index);
       else{$('selection-status').textContent='모든 칸을 채웠어요. 미리보기에서 바꿀 컷을 누른 뒤 사진을 골라 주세요.';return;}
-      $('selection-status').textContent=selectedCount()===cutCount?'오른쪽 전체 사진을 확인하고 완성해 주세요.':'선택한 순서대로 프레임에 들어갑니다.';
+      $('selection-status').textContent=selectedCount()===cutCount?'미리보기에서 네 컷을 확인하고 완성해 주세요.':'선택한 순서대로 프레임에 들어갑니다.';
       renderSelection();controls();
     };
     $('photo-grid').append(button);
