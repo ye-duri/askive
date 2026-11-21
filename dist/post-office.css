@@ -66,6 +66,8 @@ body {
 }
 #intro-panel { display: block; min-height: 0; padding: 0; }
 .postcard {
+  position: relative;
+  isolation: isolate;
   background: var(--paper);
   padding: clamp(8px, .8vw, 12px);
   border: 1px solid #bdae90;
@@ -76,19 +78,10 @@ body {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(205px, 29%);
   margin-top: 7px;
-  background: linear-gradient(90deg, #fffaf0, #fcf3e2);
+  background:
+    repeating-linear-gradient(124deg, #9b4939d9 0 10px, transparent 10px 20px, #536555d9 20px 30px, transparent 30px 40px) left bottom / 100% 3px no-repeat,
+    linear-gradient(90deg, #fffaf0, #fcf3e2);
   border-bottom: 1px solid var(--rule);
-  position: relative;
-}
-.postcard-ticket::after {
-  content: "";
-  position: absolute;
-  height: 3px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: repeating-linear-gradient(124deg, #9b4939 0 10px, transparent 10px 20px, #536555 20px 30px, transparent 30px 40px);
-  opacity: .85;
 }
 .ticket-copy { padding: clamp(18px, 3.3vh, 34px) clamp(18px, 3.6vw, 52px); }
 .ticket-context { font: 700 14px/1.5 SUIT, sans-serif; letter-spacing: .09em; color: var(--seal); margin: 0 0 6px; }
@@ -97,6 +90,14 @@ body {
 .ticket-description { color: var(--cocoa); font-size: clamp(16px, 1.35vw, 19px); line-height: 1.55; margin: 10px 0 0; word-break: keep-all; }
 .ticket-action { display: grid; align-content: center; padding: 20px clamp(15px, 2.2vw, 35px); border-left: 1px dashed #bdac8d; }
 #intro-start { display: flex; align-items: center; justify-content: center; gap: 12px; max-width: none; width: 100%; padding: 0 12px; margin: 0; font-size: 18px; min-height: 58px; }
+/* Extend the native start button's hit area to its positioned postcard. */
+#intro-start::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 1;
+  touch-action: manipulation;
+}
 .camera-glyph { width: 22px; height: 15px; border: 1.7px solid currentColor; border-radius: 3px; position: relative; }
 .camera-glyph::before { content: ""; position: absolute; width: 7px; height: 3px; top: -5px; left: 3px; border: 1.7px solid currentColor; border-bottom: 0; border-radius: 2px 2px 0 0; }
 .camera-glyph::after { content: ""; position: absolute; width: 7px; height: 7px; border: 1.7px solid currentColor; border-radius: 50%; left: 5px; top: 1.5px; }
@@ -241,7 +242,6 @@ dialog::backdrop, #print-receipt::backdrop { background: #1f291fc4; }
   .masthead-event { display: none; }
   .topbar > .privacy-link { font-size: 12px; }
   .is-intro main { padding: 18px 12px; }
-  .post-office-art { aspect-ratio: 1.37; object-position: center; }
   .postcard-ticket { display: block; }
   .ticket-copy { padding: 22px 16px 18px; }
   .ticket-action { border: 0; border-top: 1px dashed var(--rule); padding: 16px; }
@@ -270,3 +270,161 @@ dialog::backdrop, #print-receipt::backdrop { background: #1f291fc4; }
   #intro-title { font-size: 33px; }
   #intro-start { min-height: 45px; }
 }
+
+/* Spacing for the event's camera, editor and handoff flow. */
+:root {
+  --page-edge: clamp(12px, 2vw, 28px);
+  --panel-pad: clamp(16px, 2.2vw, 28px);
+  --panel-gap: clamp(12px, 1.7vw, 24px);
+  --masthead-height: 64px;
+}
+@media (max-width: 650px) {
+  :root { --masthead-height: 58px; }
+  #intro-title { font-size: clamp(32px, 8.7vw, 42px); }
+}
+body.is-intro main {
+  display: grid; align-content: safe center;
+  min-height: calc(100svh - var(--masthead-height));
+  padding-block: var(--panel-gap);
+}
+.is-intro #intro-panel { min-height: 0; padding: 0; }
+.ticket-copy { display: grid; align-content: center; row-gap: 8px; }
+.ticket-copy > .ticket-context, .ticket-copy > .ticket-description { margin: 0; }
+.ticket-action { padding-inline: clamp(16px, 2.5vw, 36px); }
+
+.is-permission main {
+  display: grid;
+  align-content: safe center;
+  min-height: calc(100svh - var(--masthead-height));
+  padding: var(--panel-gap) var(--page-edge);
+}
+#permission-panel:not([hidden]) {
+  display: grid;
+  justify-items: stretch;
+  align-items: center;
+  gap: 16px;
+  width: min(100%, 580px);
+  max-width: none;
+  margin: 0 auto;
+  padding: clamp(20px, 3vw, 40px);
+}
+.permission-copy { display: grid; gap: 8px; }
+#permission-panel .permission-copy p, #permission-panel h2, #permission-panel #permission-status,
+#permission-panel #permission-camera-controls, #permission-panel .camera-test { margin: 0; }
+#permission-panel .eyebrow { font-size: 14px; line-height: 1.4; }
+#permission-panel h2 { font-size: clamp(24px, 2.3vw, 34px); line-height: 1.35; text-wrap: balance; }
+#permission-panel .permission-copy > p:not(.eyebrow) { font-size: 16px; line-height: 1.6; }
+#permission-panel .permission-copy > .help { font-size: 14px; line-height: 1.55; }
+#permission-panel .shutter { width: 100%; max-width: none; margin: 0; min-height: 50px; }
+#permission-panel .camera-controls { text-align: left; }
+#permission-panel .camera-controls > label { margin: 0 0 6px; }
+#permission-panel .camera-controls .help, .camera-test p { margin: 6px 0 0; font-size: 13px; line-height: 1.5; }
+#permission-panel .camera-picker { gap: 8px; }
+#permission-panel .camera-picker select { min-width: 0; }
+#permission-panel .camera-test { padding: 10px; }
+#permission-panel .camera-test video { max-height: min(38svh, 350px); }
+#permission-panel #permission-status { min-height: 0; font-size: 14px; line-height: 1.5; }
+#permission-panel:has(#camera-test:not([hidden])) .permission-copy > p:not(.eyebrow) { display: none; }
+#permission-panel:has(#camera-test:not([hidden])) #permission-start { color: var(--forest); background: #f8efdd; border-color: var(--rule); }
+@media (min-width: 760px) {
+  #permission-panel:has(#camera-test:not([hidden])) {
+    width: min(100%, 1010px);
+    grid-template-columns: minmax(0, 1.22fr) minmax(0, 1fr);
+    grid-template-areas: "camera heading" "camera devices" "camera retry" "camera start" "camera status";
+    column-gap: clamp(20px, 3vw, 40px);
+    text-align: left;
+  }
+  #permission-panel:has(#camera-test:not([hidden])) .permission-copy { grid-area: heading; }
+  #permission-camera-controls:not([hidden]) { grid-area: devices; }
+  #permission-panel:has(#camera-test:not([hidden])) #permission-start { grid-area: retry; }
+  #permission-panel #permission-next:not([hidden]) { grid-area: start; }
+  #permission-panel:has(#camera-test:not([hidden])) #permission-status { grid-area: status; }
+  #permission-panel .camera-test:not([hidden]) { grid-area: camera; text-align: center; }
+}
+
+body:is(.is-shooting, .is-result) main { padding: var(--panel-gap) var(--page-edge); }
+.is-shooting:not(.config-open) .studio, .is-result .studio {
+  width: 100%; max-width: 1180px; margin: 0 auto;
+  padding: var(--panel-pad); row-gap: var(--panel-gap);
+}
+.studio .studio-top, .studio .studio-bottom { margin: 0; }
+.studio .studio-top { padding-bottom: 12px; }
+.is-shooting:not(.config-open) .studio-console, .is-result .studio-console {
+  display: flex; flex-direction: column; gap: 12px; padding: var(--panel-pad);
+}
+.is-shooting .studio-console > *, .is-result .studio-console > *,
+.is-shooting .studio #capture-actions, .is-result .studio #result-actions { margin: 0; }
+.is-shooting .studio-console #shot-progress, .is-result .studio-console #shot-progress {
+  order: -1; margin: 0; line-height: 1.4; text-wrap: balance;
+}
+.is-shooting .studio-console #capture-actions:not([hidden]) { width: 100%; }
+.studio #capture, .is-result #print-open { min-height: 52px; padding: 10px 16px; }
+.is-shooting .studio-console #capture-admin summary, #result-admin-tools summary { padding: 6px 12px; font-size: 13px; color: var(--cocoa); }
+.is-result .studio #result-actions:not([hidden]) { width: 100%; max-width: none; display: flex; flex-direction: column; gap: 12px; align-items: stretch; }
+.is-result #result-actions > *, .is-result #result-actions .help { margin: 0; }
+.is-result #result-actions .help { font-size: 14px; line-height: 1.55; }
+.is-result #result-actions .result-qr { display: grid; gap: 8px; padding-top: 12px; text-align: left; }
+.is-result .result-qr-card { gap: 12px; padding: 14px; }
+.is-result .result-qr-copy { min-width: 0; display: grid; gap: 4px; }
+.is-result #result-qr-status:empty, .is-result #status:empty { display: none; }
+.is-result .studio { grid-template-rows: auto auto auto; }
+@media (min-width: 760px) {
+  .is-result .studio {
+    grid-template-columns: minmax(0, min(50%, 510px)) minmax(0, 360px);
+    grid-template-rows: auto 1fr; justify-content: center; column-gap: clamp(20px, 4vw, 56px);
+    min-height: calc(100svh - 64px - 2 * var(--panel-gap));
+  }
+  .is-result .studio-top { grid-column: 1 / -1; }
+  .is-result .viewfinder {
+    grid-area: 2 / 1; align-self: center; margin: 0;
+    width: min(100%, calc(max(340px, 100svh - 108px - 2 * var(--panel-pad) - 3 * var(--panel-gap)) * var(--preview-ratio, .676)));
+  }
+  .is-result .studio-console { grid-area: 2 / 2; align-self: center; width: 100%; max-width: none; }
+}
+@media (max-width: 759px) {
+  .is-result .viewfinder { width: min(100%, calc(56svh * var(--preview-ratio, .676))); }
+  .is-result .studio-console { width: min(100%, 530px); }
+}
+.is-selecting #selection-panel { padding: clamp(12px, 1.5vw, 20px); gap: var(--panel-gap); }
+.is-selecting .selection-heading { margin: 0; padding: 0; gap: 12px; }
+.is-selecting .selection-heading h2 { font-size: clamp(20px, 1.9vw, 28px); line-height: 1.35; text-wrap: balance; }
+.is-selecting .selection-heading > div:first-child > p { font-size: 14px; line-height: 1.5; margin-top: 5px; }
+.is-selecting .selection-layout { grid-row: 2; gap: var(--panel-gap); min-width: 0; }
+.is-selecting :is(.selection-photos, .selection-preview, .editor-filter-panel) { padding: clamp(10px, 1vw, 16px); min-width: 0; }
+.is-selecting .editor-label { margin: 0 0 8px; gap: 8px; align-items: center; }
+.is-selecting .editor-label h3 { margin: 0; font-size: 16px; line-height: 1.4; }
+.is-selecting .editor-sidebar .help, #selection-status { font-size: 13px; line-height: 1.45; margin: 8px 0 0; }
+.is-selecting .editor-actions .shutter { min-height: 50px; }
+@media (min-width: 700px) {
+  .is-selecting .selection-heading { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; }
+  .is-selecting .selection-heading > .selection-time-notice { width: auto; padding: 10px 14px; gap: 12px; }
+  .is-selecting .selection-heading .selection-time-notice #selection-timer { flex: none; padding-right: 12px; }
+}
+@media (min-width: 700px) and (orientation: landscape) {
+  .is-selecting .selection-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) clamp(144px, 14vw, 190px); }
+  .is-selecting .editor-sidebar { align-self: start; gap: 12px; }
+  .is-selecting .editor-sidebar .filter-options { display: flex; flex-direction: column; gap: 8px; }
+  .is-selecting .editor-sidebar .filter-option { width: 100%; min-width: 0; margin: 0; }
+  .is-selecting .editor-sidebar .editor-actions { margin: 0; padding: 0; }
+  .is-selecting .photo-grid { grid-template-rows: repeat(3, minmax(112px, 1fr)); gap: 8px; }
+  .is-selecting .selection-preview { position: static; }
+}
+@media (max-width: 699px) {
+  .is-selecting .selection-heading { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+  .is-selecting .selection-heading > div:first-child { grid-column: 1 / -1; }
+  .is-selecting .selection-heading > .selection-time-notice { gap: 8px; padding: 8px 10px; }
+  .is-selecting .selection-heading .selection-time-notice #selection-timer { flex: none; padding-right: 8px; }
+  .is-selecting #selection-timer-value { font-size: 22px; }
+  .is-selecting #selection-count { padding: 7px 10px; white-space: nowrap; }
+  .is-selecting .photo-grid { grid-template-rows: clamp(146px, 44vw, 210px); grid-auto-columns: clamp(136px, 42vw, 196px); }
+  .is-selecting .selection-composite { height: clamp(300px, 54svh, 420px); }
+}
+@media (min-width: 700px) and (max-height: 550px) {
+  .is-selecting #selection-panel { height: auto; min-height: calc(100svh - 16px); }
+  .is-selecting .selection-layout { min-height: 330px; }
+}
+#privacy-dialog { padding: var(--panel-pad); }
+#privacy-dialog .dialog-head { gap: 12px; align-items: center; }
+#privacy-dialog h2 { margin: 0; }
+#privacy-dialog > p { margin: 14px 0 0; line-height: 1.6; }
+#privacy-dialog > .help { margin-top: 8px; }

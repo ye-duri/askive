@@ -13,3 +13,27 @@ select{font:inherit;padding:10px;border:1px solid #d7cadd;border-radius:10px;col
 .receipt-number.receipt-odd{background:#ede4f8;color:#563879}.receipt-number.receipt-even{background:#d7f1eb;color:#176352}
 
 .job.job-odd{background:#e9dcf7;border:2px solid #b49ace}.job.job-even{background:#d3eee5;border:2px solid #81bbaa}.job.job-odd .picture,.job.job-even .picture{background:rgba(255,255,255,.55)}.job.job-odd .receipt-number{background:#654188;color:#fff}.job.job-even .receipt-number{background:#216d59;color:#fff}
+
+@media screen {
+  main > header { margin-bottom: clamp(18px, 2.5vw, 30px); }
+  .login-mode header { margin-bottom: 20px; }
+  .login-mode .login { padding: clamp(20px, 3vw, 32px); }
+  .login .login-mascot { margin-bottom: 12px; }
+  .login h2 { margin: 0 0 16px; }
+  .login form { gap: 8px; }
+  .login form button { margin-top: 6px; }
+  .toolbar { gap: 12px; margin-bottom: 16px; }
+  .toolbar button { min-height: 44px; white-space: nowrap; }
+  .printer-panel { padding: clamp(14px, 2vw, 22px); }
+  .printer-panel .settings { margin: 0 0 10px; gap: 10px 16px; }
+  #jobs { gap: clamp(12px, 2vw, 22px); }
+  .job .actions { gap: 8px; }
+  .job .settings { margin: 12px 0; }
+  #status:empty { display: none; }
+}
+@media screen and (max-width: 640px) {
+  .toolbar { flex-wrap: wrap; }
+  .toolbar > div:first-child { flex: 1 1 100%; }
+  main { padding: 20px 14px; }
+  .job { padding: 14px; }
+}

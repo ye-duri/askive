@@ -2,17 +2,19 @@
 @font-face { font-family: MaruBuri; src: url('fonts/MaruBuri-Regular.woff2') format('woff2'); font-display: swap; }
 * { box-sizing: border-box; }
 body { margin: 0; background: #f1e7d2; color: #322c25; font-family: SUIT, system-ui, sans-serif; }
-main { max-width: 900px; margin: 24px auto; padding: clamp(18px, 4vw, 46px); background: #fff9eb; border: 1px solid #cbb99a; border-top: 5px solid #203e32; }
+main { width: min(calc(100% - 32px), 900px); margin: clamp(16px, 3vw, 32px) auto; padding: clamp(18px, 4vw, 46px); background: #fff9eb; border: 1px solid #cbb99a; border-top: 5px solid #203e32; }
 .gallery-brand { color: #963b2e; font-size: 15px; font-weight: 700; }
-h1 { margin: 8px 0 16px; color: #203e32; font: 400 clamp(36px, 6vw, 52px)/1.25 MaruBuri, serif; }
+h1 { margin: 6px 0 12px; color: #203e32; font: 400 clamp(36px, 6vw, 52px)/1.25 MaruBuri, serif; }
 p { line-height: 1.65; word-break: keep-all; }
-.gallery-retention { padding: 18px 20px; background: #f4ecd9; border: 1px dashed #aa9475; }
+.gallery-thanks { margin: 0 0 20px; }
+.gallery-retention { padding: clamp(14px, 2.5vw, 22px); background: #f4ecd9; border: 1px dashed #aa9475; }
 .gallery-retention p { margin: 5px 0 0; }
-#gallery-status { color: #675847; }
-#gallery-photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+#gallery-status { margin: 16px 0 10px; line-height: 1.55; color: #675847; }
+#gallery-photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(10px, 2vw, 18px); }
 figure { margin: 0; padding: 10px; background: #fffdfa; border: 1px solid #cbb99a; }
 figure:first-child { grid-column: 1/-1; }
 img { display: block; width: 100%; max-height: 70vh; object-fit: contain; }
-a { display: block; text-align: center; color: #fff9eb; background: #203e32; padding: 14px 6px; margin-top: 8px; border-radius: 4px; text-decoration: none; }
+a { display: grid; place-items: center; min-height: 46px; line-height: 1.35; text-align: center; color: #fff9eb; background: #203e32; padding: 14px 6px; margin-top: 8px; border-radius: 4px; text-decoration: none; }
 a:focus-visible { outline: 3px solid #963b2e; outline-offset: 3px; }
-@media (max-width: 600px) { main { margin: 10px; } #gallery-photos { gap: 8px; } figure { padding: 5px; } }
+main > p:last-child { margin: 20px 0 0; }
+@media (max-width: 600px) { main { width: calc(100% - 20px); padding: 16px; } figure { padding: 7px; } }
