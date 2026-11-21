@@ -144,15 +144,55 @@ button:focus-visible, select:focus-visible, summary:focus-visible, input:focus-v
 .result-qr-card input { accent-color: var(--forest); }
 .result-qr-copy > *, .result-qr-kicker { color: var(--forest); }
 dialog::backdrop, #print-receipt::backdrop { background: #1f291fc4; }
-#print-receipt.is-complete { background: var(--paper); border-color: var(--rule); }
+#print-receipt.is-complete {
+  --receipt-inset: clamp(18px, 4vw, 64px);
+  min-height: min(78vh, 780px);
+  padding: 0;
+  background: var(--paper);
+  border-color: var(--rule);
+}
 #print-receipt.is-complete[open] {
   display: grid;
-  align-content: center;
-  align-content: safe center;
-  row-gap: clamp(16px, 2.5vh, 26px);
+  grid-template-rows: minmax(0, 1fr) repeat(3, auto) minmax(0, 1fr);
+  row-gap: clamp(12px, 2vh, 24px);
+}
+/* Two slices of the approved frame keep the print artwork out of the text rows. */
+#print-receipt.is-complete::before,
+#print-receipt.is-complete .receipt-scene {
+  width: 100%;
+  max-height: 100%;
+  pointer-events: none;
+}
+#print-receipt.is-complete::before {
+  content: "";
+  align-self: start;
+  aspect-ratio: 1200 / 246;
+  background: url("frames/time-capsule-four.png") center top / 100% auto no-repeat;
+  mask-image: linear-gradient(to bottom, black 82%, transparent);
+}
+.receipt-scene { display: none; }
+#print-receipt.is-complete .receipt-scene {
+  display: block;
+  align-self: end;
+  overflow: hidden;
+  aspect-ratio: 1200 / 367;
+  mask-image: linear-gradient(to bottom, transparent, black 13%);
+}
+#print-receipt.is-complete .receipt-scene::before {
+  content: "";
+  display: block;
+  aspect-ratio: 1200 / 367;
+  background: url("frames/time-capsule-four.png") center bottom / 100% auto no-repeat;
+}
+@media (orientation: landscape) and (max-height: 550px) {
+  #print-receipt.is-complete::before { aspect-ratio: 1200 / 60; mask-image: linear-gradient(to bottom, black 65%, transparent); }
 }
 #print-receipt.is-complete h2,
-#print-receipt.is-complete .print-receipt-thanks { margin: 0; }
+#print-receipt.is-complete #print-receipt-message,
+#print-receipt.is-complete .print-receipt-thanks {
+  margin: 0 var(--receipt-inset);
+}
+#print-receipt.is-complete .print-receipt-thanks { color: var(--cocoa); }
 .transition-loading { background: #efe8d9df; }
 .mail-in-transit { display: block; font: 42px/1 Georgia, serif; color: var(--seal); }
 .loading-dots i { background: var(--forest); }
