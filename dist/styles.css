@@ -935,3 +935,5 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline-color:#8963ae}
 #print-receipt.is-complete #print-receipt-message{font-size:clamp(30px,4.5vw,62px);font-weight:900;line-height:1.4;color:#fff;background:#43215f;border-radius:24px;padding:clamp(22px,4vh,44px) 20px;margin:0;word-break:keep-all}
 #print-receipt.is-complete .print-receipt-thanks{font-size:clamp(14px,1.8vw,22px);margin:24px 0 0}
 @media(max-height:600px){#print-receipt.is-complete .sheep{display:none}#print-receipt.is-complete{min-height:0}}
+
+.is-selecting #selection-panel{grid-template-rows:auto minmax(0,1fr)}
