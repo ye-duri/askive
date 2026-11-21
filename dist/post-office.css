@@ -101,7 +101,7 @@ body {
 .camera-glyph::before { content: ""; position: absolute; width: 7px; height: 3px; top: -5px; left: 3px; border: 1.7px solid currentColor; border-bottom: 0; border-radius: 2px 2px 0 0; }
 .camera-glyph::after { content: ""; position: absolute; width: 7px; height: 7px; border: 1.7px solid currentColor; border-radius: 50%; left: 5px; top: 1.5px; }
 #intro-status { margin: 9px 0 0; color: var(--seal); }
-.primary, .shutter, .is-result #print-open, #intro-start, #print-receipt.is-complete #print-receipt-message {
+.primary, .shutter, .is-result #print-open, #intro-start {
   color: #fff9e8; background: var(--forest); border: 1px solid var(--forest-dark); border-radius: 6px; box-shadow: none;
 }
 .primary:hover, .shutter:hover, #intro-start:hover, .is-result #print-open:hover { background: var(--forest-dark); }
@@ -145,16 +145,16 @@ button:focus-visible, select:focus-visible, summary:focus-visible, input:focus-v
 .result-qr-copy > *, .result-qr-kicker { color: var(--forest); }
 dialog::backdrop, #print-receipt::backdrop { background: #1f291fc4; }
 #print-receipt.is-complete {
-  --receipt-inset: clamp(18px, 4vw, 64px);
   min-height: min(78vh, 780px);
   padding: 0;
-  background: var(--paper);
-  border-color: var(--rule);
+  /* Sample the bare plaster between the original poster's sign and its letters. */
+  background: #edba82 url("time-capsule-post-office.jpg") 35% 40.5% / 312.5% 1250% no-repeat;
+  border-color: #945f36;
 }
 #print-receipt.is-complete[open] {
   display: grid;
-  grid-template-rows: minmax(0, 1fr) repeat(3, auto) minmax(0, 1fr);
-  row-gap: clamp(12px, 2vh, 24px);
+  grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
+  row-gap: clamp(10px, 1.6vh, 18px);
 }
 /* Two slices of the approved frame keep the print artwork out of the text rows. */
 #print-receipt.is-complete::before,
@@ -187,12 +187,50 @@ dialog::backdrop, #print-receipt::backdrop { background: #1f291fc4; }
 @media (orientation: landscape) and (max-height: 550px) {
   #print-receipt.is-complete::before { aspect-ratio: 1200 / 60; mask-image: linear-gradient(to bottom, black 65%, transparent); }
 }
-#print-receipt.is-complete h2,
-#print-receipt.is-complete #print-receipt-message,
-#print-receipt.is-complete .print-receipt-thanks {
-  margin: 0 var(--receipt-inset);
+.receipt-notice { display: contents; }
+#print-receipt.is-complete .receipt-notice {
+  display: grid;
+  justify-items: center;
+  justify-self: center;
+  row-gap: clamp(12px, 1.8vh, 20px);
+  width: min(830px, 88%);
+  padding: clamp(18px, 3.3vh, 34px) clamp(12px, 3vw, 42px);
+  border: 5px solid #71452c;
+  background: radial-gradient(ellipse at 30% 0, #38573a, #234531 58%, #1c392a);
+  box-shadow: inset 0 0 0 1px #ddba7c, inset 0 0 0 5px #2b4635,
+              inset 0 0 0 6px #a88d5e, 0 2px 0 #ab794b, 0 7px 12px #643b1f55;
+  text-wrap: balance;
 }
-#print-receipt.is-complete .print-receipt-thanks { color: var(--cocoa); }
+#print-receipt.is-complete h2 {
+  max-width: 100%;
+  margin: 0;
+  padding: .33em 1.3em .38em;
+  border: 1px solid #684624;
+  background: radial-gradient(circle at 10px 50%, #77512d 1.5px, transparent 2px),
+              radial-gradient(circle at calc(100% - 10px) 50%, #77512d 1.5px, transparent 2px),
+              linear-gradient(110deg, #d6a762, #f3d194 43%, #dcad6d);
+  color: #442d1e;
+  box-shadow: inset 0 0 0 1px #f5d9a4, 0 2px 3px #11251c88;
+  font-size: clamp(16px, 2.2vw, 30px);
+}
+#print-receipt.is-complete #print-receipt-message {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff7df;
+  font-size: clamp(26px, 4.1vw, 56px);
+  line-height: 1.25;
+}
+#print-receipt.is-complete .print-receipt-thanks {
+  margin: 0;
+  color: #e9d8b2;
+  font-size: clamp(14px, 1.4vw, 18px);
+}
+@media (max-width: 600px) {
+  #print-receipt.is-complete { min-height: min(62vh, 470px); }
+  #print-receipt.is-complete .receipt-notice { width: 92%; }
+}
 .transition-loading { background: #efe8d9df; }
 .mail-in-transit { display: block; font: 42px/1 Georgia, serif; color: var(--seal); }
 .loading-dots i { background: var(--forest); }
