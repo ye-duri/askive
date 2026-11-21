@@ -1,5 +1,43 @@
 [
   {
+    "id": "time-capsule-four",
+    "name": "기억 배달소 · 타임캡슐 4컷",
+    "edition": "special",
+    "count": 4,
+    "paper": "selphy-p",
+    "sourceWidth": 1200,
+    "sourceHeight": 1776,
+    "layoutVersion": "single-frame-original-v1",
+    "slots": [
+      [
+        0.03916666666666667,
+        0.14752252252252251,
+        0.45,
+        0.3108108108108108
+      ],
+      [
+        0.5108333333333334,
+        0.14752252252252251,
+        0.45,
+        0.3108108108108108
+      ],
+      [
+        0.03916666666666667,
+        0.4724099099099099,
+        0.45,
+        0.3108108108108108
+      ],
+      [
+        0.5108333333333334,
+        0.4724099099099099,
+        0.45,
+        0.3108108108108108
+      ]
+    ],
+    "src": "frames/time-capsule-four.png",
+    "dateVisible": false
+  },
+  {
     "id": "basic-4-grid-black",
     "name": "검정",
     "layout": "grid",
