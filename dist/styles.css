@@ -936,6 +936,4 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline-color:#8963ae}
 #print-receipt.is-complete .print-receipt-thanks{font-size:clamp(14px,1.8vw,22px);margin:24px 0 0}
 @media(max-height:600px){#print-receipt.is-complete .sheep{display:none}#print-receipt.is-complete{min-height:0}}
 
-.time-capsule-exhibition{display:grid;place-items:center;padding:22px;background:#efddc6}
-.time-capsule-example{display:block;width:auto;height:100%;max-width:100%;max-height:100%;min-height:0;object-fit:contain;filter:drop-shadow(0 6px 12px #51341938)}
 .is-selecting #selection-panel{grid-template-rows:auto minmax(0,1fr)}

@@ -132,7 +132,7 @@ async function startCamera() {
     $('permission-video').style.transform=video.style.transform;
     $('mirror-label').textContent = '좌우 반전';
     $('welcome').hidden = true; $('camera-state').textContent = track.label || '카메라 켜짐'; $('stage-label').textContent = '02 / 촬영';
-    status(phase==='permission'?'카메라가 연결됐어요. 테스트 영상을 확인한 뒤 다음으로 넘어가 주세요.':'준비되면 촬영시작을 눌러 주세요.');
+    status(phase==='permission'?'카메라가 연결됐어요. 테스트 영상을 확인한 뒤 다음으로 넘어가 주세요.':'준비되면 촬영 시작을 눌러 주세요.');
     void refreshCameras();
   } catch(e) {
     if(run!==cameraRun)return;
@@ -183,10 +183,10 @@ function showShotPreview() {
 }
 function updateShotMode() {
   $('shoot-instruction').textContent=`총 6장 촬영 후 원하는 ${cutCount}장을 선택해요.`;
-  $('capture').textContent = '촬영시작';
+  $('capture').textContent = '촬영 시작';
   $('shot-progress').textContent = '0 / 6장 · 5초마다 자동 촬영';
   $('shot-thumbs').replaceChildren();
-  if (selected) { const size = outputSize(selected, count); $('size-label').textContent = `${size.width} × ${size.height} · PNG`; showShotPreview(); }
+  if (selected) { const size = outputSize(selected); $('size-label').textContent = `${size.width} × ${size.height} · PNG`; showShotPreview(); }
   controls();
 }
 function cancelCountdown() {
@@ -303,7 +303,7 @@ function updateSelectionClock(){
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateSelectionClock();});
 function openSelection() {
   phase='shoot';selecting=true; $('result').hidden=true; $('result-actions').hidden=true;
-  $('stage-label').textContent='04 / 사진 선택';renderSelection();controls();window.scrollTo(0,0);startSelectionClock();
+  $('stage-label').textContent='03 / 사진 선택';renderSelection();controls();window.scrollTo(0,0);startSelectionClock();
 }
 function waitCaptureTick(){
  return new Promise(resolve=>{
@@ -360,7 +360,7 @@ $('finish-selection').onclick=async()=>{
     albumSource=nextBlob;
     try{await ensurePrintAlbum(revision);await uploadAlbumPhotos(revision);}catch(e){completionNotice='완성 사진 저장 실패. 사진 인쇄를 누르면 다시 시도합니다. '+e.message;}
     if(revision!==sessionRun)return;
-    $('shot-progress').textContent='소중한 사진이 완성되었습니다.';$('stage-label').textContent='05 / 나의 순간';
+    $('shot-progress').textContent='소중한 사진이 완성되었습니다.';$('stage-label').textContent='04 / 사진 완성';
     status(completionNotice,!!completionNotice);
   }catch(e){if(revision===sessionRun)$('selection-status').textContent=e.message||'합성하지 못했어요. 다시 시도해 주세요.';}
   finally{if(revision===sessionRun){busy=false;try{if(selecting)renderSelection();}finally{controls();}}}
@@ -388,7 +388,7 @@ $('permission-next').onclick=async()=>{
 };
 async function openShooting(){
  phase='shoot';
- showShotPreview();controls();window.scrollTo(0,0);
+ updateShotMode();window.scrollTo(0,0);
  await startCamera();
  if(!$('capture').disabled)$('capture').focus({preventScroll:true});
 }
