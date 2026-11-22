@@ -298,6 +298,8 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateSele
 function openSelection() {
   phase='shoot';selecting=true; $('result').hidden=true; $('result-actions').hidden=true;
   $('stage-label').textContent='03 / 사진 선택';renderSelection();controls();window.scrollTo(0,0);startSelectionClock();
+  // Prep is local. If it fails, finishing the selection can retry from that photo.
+  void prepareOriginals(shotSession).catch(()=>{});
 }
 function waitCaptureTick(){
  return new Promise(resolve=>{
@@ -311,7 +313,7 @@ async function capture() {
  status('');
  shootingMusic.start(selected);
  $('capture-admin').open=false;automatic=true;busy=true;const run=++countdownRun;const revision=sessionRun;
- if(!shotSession)shotSession={photos:[],taken:0};controls();
+ if(!shotSession)shotSession={photos:[],taken:0,originalJpegs:[]};controls();
  try {
   while(shotSession.taken<CAPTURE_TOTAL){
    $('shot-progress').textContent=`${shotSession.taken+1} / ${CAPTURE_TOTAL}장 · 포즈를 준비해 주세요`;
@@ -424,6 +426,7 @@ function resetSession(message='이용이 종료됐어요. 사진을 지웠습니
   sessionRun++;cameraRun++;countdownRun++;
   stopStream();busy=false;cameraBusy=false;
   for(const photo of shotSession?.photos||[]){photo.width=1;photo.height=1;}
+  if(shotSession)shotSession.originalJpegs.length=0;
   $('print-receipt').close();
   if($('capture-prompt').open)$('capture-prompt').close();
   shotSession=null;chosen=[];activeSlot=-1;blob=null;selecting=false;nativePrintBusy=false;
@@ -541,14 +544,31 @@ function drawAlbumQR(canvas,id){
  c.fillStyle='#fff';c.fillRect(left,top,size,size);c.fillStyle='#000';
  for(let row=0;row<count;row++)for(let col=0;col<count;col++)if(qr.isDark(row,col))c.fillRect(left+(col+4)*unit,top+(row+4)*unit,unit,unit);
 }
-async function uploadAlbumPhotos(revision,printImage){
- const current=album,photos=shotSession.photos;
- const deadline=Date.now()+45000,remaining=()=>{const ms=deadline-Date.now();if(ms<=0)throw new Error('QR 저장 시간 초과');return ms;};
- const data=new FormData();
- for(let i=0;i<CAPTURE_TOTAL;i++){
-  data.append(String(i),await withTimeout(toBlob(photos[i],'image/jpeg',.85),remaining(),'QR 사진 처리 시간 초과'),`${i}.jpg`);
-  if(revision!==sessionRun)return;
+async function encodeOriginals(session){
+ const {photos,originalJpegs}=session;
+ for(let i=originalJpegs.length;i<photos.length;i++){
+   const jpeg=await withTimeout(toBlob(photos[i],'image/jpeg',.85),45000,'촬영 원본 준비 시간이 초과됐어요.');
+   if(session!==shotSession)return;
+   originalJpegs.push(jpeg);
  }
+ return originalJpegs;
+}
+function prepareOriginals(session){
+ if(!session.originalPreparation){
+   session.originalPreparation=encodeOriginals(session).catch(error=>{
+     session.originalPreparation=null;
+     throw error;
+   });
+ }
+ return session.originalPreparation;
+}
+async function uploadAlbumPhotos(revision,printImage){
+ const current=album;
+ const deadline=Date.now()+45000,remaining=()=>{const ms=deadline-Date.now();if(ms<=0)throw new Error('QR 저장 시간 초과');return ms;};
+ const originals=await withTimeout(prepareOriginals(shotSession),remaining(),'QR 사진 처리 시간 초과');
+ if(revision!==sessionRun)return;
+ const data=new FormData();
+ originals.forEach((jpeg,i)=>data.append(String(i),jpeg,`${i}.jpg`));
  data.append('8',printImage,'result.jpg');
  await apiJSON(`/api/gallery/albums/${current.id}`,{method:'PUT',body:data},remaining());
  if(revision!==sessionRun)void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'}).catch(()=>{});

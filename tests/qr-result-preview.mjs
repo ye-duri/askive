@@ -17,6 +17,20 @@ let browser;
 try {
   browser = await chromium.launch({channel: 'chrome', args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream']});
   const page = await browser.newPage({permissions: ['camera'], viewport: {width: 1180, height: 820}});
+  // Hold the third original while the visitor selects photos and finishes early.
+  await page.addInitScript(() => {
+    const toBlob = HTMLCanvasElement.prototype.toBlob;
+    window.originalEncodes = 0;
+    HTMLCanvasElement.prototype.toBlob = function(callback, type, quality) {
+      if (type === 'image/jpeg' && quality === .85) {
+        window.originalEncodes++;
+        if (window.originalEncodes === 3) {
+          return toBlob.call(this, jpeg => { window.releaseOriginal = () => callback(jpeg); }, type, quality);
+        }
+      }
+      return toBlob.call(this, callback, type, quality);
+    };
+  });
   const errors = [];
   const albums = [];
   page.on('pageerror', error => errors.push(error.message));
@@ -43,15 +57,21 @@ try {
     await page.waitForFunction(n => document.querySelector('#shot-progress').textContent.startsWith(n + ' / 6장 · 포즈'), n);
     await page.locator('#capture-now').click();
   }
+  await page.waitForFunction(() => typeof window.releaseOriginal === 'function');
+  await page.locator('#filter-vivid').click();
   for (let n = 0; n < 4; n++) await page.locator('.photo-choice').nth(n).click();
+  assert.equal(await page.evaluate(() => window.originalEncodes), 3);
+  assert.equal(albums.length, 0);
   const albumCreated = page.waitForResponse(r => r.url() === base + '/api/gallery/albums' && r.status() === 201);
   await page.locator('#finish-selection').click();
   const {id} = await (await albumCreated).json();
+  await page.evaluate(() => window.releaseOriginal());
   await page.getByText(/사진함 연결 실패.*완성하기/).waitFor();
   assert.equal(await page.locator('#print-open').isVisible(), false);
   assert.equal(await page.locator('.photo-choice[aria-pressed=true]').count(), 4);
   await page.locator('#finish-selection').click();
   await page.locator('#print-open').waitFor();
+  assert.equal(await page.evaluate(() => window.originalEncodes), 6, 'Upload retries reuse the six prepared originals');
   assert.equal(await page.locator('#result-actions input[type=checkbox]').count(), 0);
   assert.equal(albums.length, 1);
   assert.equal(albums[0].captureCount, 6);
