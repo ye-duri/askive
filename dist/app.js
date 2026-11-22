@@ -543,7 +543,7 @@ function drawAlbumQR(canvas,id){
  const url=compactGalleryUrl(id,location.href);
  const qr=qrcode(0,'M');qr.addData(url);qr.make();
  const count=qr.getModuleCount(),shortSide=Math.min(canvas.width,canvas.height);
- const unit=Math.max(1,Math.round(shortSide*.20/(count+8)));
+ const unit=Math.max(1,Math.round(shortSide*.13/(count+8)));
  const size=(count+8)*unit,margin=Math.round(shortSide*.02);
  const left=canvas.width-size-margin,top=canvas.height-size-margin,c=canvas.getContext('2d');
  c.fillStyle='#fff';c.fillRect(left,top,size,size);c.fillStyle='#000';
