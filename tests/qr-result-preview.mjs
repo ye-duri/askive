@@ -95,7 +95,7 @@ try {
     canvas.width = img.naturalWidth; canvas.height = img.naturalHeight;
     const ctx = canvas.getContext('2d');
     ctx.drawImage(img, 0, 0);
-    const width = (count + 8) * 6;
+    const width = (count + 8) * 4;
     const {data} = ctx.getImageData(canvas.width - 24 - width, canvas.height - 24 - width, width, width);
     return Array.from({length: count * count}, (_, i) => {
       const x = Math.floor((i % count + 4.5) * width / (count + 8));
