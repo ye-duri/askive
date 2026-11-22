@@ -1,21 +1,98 @@
 import assert from 'node:assert/strict';
-import {chromium} from 'playwright';
-import {createApp} from '../server.mjs';
-import {readFile,mkdtemp,rm} from 'node:fs/promises';
+import {randomBytes} from 'node:crypto';
+import {mkdtemp, rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
+import {chromium} from 'playwright';
+import {createApp} from '../server.mjs';
 import {calendarLayout} from '../dist/print/calendar-layout.mjs';
-const dir=await mkdtemp(join(tmpdir(),'want-qr-')),code='want-qr-local-test-secret-32-characters';
-const server=createApp({GALLERY_DIR:dir,KIOSK_SECRET:code});await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${server.address().port}`;
-const browser=await chromium.launch({channel:'chrome',headless:true});
-try{for(const frame of ['basic-4-grid-black','hanmaeum-2026-daecheong-paper-six-portrait']){
- const page=await browser.newPage();await page.request.post(base+'/api/gallery/unlock',{headers:{Origin:base},data:{code}});
- await page.route('**/app.js',async r=>r.fulfill({contentType:'text/javascript',body:await readFile(process.env.QR_TEST_APP||'dist/app.js','utf8')+`
- window.qrTest={ready:()=>!initializing,start:async id=>{edition=id.startsWith('basic')?'basic':'special';cutCount=id.includes('six')?6:4;phase='setup';await chooseFrame(id);phase='shoot';const c=document.createElement('canvas');c.width=600;c.height=400;c.getContext('2d').fillRect(0,0,600,400);shotSession={photos:Array(6).fill(c),taken:6};chosen=Array.from({length:cutCount},(_,i)=>i);selecting=true;qrEnabled=true;window.completion=$('finish-selection').onclick();},state:()=>({busy,qrConsent,album:album?.id}),file:async()=>Array.from(new Uint8Array(await printShareFile.arrayBuffer())),qr:()=> $('result-qr-add').onclick(),print:()=> $('print-open').onclick()};`}));
- let release,entered;const gate=new Promise(r=>release=r),arrived=new Promise(r=>entered=r);let first=true;
- await page.route('**/api/gallery/albums/*',async r=>{if(first&&r.request().method()==='PUT'){first=false;entered();await gate;}await r.continue();});
- await page.goto(base);await page.waitForFunction(()=>window.qrTest?.ready());await page.evaluate(id=>qrTest.start(id),frame);await arrived;
- try{assert.equal(await page.locator('#result-qr-add').isDisabled(),true,'QR must wait for initial upload');assert.equal(await page.locator('#print-open').isDisabled(),true);await page.evaluate(()=>qrTest.qr());assert.equal(await page.evaluate(()=>qrTest.state().qrConsent),false);}finally{release();}
- await page.evaluate(()=>window.completion);const before=await page.evaluate(()=>qrTest.file());await page.evaluate(()=>qrTest.qr());assert.deepEqual(await page.evaluate(()=>qrTest.file()),before,'print source stays QR free');const pixels=await page.evaluate(()=>{const im=document.querySelector('#result'),c=document.createElement('canvas');c.width=im.naturalWidth;c.height=im.naturalHeight;const x=c.getContext('2d');x.drawImage(im,0,0);const size=Math.round(Math.min(c.width,c.height)*.13),m=Math.round(Math.min(c.width,c.height)*.01);return [...x.getImageData(c.width-size-m,c.height-size-m,size,size).data];});assert.ok(pixels.filter((v,i)=>i%4!==3&&v===0).length>100);assert.ok(pixels.filter((v,i)=>i%4!==3&&v===255).length>100);await page.locator('#result').screenshot({path:'/tmp/qr-preview-'+frame+'.png'});const state=await page.evaluate(()=>qrTest.state());assert.equal(state.qrConsent,true);await page.evaluate(()=>qrTest.print());
- await page.request.post(base+'/api/gallery/print-login',{headers:{Origin:base},data:{password:'0691'}});const jobs=await(await page.request.get(base+'/api/gallery/web-print')).json();const job=jobs.jobs.find(j=>j.id===state.album);assert.ok(job?.qrUrl);const layout=calendarLayout(600,1057,0,'#74151B',job.printTheme,job.qrUrl);assert.equal(layout.filter(c=>c.type==='qr').length,1);console.log('PASS:',frame,'initial-save lock, QR consent, upload, print job and single footer QR');await page.close();
-}}finally{await browser.close();await new Promise(r=>server.close(r));await rm(dir,{recursive:true,force:true});}
+import qrcode from '../dist/print/vendor/qrcode.mjs';
+
+const dir = await mkdtemp(join(tmpdir(), 'event-qr-'));
+const secret = randomBytes(32).toString('hex');
+const server = createApp({GALLERY_DIR: dir, KIOSK_SECRET: secret});
+await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+const base = 'http://127.0.0.1:' + server.address().port;
+let browser;
+try {
+  browser = await chromium.launch({channel: 'chrome', args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream']});
+  const page = await browser.newPage({permissions: ['camera'], viewport: {width: 1180, height: 820}});
+  const errors = [];
+  const albums = [];
+  page.on('pageerror', error => errors.push(error.message));
+  page.on('request', req => {
+    if (req.method() === 'POST' && req.url() === base + '/api/gallery/albums') albums.push(req.postDataJSON());
+  });
+
+  // Fail one upload and exercise the user-facing retry, retaining the original album.
+  let failUpload = true;
+  await page.route('**/api/gallery/albums/*', async route => {
+    if (route.request().method() === 'PUT' && failUpload) {
+      failUpload = false;
+      return route.fulfill({status: 503, json: {error: '사진함 연결 실패'}});
+    }
+    return route.continue();
+  });
+  await page.goto(base);
+  await page.locator('#intro-start').click();
+  assert.match(await page.locator('#capture-storage-note').innerText(), /24시간/);
+  await page.locator('#capture-confirm').click();
+  await page.locator('#countdown').waitFor();
+  await page.locator('#capture-admin summary').click();
+  for (let n = 1; n <= 6; n++) {
+    await page.waitForFunction(n => document.querySelector('#shot-progress').textContent.startsWith(n + ' / 6장 · 포즈'), n);
+    await page.locator('#capture-now').click();
+  }
+  for (let n = 0; n < 4; n++) await page.locator('.photo-choice').nth(n).click();
+  const albumCreated = page.waitForResponse(r => r.url() === base + '/api/gallery/albums' && r.status() === 201);
+  await page.locator('#finish-selection').click();
+  const {id} = await (await albumCreated).json();
+  await page.getByText(/사진함 연결 실패.*완성하기/).waitFor();
+  assert.equal(await page.locator('#print-open').isVisible(), false);
+  assert.equal(await page.locator('.photo-choice[aria-pressed=true]').count(), 4);
+  await page.locator('#finish-selection').click();
+  await page.locator('#print-open').waitFor();
+  assert.equal(await page.locator('#result-actions input[type=checkbox]').count(), 0);
+  assert.equal(albums.length, 1);
+  assert.equal(albums[0].captureCount, 6);
+  assert.equal(albums[0].consent, true);
+
+  const url = base + '/gallery.html#' + id;
+  const qr = qrcode(0, 'M');
+  qr.addData(url);
+  qr.make();
+  const count = qr.getModuleCount();
+  const expected = Array.from({length: count * count}, (_, i) => qr.isDark(Math.floor(i/count), i%count));
+  const actual = await page.locator('#result').evaluate((img, count) => {
+    const canvas = document.createElement('canvas');
+    canvas.width = img.naturalWidth; canvas.height = img.naturalHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    const {data, width} = ctx.getImageData(canvas.width - 168, canvas.height - 168, 156, 156);
+    return Array.from({length: count * count}, (_, i) => {
+      const x = Math.floor((i % count + 4.5) * width / (count + 8));
+      const y = Math.floor((Math.floor(i / count) + 4.5) * width / (count + 8));
+      return data[4 * (y * width + x)] < 128;
+    });
+  }, count);
+  assert.deepEqual(actual, expected);
+  const phone = await browser.newPage();
+  await phone.goto(url);
+  await phone.locator('#gallery-photos a').nth(6).waitFor();
+  assert.equal(await phone.locator('#gallery-photos a').count(), 7);
+  for (const link of await phone.locator('#gallery-photos a').evaluateAll(links => links.map(a => a.href))) {
+    assert.equal((await phone.request.get(link)).status(), 200);
+  }
+
+  await page.locator('#print-open').click();
+  await page.locator('#print-receipt.is-complete').waitFor();
+  const jobs = await (await fetch(base+'/api/gallery/print-jobs', {headers: {Authorization:'Bearer '+secret, 'X-Print-Client':'a'.repeat(48)}})).json();
+  assert.deepEqual(jobs.jobs.map(job => job.qrUrl), [url]);
+  assert.equal(calendarLayout(1200,1776,0,'#000000','default',url).filter(item => item.type === 'qr').length, 1);
+  assert.deepEqual(errors, []);
+  console.log('PASS: mandatory QR, upload retry, preview QR pixels, seven accessible gallery images, one print QR.');
+} finally {
+  await browser?.close();
+  await new Promise(resolve => server.close(resolve));
+  await rm(dir, {recursive:true, force:true});
+}
