@@ -1,8 +1,9 @@
+import {readAlbumId} from './gallery-link.mjs';
 const status=document.getElementById('gallery-status'),grid=document.getElementById('gallery-photos');
-const id=location.hash.slice(1);let expiryTimer;
+let expiryTimer;
 function clear(){grid.replaceChildren();status.textContent='앨범이 만료되었습니다.';}
 try{
- if(!/^[a-f0-9]{48}$/.test(id))throw new Error('올바른 QR 링크를 열어 주세요.');
+ const id=readAlbumId(location.hash.slice(1));
  const r=await fetch(`/api/gallery/albums/${id}`),data=await r.json();if(!r.ok)throw new Error(data.error);
  status.textContent=`${new Date(data.expiresAt).toLocaleString('ko-KR')}까지 저장할 수 있어요.`;
  for(const i of (data.photoIndexes||[8,0,1,2,3,4,5,6,7])){

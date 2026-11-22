@@ -5,7 +5,8 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {chromium} from 'playwright';
 import {createApp} from '../server.mjs';
-import {calendarLayout} from '../dist/print/calendar-layout.mjs';
+import {printPDF} from '../mac-print/print-pdf.mjs';
+import {compactGalleryUrl, readAlbumId} from '../dist/gallery-link.mjs';
 import qrcode from '../dist/print/vendor/qrcode.mjs';
 
 const dir = await mkdtemp(join(tmpdir(), 'event-qr-'));
@@ -77,25 +78,32 @@ try {
   assert.equal(albums[0].captureCount, 6);
   assert.equal(albums[0].consent, true);
 
-  const url = base + '/gallery.html#' + id;
+  const url = compactGalleryUrl(id, base);
+  assert.equal(url, base + '/g#' + Buffer.from(id,'hex').toString('base64url'));
+  for (const sample of ['00'.repeat(24), 'ff'.repeat(24), id]) {
+    assert.equal(readAlbumId(new URL(compactGalleryUrl(sample,base)).hash.slice(1)), sample);
+    assert.equal(readAlbumId(sample), sample);
+  }
   const qr = qrcode(0, 'M');
   qr.addData(url);
   qr.make();
   const count = qr.getModuleCount();
   const expected = Array.from({length: count * count}, (_, i) => qr.isDark(Math.floor(i/count), i%count));
-  const actual = await page.locator('#result').evaluate((img, count) => {
+  assert.equal(count, 33);
+  function readSymbol(img, count) {
     const canvas = document.createElement('canvas');
     canvas.width = img.naturalWidth; canvas.height = img.naturalHeight;
     const ctx = canvas.getContext('2d');
     ctx.drawImage(img, 0, 0);
-    const {data, width} = ctx.getImageData(canvas.width - 168, canvas.height - 168, 156, 156);
+    const width = (count + 8) * 6;
+    const {data} = ctx.getImageData(canvas.width - 24 - width, canvas.height - 24 - width, width, width);
     return Array.from({length: count * count}, (_, i) => {
       const x = Math.floor((i % count + 4.5) * width / (count + 8));
       const y = Math.floor((Math.floor(i / count) + 4.5) * width / (count + 8));
       return data[4 * (y * width + x)] < 128;
     });
-  }, count);
-  assert.deepEqual(actual, expected);
+  }
+  assert.deepEqual(await page.locator('#result').evaluate(readSymbol, count), expected);
   const phone = await browser.newPage();
   await phone.goto(url);
   await phone.locator('#gallery-photos a').nth(6).waitFor();
@@ -104,11 +112,30 @@ try {
     assert.equal((await phone.request.get(link)).status(), 200);
   }
 
+  await phone.goto(base+'/gallery.html#'+id);
+  await phone.locator('#gallery-photos a').nth(6).waitFor();
+  assert.equal((await phone.request.get(base+'/api/gallery/albums/'+id+'/9')).status(),403);
   await page.locator('#print-open').click();
   await page.locator('#print-receipt.is-complete').waitFor();
-  const jobs = await (await fetch(base+'/api/gallery/print-jobs', {headers: {Authorization:'Bearer '+secret, 'X-Print-Client':'a'.repeat(48)}})).json();
-  assert.deepEqual(jobs.jobs.map(job => job.qrUrl), [url]);
-  assert.equal(calendarLayout(1200,1776,0,'#000000','default',url).filter(item => item.type === 'qr').length, 1);
+  const headers = {Authorization:'Bearer '+secret, 'X-Print-Client':'a'.repeat(48)};
+  const queue = base + '/api/gallery/print-jobs';
+  const {jobs} = await (await fetch(queue, {headers})).json();
+  assert.equal(jobs.length, 1);
+  assert.equal(jobs[0].qrUrl, '', 'Installed helpers must not draw another QR');
+  assert.ok((await fetch(queue+'/'+id+'/claim',{method:'POST',headers})).ok);
+  const printResponse = await fetch(queue+'/'+id+'/image',{headers});
+  assert.ok(printResponse.ok);
+  const jpeg = Buffer.from(await printResponse.arrayBuffer());
+  const galleryJpeg = await (await phone.request.get(base+'/api/gallery/albums/'+id+'/8')).body();
+  assert.notDeepEqual(jpeg,galleryJpeg);
+  const printImage = await page.evaluateHandle(async data => {
+    const img = new Image();
+    img.src='data:image/jpeg;base64,'+data;
+    await img.decode();
+    return img;
+  },jpeg.toString('base64'));
+  assert.deepEqual(await printImage.evaluate(readSymbol,count),expected);
+  assert.equal((printPDF(jpeg,94,0,'#000000','default',jobs[0].qrUrl).toString('latin1').match(/\/Photo Do/g)||[]).length,1);
   assert.deepEqual(errors, []);
   console.log('PASS: mandatory QR, upload retry, preview QR pixels, seven accessible gallery images, one print QR.');
 } finally {

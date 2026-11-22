@@ -1,3 +1,4 @@
+import {compactGalleryUrl} from './gallery-link.mjs';
 import qrcode from './print/vendor/qrcode.mjs';
 import {loadFrameImages} from './frame-images.mjs';
 import {createShootingMusic} from './shooting-music.js';
@@ -347,11 +348,13 @@ $('finish-selection').onclick=async()=>{
     const canvas=document.createElement('canvas');composeSelection(canvas,{...frame,img:original});
     await ensureQrAlbum(revision);
     if(revision!==sessionRun)return;
-    // The print renderer adds its own QR to this clean gallery image.
-    const printImage=await withTimeout(toBlob(canvas,'image/jpeg',.94),15000,'인쇄용 사진을 준비하지 못했어요.');
+    const galleryImage=await withTimeout(toBlob(canvas,'image/jpeg',.94),15000,'사진함에 저장할 완성본을 준비하지 못했어요.');
     if(revision!==sessionRun)return;
     drawAlbumQR(canvas,album.id);
-    await uploadAlbumPhotos(revision,printImage);
+    // Bake the QR into the private print JPEG so installed helpers print it at this size.
+    const printImage=await withTimeout(toBlob(canvas,'image/jpeg',.96),15000,'인쇄용 사진을 준비하지 못했어요.');
+    if(revision!==sessionRun)return;
+    await uploadAlbumPhotos(revision,galleryImage,printImage);
     if(revision!==sessionRun)return;
     const nextBlob=await withTimeout(toBlob(canvas),15000,'사진 처리 시간이 초과됐어요. 완성하기를 다시 눌러 주세요.');if(revision!==sessionRun)return;
     const nextURL=URL.createObjectURL(nextBlob);$('result').src=nextURL;
@@ -537,9 +540,11 @@ async function ensureQrAlbum(revision){
  album=current;
 }
 function drawAlbumQR(canvas,id){
- const url=new URL('/gallery.html#'+id,location.href).href;
+ const url=compactGalleryUrl(id,location.href);
  const qr=qrcode(0,'M');qr.addData(url);qr.make();
- const count=qr.getModuleCount(),size=Math.round(Math.min(canvas.width,canvas.height)*.13),unit=size/(count+8),margin=Math.round(Math.min(canvas.width,canvas.height)*.01);
+ const count=qr.getModuleCount(),shortSide=Math.min(canvas.width,canvas.height);
+ const unit=Math.max(1,Math.round(shortSide*.20/(count+8)));
+ const size=(count+8)*unit,margin=Math.round(shortSide*.02);
  const left=canvas.width-size-margin,top=canvas.height-size-margin,c=canvas.getContext('2d');
  c.fillStyle='#fff';c.fillRect(left,top,size,size);c.fillStyle='#000';
  for(let row=0;row<count;row++)for(let col=0;col<count;col++)if(qr.isDark(row,col))c.fillRect(left+(col+4)*unit,top+(row+4)*unit,unit,unit);
@@ -562,15 +567,16 @@ function prepareOriginals(session){
  }
  return session.originalPreparation;
 }
-async function uploadAlbumPhotos(revision,printImage){
+async function uploadAlbumPhotos(revision,galleryImage,printImage){
  const current=album;
  const deadline=Date.now()+45000,remaining=()=>{const ms=deadline-Date.now();if(ms<=0)throw new Error('QR 저장 시간 초과');return ms;};
  const originals=await withTimeout(prepareOriginals(shotSession),remaining(),'QR 사진 처리 시간 초과');
  if(revision!==sessionRun)return;
  const data=new FormData();
  originals.forEach((jpeg,i)=>data.append(String(i),jpeg,`${i}.jpg`));
- data.append('8',printImage,'result.jpg');
- await apiJSON(`/api/gallery/albums/${current.id}`,{method:'PUT',body:data},remaining());
+ data.append('8',galleryImage,'result.jpg');
+ data.append('9',printImage,'print.jpg');
+ await apiJSON(`/api/gallery/albums/${current.id}`,{method:'PUT',headers:{'X-Yonsei-Print-QR':'embedded'},body:data},remaining());
  if(revision!==sessionRun)void fetch(`/api/gallery/albums/${current.id}`,{method:'DELETE'}).catch(()=>{});
 }
 
